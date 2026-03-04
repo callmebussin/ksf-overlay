@@ -1,6 +1,6 @@
 {
   "name": "ksf-overlay",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "KSF Surf Timer overlay for OBS and desktop",
   "main": "main.js",
   "author": "bussn",

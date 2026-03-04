@@ -1,6 +1,6 @@
 {
   "name": "ksf-overlay-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "KSF Surf Timer overlay API server",
   "main": "index.js",
   "author": "bussn",
