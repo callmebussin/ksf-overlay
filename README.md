@@ -16,7 +16,7 @@ Grab the latest release from the [Releases page](https://github.com/callmebussin
 ### OBS Browser Source
 1. Add a **Browser** source in OBS
 2. Set the URL to `http://108.61.222.248:3000?steamId=YOUR_STEAMID`
-   - Example: `http://108.61.222.248:3000?steamId=ericcristian`
+   - Example: `http://108.61.222.248:3000?steamId=lolbussin`
    - Accepts SteamID (`STEAM_0:1:12345678`) or custom URL username
 
 ## Configuration
