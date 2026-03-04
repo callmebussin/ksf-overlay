@@ -38,6 +38,15 @@ app.use(helmet({
 app.use(cors());
 app.use(express.json());
 
+app.use((req, res, next) => {
+    const start = Date.now();
+    res.on('finish', () => {
+        const duration = Date.now() - start;
+        console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl} ${res.statusCode} ${duration}ms`);
+    });
+    next();
+});
+
 const limiter = rateLimit({
     windowMs: serverConfig.rateLimit.windowMs,
     max: serverConfig.rateLimit.maxRequests,
@@ -57,14 +66,17 @@ const STEAMID_CACHE_TTL = 3600000;
 const AVATAR_CACHE_TTL = 1800000;
 
 async function fetchKSFData(url) {
+    const start = Date.now();
     try {
+        console.log(`[KSF] -> GET ${url}`);
         const response = await axios.get(url, {
             headers: { 'discord-bot-token': KSF_API_TOKEN },
             timeout: serverConfig.timeouts.ksfApiFetch
         });
+        console.log(`[KSF] <- ${response.status} ${Date.now() - start}ms ${url}`);
         return response.data;
     } catch (error) {
-        console.error(`Error fetching ${url}:`, error.message);
+        console.error(`[KSF] ERROR ${Date.now() - start}ms ${url}: ${error.message}`);
         return null;
     }
 }
@@ -232,13 +244,15 @@ app.get('/api/player/:input', async (req, res) => {
             }
 
             if (playerObj) {
-                let zone = parseInt(playerObj.zone);
-                if (isNaN(zone) || zone < 0) zone = 0;
+                let rawZone = parseInt(playerObj.zone);
+                if (isNaN(rawZone) || rawZone < 0) rawZone = 0;
+                let zone = rawZone;
                 
-                // Linear maps (type 1): zone 1 in status maps to zone 0 for records
-                if (statusData.server.maptype == 1 && zone == 1) {
+                if (statusData.server.maptype == 1 && zone >= 1) {
                     zone = 0;
                 }
+
+                console.log(`[PLAYER] ${playerObj.playername} on ${statusData.server.currentmap} | maptype=${statusData.server.maptype} rawZone=${rawZone} resolvedZone=${zone}`);
 
                 responsePayload.zone = zone;
                 responsePayload.playerName = playerObj.playername;
