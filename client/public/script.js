@@ -495,11 +495,32 @@ function formatCompRate(completions, attempts) {
     return `${rate.toFixed(1)}%`;
 }
 
-function formatGroupLabel(group) {
-    if (!group) return "-";
-    if (/^(Group \d|WR|Top 10|No Group)/i.test(group)) return group;
-    if (/^\d+$/.test(group)) return `Group ${group}`;
-    return group;
+function getGroupInfo(group) {
+    if (!group) return { text: "-", css: "" };
+
+    let label = group;
+    if (/^\d+$/.test(group)) label = `Group ${group}`;
+
+    const g = label.toLowerCase();
+
+    if (g === "wr") return { text: "WR Holder", css: "group-wr" };
+    if (g === "top 10") return { text: "Top 10", css: "group-top10" };
+    if (g === "group 1") return { text: "Group 1", css: "group-g1" };
+    if (g === "group 2") return { text: "Group 2", css: "group-g2" };
+    if (g === "group 3") return { text: "Group 3", css: "group-g3" };
+    if (g === "group 4") return { text: "Group 4", css: "group-g4" };
+    if (g === "group 5") return { text: "Group 5", css: "group-g5" };
+    if (g === "group 6") return { text: "Group 6", css: "group-g6" };
+    if (g === "no group") return { text: "No Group", css: "group-no-group" };
+
+    return { text: label, css: "" };
+}
+
+function applyGroupLabel(element, group) {
+    const info = getGroupInfo(group);
+    element.innerText = info.text;
+    element.className = "sub-value group-label";
+    if (info.css) element.classList.add(info.css);
 }
 
 function clearStats() {
@@ -510,7 +531,7 @@ function clearStats() {
     ui.wrDiff.style.color = "inherit";
     ui.completions.innerText = "-";
     ui.attempts.innerText = "-";
-    ui.groupLabel.innerText = "-";
+    applyGroupLabel(ui.groupLabel, null);
     ui.compRate.innerText = "-";
     ui.avgVel.innerText = "-";
     ui.totalTime.innerText = "-";
@@ -542,7 +563,7 @@ function populateMainMapStats(d) {
 
     ui.mainStatCompletions.innerText = d.completions || "-";
     ui.mainStatAttempts.innerText = d.attempts || "-";
-    ui.mainStatGroupLabel.innerText = formatGroupLabel(d.group);
+    applyGroupLabel(ui.mainStatGroupLabel, d.group);
     ui.mainStatCompRate.innerText = formatCompRate(d.completions, d.attempts);
     ui.mainStatAvgVel.innerText = d.avgVel ? Math.round(parseFloat(d.avgVel)) : "-";
 
@@ -591,7 +612,7 @@ function populateZoneStats(data) {
     
     ui.completions.innerText = data.completions || "-";
     ui.attempts.innerText = data.attempts || "-";
-    ui.groupLabel.innerText = formatGroupLabel(data.group);
+    applyGroupLabel(ui.groupLabel, data.group);
     ui.compRate.innerText = formatCompRate(data.completions, data.attempts);
     ui.avgVel.innerText = data.avgVel ? Math.round(parseFloat(data.avgVel)) : "-";
     

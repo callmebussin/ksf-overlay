@@ -304,6 +304,81 @@ body {
     opacity: 1;
     color: var(--accent-color);
     text-align: right;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.group-no-group {
+    color: #888 !important;
+    font-weight: 600;
+}
+
+.group-g6,
+.group-g5 {
+    background: linear-gradient(135deg, #b87333, #d4956a, #cd7f32, #a0522d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.group-g4,
+.group-g3 {
+    background: linear-gradient(135deg, #c0c0c0, #e8e8e8, #a8a8a8, #d0d0d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.group-g2 {
+    background: linear-gradient(135deg, #ffd700, #ffec8b, #daa520, #f0c040);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.group-g1 {
+    background: linear-gradient(90deg, #ffd700, #fff68f, #daa520, #ffec8b, #ffd700);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: goldShift 3s ease infinite;
+}
+
+@keyframes goldShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.group-top10 {
+    background: linear-gradient(90deg, #ff6ec7, #b46ee0, #7b68ee, #da70d6, #ff6ec7);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: nebulaShift 3s ease infinite;
+}
+
+@keyframes nebulaShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.group-wr {
+    background: linear-gradient(90deg, #ff0000, #ff8c00, #ffd700, #00ff00, #00bfff, #8a2be2, #ff0000);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbowShift 2.5s linear infinite;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+}
+
+@keyframes rainbowShift {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
 }
 
 #map-name {
