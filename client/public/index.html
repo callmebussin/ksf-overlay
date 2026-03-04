@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSF Overlay</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="overlay-mode">
+    <div id="card" class="card">
+        <div class="header">
+            <div id="player-avatar" class="avatar"></div>
+            <div class="player-info">
+                <h2 id="player-name">Player Name</h2>
+                <h3 id="map-name"><span id="map-spinner" class="spinner" style="display: inline-block;"></span> loading map data...</h3>
+            </div>
+            <div class="header-right">
+                <span id="status-indicator" class="status offline">OFFLINE</span>
+            </div>
+        </div>
+
+        <div id="cards-layout" class="cards-layout">
+
+            <div id="main-map-section" class="layout-panel" style="display: none;">
+                <div class="section-label">Main Map</div>
+                <div class="main-stats">
+                    <div class="main-row">
+                        <div class="stat-col left">
+                            <span class="label">Time</span>
+                            <span class="value huge" id="main-stat-time">--:--.--</span>
+                        </div>
+                        <div class="stat-col right">
+                            <span class="label">Rank</span>
+                            <span class="value huge" id="main-stat-rank">-/-</span>
+                        </div>
+                    </div>
+                    <div class="sub-row">
+                        <span class="sub-value">WR: <span id="main-stat-wr-time">--:--.--</span> <span class="wr-diff" id="main-stat-wr-diff">-</span></span>
+                        <span class="sub-value group-label" id="main-stat-group-label">-</span>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="label">Completions</span>
+                        <span class="value" id="main-stat-completions">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Attempts</span>
+                        <span class="value" id="main-stat-attempts">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Comp Rate</span>
+                        <span class="value" id="main-stat-comprate">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">First Played</span>
+                        <span class="value" id="main-stat-firstdate">-</span>
+                    </div>
+                </div>
+
+                <div class="advanced-stats-grid">
+                    <div class="mini-stat">
+                        <span class="label">Total Time</span>
+                        <span class="value" id="main-stat-totaltime">-</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="label">Avg Vel</span>
+                        <span class="value" id="main-stat-avgvel">-</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="label">Start Vel</span>
+                        <span class="value" id="main-stat-startvel">-</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="label">End Vel</span>
+                        <span class="value" id="main-stat-endvel">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr id="section-divider" class="section-divider" style="display: none;">
+
+            <div class="layout-panel stage-panel">
+                <div id="stage-nav" class="stage-nav" style="display: none;">
+                    <button id="stage-nav-left" class="stage-nav-btn">&lsaquo;</button>
+                    <span id="stage-section-label" class="section-label">Stage</span>
+                    <button id="stage-nav-right" class="stage-nav-btn">&rsaquo;</button>
+                </div>
+
+                <div id="stage-slide-container" class="stage-slide-container">
+                    <div id="stage-content" class="stage-content">
+                        <div class="main-stats">
+                            <div class="main-row">
+                                <div class="stat-col left">
+                                    <span class="label">Time</span>
+                                    <span class="value huge" id="stat-time">--:--.--</span>
+                                </div>
+                                <div class="stat-col right">
+                                    <span class="label">Rank</span>
+                                    <span class="value huge" id="stat-zone">-/-</span>
+                                </div>
+                            </div>
+                            <div class="sub-row">
+                                <span class="sub-value">WR: <span id="stat-wr-time">--:--.--</span> <span class="wr-diff" id="stat-wr-diff">-</span></span>
+                                <span class="sub-value group-label" id="stat-group-label">-</span>
+                            </div>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="label">Completions</span>
+                                <span class="value" id="stat-completions">-</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">Attempts</span>
+                                <span class="value" id="stat-attempts">-</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">Comp Rate</span>
+                                <span class="value" id="stat-comprate">-</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">First Played</span>
+                                <span class="value" id="stat-firstdate">-</span>
+                            </div>
+                        </div>
+
+                        <div class="advanced-stats-grid">
+                            <div class="mini-stat">
+                                <span class="label">Total Time</span>
+                                <span class="value" id="stat-totaltime">-</span>
+                            </div>
+                            <div class="mini-stat">
+                                <span class="label">Avg Vel</span>
+                                <span class="value" id="stat-avgvel">-</span>
+                            </div>
+                            <div class="mini-stat">
+                                <span class="label">Start Vel</span>
+                                <span class="value" id="stat-startvel">-</span>
+                            </div>
+                            <div class="mini-stat">
+                                <span class="label">End Vel</span>
+                                <span class="value" id="stat-endvel">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <span id="update-timer">Next update: --s</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

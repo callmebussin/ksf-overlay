@@ -1,0 +1,65 @@
+{
+  "name": "ksf-overlay",
+  "version": "1.0.0",
+  "description": "KSF Surf Timer overlay for OBS and desktop",
+  "main": "main.js",
+  "author": "bussn",
+  "license": "ISC",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win",
+    "build:dir": "electron-builder --win --dir"
+  },
+  "dependencies": {
+    "electron": "^40.6.1"
+  },
+  "devDependencies": {
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.bussn.ksf-overlay",
+    "productName": "KSF Overlay",
+    "directories": {
+      "output": "../dist"
+    },
+    "files": [
+      "main.js",
+      "public/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "../server",
+        "to": "server",
+        "filter": [
+          "**/*",
+          "!node_modules/**",
+          "!.env",
+          "!overlay-config.json"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": null
+    },
+    "nsis": {
+      "oneClick": true,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "shortcutName": "KSF Overlay"
+    }
+  }
+}

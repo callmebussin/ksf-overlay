@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSF Overlay Configuration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #1e1e1e;
+            color: #eee;
+            margin: 0;
+            padding: 15px;
+            height: 100vh;
+            box-sizing: border-box;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        h3 {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 10px 0;
+            color: #bbb;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            flex: 1;
+            min-height: 0; 
+        }
+        .panel {
+            background: #252526;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border: 1px solid #333;
+        }
+        label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: #ddd;
+        }
+        label.block-label {
+            display: block;
+            margin-bottom: 4px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            background: #333;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        input[type="text"]:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: #0078d4;
+        }
+        select {
+            padding: 6px 8px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-size: 0.9em;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+        .slider-container {
+            margin-top: 5px;
+        }
+        input[type="range"] {
+            width: 100%;
+            height: 4px;
+            margin: 10px 0;
+            cursor: pointer;
+            background: #444;
+        }
+        .colors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .color-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8em;
+            color: #ccc;
+        }
+        input[type="color"] {
+            border: 1px solid #555;
+            width: 24px;
+            height: 24px;
+            padding: 0;
+            background: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn {
+            background: #0078d4;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: #106ebe; }
+        
+        button.port-btn {
+            background: #444;
+            border: 1px solid #555;
+            padding: 2px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #eee;
+            width: auto;
+            min-width: 40px;
+        }
+        button.port-btn:hover { border-color: #777; background: #555; }
+
+        small {
+            display: block;
+            color: #888;
+            font-size: 0.75em;
+            margin-top: 4px;
+        }
+        
+        .col-left { display: flex; flex-direction: column; gap: 15px; }
+        .col-right { display: flex; flex-direction: column; gap: 15px; }
+
+        .credits {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            color: #666;
+            line-height: 1.8;
+        }
+        .credits a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .credits a:hover {
+            color: #aaa;
+            text-decoration: underline;
+        }
+
+        .glow-name {
+            font-weight: 800;
+            background: linear-gradient(90deg, #7c5cbf, #3498db, #2ecc71, #f1c40f, #e74c3c, #7c5cbf);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease infinite;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .glow-name:hover {
+            animation-duration: 1.5s;
+        }
+
+        @keyframes gradientShift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-layout">
+        <div class="col-left">
+            <div class="panel">
+                <h3>Player Settings</h3>
+                <div>
+                    <label class="block-label" for="steamid">SteamID or Username</label>
+                    <input type="text" id="steamid" placeholder="STEAM_0:1:12345678 OR username">
+                    <small>Supports SteamID (STEAM_0:X:Y) or custom URL.</small>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h3>Behavior</h3>
+                <div style="margin-bottom: 10px;">
+                    <label for="always-on-top" style="cursor: pointer;">
+                        <span>Always On Top</span>
+                        <input type="checkbox" id="always-on-top" style="width: auto;">
+                    </label>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="show-main-map-stats" style="cursor: pointer;">
+                        <span>Show Map Stats Separately</span>
+                        <input type="checkbox" id="show-main-map-stats" style="width: auto;">
+                    </label>
+                    <small>When on a stage or bonus, show main map stats in a dedicated card above.</small>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="auto-follow-stage" style="cursor: pointer;">
+                        <span>Auto-Follow Current Stage</span>
+                        <input type="checkbox" id="auto-follow-stage" checked style="width: auto;">
+                    </label>
+                    <small>Automatically switch to the stage/bonus the player is currently on.</small>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="horizontal-layout" style="cursor: pointer;">
+                        <span>Wide Layout (Side-by-Side)</span>
+                        <input type="checkbox" id="horizontal-layout" style="width: auto;">
+                    </label>
+                    <small>Show main map and stage/bonus cards side by side instead of stacked.</small>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>OBS Setup</h3>
+                <div style="font-size: 0.85em; color: #ccc; line-height: 1.4; display: flex; gap: 16px; align-items: flex-start;">
+                    <div style="flex-shrink: 0;">
+                        <label style="margin-bottom: 4px;">Server Port</label>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="number" id="server-port" value="3000" style="width: 60px; padding: 4px; background: #333; border: 1px solid #444; color: white; border-radius: 4px;">
+                            <button id="set-port-btn" class="port-btn">Set</button>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 0;">
+                        <div style="margin-bottom: 4px;">Add a <strong>Browser</strong> source:</div>
+                        <div id="obs-url-display" style="background: #111; padding: 6px; border: 1px solid #333; border-radius: 4px; font-family: 'Roboto Mono', monospace; user-select: all; cursor: text; color: #4caf50; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">http://localhost:3000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-right">
+            <div class="panel">
+                <h3>Style & Theme</h3>
+                
+                <div style="margin-bottom: 10px;">
+                     <label style="margin-bottom: 4px;">Preset Theme</label>
+                     <select id="theme-preset">
+                         <option value="custom">Custom</option>
+                         <option value="default">Default Dark</option>
+                         <option value="light">Clean Light</option>
+                         <option value="glass">Glass Blue</option>
+                     </select>
+                </div>
+
+                <div class="slider-container">
+                    <label style="margin-bottom: 4px;">Overlay Opacity <span id="opacity-val" style="color:#2196f3">100%</span></label>
+                    <input type="range" id="opacity" min="10" max="100" value="100">
+                </div>
+                
+                <div style="margin-top: 10px;">
+                    <label style="margin-bottom: 8px;">Colors</label>
+                    <div class="colors-grid">
+                        <div class="color-item">Background <input type="color" id="bg-color" value="#000000"></div>
+                        <div class="color-item">Text Main <input type="color" id="text-color" value="#ffffff"></div>
+                        <div class="color-item">Accent <input type="color" id="accent-color" value="#3498db"></div>
+                        <div class="color-item">Border <input type="color" id="border-color" value="#ffffff"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="credits">
+                <span>made by <a href="#" id="ksf-link" class="glow-name">bussn</a></span>
+                <a href="#" id="github-link">github.com/callmebussin/ksf-overlay</a>
+                <span style="margin-top: 8px; color: #555; font-style: italic;">coming soon: styles and 100t</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        const PRESETS = {
+            default: {
+                bgColor: "#000000",
+                textColor: "#ecf0f1",
+                accentColor: "#3498db",
+                borderColor: "#ffffff",
+                opacity: 100
+            },
+            light: {
+                bgColor: "#ffffff",
+                textColor: "#4a3f6b",
+                accentColor: "#7c5cbf",
+                borderColor: "#d5cee6",
+                opacity: 90
+            },
+            glass: {
+                bgColor: "#001f3f",
+                textColor: "#7FDBFF",
+                accentColor: "#0074D9",
+                borderColor: "#39CCCC",
+                opacity: 85
+            }
+        };
+
+        const els = {
+            steamid: document.getElementById('steamid'),
+            alwaysOnTop: document.getElementById('always-on-top'),
+            showMainMapStats: document.getElementById('show-main-map-stats'),
+            autoFollowStage: document.getElementById('auto-follow-stage'),
+            horizontalLayout: document.getElementById('horizontal-layout'),
+            serverPort: document.getElementById('server-port'),
+            setPortBtn: document.getElementById('set-port-btn'),
+            obsUrlDisplay: document.getElementById('obs-url-display'),
+            opacity: document.getElementById('opacity'),
+            opacityVal: document.getElementById('opacity-val'),
+            themePreset: document.getElementById('theme-preset'),
+            colors: {
+                bgColor: document.getElementById('bg-color'),
+                textColor: document.getElementById('text-color'),
+                accentColor: document.getElementById('accent-color'),
+                borderColor: document.getElementById('border-color')
+            }
+        };
+
+        ipcRenderer.send('get-config');
+        ipcRenderer.on('config-updated', (event, config) => {
+            els.steamid.value = config.steamId || '';
+            els.alwaysOnTop.checked = config.alwaysOnTop !== false;
+            els.showMainMapStats.checked = config.showMainMapStats || false;
+            els.autoFollowStage.checked = config.autoFollowStage !== false;
+            els.horizontalLayout.checked = config.horizontalLayout || false;
+            
+            if (config.serverPort) {
+                els.serverPort.value = config.serverPort;
+                els.obsUrlDisplay.innerText = `http://localhost:${config.serverPort}`;
+            }
+            
+            els.opacity.value = config.opacity || 100;
+            els.opacityVal.innerText = els.opacity.value + '%';
+            
+            if (config.theme) {
+                if (config.theme.bgColor) els.colors.bgColor.value = config.theme.bgColor;
+                if (config.theme.textColor) els.colors.textColor.value = config.theme.textColor;
+                if (config.theme.accentColor) els.colors.accentColor.value = config.theme.accentColor;
+                if (config.theme.borderColor) els.colors.borderColor.value = config.theme.borderColor;
+            }
+        });
+
+        els.setPortBtn.addEventListener('click', () => {
+            ipcRenderer.send('set-port', els.serverPort.value);
+            const originalText = els.setPortBtn.innerText;
+            els.setPortBtn.innerText = "Saved";
+            els.setPortBtn.style.color = "#4caf50";
+            els.setPortBtn.disabled = true;
+            
+            els.obsUrlDisplay.innerText = `http://localhost:${els.serverPort.value}`;
+            
+            setTimeout(() => {
+                els.setPortBtn.innerText = originalText;
+                els.setPortBtn.style.color = "";
+                els.setPortBtn.disabled = false;
+            }, 1000);
+        });
+
+        els.opacity.addEventListener('input', (e) => {
+            els.opacityVal.innerText = e.target.value + '%';
+        });
+
+        els.themePreset.addEventListener('change', (e) => {
+            const val = e.target.value;
+            if (val !== 'custom' && PRESETS[val]) {
+                const p = PRESETS[val];
+                els.colors.bgColor.value = p.bgColor;
+                els.colors.textColor.value = p.textColor;
+                els.colors.accentColor.value = p.accentColor;
+                els.colors.borderColor.value = p.borderColor;
+                autoSave();
+            }
+        });
+
+        let saveTimeout = null;
+        function autoSave() {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(() => {
+                const config = {
+                    steamId: els.steamid.value,
+                    alwaysOnTop: els.alwaysOnTop.checked,
+                    showMainMapStats: els.showMainMapStats.checked,
+                    autoFollowStage: els.autoFollowStage.checked,
+                    horizontalLayout: els.horizontalLayout.checked,
+                    serverPort: parseInt(els.serverPort.value),
+                    opacity: parseInt(els.opacity.value),
+                    theme: {
+                        bgColor: els.colors.bgColor.value,
+                        textColor: els.colors.textColor.value,
+                        accentColor: els.colors.accentColor.value,
+                        borderColor: els.colors.borderColor.value
+                    }
+                };
+                ipcRenderer.send('save-config', config);
+            }, 400);
+        }
+
+        els.steamid.addEventListener('input', autoSave);
+        els.alwaysOnTop.addEventListener('change', autoSave);
+        els.showMainMapStats.addEventListener('change', autoSave);
+        els.autoFollowStage.addEventListener('change', autoSave);
+        els.horizontalLayout.addEventListener('change', autoSave);
+        els.opacity.addEventListener('input', autoSave);
+        els.colors.bgColor.addEventListener('input', autoSave);
+        els.colors.textColor.addEventListener('input', autoSave);
+        els.colors.accentColor.addEventListener('input', autoSave);
+        els.colors.borderColor.addEventListener('input', autoSave);
+
+        document.getElementById('github-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            ipcRenderer.send('open-external', 'https://github.com/callmebussin/ksf-overlay');
+        });
+        document.getElementById('ksf-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            ipcRenderer.send('open-external', 'https://ksf.surf/players/STEAM_0:0:184941605');
+        });
+    </script>
+</body>
+</html>
