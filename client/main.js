@@ -120,7 +120,7 @@ function createConfigWindow() {
         minHeight: 740,
         maxWidth: 800,
         maxHeight: 740,
-        title: "KSF Overlay Configuration",
+        title: "KSF Stats App - Configuration",
         autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true,
@@ -137,7 +137,7 @@ function createConfigWindow() {
 
 function createTray() {
     tray = new Tray(nativeImage.createEmpty()); 
-    tray.setToolTip('KSF Overlay');
+    tray.setToolTip('KSF Stats App');
     
     const contextMenu = Menu.buildFromTemplate([
         { label: 'Open Overlay', click: () => overlayWindow ? overlayWindow.show() : createOverlayWindow() },

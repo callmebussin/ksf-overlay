@@ -1,7 +1,7 @@
 {
-  "name": "ksf-overlay",
+  "name": "ksf-stats-app",
   "version": "1.0.1",
-  "description": "KSF Surf Timer overlay for OBS and desktop",
+  "description": "KSF Surf Timer stats app for OBS and desktop",
   "main": "main.js",
   "author": "bussn",
   "license": "ISC",
@@ -15,8 +15,8 @@
     "electron-builder": "^26.8.1"
   },
   "build": {
-    "appId": "com.bussn.ksf-overlay",
-    "productName": "KSF Overlay",
+    "appId": "com.bussn.ksf-stats-app",
+    "productName": "KSF Stats App",
     "directories": {
       "output": "../dist"
     },
@@ -57,7 +57,7 @@
       "oneClick": true,
       "allowToChangeInstallationDirectory": false,
       "createDesktopShortcut": true,
-      "shortcutName": "KSF Overlay"
+      "shortcutName": "KSF Stats App"
     }
   }
 }

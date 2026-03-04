@@ -1,16 +1,16 @@
-# KSF Overlay
+# KSF Stats App
 
-Real-time KSF surf timer stats overlay for desktop and OBS.
+Real-time KSF surf timer stats app for desktop and OBS.
 
 ## Download
 
-Grab the latest release from the [Releases page](https://github.com/callmebussin/ksf-overlay/releases).
+Grab the latest release from the [Releases page](https://github.com/callmebussin/ksf-stats-app/releases).
 
 ## Setup
 
 ### Desktop Overlay
-1. Download `KSF-Overlay-v1.0.1-win-x64.zip` from Releases
-2. Extract and run `KSF Overlay 1.0.1.exe`
+1. Download `ksf-stats-app-v1.0.1.exe` from Releases
+2. Run the exe
 3. Enter your SteamID or custom URL username in Settings
 
 ### OBS Browser Source
