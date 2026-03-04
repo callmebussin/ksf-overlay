@@ -41,6 +41,7 @@ app.use(express.json());
 app.use((req, res, next) => {
     const start = Date.now();
     res.on('finish', () => {
+        if (req.originalUrl.startsWith('/api/browse')) return;
         const duration = Date.now() - start;
         console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl} ${res.statusCode} ${duration}ms`);
     });
