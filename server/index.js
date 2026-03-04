@@ -253,11 +253,9 @@ app.get('/api/player/:input', async (req, res) => {
             if (recordResponse && recordResponse.status === 'OK' && recordResponse.data) {
                 Object.assign(responsePayload, mapRecordData(recordResponse.data));
 
-                if (responsePayload.zone !== 0) {
-                    const computed = calculateGroup(responsePayload.rank, responsePayload.totalRanks);
-                    if (computed) {
-                        responsePayload.group = computed;
-                    }
+                const computed = calculateGroup(responsePayload.rank, responsePayload.totalRanks);
+                if (computed) {
+                    responsePayload.group = computed;
                 }
             }
 
