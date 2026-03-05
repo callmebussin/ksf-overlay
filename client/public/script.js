@@ -884,7 +884,27 @@ function updateUI(data) {
                 for (const p of data.serverPlayers) {
                     const item = document.createElement('div');
                     item.className = 'player-list-item';
-                    item.innerHTML = `<span class="player-list-name">${p.name}</span><span class="player-list-points">${parseInt(p.points || 0).toLocaleString()} pts</span>`;
+                    item.title = `Click to view ${p.name}'s stats`;
+                    
+                    const flagCode = p.country ? COUNTRY_CODES[p.country] : null;
+                    const flagHtml = flagCode 
+                        ? `<img class="player-list-flag" src="https://flagcdn.com/w40/${flagCode}.png">` 
+                        : '<span class="player-list-flag"></span>';
+                    
+                    item.innerHTML = `${flagHtml}<span class="player-list-name">${p.name}</span><span class="player-list-points">${parseInt(p.points || 0).toLocaleString()} pts</span>`;
+                    
+                    item.addEventListener('click', () => {
+                        currentConfig.steamId = p.steamid;
+                        profileCache = null;
+                        lastProfileFetch = 0;
+                        zoneCache.clear();
+                        currentMap = null;
+                        browsingZone = null;
+                        ui.playersModal.style.display = 'none';
+                        fetchStats();
+                        fetchProfile();
+                    });
+                    
                     ui.playersList.appendChild(item);
                 }
             }
