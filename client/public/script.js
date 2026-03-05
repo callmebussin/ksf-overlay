@@ -372,12 +372,12 @@ function startPolling(forceImmediate = false) {
         fetchStats();
     }
 
-    const rate = Math.max(currentConfig.refreshRate || 60, 30);
+    const rate = Math.max(currentConfig.refreshRate || 60, 60); // minimum 60s to avoid spamming KSF API
     refreshInterval = setInterval(fetchStats, rate * 1000);
     timerInterval = setInterval(updateFooterTimer, 1000);
 
     if (!ipcRenderer) {
-        browseInterval = setInterval(pollBrowseState, 1500);
+        browseInterval = setInterval(pollBrowseState, 5000); // 5s instead of 1.5s to reduce load
     }
 }
 
@@ -400,7 +400,7 @@ function updateFooterTimer() {
         return;
     }
     
-    const rate = Math.max(currentConfig.refreshRate || 60, 30);
+    const rate = Math.max(currentConfig.refreshRate || 60, 60);
     const nextUpdate = lastRefreshTime + (rate * 1000);
     const now = Date.now();
     const diff = Math.ceil((nextUpdate - now) / 1000);

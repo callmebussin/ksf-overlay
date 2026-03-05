@@ -2,10 +2,11 @@
   "port": 3000,
   "ksfApiUrl": "http://surftimer.com/api2",
   "defaultGame": "css",
-  "refreshRate": 30,
+  "refreshRate": 60,
+  "ksfCacheTTL": 30000,
   "rateLimit": {
     "windowMs": 60000,
-    "maxRequests": 100
+    "maxRequests": 30
   },
   "timeouts": {
     "ksfApiFetch": 15000,

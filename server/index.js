@@ -7,13 +7,45 @@ const helmet = require('helmet');
 const fs = require('fs');
 const path = require('path');
 
+// ── File Logger ──────────────────────────────────────────────────────────────
+const LOG_DIR = path.join(__dirname, 'logs');
+if (!fs.existsSync(LOG_DIR)) fs.mkdirSync(LOG_DIR, { recursive: true });
+
+function getLogFilePath() {
+    const d = new Date();
+    const date = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    return path.join(LOG_DIR, `server-${date}.log`);
+}
+
+function writeToLog(level, ...args) {
+    const timestamp = new Date().toISOString();
+    const message = args.map(a => {
+        if (typeof a === 'string') return a;
+        try { return JSON.stringify(a, null, 2); } catch { return String(a); }
+    }).join(' ');
+    const line = `[${timestamp}] [${level}] ${message}\n`;
+    try {
+        fs.appendFileSync(getLogFilePath(), line);
+    } catch (e) { /* ignore write errors */ }
+}
+
+const originalLog = console.log.bind(console);
+const originalError = console.error.bind(console);
+const originalWarn = console.warn.bind(console);
+
+console.log = (...args) => { originalLog(...args); writeToLog('INFO', ...args); };
+console.error = (...args) => { originalError(...args); writeToLog('ERROR', ...args); };
+console.warn = (...args) => { originalWarn(...args); writeToLog('WARN', ...args); };
+
+// ── Config ───────────────────────────────────────────────────────────────────
 const CONFIG_PATH = path.join(__dirname, 'config.json');
 let serverConfig = {
     port: 3000,
     ksfApiUrl: 'http://surftimer.com/api2',
     rateLimit: { windowMs: 60000, maxRequests: 100 },
     timeouts: { ksfApiFetch: 5000, steamIdResolve: 5000 },
-    steamApiKey: ""
+    steamApiKey: "",
+    ksfCacheTTL: 30000  // cache KSF responses for 30s
 };
 
 try {
@@ -25,6 +57,8 @@ try {
 } catch (e) {
     console.error("Failed to load config.json, using defaults", e);
 }
+
+console.log(`Log file: ${getLogFilePath()}`);
 
 const app = express();
 const PORT = process.env.PORT || serverConfig.port;
@@ -43,7 +77,8 @@ app.use((req, res, next) => {
     res.on('finish', () => {
         if (req.originalUrl.startsWith('/api/browse')) return;
         const duration = Date.now() - start;
-        console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl} ${res.statusCode} ${duration}ms`);
+        const ip = req.ip || req.connection?.remoteAddress || 'unknown';
+        console.log(`[REQ] ${req.method} ${req.originalUrl} -> ${res.statusCode} ${duration}ms (from ${ip})`);
     });
     next();
 });
@@ -67,21 +102,109 @@ const countryCache = new Map();
 const STEAMID_CACHE_TTL = 3600000;
 const AVATAR_CACHE_TTL = 1800000;
 
-async function fetchKSFData(url) {
-    const start = Date.now();
-    try {
-        console.log(`[KSF] -> GET ${url}`);
-        const response = await axios.get(url, {
-            headers: { 'discord-bot-token': KSF_API_TOKEN },
-            timeout: serverConfig.timeouts.ksfApiFetch
-        });
-        console.log(`[KSF] <- ${response.status} ${Date.now() - start}ms ${url}`);
-        return response.data;
-    } catch (error) {
-        console.error(`[KSF] ERROR ${Date.now() - start}ms ${url}: ${error.message}`);
-        return null;
-    }
+// ── KSF Response Cache ──────────────────────────────────────────────────────
+// Prevents duplicate requests to KSF API within the TTL window
+const ksfResponseCache = new Map();
+const KSF_CACHE_TTL = serverConfig.ksfCacheTTL || 30000; // 30s default
+
+// Track KSF API call stats
+let ksfCallStats = { total: 0, cached: 0, errors: 0, lastReset: Date.now() };
+
+function getKsfStats() {
+    const elapsed = ((Date.now() - ksfCallStats.lastReset) / 1000).toFixed(0);
+    return `[KSF STATS] total=${ksfCallStats.total} cached=${ksfCallStats.cached} errors=${ksfCallStats.errors} over ${elapsed}s`;
 }
+
+// Log stats every 5 minutes
+setInterval(() => {
+    console.log(getKsfStats());
+    ksfCallStats = { total: 0, cached: 0, errors: 0, lastReset: Date.now() };
+}, 300000);
+
+// Inflight dedup: if the same URL is already being fetched, reuse the promise
+const ksfInflight = new Map();
+
+async function fetchKSFData(url) {
+    ksfCallStats.total++;
+
+    // Check cache first
+    const cached = ksfResponseCache.get(url);
+    if (cached && (Date.now() - cached.timestamp) < KSF_CACHE_TTL) {
+        ksfCallStats.cached++;
+        console.log(`[KSF] CACHE HIT (${((Date.now() - cached.timestamp) / 1000).toFixed(1)}s old) ${url}`);
+        return cached.data;
+    }
+
+    // Dedup inflight requests to the same URL
+    if (ksfInflight.has(url)) {
+        console.log(`[KSF] DEDUP (waiting on inflight request) ${url}`);
+        ksfCallStats.cached++;
+        return ksfInflight.get(url);
+    }
+
+    const promise = (async () => {
+        const start = Date.now();
+        try {
+            console.log(`[KSF] -> GET ${url}`);
+            const response = await axios.get(url, {
+                headers: { 'discord-bot-token': KSF_API_TOKEN },
+                timeout: serverConfig.timeouts.ksfApiFetch
+            });
+            const duration = Date.now() - start;
+
+            // Detailed response logging
+            console.log(`[KSF] <- ${response.status} ${duration}ms ${url}`);
+            console.log(`[KSF]    Content-Length: ${response.headers['content-length'] || 'unknown'}`);
+            console.log(`[KSF]    Response status field: ${response.data?.status || 'N/A'}`);
+            if (response.headers['x-ratelimit-remaining'] !== undefined) {
+                console.log(`[KSF]    Rate-Limit-Remaining: ${response.headers['x-ratelimit-remaining']}`);
+            }
+            if (response.headers['x-ratelimit-limit'] !== undefined) {
+                console.log(`[KSF]    Rate-Limit-Limit: ${response.headers['x-ratelimit-limit']}`);
+            }
+            if (response.headers['retry-after'] !== undefined) {
+                console.warn(`[KSF]    RETRY-AFTER: ${response.headers['retry-after']}`);
+            }
+
+            // Cache the response
+            ksfResponseCache.set(url, { data: response.data, timestamp: Date.now() });
+
+            return response.data;
+        } catch (error) {
+            ksfCallStats.errors++;
+            const duration = Date.now() - start;
+            console.error(`[KSF] ERROR ${duration}ms ${url}: ${error.message}`);
+            if (error.response) {
+                console.error(`[KSF]    HTTP Status: ${error.response.status}`);
+                console.error(`[KSF]    Response Body: ${JSON.stringify(error.response.data).substring(0, 500)}`);
+                if (error.response.status === 429) {
+                    console.error(`[KSF]    RATE LIMITED! Retry-After: ${error.response.headers['retry-after'] || 'unknown'}`);
+                }
+            }
+            return null;
+        } finally {
+            ksfInflight.delete(url);
+        }
+    })();
+
+    ksfInflight.set(url, promise);
+    return promise;
+}
+
+// Periodically clean expired cache entries
+setInterval(() => {
+    const now = Date.now();
+    let cleaned = 0;
+    for (const [url, entry] of ksfResponseCache) {
+        if (now - entry.timestamp > KSF_CACHE_TTL * 2) {
+            ksfResponseCache.delete(url);
+            cleaned++;
+        }
+    }
+    if (cleaned > 0) {
+        console.log(`[KSF CACHE] Cleaned ${cleaned} expired entries. ${ksfResponseCache.size} remaining.`);
+    }
+}, 60000);
 
 function steamIdTo64(steamId) {
     const match = steamId.match(/^STEAM_0:([01]):(\d+)$/);
@@ -468,6 +591,20 @@ app.get('/api/config', (req, res) => {
         console.error("Failed to read overlay config:", e.message);
     }
     res.json({ steamId: "", refreshRate: 60, showMainMapStats: false, theme: {} });
+});
+
+// ── Diagnostic endpoint ──────────────────────────────────────────────────────
+app.get('/api/debug/stats', (req, res) => {
+    const elapsed = ((Date.now() - ksfCallStats.lastReset) / 1000).toFixed(0);
+    res.json({
+        ksfCalls: { ...ksfCallStats, elapsedSeconds: elapsed },
+        cacheSize: ksfResponseCache.size,
+        cacheTTL: KSF_CACHE_TTL,
+        inflightRequests: ksfInflight.size,
+        steamIdCacheSize: steamIdCache.size,
+        avatarCacheSize: avatarCache.size,
+        countryCacheSize: countryCache.size
+    });
 });
 
 let browseState = { zone: null };
