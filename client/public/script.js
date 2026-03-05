@@ -22,6 +22,7 @@ let hasInitialized = false;
 
 let currentZone = null;
 let currentMap = null;
+let displayedStageZone = null; // Tracks which zone the stage panel is actually showing
 
 const zoneCache = new Map();
 let browsingZone = null;
@@ -139,7 +140,7 @@ function navigateZone(direction) {
     const zones = getSortedCachedZones();
     if (zones.length === 0) return;
 
-    const viewingZone = browsingZone !== null ? browsingZone : currentZone;
+    const viewingZone = browsingZone !== null ? browsingZone : (displayedStageZone !== null ? displayedStageZone : currentZone);
     const idx = zones.indexOf(viewingZone);
     const newIdx = idx + direction;
     if (newIdx < 0 || newIdx >= zones.length) return;
@@ -148,6 +149,7 @@ function navigateZone(direction) {
     const slideDir = direction > 0 ? 'left' : 'right';
     
     browsingZone = newZone;
+    displayedStageZone = newZone;
     broadcastBrowseState(newZone);
     const cached = zoneCache.get(newZone);
     if (cached) {
@@ -169,7 +171,7 @@ function getSortedCachedZones() {
 
 function updateNavButtons() {
     const zones = getSortedCachedZones();
-    const viewingZone = browsingZone !== null ? browsingZone : currentZone;
+    const viewingZone = browsingZone !== null ? browsingZone : (displayedStageZone !== null ? displayedStageZone : currentZone);
     const idx = zones.indexOf(viewingZone);
     ui.stageNavLeft.disabled = (idx <= 0);
     ui.stageNavRight.disabled = (idx >= zones.length - 1);
@@ -236,13 +238,7 @@ if (ipcRenderer) {
         }
 
         if (layoutChanged && hasInitialized) {
-            const liveZone = browsingZone !== null ? browsingZone : currentZone;
-            const cached = liveZone !== null ? zoneCache.get(liveZone) : null;
-            if (cached) {
-                updateUI(cached);
-            } else {
-                resizeOverlay();
-            }
+            refreshLayoutFromCache();
         }
     });
 
@@ -351,10 +347,8 @@ function applyRemoteConfig(cfg) {
 
     if (changed) {
         applyConfig();
-        const liveZone = browsingZone !== null ? browsingZone : currentZone;
-        const cached = liveZone !== null ? zoneCache.get(liveZone) : null;
-        if (cached) {
-            updateUI(cached);
+        if (hasInitialized && currentMap) {
+            refreshLayoutFromCache();
         }
     }
 }
@@ -863,6 +857,52 @@ function setPlayerFlag(country) {
     }
 }
 
+// Centralized function to show/hide the Main Map panel.
+// Called from updateUI and from applyConfig/applyRemoteConfig on toggle.
+function showMainMapPanel(show, mainMapData) {
+    if (show && mainMapData) {
+        ui.mainMapSection.style.display = 'block';
+        requestAnimationFrame(() => ui.mainMapSection.classList.add('expanded'));
+        ui.sectionDivider.style.display = 'block';
+        ui.sectionDivider.style.opacity = '1';
+        populateMainMapStats(mainMapData);
+    } else {
+        ui.mainMapSection.classList.remove('expanded');
+        setTimeout(() => {
+            if (!ui.mainMapSection.classList.contains('expanded')) {
+                ui.mainMapSection.style.display = 'none';
+            }
+        }, 400);
+        ui.sectionDivider.style.opacity = '0';
+        setTimeout(() => {
+            ui.sectionDivider.style.display = 'none';
+        }, 400);
+    }
+}
+
+// Re-render the full layout from cached data (used when config toggles change).
+function refreshLayoutFromCache() {
+    const mainMapData = zoneCache.get(0) || null;
+    const showMainMap = currentConfig.showMainMapStats && mainMapData;
+    showMainMapPanel(showMainMap, mainMapData);
+
+    // Re-render the stage panel with the correct zone
+    const liveZone = browsingZone !== null ? browsingZone : currentZone;
+    let stageZoneId = liveZone;
+    if (showMainMap && stageZoneId === 0) {
+        const nonZeroZones = getSortedCachedZones();
+        stageZoneId = nonZeroZones.length > 0 ? nonZeroZones[0] : 0;
+    }
+    displayedStageZone = stageZoneId;
+    const cached = zoneCache.get(stageZoneId);
+    if (cached) {
+        populateZoneStats(cached);
+        ui.stageSectionLabel.innerText = formatZone(stageZoneId, cached.mapInfo);
+        updateNavButtons();
+    }
+    resizeOverlay();
+}
+
 function updateUI(data) {
     if (data.avatarUrl) {
         ui.avatar.style.backgroundImage = `url('${data.avatarUrl}')`;
@@ -921,6 +961,7 @@ function updateUI(data) {
         if (data.map && data.map !== currentMap) {
             zoneCache.clear();
             browsingZone = null;
+            displayedStageZone = null;
             currentMap = data.map;
             fetchMapStats(data.map, data);
         }
@@ -943,57 +984,54 @@ function updateUI(data) {
             });
         }
 
-        const viewingZone = browsingZone !== null ? browsingZone : (zoneId !== null ? zoneId : 0);
-        let mainMapData = data.mainMapStats || null;
-        if (!mainMapData && viewingZone !== 0 && zoneCache.has(0)) {
-            mainMapData = zoneCache.get(0);
-        }
-        const showMainMap = currentConfig.showMainMapStats && mainMapData && viewingZone !== 0;
-        if (showMainMap) {
-            ui.mainMapSection.style.display = 'block';
-            requestAnimationFrame(() => ui.mainMapSection.classList.add('expanded'));
-            ui.sectionDivider.style.display = 'block';
-            ui.sectionDivider.style.opacity = '1';
-            populateMainMapStats(mainMapData);
-        } else {
-            ui.mainMapSection.classList.remove('expanded');
-            setTimeout(() => {
-                if (!ui.mainMapSection.classList.contains('expanded')) {
-                    ui.mainMapSection.style.display = 'none';
-                }
-            }, 400);
-            ui.sectionDivider.style.opacity = '0';
-            setTimeout(() => {
-                ui.sectionDivider.style.display = 'none';
-            }, 400);
-        }
+        // ── Main Map panel logic ─────────────────────────────────────
+        // Show the dedicated Main Map panel whenever the setting is on
+        // and we have zone 0 data, regardless of current zone.
+        const mainMapData = data.mainMapStats || zoneCache.get(0) || null;
+        const showMainMap = currentConfig.showMainMapStats && mainMapData;
+        showMainMapPanel(showMainMap, mainMapData);
 
+        // ── Stage/Bonus panel logic ──────────────────────────────────
         ui.stageNav.style.display = 'flex';
 
         const prevZone = currentZone;
         currentZone = zoneId;
         const zoneChanged = prevZone !== null && prevZone !== zoneId && zoneId !== null;
 
+        // Determine which zone the stage panel should display.
+        // When showMainMapStats is on, the stage panel never shows zone 0
+        // (that's what the Main Map panel is for).
+        let stageZoneId = zoneId;
+        if (showMainMap && stageZoneId === 0) {
+            // Player is on zone 0 but main map panel is showing it.
+            // Show the first available non-zero zone, or fall back to zone 0.
+            const nonZeroZones = getSortedCachedZones();
+            stageZoneId = nonZeroZones.length > 0 ? nonZeroZones[0] : 0;
+        }
+
+        const stageData = zoneCache.get(stageZoneId) || data;
+        displayedStageZone = stageZoneId;
+
         if (currentConfig.autoFollowStage) {
             browsingZone = null;
             broadcastBrowseState(null);
 
-            if (zoneChanged) {
+            if (zoneChanged && stageZoneId === zoneId) {
                 const slideDir = (zoneId > prevZone) ? 'left' : 'right';
                 slideStageContent(slideDir, () => {
-                    populateZoneStats(data);
-                    ui.stageSectionLabel.innerText = formatZone(zoneId, data.mapInfo);
+                    populateZoneStats(stageData);
+                    ui.stageSectionLabel.innerText = formatZone(stageZoneId, data.mapInfo);
                     updateNavButtons();
                 });
             } else {
-                populateZoneStats(data);
-                ui.stageSectionLabel.innerText = formatZone(zoneId, data.mapInfo);
+                populateZoneStats(stageData);
+                ui.stageSectionLabel.innerText = formatZone(stageZoneId, data.mapInfo);
                 updateNavButtons();
             }
         } else {
             if (browsingZone === null || browsingZone === zoneId) {
-                populateZoneStats(data);
-                ui.stageSectionLabel.innerText = formatZone(zoneId, data.mapInfo);
+                populateZoneStats(stageData);
+                ui.stageSectionLabel.innerText = formatZone(stageZoneId, data.mapInfo);
                 updateNavButtons();
             } else {
                 updateNavButtons();
