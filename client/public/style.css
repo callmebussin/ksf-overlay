@@ -381,6 +381,128 @@ body {
     100% { background-position: 300% 50%; }
 }
 
+.profile-section {
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.profile-rank-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.05);
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.profile-rank-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-rank-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--accent-color);
+    line-height: 1.2;
+}
+
+.profile-rank-sub {
+    font-size: 10px;
+    color: var(--text-color);
+    opacity: 0.5;
+    font-weight: 500;
+}
+
+.profile-rank-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.profile-points-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    color: var(--text-color);
+    opacity: 0.5;
+    letter-spacing: 0.5px;
+}
+
+.profile-points-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.profile-stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.profile-completion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.profile-records-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.profile-stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-stat .label {
+    font-size: 9px;
+    text-transform: uppercase;
+    color: var(--text-color);
+    opacity: 0.5;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.profile-stat .value {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.profile-playtime {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.profile-playtime .label {
+    font-size: 9px;
+    text-transform: uppercase;
+    color: var(--text-color);
+    opacity: 0.5;
+    letter-spacing: 0.5px;
+}
+
+.profile-playtime .value {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
 #map-name {
     font-size: 14px;
     color: var(--text-color);

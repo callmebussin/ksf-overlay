@@ -8,6 +8,7 @@ let currentConfig = {
     refreshRate: 60,
     opacity: 100,
     showMainMapStats: false,
+    showProfile: true,
     autoFollowStage: true,
     horizontalLayout: false,
     theme: {}
@@ -46,6 +47,23 @@ const ui = {
     firstDate: document.getElementById('stat-firstdate'),
     startVel: document.getElementById('stat-startvel'),
     endVel: document.getElementById('stat-endvel'),
+
+    profileSection: document.getElementById('profile-section'),
+    profileDivider: document.getElementById('profile-divider'),
+    profileRankTitle: document.getElementById('profile-rank-title'),
+    profileRankSub: document.getElementById('profile-rank-sub'),
+    profilePoints: document.getElementById('profile-points'),
+    profileGlobalRank: document.getElementById('profile-global-rank'),
+    profileCountryRank: document.getElementById('profile-country-rank'),
+    profileCompletion: document.getElementById('profile-completion'),
+    profileMaps: document.getElementById('profile-maps'),
+    profileStages: document.getElementById('profile-stages'),
+    profileBonuses: document.getElementById('profile-bonuses'),
+    profileWrs: document.getElementById('profile-wrs'),
+    profileWrcps: document.getElementById('profile-wrcps'),
+    profileWrbs: document.getElementById('profile-wrbs'),
+    profileTop10s: document.getElementById('profile-top10s'),
+    profilePlaytime: document.getElementById('profile-playtime'),
 
     mainMapSection: document.getElementById('main-map-section'),
     sectionDivider: document.getElementById('section-divider'),
@@ -168,14 +186,16 @@ if (ipcRenderer) {
         const prevShowMainMap = currentConfig.showMainMapStats;
         const prevAutoFollow = currentConfig.autoFollowStage;
         const prevHorizontal = currentConfig.horizontalLayout;
+        const prevShowProfile = currentConfig.showProfile;
         currentConfig = { ...currentConfig, ...config };
         applyConfig();
         
         const steamIdChanged = config.steamId !== prevSteamId;
         const rateChanged = config.refreshRate !== prevRefreshRate;
-        const layoutChanged = config.showMainMapStats !== prevShowMainMap || config.autoFollowStage !== prevAutoFollow || config.horizontalLayout !== prevHorizontal;
+        const layoutChanged = config.showMainMapStats !== prevShowMainMap || config.autoFollowStage !== prevAutoFollow || config.horizontalLayout !== prevHorizontal || config.showProfile !== prevShowProfile;
 
         if (!hasInitialized || steamIdChanged) {
+            if (steamIdChanged) { profileCache = null; lastProfileFetch = 0; }
             hasInitialized = true;
             startPolling(true);
         } else if (rateChanged) {
@@ -203,6 +223,7 @@ if (ipcRenderer) {
                 if (serverCfg.steamId) currentConfig.steamId = serverCfg.steamId;
                 if (serverCfg.refreshRate) currentConfig.refreshRate = serverCfg.refreshRate;
                 if (serverCfg.showMainMapStats) currentConfig.showMainMapStats = true;
+                if (serverCfg.showProfile !== undefined) currentConfig.showProfile = serverCfg.showProfile;
                 if (serverCfg.autoFollowStage !== undefined) currentConfig.autoFollowStage = serverCfg.autoFollowStage;
                 if (serverCfg.horizontalLayout !== undefined) currentConfig.horizontalLayout = serverCfg.horizontalLayout;
                 if (serverCfg.theme) currentConfig.theme = serverCfg.theme;
@@ -253,6 +274,12 @@ function applyConfig() {
         layout.classList.remove('horizontal');
     }
 
+    if (currentConfig.showProfile) {
+        if (profileCache) populateProfile(profileCache);
+    } else {
+        hideProfile();
+    }
+
     if (!currentConfig.steamId) {
         ui.playerName.innerText = "No SteamID";
         ui.statusIndicator.innerText = "SETUP";
@@ -273,6 +300,10 @@ function applyRemoteConfig(cfg) {
     }
     if (cfg.horizontalLayout !== undefined && cfg.horizontalLayout !== currentConfig.horizontalLayout) {
         currentConfig.horizontalLayout = cfg.horizontalLayout;
+        changed = true;
+    }
+    if (cfg.showProfile !== undefined && cfg.showProfile !== currentConfig.showProfile) {
+        currentConfig.showProfile = cfg.showProfile;
         changed = true;
     }
     if (cfg.theme) {
@@ -363,6 +394,7 @@ async function fetchStats() {
         
         const data = await response.json();
         updateUI(data);
+        fetchProfile();
         lastRefreshTime = Date.now();
 
         if (!ipcRenderer) {
@@ -620,6 +652,73 @@ function populateZoneStats(data) {
     ui.firstDate.innerText = formatDate(data.firstDate);
     ui.startVel.innerText = data.startVel ? Math.round(parseFloat(data.startVel)) : "-";
     ui.endVel.innerText = data.endVel ? Math.round(parseFloat(data.endVel)) : "-";
+}
+
+let profileCache = null;
+let lastProfileFetch = 0;
+const PROFILE_CACHE_TTL = 300000;
+
+async function fetchProfile() {
+    if (!currentConfig.showProfile || !currentConfig.steamId) return;
+
+    const now = Date.now();
+    if (profileCache && (now - lastProfileFetch) < PROFILE_CACHE_TTL) {
+        populateProfile(profileCache);
+        return;
+    }
+
+    try {
+        const resp = await fetch(`${getBaseUrl()}/api/profile/${encodeURIComponent(currentConfig.steamId)}`);
+        if (resp.ok) {
+            const data = await resp.json();
+            profileCache = data;
+            lastProfileFetch = now;
+            populateProfile(data);
+        }
+    } catch (e) {}
+}
+
+function formatPlaytime(seconds) {
+    const s = parseInt(seconds);
+    if (isNaN(s)) return "-";
+    const hours = Math.floor(s / 3600);
+    if (hours >= 24) {
+        const days = Math.floor(hours / 24);
+        const rem = hours % 24;
+        return `${days.toLocaleString()}d ${rem}h`;
+    }
+    return `${hours}h`;
+}
+
+function populateProfile(d) {
+    ui.profileRankTitle.innerText = d.rankTitle || "-";
+    ui.profileRankSub.innerText = `Global #${d.surfRank || "-"} of ${parseInt(d.surfTotalRank || 0).toLocaleString()}`;
+    ui.profilePoints.innerText = parseInt(d.points?.points || 0).toLocaleString();
+    ui.profileGlobalRank.innerText = d.surfRank ? `#${d.surfRank}` : "-";
+    ui.profileCountryRank.innerText = d.countryRank ? `#${d.countryRank} (${d.country || "?"})` : "-";
+    ui.profileCompletion.innerText = d.percentCompletion ? `${d.percentCompletion}%` : "-";
+
+    if (d.completedZones && d.totalZones) {
+        ui.profileMaps.innerText = `${d.completedZones.map || 0}/${d.totalZones.TotalMaps || 0}`;
+        ui.profileStages.innerText = `${d.completedZones.stage || 0}/${d.totalZones.TotalStages || 0}`;
+        ui.profileBonuses.innerText = `${d.completedZones.bonus || 0}/${d.totalZones.TotalBonuses || 0}`;
+    }
+
+    ui.profileWrs.innerText = d.wrZones?.wr || "0";
+    ui.profileWrcps.innerText = d.wrZones?.wrcp || "0";
+    ui.profileWrbs.innerText = d.wrZones?.wrb || "0";
+    ui.profileTop10s.innerText = d.top10Groups?.top10 || "0";
+
+    ui.profilePlaytime.innerText = formatPlaytime(d.onlineTime);
+
+    ui.profileSection.style.display = 'block';
+    ui.profileDivider.style.display = 'block';
+    resizeOverlay();
+}
+
+function hideProfile() {
+    ui.profileSection.style.display = 'none';
+    ui.profileDivider.style.display = 'none';
 }
 
 function updateUI(data) {

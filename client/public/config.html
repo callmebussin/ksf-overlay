@@ -219,6 +219,13 @@
                     </label>
                     <small>Show main map and stage/bonus cards side by side instead of stacked.</small>
                 </div>
+                <div style="margin-bottom: 10px;">
+                    <label for="show-profile" style="cursor: pointer;">
+                        <span>Show Player Profile</span>
+                        <input type="checkbox" id="show-profile" checked style="width: auto;">
+                    </label>
+                    <small>Display surf rank, points, completions, and records in the overlay.</small>
+                </div>
             </div>
 
             <div class="panel">
@@ -302,6 +309,7 @@
             showMainMapStats: document.getElementById('show-main-map-stats'),
             autoFollowStage: document.getElementById('auto-follow-stage'),
             horizontalLayout: document.getElementById('horizontal-layout'),
+            showProfile: document.getElementById('show-profile'),
             obsUrlDisplay: document.getElementById('obs-url-display'),
             opacity: document.getElementById('opacity'),
             opacityVal: document.getElementById('opacity-val'),
@@ -322,6 +330,7 @@
             els.showMainMapStats.checked = config.showMainMapStats || false;
             els.autoFollowStage.checked = config.autoFollowStage !== false;
             els.horizontalLayout.checked = config.horizontalLayout || false;
+            els.showProfile.checked = config.showProfile !== false;
             
             els.opacity.value = config.opacity || 100;
             els.opacityVal.innerText = els.opacity.value + '%';
@@ -360,6 +369,7 @@
                     showMainMapStats: els.showMainMapStats.checked,
                     autoFollowStage: els.autoFollowStage.checked,
                     horizontalLayout: els.horizontalLayout.checked,
+                    showProfile: els.showProfile.checked,
                     opacity: parseInt(els.opacity.value),
                     theme: {
                         bgColor: els.colors.bgColor.value,
@@ -380,6 +390,7 @@
         els.showMainMapStats.addEventListener('change', autoSave);
         els.autoFollowStage.addEventListener('change', autoSave);
         els.horizontalLayout.addEventListener('change', autoSave);
+        els.showProfile.addEventListener('change', autoSave);
         els.opacity.addEventListener('input', autoSave);
         els.colors.bgColor.addEventListener('input', autoSave);
         els.colors.textColor.addEventListener('input', autoSave);

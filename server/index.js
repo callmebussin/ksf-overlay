@@ -171,6 +171,34 @@ function calculateGroup(rank, totalRanks) {
     return "No Group";
 }
 
+function calculateSurfRank(rank, points) {
+    const r = parseInt(rank);
+    const p = parseInt(points);
+    if (!isNaN(r) && r >= 1) {
+        if (r === 1) return "Rank 1: (pointwhoreB1)";
+        if (r === 2) return "Rank 2: (synklgaming)";
+        if (r === 3) return "Rank 3: (master)";
+        if (r <= 10) return `Rank ${r}: Master`;
+        if (r <= 25) return "Elite";
+        if (r <= 50) return "Veteran";
+        if (r <= 100) return "PRO";
+        if (r <= 200) return "Expert";
+        if (r <= 300) return "Hotshot";
+        if (r <= 500) return "Exceptional";
+        if (r <= 750) return "Seasoned";
+        if (r <= 1500) return "Experienced";
+    }
+    if (!isNaN(p)) {
+        if (p >= 13000) return "Accomplished";
+        if (p >= 9000) return "Adept";
+        if (p >= 6000) return "Proficient";
+        if (p >= 4000) return "Skilled";
+        if (p >= 2500) return "Casual";
+        if (p >= 1000) return "Beginner";
+    }
+    return "Rookie";
+}
+
 function mapRecordData(rData) {
     const payload = {
         time: rData.time,
@@ -292,6 +320,57 @@ app.get('/api/player/:input', async (req, res) => {
             error: "Internal Server Error", 
             details: error.message 
         });
+    }
+});
+
+app.get('/api/profile/:input', async (req, res) => {
+    const { input } = req.params;
+    const gameType = req.query.game || serverConfig.defaultGame || 'css';
+
+    if (!input) {
+        return res.status(400).json({ error: "Missing SteamID or Username" });
+    }
+
+    try {
+        const steamid = await resolveSteamID(input);
+        if (!steamid) {
+            return res.status(404).json({ error: "Could not resolve SteamID" });
+        }
+
+        const url = `${KSF_BASE_URL}/${gameType}/steamid/${steamid}/playerinfo/0`;
+        const response = await fetchKSFData(url);
+
+        if (!response || response.status !== 'OK' || !response.data) {
+            return res.status(502).json({ error: "Failed to fetch player info from KSF API" });
+        }
+
+        const d = response.data;
+        const surfRank = parseInt(d.SurfRank);
+        const points = parseInt(d.playerPoints?.points);
+        const rankTitle = calculateSurfRank(surfRank, points);
+
+        res.json({
+            name: d.basicInfo?.name,
+            country: d.basicInfo?.country,
+            surfRank: d.SurfRank,
+            surfTotalRank: d.SurfTotalRank,
+            countryRank: d.SurfCountryRank,
+            countryTotalRank: d.SurfCountryTotalRank,
+            rankTitle,
+            percentCompletion: d.percentCompletion,
+            points: d.playerPoints,
+            completedZones: d.CompletedZones,
+            totalZones: d.TotalZones,
+            top10Groups: d.Top10Groups,
+            wrZones: d.WRZones,
+            onlineTime: d.basicInfo?.onlineTime,
+            totalConnections: d.basicInfo?.totalConnections,
+            firstOnline: d.basicInfo?.firstOnline
+        });
+
+    } catch (error) {
+        console.error("Profile Error:", error);
+        res.status(500).json({ error: "Internal Server Error", details: error.message });
     }
 });
 
