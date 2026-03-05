@@ -152,11 +152,13 @@ async function fetchSteamAvatar(steamId64) {
     return null;
 }
 
-function calculateGroup(rank, totalRanks) {
+function calculateGroup(rank, totalRanks, completions) {
     if (!rank || !totalRanks) return null;
     const r = parseInt(rank);
     const t = parseInt(totalRanks);
+    const c = parseInt(completions);
     if (isNaN(r) || isNaN(t) || t <= 0 || r <= 0) return null;
+    if (!isNaN(c) && c <= 0) return null;
 
     if (r === 1) return "WR";
     if (r <= 10) return "Top 10";
@@ -296,7 +298,7 @@ app.get('/api/player/:input', async (req, res) => {
             if (recordResponse && recordResponse.status === 'OK' && recordResponse.data) {
                 Object.assign(responsePayload, mapRecordData(recordResponse.data));
 
-                const computed = calculateGroup(responsePayload.rank, responsePayload.totalRanks);
+                const computed = calculateGroup(responsePayload.rank, responsePayload.totalRanks, responsePayload.completions);
                 if (computed) {
                     responsePayload.group = computed;
                 }
@@ -352,7 +354,7 @@ app.get('/api/mapstats/:input/:map', async (req, res) => {
                 const zoneId = parseInt(pr.zoneID);
                 if (isNaN(zoneId)) continue;
 
-                const group = calculateGroup(pr.rank, pr.totalRanks);
+                const group = calculateGroup(pr.rank, pr.totalRanks, pr.count);
 
                 zones[zoneId] = {
                     zone: zoneId,
