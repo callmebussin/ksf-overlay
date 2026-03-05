@@ -63,6 +63,7 @@ const ui = {
     profileWrcps: document.getElementById('profile-wrcps'),
     profileWrbs: document.getElementById('profile-wrbs'),
     profileTop10s: document.getElementById('profile-top10s'),
+    profileGroups: document.getElementById('profile-groups'),
     profilePlaytime: document.getElementById('profile-playtime'),
 
     mainMapSection: document.getElementById('main-map-section'),
@@ -527,13 +528,24 @@ function formatCompRate(completions, attempts) {
     return `${rate.toFixed(1)}%`;
 }
 
-function getGroupInfo(group) {
-    if (!group) return { text: "-", css: "" };
+function getGroupInfo(group, completions) {
+    const c = parseInt(completions);
+    const hasCompletion = !isNaN(c) && c > 0;
+
+    if (!group || group === "-") {
+        if (!hasCompletion) return { text: "No Completion", css: "group-no-comp" };
+        return { text: "-", css: "" };
+    }
 
     let label = group;
     if (/^\d+$/.test(group)) label = `Group ${group}`;
 
     const g = label.toLowerCase();
+
+    if (g === "no group") {
+        if (!hasCompletion) return { text: "No Completion", css: "group-no-comp" };
+        return { text: "No Group", css: "group-no-group" };
+    }
 
     if (g === "wr") return { text: "WR Holder", css: "group-wr" };
     if (g === "top 10") return { text: "Top 10", css: "group-top10" };
@@ -543,13 +555,12 @@ function getGroupInfo(group) {
     if (g === "group 4") return { text: "Group 4", css: "group-g4" };
     if (g === "group 5") return { text: "Group 5", css: "group-g5" };
     if (g === "group 6") return { text: "Group 6", css: "group-g6" };
-    if (g === "no group") return { text: "No Group", css: "group-no-group" };
 
     return { text: label, css: "" };
 }
 
-function applyGroupLabel(element, group) {
-    const info = getGroupInfo(group);
+function applyGroupLabel(element, group, completions) {
+    const info = getGroupInfo(group, completions);
     element.innerText = info.text;
     element.className = "sub-value group-label";
     if (info.css) element.classList.add(info.css);
@@ -563,7 +574,7 @@ function clearStats() {
     ui.wrDiff.style.color = "inherit";
     ui.completions.innerText = "-";
     ui.attempts.innerText = "-";
-    applyGroupLabel(ui.groupLabel, null);
+    applyGroupLabel(ui.groupLabel, null, null);
     ui.compRate.innerText = "-";
     ui.avgVel.innerText = "-";
     ui.totalTime.innerText = "-";
@@ -595,7 +606,7 @@ function populateMainMapStats(d) {
 
     ui.mainStatCompletions.innerText = d.completions || "-";
     ui.mainStatAttempts.innerText = d.attempts || "-";
-    applyGroupLabel(ui.mainStatGroupLabel, d.group);
+    applyGroupLabel(ui.mainStatGroupLabel, d.group, d.completions);
     ui.mainStatCompRate.innerText = formatCompRate(d.completions, d.attempts);
     ui.mainStatAvgVel.innerText = d.avgVel ? Math.round(parseFloat(d.avgVel)) : "-";
 
@@ -644,7 +655,7 @@ function populateZoneStats(data) {
     
     ui.completions.innerText = data.completions || "-";
     ui.attempts.innerText = data.attempts || "-";
-    applyGroupLabel(ui.groupLabel, data.group);
+    applyGroupLabel(ui.groupLabel, data.group, data.completions);
     ui.compRate.innerText = formatCompRate(data.completions, data.attempts);
     ui.avgVel.innerText = data.avgVel ? Math.round(parseFloat(data.avgVel)) : "-";
     
@@ -690,13 +701,41 @@ function formatPlaytime(seconds) {
     return `${hours}h`;
 }
 
+function getRankTitleCss(rankTitle) {
+    if (!rankTitle) return "";
+    const r = rankTitle.toLowerCase();
+    if (r.includes("rank 1:") || r.includes("rank 2:") || r.includes("rank 3:")) return "rank-top3";
+    if (r.includes("master")) return "rank-master";
+    if (r === "elite") return "rank-elite";
+    if (r === "veteran") return "rank-veteran";
+    if (r === "pro") return "rank-pro";
+    if (r === "expert") return "rank-expert";
+    if (r === "hotshot") return "rank-hotshot";
+    if (r === "exceptional") return "rank-exceptional";
+    if (r === "seasoned") return "rank-seasoned";
+    if (r === "experienced") return "rank-experienced";
+    if (r === "accomplished") return "rank-accomplished";
+    if (r === "adept") return "rank-adept";
+    if (r === "proficient") return "rank-proficient";
+    if (r === "skilled") return "rank-skilled";
+    if (r === "casual") return "rank-casual";
+    if (r === "beginner") return "rank-beginner";
+    if (r === "rookie") return "rank-rookie";
+    return "";
+}
+
 function populateProfile(d) {
     ui.profileRankTitle.innerText = d.rankTitle || "-";
+    ui.profileRankTitle.className = "profile-rank-title";
+    const rankCss = getRankTitleCss(d.rankTitle);
+    if (rankCss) ui.profileRankTitle.classList.add(rankCss);
+
     ui.profileRankSub.innerText = `Global #${d.surfRank || "-"} of ${parseInt(d.surfTotalRank || 0).toLocaleString()}`;
     ui.profilePoints.innerText = parseInt(d.points?.points || 0).toLocaleString();
     ui.profileGlobalRank.innerText = d.surfRank ? `#${d.surfRank}` : "-";
     ui.profileCountryRank.innerText = d.countryRank ? `#${d.countryRank} (${d.country || "?"})` : "-";
     ui.profileCompletion.innerText = d.percentCompletion ? `${d.percentCompletion}%` : "-";
+    ui.profilePlaytime.innerText = formatPlaytime(d.onlineTime);
 
     if (d.completedZones && d.totalZones) {
         ui.profileMaps.innerText = `${d.completedZones.map || 0}/${d.totalZones.TotalMaps || 0}`;
@@ -708,8 +747,7 @@ function populateProfile(d) {
     ui.profileWrcps.innerText = d.wrZones?.wrcp || "0";
     ui.profileWrbs.innerText = d.wrZones?.wrb || "0";
     ui.profileTop10s.innerText = d.top10Groups?.top10 || "0";
-
-    ui.profilePlaytime.innerText = formatPlaytime(d.onlineTime);
+    ui.profileGroups.innerText = d.top10Groups?.groups || "0";
 
     ui.profileSection.style.display = 'block';
     ui.profileDivider.style.display = 'block';
@@ -767,7 +805,7 @@ function updateUI(data) {
     }
 
     if (data.status === 'online') {
-        ui.statusIndicator.innerText = "LIVE";
+        ui.statusIndicator.innerText = "ONLINE";
         ui.statusIndicator.className = "status online";
         
         ui.mapSpinner.style.display = 'none';
