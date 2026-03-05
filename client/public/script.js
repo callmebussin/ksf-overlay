@@ -590,14 +590,24 @@ function showLoadingState() {
     ui.mapSpinner = document.getElementById('map-spinner');
 }
 
+function hasCompletions(completions) {
+    const c = parseInt(completions);
+    return !isNaN(c) && c > 0;
+}
+
+function formatRank(rank, totalRanks, completions) {
+    if (!hasCompletions(completions)) {
+        return totalRanks ? `-/${totalRanks}` : "-/-";
+    }
+    if (rank && totalRanks) {
+        return `${rank}/${totalRanks}`;
+    }
+    return "-/-";
+}
+
 function populateMainMapStats(d) {
     ui.mainStatTime.innerText = formatTime(d.time);
-
-    if (d.rank && d.totalRanks) {
-        ui.mainStatRank.innerText = `${d.rank}/${d.totalRanks}`;
-    } else {
-        ui.mainStatRank.innerText = "-/-";
-    }
+    ui.mainStatRank.innerText = formatRank(d.rank, d.totalRanks, d.completions);
 
     setWrDisplay(ui.mainStatWrTime, ui.mainStatWrDiff, d.time, d.wrDiff);
 
@@ -636,17 +646,7 @@ function populateZoneStats(data) {
         ui.time.innerText = newTime;
     }
 
-    if (data.rank && data.totalRanks) {
-        const r = parseInt(data.rank);
-        const t = parseInt(data.totalRanks);
-        if (!isNaN(r) && !isNaN(t) && r > t) {
-            ui.zone.innerText = "N/A";
-        } else {
-            ui.zone.innerText = `${data.rank || "-"}/${data.totalRanks || "-"}`;
-        }
-    } else {
-        ui.zone.innerText = "-/-";
-    }
+    ui.zone.innerText = formatRank(data.rank, data.totalRanks, data.completions);
 
     setWrDisplay(ui.wrTime, ui.wrDiff, data.time, data.wrDiff);
     

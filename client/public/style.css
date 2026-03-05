@@ -309,9 +309,9 @@ body {
 }
 
 .group-no-comp {
-    color: #666 !important;
-    font-weight: 500;
-    font-style: italic;
+    color: var(--text-color) !important;
+    opacity: 0.5;
+    font-weight: 600;
 }
 
 .group-no-group {
