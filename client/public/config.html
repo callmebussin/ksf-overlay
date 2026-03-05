@@ -6,158 +6,44 @@
     <title>KSF Stats App - Configuration</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background-color: #1e1e1e;
-            color: #eee;
-            margin: 0;
-            padding: 15px;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: #191919;
+            color: #e0e0e0;
             height: 100vh;
-            box-sizing: border-box;
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
-        h3 {
-            font-size: 0.85em;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 0 0 10px 0;
-            color: #bbb;
-            border-bottom: 1px solid #333;
-            padding-bottom: 5px;
-        }
-        .main-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            flex: 1;
-            min-height: 0; 
-        }
-        .panel {
-            background: #252526;
-            padding: 12px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border: 1px solid #333;
-        }
-        label {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.85em;
-            font-weight: 500;
-            color: #ddd;
-        }
-        label.block-label {
-            display: block;
-            margin-bottom: 4px;
-        }
-        input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            background: #333;
-            border: 1px solid #444;
-            color: white;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-family: inherit;
-        }
-        input[type="text"]:focus, input[type="number"]:focus {
-            outline: none;
-            border-color: #0078d4;
-        }
-        select {
-            padding: 6px 8px;
-            border: 1px solid #444;
-            border-radius: 4px;
-            font-size: 0.9em;
-            width: 100%;
-            background-color: #333;
-            color: white;
-            cursor: pointer;
-        }
-        .slider-container {
-            margin-top: 5px;
-        }
-        input[type="range"] {
-            width: 100%;
-            height: 4px;
-            margin: 10px 0;
-            cursor: pointer;
-            background: #444;
-        }
-        .colors-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-        .color-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.8em;
-            color: #ccc;
-        }
-        input[type="color"] {
-            border: 1px solid #555;
-            width: 24px;
-            height: 24px;
-            padding: 0;
-            background: none;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        .btn {
-            background: #0078d4;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9em;
-            transition: background 0.2s;
-        }
-        .btn:hover { background: #106ebe; }
-        
-        small {
-            display: block;
-            color: #888;
-            font-size: 0.75em;
-            margin-top: 4px;
-        }
-        
-        .col-left { display: flex; flex-direction: column; gap: 15px; }
-        .col-right { display: flex; flex-direction: column; gap: 15px; }
 
-        .credits {
-            flex: 1;
+        /* ── Layout ─────────────────────────────────── */
+        .app-header {
+            padding: 14px 20px 10px;
+            border-bottom: 1px solid #2a2a2a;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 0.8em;
+            justify-content: space-between;
+        }
+        .app-header h1 {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            color: #fff;
+        }
+        .app-header .credits-inline {
+            font-size: 11px;
+            color: #555;
+        }
+        .app-header .credits-inline a {
             color: #666;
-            line-height: 1.8;
-        }
-        .credits a {
-            color: #888;
             text-decoration: none;
-            font-size: 0.9em;
         }
-        .credits a:hover {
-            color: #aaa;
-            text-decoration: underline;
-        }
-
+        .app-header .credits-inline a:hover { color: #999; }
         .glow-name {
-            font-weight: 800;
+            font-weight: 700;
             background: linear-gradient(90deg, #7c5cbf, #3498db, #2ecc71, #f1c40f, #e74c3c, #7c5cbf);
             background-size: 300% 100%;
             -webkit-background-clip: text;
@@ -167,161 +53,332 @@
             cursor: pointer;
             text-decoration: none;
         }
-        .glow-name:hover {
-            animation-duration: 1.5s;
-        }
-
+        .glow-name:hover { animation-duration: 1.5s; }
         @keyframes gradientShift {
             0%   { background-position: 0% 50%; }
             50%  { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            padding: 12px 16px;
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+        }
+
+        /* ── Panels ─────────────────────────────────── */
+        .panel {
+            background: #222;
+            border: 1px solid #2e2e2e;
+            border-radius: 8px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+        }
+        .panel-title {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #2e2e2e;
+        }
+
+        /* ── Inputs ─────────────────────────────────── */
+        input[type="text"] {
+            width: 100%;
+            padding: 8px 10px;
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            color: #fff;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 12px;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #0078d4;
+        }
+        input[type="text"]::placeholder { color: #555; }
+
+        select {
+            padding: 6px 8px;
+            border: 1px solid #3a3a3a;
+            border-radius: 5px;
+            font-size: 12px;
+            width: 100%;
+            background: #2a2a2a;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .input-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #aaa;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .input-hint {
+            font-size: 10px;
+            color: #555;
+            margin-top: 4px;
+        }
+        .input-group { margin-bottom: 12px; }
+        .input-group:last-child { margin-bottom: 0; }
+
+        /* ── Toggle Switch ──────────────────────────── */
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #2a2a2a;
+            cursor: pointer;
+        }
+        .toggle-row:last-child { border-bottom: none; }
+        .toggle-row span {
+            font-size: 12px;
+            font-weight: 500;
+            color: #ccc;
+        }
+        .toggle {
+            position: relative;
+            width: 34px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
+        .toggle-slider {
+            position: absolute;
+            inset: 0;
+            background: #3a3a3a;
+            border-radius: 9px;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        .toggle-slider::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            left: 2px;
+            top: 2px;
+            background: #888;
+            border-radius: 50%;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .toggle input:checked + .toggle-slider {
+            background: #0078d4;
+        }
+        .toggle input:checked + .toggle-slider::after {
+            transform: translateX(16px);
+            background: #fff;
+        }
+
+        /* ── Slider ─────────────────────────────────── */
+        input[type="range"] {
+            width: 100%;
+            height: 4px;
+            margin: 8px 0 4px;
+            cursor: pointer;
+            background: #3a3a3a;
+            border-radius: 2px;
+            -webkit-appearance: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #0078d4;
+            cursor: pointer;
+        }
+
+        /* ── Colors ─────────────────────────────────── */
+        .colors-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .color-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #aaa;
+        }
+        input[type="color"] {
+            border: 1px solid #3a3a3a;
+            width: 22px;
+            height: 22px;
+            padding: 0;
+            background: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        /* ── OBS Box ────────────────────────────────── */
+        .obs-url {
+            background: #111;
+            padding: 7px 10px;
+            border: 1px solid #2e2e2e;
+            border-radius: 4px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            user-select: all;
+            cursor: text;
+            color: #4caf50;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-top: 6px;
+        }
+
+        /* ── Footer bar ─────────────────────────────── */
+        .app-footer {
+            padding: 8px 20px;
+            border-top: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #555;
+        }
+        .app-footer a {
+            color: #666;
+            text-decoration: none;
+        }
+        .app-footer a:hover { color: #999; text-decoration: underline; }
     </style>
 </head>
 <body>
-    <div class="main-layout">
-        <div class="col-left">
+    <div class="app-header">
+        <h1>KSF Stats Overlay</h1>
+        <span class="credits-inline">by <a href="#" id="ksf-link" class="glow-name">bussn</a></span>
+    </div>
+
+    <div class="main-grid">
+        <!-- Column 1: Player + Toggles -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
             <div class="panel">
-                <h3>Player Settings</h3>
-                <div>
-                    <label class="block-label" for="steamid">SteamID or Username</label>
-                    <input type="text" id="steamid" placeholder="STEAM_0:1:12345678 OR username">
-                    <small>Supports SteamID (STEAM_0:X:Y) or custom URL.</small>
-                </div>
-            </div>
-            
-            <div class="panel">
-                <h3>Behavior</h3>
-                <div style="margin-bottom: 10px;">
-                    <label for="always-on-top" style="cursor: pointer;">
-                        <span>Always On Top</span>
-                        <input type="checkbox" id="always-on-top" style="width: auto;">
-                    </label>
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="show-main-map-stats" style="cursor: pointer;">
-                        <span>Show Map Stats Separately</span>
-                        <input type="checkbox" id="show-main-map-stats" style="width: auto;">
-                    </label>
-                    <small>When on a stage or bonus, show main map stats in a dedicated card above.</small>
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="auto-follow-stage" style="cursor: pointer;">
-                        <span>Auto-Follow Current Stage</span>
-                        <input type="checkbox" id="auto-follow-stage" checked style="width: auto;">
-                    </label>
-                    <small>Automatically switch to the stage/bonus the player is currently on.</small>
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="horizontal-layout" style="cursor: pointer;">
-                        <span>Wide Layout (Side-by-Side)</span>
-                        <input type="checkbox" id="horizontal-layout" style="width: auto;">
-                    </label>
-                    <small>Show main map and stage/bonus cards side by side instead of stacked.</small>
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="show-zone-bar" style="cursor: pointer;">
-                        <span>Show Zone Completion Bar</span>
-                        <input type="checkbox" id="show-zone-bar" checked style="width: auto;">
-                    </label>
-                    <small>Visual bar showing stage and bonus completion status.</small>
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="show-rank-card" style="cursor: pointer;">
-                        <span>Show Rank / Points Card</span>
-                        <input type="checkbox" id="show-rank-card" checked style="width: auto;">
-                    </label>
-                    <small>Display surf rank title and points at the top of the profile.</small>
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="show-profile" style="cursor: pointer;">
-                        <span>Show Profile Stats</span>
-                        <input type="checkbox" id="show-profile" checked style="width: auto;">
-                    </label>
-                    <small>Display completion stats, WRs, and records grids below the rank card.</small>
-                </div>
-                <div style="margin-bottom: 10px;">
-                    <label for="show-detailed-stats" style="cursor: pointer;">
-                        <span>Show Detailed Map Stats</span>
-                        <input type="checkbox" id="show-detailed-stats" checked style="width: auto;">
-                    </label>
-                    <small>Show completions, attempts, velocities, etc. below the map/stage cards.</small>
+                <div class="panel-title">Player</div>
+                <div class="input-group">
+                    <label class="input-label" for="steamid">SteamID or Username</label>
+                    <input type="text" id="steamid" placeholder="STEAM_0:1:12345678 or username">
                 </div>
             </div>
 
-            <div class="panel">
-                <h3>OBS Setup</h3>
-                <div style="font-size: 0.85em; color: #ccc; line-height: 1.4;">
-                    <div style="margin-bottom: 4px;">Add a <strong>Browser</strong> source in OBS with this URL:</div>
-                    <div id="obs-url-display" style="background: #111; padding: 6px; border: 1px solid #333; border-radius: 4px; font-family: 'Roboto Mono', monospace; user-select: all; cursor: text; color: #4caf50; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">http://108.61.222.248:3000?steamId=</div>
-                    <small>Paste your SteamID or username after <strong>steamId=</strong></small>
-                </div>
+            <div class="panel" style="flex: 1;">
+                <div class="panel-title">Display</div>
+                <label class="toggle-row" for="show-zone-bar">
+                    <span>Zone Completion Bar</span>
+                    <div class="toggle"><input type="checkbox" id="show-zone-bar" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-rank-card">
+                    <span>Rank / Points Card</span>
+                    <div class="toggle"><input type="checkbox" id="show-rank-card" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-profile">
+                    <span>Profile Stats</span>
+                    <div class="toggle"><input type="checkbox" id="show-profile" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-detailed-stats">
+                    <span>Detailed Map Stats</span>
+                    <div class="toggle"><input type="checkbox" id="show-detailed-stats" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-main-map-stats">
+                    <span>Show Map Stats Separately</span>
+                    <div class="toggle"><input type="checkbox" id="show-main-map-stats"><span class="toggle-slider"></span></div>
+                </label>
             </div>
         </div>
 
-        <div class="col-right">
+        <!-- Column 2: Behavior + OBS -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
             <div class="panel">
-                <h3>Style & Theme</h3>
-                
-                <div style="margin-bottom: 10px;">
-                     <label style="margin-bottom: 4px;">Preset Theme</label>
-                     <select id="theme-preset">
-                         <option value="custom">Custom</option>
-                         <option value="default">Default Dark</option>
-                         <option value="light">Clean Light</option>
-                         <option value="glass">Glass Blue</option>
-                     </select>
+                <div class="panel-title">Behavior</div>
+                <label class="toggle-row" for="always-on-top">
+                    <span>Always On Top</span>
+                    <div class="toggle"><input type="checkbox" id="always-on-top"><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="auto-follow-stage">
+                    <span>Auto-Follow Stage</span>
+                    <div class="toggle"><input type="checkbox" id="auto-follow-stage" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="horizontal-layout">
+                    <span>Wide Layout</span>
+                    <div class="toggle"><input type="checkbox" id="horizontal-layout"><span class="toggle-slider"></span></div>
+                </label>
+            </div>
+
+            <div class="panel" style="flex: 1;">
+                <div class="panel-title">OBS Browser Source</div>
+                <div style="font-size: 11px; color: #888; line-height: 1.5;">
+                    Add a <strong style="color:#ccc;">Browser</strong> source in OBS with this URL:
+                </div>
+                <div class="obs-url" id="obs-url-display">http://108.61.222.248:3000?steamId=</div>
+                <div class="input-hint">Your SteamID is appended automatically.</div>
+            </div>
+        </div>
+
+        <!-- Column 3: Theme -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div class="panel" style="flex: 1;">
+                <div class="panel-title">Theme</div>
+                <div class="input-group">
+                    <label class="input-label">Preset</label>
+                    <select id="theme-preset">
+                        <option value="custom">Custom</option>
+                        <option value="default">Default Dark</option>
+                        <option value="light">Clean Light</option>
+                        <option value="glass">Glass Blue</option>
+                    </select>
                 </div>
 
-                <div class="slider-container">
-                    <label style="margin-bottom: 4px;">Overlay Opacity <span id="opacity-val" style="color:#2196f3">100%</span></label>
+                <div class="input-group">
+                    <label class="input-label">Opacity <span id="opacity-val" style="color:#0078d4; font-weight:700;">100%</span></label>
                     <input type="range" id="opacity" min="10" max="100" value="100">
                 </div>
-                
-                <div style="margin-top: 10px;">
-                    <label style="margin-bottom: 8px;">Colors</label>
+
+                <div class="input-group">
+                    <label class="input-label">Colors</label>
                     <div class="colors-grid">
                         <div class="color-item">Background <input type="color" id="bg-color" value="#000000"></div>
-                        <div class="color-item">Text Main <input type="color" id="text-color" value="#ffffff"></div>
+                        <div class="color-item">Text <input type="color" id="text-color" value="#ffffff"></div>
                         <div class="color-item">Accent <input type="color" id="accent-color" value="#3498db"></div>
                         <div class="color-item">Border <input type="color" id="border-color" value="#ffffff"></div>
                     </div>
                 </div>
             </div>
-
-            <div class="credits">
-                <span>made by <a href="#" id="ksf-link" class="glow-name">bussn</a></span>
-                <a href="#" id="github-link">github.com/callmebussin/ksf-overlay</a>
-                <span style="margin-top: 8px; color: #555; font-style: italic;">coming soon: styles and 100t</span>
-            </div>
         </div>
+    </div>
+
+    <div class="app-footer">
+        <span>coming soon: styles and 100t</span>
+        <span style="color:#333;">|</span>
+        <a href="#" id="github-link">github</a>
     </div>
 
     <script>
         const { ipcRenderer } = require('electron');
 
         const PRESETS = {
-            default: {
-                bgColor: "#000000",
-                textColor: "#ecf0f1",
-                accentColor: "#3498db",
-                borderColor: "#ffffff",
-                opacity: 100
-            },
-            light: {
-                bgColor: "#ffffff",
-                textColor: "#4a3f6b",
-                accentColor: "#7c5cbf",
-                borderColor: "#d5cee6",
-                opacity: 90
-            },
-            glass: {
-                bgColor: "#001f3f",
-                textColor: "#7FDBFF",
-                accentColor: "#0074D9",
-                borderColor: "#39CCCC",
-                opacity: 85
-            }
+            default: { bgColor: "#000000", textColor: "#ecf0f1", accentColor: "#3498db", borderColor: "#ffffff", opacity: 100 },
+            light:   { bgColor: "#ffffff", textColor: "#4a3f6b", accentColor: "#7c5cbf", borderColor: "#d5cee6", opacity: 90 },
+            glass:   { bgColor: "#001f3f", textColor: "#7FDBFF", accentColor: "#0074D9", borderColor: "#39CCCC", opacity: 85 }
         };
 
         const els = {
@@ -358,10 +415,10 @@
             els.showRankCard.checked = config.showRankCard !== false;
             els.showProfile.checked = config.showProfile !== false;
             els.showDetailedStats.checked = config.showDetailedStats !== false;
-            
+
             els.opacity.value = config.opacity || 100;
             els.opacityVal.innerText = els.opacity.value + '%';
-            
+
             if (config.theme) {
                 if (config.theme.bgColor) els.colors.bgColor.value = config.theme.bgColor;
                 if (config.theme.textColor) els.colors.textColor.value = config.theme.textColor;

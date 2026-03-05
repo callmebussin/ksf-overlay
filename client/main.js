@@ -119,12 +119,12 @@ function createConfigWindow() {
     }
 
     configWindow = new BrowserWindow({
-        width: 800,
-        height: 780,
-        minWidth: 800,
-        minHeight: 780,
-        maxWidth: 800,
-        maxHeight: 780,
+        width: 900,
+        height: 500,
+        minWidth: 900,
+        minHeight: 450,
+        maxWidth: 900,
+        maxHeight: 600,
         title: "KSF Stats App - Configuration",
         autoHideMenuBar: true,
         webPreferences: {
