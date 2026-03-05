@@ -91,10 +91,10 @@ const ui = {
     mainStatAvgVel: document.getElementById('main-stat-avgvel'),
     mainStatTotalTime: document.getElementById('main-stat-totaltime'),
     mainStatFirstDate: document.getElementById('main-stat-firstdate'),
-    mapCompletionRow: document.getElementById('map-completion-row'),
-    mapCompletionStatus: document.getElementById('map-completion-status'),
-    mapCompletionStages: document.getElementById('map-completion-stages'),
-    mapCompletionBonuses: document.getElementById('map-completion-bonuses'),
+    zoneBarContainer: document.getElementById('zone-bar-container'),
+    zoneBarStages: document.getElementById('zone-bar-stages'),
+    zoneBarBonuses: document.getElementById('zone-bar-bonuses'),
+    zoneBarTooltip: document.getElementById('zone-bar-tooltip'),
 
     mainStatStartVel: document.getElementById('main-stat-startvel'),
     mainStatEndVel: document.getElementById('main-stat-endvel')
@@ -162,6 +162,7 @@ function navigateZone(direction) {
             populateZoneStats(cached);
             ui.stageSectionLabel.innerText = formatZone(newZone, cached.mapInfo);
             updateNavButtons();
+            updateZoneBarActive();
         });
     }
 }
@@ -317,8 +318,8 @@ function applyConfig() {
     if (!currentConfig.steamId) {
         ui.playerNameText.innerText = "No SteamID";
         setPlayerFlag(null);
-        ui.statusIndicator.innerText = "SETUP";
-        ui.statusIndicator.className = "status offline";
+        ui.statusIndicator.innerHTML = '<span class="status-dot"></span>SETUP';
+        ui.statusIndicator.className = "status-badge offline";
     }
 }
 
@@ -442,8 +443,8 @@ async function fetchStats() {
         
     } catch (error) {
         console.error("Fetch failed:", error);
-        ui.statusIndicator.innerText = "NET ERROR";
-        ui.statusIndicator.className = "status offline";
+        ui.statusIndicator.innerHTML = '<span class="status-dot"></span>NET ERROR';
+        ui.statusIndicator.className = "status-badge offline";
         showLoadingState();
     } finally {
         isUpdating = false;
@@ -459,6 +460,7 @@ function applyRemoteBrowseState(remoteZone) {
                 populateZoneStats(cached);
                 ui.stageSectionLabel.innerText = formatZone(currentZone, cached.mapInfo);
                 updateNavButtons();
+                updateZoneBarActive();
             }
         }
         return;
@@ -474,11 +476,13 @@ function applyRemoteBrowseState(remoteZone) {
     const prevViewing = browsingZone !== null ? browsingZone : currentZone;
     const slideDir = (zone > prevViewing) ? 'left' : 'right';
     browsingZone = zone;
+    displayedStageZone = zone;
 
     slideStageContent(slideDir, () => {
         populateZoneStats(cached);
         ui.stageSectionLabel.innerText = formatZone(zone, cached.mapInfo);
         updateNavButtons();
+        updateZoneBarActive();
     });
 }
 
@@ -524,7 +528,7 @@ function formatDate(dateVal) {
 
 function updateMapCompletionStatus(mapInfo) {
     if (!mapInfo) {
-        ui.mapCompletionRow.style.display = 'none';
+        ui.zoneBarContainer.style.display = 'none';
         return;
     }
 
@@ -532,49 +536,125 @@ function updateMapCompletionStatus(mapInfo) {
     const totalStages = parseInt(mapInfo.cpCount) || 0;
     const totalBonuses = parseInt(mapInfo.bCount) || 0;
     const isLinear = mapType === 1;
+    const hasBonuses = totalBonuses > 0;
 
-    // Check main map completion (zone 0)
-    const zone0 = zoneCache.get(0);
-    const mapCompleted = zone0 && parseInt(zone0.completions) > 0;
-
-    // Count completed stages (zones 1..totalStages)
-    let stagesCompleted = 0;
-    if (isLinear) {
-        // Linear maps: 1 stage = the map itself
-        stagesCompleted = mapCompleted ? 1 : 0;
+    // Toggle class for taller boxes when no bonuses
+    if (hasBonuses) {
+        ui.zoneBarContainer.classList.remove('no-bonuses');
     } else {
+        ui.zoneBarContainer.classList.add('no-bonuses');
+    }
+
+    // Build stages row
+    ui.zoneBarStages.innerHTML = '';
+    if (isLinear) {
+        // Linear map: single box for the main map (zone 0)
+        const box = createZoneBox(0, 'Main', mapInfo);
+        ui.zoneBarStages.appendChild(box);
+    } else {
+        // Staged map: one box per stage
         for (let i = 1; i <= totalStages; i++) {
-            const z = zoneCache.get(i);
-            if (z && parseInt(z.completions) > 0) stagesCompleted++;
+            const box = createZoneBox(i, `Stage ${i}`, mapInfo);
+            ui.zoneBarStages.appendChild(box);
         }
     }
 
-    // Count completed bonuses (zones 31..30+totalBonuses)
-    let bonusesCompleted = 0;
-    for (let i = 31; i <= 30 + totalBonuses; i++) {
-        const z = zoneCache.get(i);
-        if (z && parseInt(z.completions) > 0) bonusesCompleted++;
+    // Build bonuses row
+    ui.zoneBarBonuses.innerHTML = '';
+    if (hasBonuses) {
+        for (let i = 1; i <= totalBonuses; i++) {
+            const zoneId = 30 + i;
+            const box = createZoneBox(zoneId, `Bonus ${i}`, mapInfo);
+            ui.zoneBarBonuses.appendChild(box);
+        }
     }
 
-    // Update UI
-    ui.mapCompletionRow.style.display = 'flex';
+    // Highlight the currently viewed zone
+    updateZoneBarActive();
 
-    if (mapCompleted) {
-        ui.mapCompletionStatus.innerText = 'Completion';
-        ui.mapCompletionStatus.className = 'completion-tag completed';
+    ui.zoneBarContainer.style.display = 'block';
+}
+
+function createZoneBox(zoneId, label, mapInfo) {
+    const box = document.createElement('div');
+    box.className = 'zone-box';
+    box.dataset.zoneId = zoneId;
+
+    const z = zoneCache.get(zoneId);
+    if (z && parseInt(z.completions) > 0) {
+        box.classList.add('completed');
+    } else if (z) {
+        box.classList.add('not-completed');
     } else {
-        ui.mapCompletionStatus.innerText = 'No Completion';
-        ui.mapCompletionStatus.className = 'completion-tag no-completion';
+        box.classList.add('no-data');
     }
 
-    const stageTotal = isLinear ? 1 : totalStages;
-    ui.mapCompletionStages.innerText = `S: ${stagesCompleted}/${stageTotal}`;
+    // Hover tooltip
+    box.addEventListener('mouseenter', (e) => {
+        const tooltip = ui.zoneBarTooltip;
+        tooltip.innerText = label;
+        tooltip.style.display = 'block';
+
+        // Position tooltip above the box
+        const containerRect = ui.zoneBarContainer.getBoundingClientRect();
+        const boxRect = box.getBoundingClientRect();
+        const centerX = boxRect.left + boxRect.width / 2 - containerRect.left;
+        tooltip.style.left = centerX + 'px';
+        tooltip.style.bottom = '';
+        tooltip.style.top = '';
+
+        // Position above the row
+        const rowRect = box.parentElement.getBoundingClientRect();
+        const tooltipBottom = containerRect.bottom - rowRect.top + 6;
+        tooltip.style.bottom = tooltipBottom + 'px';
+        tooltip.style.top = 'auto';
+    });
+
+    box.addEventListener('mouseleave', () => {
+        ui.zoneBarTooltip.style.display = 'none';
+    });
+
+    // Click to navigate to this zone
+    box.addEventListener('click', () => {
+        const cached = zoneCache.get(zoneId);
+        if (!cached) return;
+
+        // Determine slide direction
+        const currentViewing = browsingZone !== null ? browsingZone : (displayedStageZone !== null ? displayedStageZone : currentZone);
+        const slideDir = (zoneId > currentViewing) ? 'left' : (zoneId < currentViewing ? 'right' : null);
+
+        browsingZone = zoneId;
+        displayedStageZone = zoneId;
+        broadcastBrowseState(zoneId);
+
+        if (slideDir) {
+            slideStageContent(slideDir, () => {
+                populateZoneStats(cached);
+                ui.stageSectionLabel.innerText = formatZone(zoneId, mapInfo);
+                updateNavButtons();
+                updateZoneBarActive();
+            });
+        } else {
+            populateZoneStats(cached);
+            ui.stageSectionLabel.innerText = formatZone(zoneId, mapInfo);
+            updateNavButtons();
+            updateZoneBarActive();
+        }
+    });
+
+    return box;
+}
+
+function updateZoneBarActive() {
+    const activeZone = browsingZone !== null ? browsingZone : (displayedStageZone !== null ? displayedStageZone : currentZone);
     
-    if (totalBonuses > 0) {
-        ui.mapCompletionBonuses.innerText = `B: ${bonusesCompleted}/${totalBonuses}`;
-        ui.mapCompletionBonuses.style.display = 'inline';
-    } else {
-        ui.mapCompletionBonuses.style.display = 'none';
+    // Remove active from all boxes
+    const allBoxes = ui.zoneBarContainer.querySelectorAll('.zone-box');
+    for (const box of allBoxes) {
+        box.classList.remove('active');
+        if (parseInt(box.dataset.zoneId) === activeZone) {
+            box.classList.add('active');
+        }
     }
 }
 
@@ -674,7 +754,7 @@ function showLoadingState() {
     ui.mainMapSection.classList.remove('expanded');
     ui.sectionDivider.style.display = 'none';
     ui.stageNav.style.display = 'none';
-    ui.mapCompletionRow.style.display = 'none';
+    ui.zoneBarContainer.style.display = 'none';
     ui.mapName.innerHTML = '<span id="map-spinner" class="spinner" style="display: inline-block;"></span> loading map data...';
     ui.mapSpinner = document.getElementById('map-spinner');
 }
@@ -962,6 +1042,7 @@ function refreshLayoutFromCache() {
         populateZoneStats(cached);
         ui.stageSectionLabel.innerText = formatZone(stageZoneId, cached.mapInfo);
         updateNavButtons();
+        updateZoneBarActive();
     }
     resizeOverlay();
 }
@@ -974,8 +1055,8 @@ function updateUI(data) {
     }
 
     if (data.status === 'online') {
-        ui.statusIndicator.innerText = "ONLINE";
-        ui.statusIndicator.className = "status online";
+        ui.statusIndicator.innerHTML = '<span class="status-dot"></span>ONLINE';
+        ui.statusIndicator.className = "status-badge online";
         
         ui.mapSpinner.style.display = 'none';
         ui.mapName.innerText = data.map || "Unknown Map";
@@ -1088,19 +1169,23 @@ function updateUI(data) {
                     populateZoneStats(stageData);
                     ui.stageSectionLabel.innerText = formatZone(stageZoneId, data.mapInfo);
                     updateNavButtons();
+                    updateZoneBarActive();
                 });
             } else {
                 populateZoneStats(stageData);
                 ui.stageSectionLabel.innerText = formatZone(stageZoneId, data.mapInfo);
                 updateNavButtons();
+                updateZoneBarActive();
             }
         } else {
             if (browsingZone === null || browsingZone === zoneId) {
                 populateZoneStats(stageData);
                 ui.stageSectionLabel.innerText = formatZone(stageZoneId, data.mapInfo);
                 updateNavButtons();
+                updateZoneBarActive();
             } else {
                 updateNavButtons();
+                updateZoneBarActive();
             }
         }
         
@@ -1111,15 +1196,15 @@ function updateUI(data) {
         }
 
     } else {
-        ui.statusIndicator.innerText = "OFFLINE";
-        ui.statusIndicator.className = "status offline";
+        ui.statusIndicator.innerHTML = '<span class="status-dot"></span>OFFLINE';
+        ui.statusIndicator.className = "status-badge offline";
         clearStats();
         ui.mainMapSection.style.display = 'none';
         ui.mainMapSection.classList.remove('expanded');
         ui.sectionDivider.style.display = 'none';
         ui.stageNav.style.display = 'none';
         ui.mapName.innerText = "Player is offline";
-        ui.mapCompletionRow.style.display = 'none';
+        ui.zoneBarContainer.style.display = 'none';
         ui.serverName.style.display = 'none';
         ui.serverPlayers.style.display = 'none';
 
