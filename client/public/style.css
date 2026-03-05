@@ -234,10 +234,12 @@ body {
     flex: 1;
 }
 
-#player-flag {
+.player-flag {
+    width: 16px;
+    height: 12px;
     margin-right: 5px;
-    font-size: 14px;
     vertical-align: middle;
+    border-radius: 2px;
 }
 
 .map-name-clickable {
@@ -255,27 +257,28 @@ body {
     opacity: 1 !important;
 }
 
-.server-info {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 2px;
-    font-size: 10px;
-    color: var(--text-color);
-    opacity: 0.5;
-}
-
 .server-name {
+    font-size: 10px;
     font-weight: 500;
+    color: var(--text-color);
+    opacity: 0.6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
 }
 
 .server-players-link {
+    font-size: 9px;
+    color: var(--text-color);
+    opacity: 0.5;
     cursor: pointer;
     -webkit-app-region: no-drag;
     position: relative;
     text-decoration: underline;
     text-decoration-style: dotted;
     transition: opacity 0.15s;
+    white-space: nowrap;
 }
 
 .server-players-link:hover {
@@ -332,6 +335,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    gap: 1px;
+    position: relative;
 }
 
 .main-stats {

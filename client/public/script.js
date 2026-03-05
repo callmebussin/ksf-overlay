@@ -35,7 +35,6 @@ const ui = {
     mapSpinner: document.getElementById('map-spinner'),
     statusIndicator: document.getElementById('status-indicator'),
     updateTimer: document.getElementById('update-timer'),
-    serverInfo: document.getElementById('server-info'),
     serverName: document.getElementById('server-name'),
     serverPlayers: document.getElementById('server-players'),
     playersModal: document.getElementById('players-modal'),
@@ -311,7 +310,7 @@ function applyConfig() {
 
     if (!currentConfig.steamId) {
         ui.playerNameText.innerText = "No SteamID";
-        ui.playerFlag.innerText = '';
+        setPlayerFlag(null);
         ui.statusIndicator.innerText = "SETUP";
         ui.statusIndicator.className = "status offline";
     }
@@ -823,36 +822,40 @@ async function fetchMapStats(map, baseData) {
     }
 }
 
-function countryToFlag(country) {
-    if (!country) return '';
-    const codes = {
-        'United States': 'US', 'Canada': 'CA', 'United Kingdom': 'GB', 'Germany': 'DE',
-        'France': 'FR', 'Sweden': 'SE', 'Norway': 'NO', 'Denmark': 'DK', 'Finland': 'FI',
-        'Netherlands': 'NL', 'Belgium': 'BE', 'Australia': 'AU', 'New Zealand': 'NZ',
-        'Brazil': 'BR', 'Russia': 'RU', 'Poland': 'PL', 'Spain': 'ES', 'Italy': 'IT',
-        'Portugal': 'PT', 'Japan': 'JP', 'South Korea': 'KR', 'China': 'CN', 'India': 'IN',
-        'Mexico': 'MX', 'Argentina': 'AR', 'Chile': 'CL', 'Colombia': 'CO', 'Peru': 'PE',
-        'Turkey': 'TR', 'Ukraine': 'UA', 'Czech Republic': 'CZ', 'Austria': 'AT',
-        'Switzerland': 'CH', 'Ireland': 'IE', 'Romania': 'RO', 'Hungary': 'HU',
-        'Slovakia': 'SK', 'Croatia': 'HR', 'Bulgaria': 'BG', 'Serbia': 'RS',
-        'Lithuania': 'LT', 'Latvia': 'LV', 'Estonia': 'EE', 'Slovenia': 'SI',
-        'Greece': 'GR', 'Israel': 'IL', 'South Africa': 'ZA', 'Thailand': 'TH',
-        'Philippines': 'PH', 'Malaysia': 'MY', 'Singapore': 'SG', 'Indonesia': 'ID',
-        'Vietnam': 'VN', 'Taiwan': 'TW', 'Hong Kong': 'HK', 'Iceland': 'IS',
-        'Luxembourg': 'LU', 'Malta': 'MT', 'Cyprus': 'CY', 'Georgia': 'GE',
-        'Kazakhstan': 'KZ', 'Belarus': 'BY', 'Moldova': 'MD', 'Albania': 'AL',
-        'North Macedonia': 'MK', 'Montenegro': 'ME', 'Bosnia and Herzegovina': 'BA',
-        'Uruguay': 'UY', 'Paraguay': 'PY', 'Ecuador': 'EC', 'Venezuela': 'VE',
-        'Costa Rica': 'CR', 'Panama': 'PA', 'Dominican Republic': 'DO',
-        'Puerto Rico': 'PR', 'Jamaica': 'JM', 'Trinidad and Tobago': 'TT',
-        'Egypt': 'EG', 'Morocco': 'MA', 'Nigeria': 'NG', 'Kenya': 'KE',
-        'Pakistan': 'PK', 'Bangladesh': 'BD', 'Sri Lanka': 'LK',
-        'United Arab Emirates': 'AE', 'Saudi Arabia': 'SA', 'Qatar': 'QA',
-        'Kuwait': 'KW', 'Bahrain': 'BH', 'Oman': 'OM', 'Jordan': 'JO', 'Lebanon': 'LB'
-    };
-    const code = codes[country];
-    if (!code) return '';
-    return String.fromCodePoint(...[...code].map(c => 0x1F1E6 + c.charCodeAt(0) - 65));
+const COUNTRY_CODES = {
+    'United States': 'us', 'Canada': 'ca', 'United Kingdom': 'gb', 'Germany': 'de',
+    'France': 'fr', 'Sweden': 'se', 'Norway': 'no', 'Denmark': 'dk', 'Finland': 'fi',
+    'Netherlands': 'nl', 'Belgium': 'be', 'Australia': 'au', 'New Zealand': 'nz',
+    'Brazil': 'br', 'Russia': 'ru', 'Poland': 'pl', 'Spain': 'es', 'Italy': 'it',
+    'Portugal': 'pt', 'Japan': 'jp', 'South Korea': 'kr', 'China': 'cn', 'India': 'in',
+    'Mexico': 'mx', 'Argentina': 'ar', 'Chile': 'cl', 'Colombia': 'co', 'Peru': 'pe',
+    'Turkey': 'tr', 'Ukraine': 'ua', 'Czech Republic': 'cz', 'Austria': 'at',
+    'Switzerland': 'ch', 'Ireland': 'ie', 'Romania': 'ro', 'Hungary': 'hu',
+    'Slovakia': 'sk', 'Croatia': 'hr', 'Bulgaria': 'bg', 'Serbia': 'rs',
+    'Lithuania': 'lt', 'Latvia': 'lv', 'Estonia': 'ee', 'Slovenia': 'si',
+    'Greece': 'gr', 'Israel': 'il', 'South Africa': 'za', 'Thailand': 'th',
+    'Philippines': 'ph', 'Malaysia': 'my', 'Singapore': 'sg', 'Indonesia': 'id',
+    'Vietnam': 'vn', 'Taiwan': 'tw', 'Hong Kong': 'hk', 'Iceland': 'is',
+    'Luxembourg': 'lu', 'Malta': 'mt', 'Cyprus': 'cy', 'Georgia': 'ge',
+    'Kazakhstan': 'kz', 'Belarus': 'by', 'Moldova': 'md', 'Albania': 'al',
+    'North Macedonia': 'mk', 'Montenegro': 'me', 'Bosnia and Herzegovina': 'ba',
+    'Uruguay': 'uy', 'Paraguay': 'py', 'Ecuador': 'ec', 'Venezuela': 've',
+    'Costa Rica': 'cr', 'Panama': 'pa', 'Dominican Republic': 'do',
+    'Puerto Rico': 'pr', 'Jamaica': 'jm', 'Trinidad and Tobago': 'tt',
+    'Egypt': 'eg', 'Morocco': 'ma', 'Nigeria': 'ng', 'Kenya': 'ke',
+    'Pakistan': 'pk', 'Bangladesh': 'bd', 'Sri Lanka': 'lk',
+    'United Arab Emirates': 'ae', 'Saudi Arabia': 'sa', 'Qatar': 'qa',
+    'Kuwait': 'kw', 'Bahrain': 'bh', 'Oman': 'om', 'Jordan': 'jo', 'Lebanon': 'lb'
+};
+
+function setPlayerFlag(country) {
+    const code = country ? COUNTRY_CODES[country] : null;
+    if (code) {
+        ui.playerFlag.src = `https://flagcdn.com/w40/${code}.png`;
+        ui.playerFlag.style.display = 'inline';
+    } else {
+        ui.playerFlag.style.display = 'none';
+    }
 }
 
 function updateUI(data) {
@@ -873,7 +876,8 @@ function updateUI(data) {
             const otherCount = (data.serverPlayers ? data.serverPlayers.length : 1) - 1;
             ui.serverName.innerText = data.serverName;
             ui.serverPlayers.innerText = otherCount > 0 ? `playing with ${otherCount} other${otherCount > 1 ? 's' : ''}` : 'playing solo';
-            ui.serverInfo.style.display = 'flex';
+            ui.serverName.style.display = 'block';
+            ui.serverPlayers.style.display = 'block';
 
             ui.playersList.innerHTML = '';
             if (data.serverPlayers) {
@@ -885,7 +889,8 @@ function updateUI(data) {
                 }
             }
         } else {
-            ui.serverInfo.style.display = 'none';
+            ui.serverName.style.display = 'none';
+            ui.serverPlayers.style.display = 'none';
         }
 
         if (data.map && data.map !== currentMap) {
@@ -973,7 +978,7 @@ function updateUI(data) {
         if (data.playerName) {
             ui.playerNameText.innerText = data.playerName;
             const country = data.country || (profileCache ? profileCache.country : null);
-            ui.playerFlag.innerText = countryToFlag(country);
+            setPlayerFlag(country);
         }
 
     } else {
