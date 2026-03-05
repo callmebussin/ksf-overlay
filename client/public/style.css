@@ -237,6 +237,17 @@ body {
     font-weight: 400;
 }
 
+.header-rank-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-color);
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin: 0;
+    line-height: 1.3;
+    opacity: 1;
+}
+
 .player-info {
     min-width: 0;
     flex: 1;
@@ -293,7 +304,7 @@ body {
 
 /* ── Zone Completion Bar ────────────────────────────────────── */
 .zone-bar-container {
-    margin-bottom: 10px;
+    margin: 8px 0;
     position: relative;
 }
 
@@ -374,47 +385,7 @@ body {
     border-top-color: var(--accent-color);
 }
 
-.map-name-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.tier-badge {
-    font-size: 9px;
-    font-weight: 800;
-    padding: 1px 5px;
-    border-radius: 3px;
-    color: #fff;
-    white-space: nowrap;
-    flex-shrink: 0;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
-}
-
-.tier-badge.t1 { background: #2ecc71; }
-.tier-badge.t2 { background: #58c44c; }
-.tier-badge.t3 { background: #a8bf26; }
-.tier-badge.t4 { background: #d4a017; }
-.tier-badge.t5 { background: #d4791c; }
-.tier-badge.t6 { background: #c0392b; }
-.tier-badge.t7 { background: #962d22; }
-.tier-badge.t8 { background: #6b1e18; }
-
-.map-name-clickable {
-    display: inline;
-    cursor: pointer;
-    -webkit-app-region: no-drag;
-    transition: opacity 0.15s;
-}
-
-.map-name-clickable:hover {
-    opacity: 1 !important;
-}
-
-.map-name-clickable.copied {
-    color: #2ecc71 !important;
-    opacity: 1 !important;
-}
+/* tier badge styles kept for legacy references but badge removed from header */
 
 .playing-on-label {
     font-size: 9px;
@@ -681,9 +652,83 @@ body {
     margin-bottom: 8px;
 }
 
-.profile-rank-left {
+.profile-rank-stat {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.profile-rank-stat-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    color: var(--text-color);
+    opacity: 0.5;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.profile-rank-stat-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent-color);
+    line-height: 1.3;
+}
+
+/* ── Info Cards (Map Info, Points Breakdown) ──────────────── */
+.info-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(255,255,255,0.05);
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    gap: 4px 0;
+}
+
+.info-card-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 0 auto;
+    min-width: 50px;
+}
+
+.info-card-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    color: var(--text-color);
+    opacity: 0.5;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.info-card-value {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-color);
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.info-card-value.map-name-clickable {
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+    transition: opacity 0.15s;
+    color: var(--accent-color);
+}
+
+.info-card-value.map-name-clickable:hover {
+    opacity: 0.8;
+}
+
+.info-card-value.map-name-clickable.copied {
+    color: #2ecc71 !important;
 }
 
 .profile-rank-title {
@@ -811,32 +856,7 @@ body {
     filter: brightness(1.3);
 }
 
-.profile-rank-sub {
-    font-size: 10px;
-    color: var(--text-color);
-    opacity: 0.5;
-    font-weight: 500;
-}
-
-.profile-rank-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.profile-points-label {
-    font-size: 9px;
-    text-transform: uppercase;
-    color: var(--text-color);
-    opacity: 0.5;
-    letter-spacing: 0.5px;
-}
-
-.profile-points-value {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--accent-color);
-}
+/* (old profile-rank-sub, profile-rank-right, profile-points-* removed - now using profile-rank-stat layout) */
 
 .profile-grid {
     display: grid;
@@ -872,13 +892,7 @@ body {
     color: var(--text-color);
 }
 
-#map-name {
-    font-size: 14px;
-    color: var(--text-color);
-    opacity: 0.9;
-    font-weight: 600;
-    margin-top: 2px;
-}
+/* #map-name is now inside .info-card, styled via .info-card-value */
 
 .stats-grid {
     display: grid;

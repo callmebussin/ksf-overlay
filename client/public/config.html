@@ -279,7 +279,7 @@
                     <div class="toggle"><input type="checkbox" id="show-zone-bar" checked><span class="toggle-slider"></span></div>
                 </label>
                 <label class="toggle-row" for="show-rank-card">
-                    <span>Rank / Points Card</span>
+                    <span>Rank Card</span>
                     <div class="toggle"><input type="checkbox" id="show-rank-card" checked><span class="toggle-slider"></span></div>
                 </label>
                 <label class="toggle-row" for="show-profile-stats">
@@ -289,6 +289,14 @@
                 <label class="toggle-row" for="show-detailed-stats">
                     <span>Detailed Map Stats</span>
                     <div class="toggle"><input type="checkbox" id="show-detailed-stats" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-map-info">
+                    <span>Map Info Card</span>
+                    <div class="toggle"><input type="checkbox" id="show-map-info" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-points-breakdown">
+                    <span>Points Breakdown Card</span>
+                    <div class="toggle"><input type="checkbox" id="show-points-breakdown" checked><span class="toggle-slider"></span></div>
                 </label>
                 <label class="toggle-row" for="show-main-map-stats">
                     <span>Show Map Stats Separately</span>
@@ -389,6 +397,8 @@
             showRankCard: document.getElementById('show-rank-card'),
             showProfileStats: document.getElementById('show-profile-stats'),
             showDetailedStats: document.getElementById('show-detailed-stats'),
+            showMapInfo: document.getElementById('show-map-info'),
+            showPointsBreakdown: document.getElementById('show-points-breakdown'),
             obsUrlDisplay: document.getElementById('obs-url-display'),
             opacity: document.getElementById('opacity'),
             opacityVal: document.getElementById('opacity-val'),
@@ -415,6 +425,8 @@
             els.showRankCard.checked = config.showRankCard !== false;
             els.showProfileStats.checked = config.showProfileStats !== false;
             els.showDetailedStats.checked = config.showDetailedStats !== false;
+            els.showMapInfo.checked = config.showMapInfo !== false;
+            els.showPointsBreakdown.checked = config.showPointsBreakdown !== false;
 
             els.opacity.value = config.opacity || 100;
             els.opacityVal.innerText = els.opacity.value + '%';
@@ -459,6 +471,8 @@
                     showRankCard: els.showRankCard.checked,
                     showProfileStats: els.showProfileStats.checked,
                     showDetailedStats: els.showDetailedStats.checked,
+                    showMapInfo: els.showMapInfo.checked,
+                    showPointsBreakdown: els.showPointsBreakdown.checked,
                     opacity: parseInt(els.opacity.value),
                     zoneCompletedColor: els.zoneCompletedColor.value,
                     zoneNotCompletedColor: els.zoneNotCompletedColor.value,
@@ -485,6 +499,8 @@
         els.showRankCard.addEventListener('change', autoSave);
         els.showProfileStats.addEventListener('change', autoSave);
         els.showDetailedStats.addEventListener('change', autoSave);
+        els.showMapInfo.addEventListener('change', autoSave);
+        els.showPointsBreakdown.addEventListener('change', autoSave);
         els.opacity.addEventListener('input', autoSave);
         els.colors.bgColor.addEventListener('input', autoSave);
         els.colors.textColor.addEventListener('input', autoSave);

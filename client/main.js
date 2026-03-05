@@ -22,6 +22,8 @@ let appConfig = {
     showRankCard: true,
     showProfileStats: true,
     showDetailedStats: true,
+    showMapInfo: true,
+    showPointsBreakdown: true,
     autoFollowStage: true,
     horizontalLayout: false,
     zoneCompletedColor: "#2ecc71",
