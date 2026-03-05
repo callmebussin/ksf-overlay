@@ -9,6 +9,10 @@ let currentConfig = {
     opacity: 100,
     showMainMapStats: false,
     showProfile: true,
+    showZoneBar: true,
+    showRankCard: true,
+    showProfileStats: true,
+    showDetailedStats: true,
     autoFollowStage: true,
     horizontalLayout: false,
     theme: {}
@@ -222,18 +226,13 @@ function animateTimeChange(element, newText) {
 
 if (ipcRenderer) {
     ipcRenderer.on('config-updated', (event, config) => {
-        const prevSteamId = currentConfig.steamId;
-        const prevRefreshRate = currentConfig.refreshRate;
-        const prevShowMainMap = currentConfig.showMainMapStats;
-        const prevAutoFollow = currentConfig.autoFollowStage;
-        const prevHorizontal = currentConfig.horizontalLayout;
-        const prevShowProfile = currentConfig.showProfile;
+        const prev = { ...currentConfig };
         currentConfig = { ...currentConfig, ...config };
         applyConfig();
         
-        const steamIdChanged = config.steamId !== prevSteamId;
-        const rateChanged = config.refreshRate !== prevRefreshRate;
-        const layoutChanged = config.showMainMapStats !== prevShowMainMap || config.autoFollowStage !== prevAutoFollow || config.horizontalLayout !== prevHorizontal || config.showProfile !== prevShowProfile;
+        const steamIdChanged = currentConfig.steamId !== prev.steamId;
+        const rateChanged = currentConfig.refreshRate !== prev.refreshRate;
+        const layoutChanged = currentConfig.showMainMapStats !== prev.showMainMapStats || currentConfig.autoFollowStage !== prev.autoFollowStage || currentConfig.horizontalLayout !== prev.horizontalLayout || currentConfig.showProfile !== prev.showProfile || currentConfig.showZoneBar !== prev.showZoneBar || currentConfig.showRankCard !== prev.showRankCard || currentConfig.showProfileStats !== prev.showProfileStats || currentConfig.showDetailedStats !== prev.showDetailedStats;
 
         if (!hasInitialized || steamIdChanged) {
             if (steamIdChanged) { profileCache = null; lastProfileFetch = 0; }
@@ -259,6 +258,10 @@ if (ipcRenderer) {
                 if (serverCfg.refreshRate) currentConfig.refreshRate = serverCfg.refreshRate;
                 if (serverCfg.showMainMapStats) currentConfig.showMainMapStats = true;
                 if (serverCfg.showProfile !== undefined) currentConfig.showProfile = serverCfg.showProfile;
+                if (serverCfg.showZoneBar !== undefined) currentConfig.showZoneBar = serverCfg.showZoneBar;
+                if (serverCfg.showRankCard !== undefined) currentConfig.showRankCard = serverCfg.showRankCard;
+                if (serverCfg.showProfileStats !== undefined) currentConfig.showProfileStats = serverCfg.showProfileStats;
+                if (serverCfg.showDetailedStats !== undefined) currentConfig.showDetailedStats = serverCfg.showDetailedStats;
                 if (serverCfg.autoFollowStage !== undefined) currentConfig.autoFollowStage = serverCfg.autoFollowStage;
                 if (serverCfg.horizontalLayout !== undefined) currentConfig.horizontalLayout = serverCfg.horizontalLayout;
                 if (serverCfg.theme) currentConfig.theme = serverCfg.theme;
@@ -309,10 +312,39 @@ function applyConfig() {
         layout.classList.remove('horizontal');
     }
 
-    if (currentConfig.showProfile) {
+    // Profile visibility: showProfile controls the entire profile section
+    if (currentConfig.showProfile || currentConfig.showRankCard || currentConfig.showProfileStats) {
         if (profileCache) populateProfile(profileCache);
     } else {
         hideProfile();
+    }
+
+    // Rank card visibility
+    const rankCard = document.getElementById('profile-rank-card');
+    if (rankCard) {
+        rankCard.style.display = currentConfig.showRankCard !== false ? '' : 'none';
+    }
+
+    // Profile stats grids visibility
+    const profileStatsGrids = document.getElementById('profile-stats-grids');
+    if (profileStatsGrids) {
+        profileStatsGrids.style.display = currentConfig.showProfileStats !== false ? '' : 'none';
+    }
+
+    // Hide entire profile section + divider if both rank card and stats are off
+    if (currentConfig.showRankCard === false && currentConfig.showProfileStats === false) {
+        hideProfile();
+    }
+
+    // Zone bar visibility
+    if (currentConfig.showZoneBar === false) {
+        ui.zoneBarContainer.style.display = 'none';
+    }
+
+    // Detailed stats visibility (stats-grid + advanced-stats-grid in map/stage cards)
+    const detailedEls = document.querySelectorAll('.detailed-stats');
+    for (const el of detailedEls) {
+        el.style.display = currentConfig.showDetailedStats !== false ? '' : 'none';
     }
 
     if (!currentConfig.steamId) {
@@ -340,6 +372,22 @@ function applyRemoteConfig(cfg) {
     }
     if (cfg.showProfile !== undefined && cfg.showProfile !== currentConfig.showProfile) {
         currentConfig.showProfile = cfg.showProfile;
+        changed = true;
+    }
+    if (cfg.showZoneBar !== undefined && cfg.showZoneBar !== currentConfig.showZoneBar) {
+        currentConfig.showZoneBar = cfg.showZoneBar;
+        changed = true;
+    }
+    if (cfg.showRankCard !== undefined && cfg.showRankCard !== currentConfig.showRankCard) {
+        currentConfig.showRankCard = cfg.showRankCard;
+        changed = true;
+    }
+    if (cfg.showProfileStats !== undefined && cfg.showProfileStats !== currentConfig.showProfileStats) {
+        currentConfig.showProfileStats = cfg.showProfileStats;
+        changed = true;
+    }
+    if (cfg.showDetailedStats !== undefined && cfg.showDetailedStats !== currentConfig.showDetailedStats) {
+        currentConfig.showDetailedStats = cfg.showDetailedStats;
         changed = true;
     }
     if (cfg.theme) {
@@ -396,7 +444,7 @@ async function pollBrowseState() {
 
 function updateFooterTimer() {
     if (!lastRefreshTime) {
-        ui.updateTimer.innerText = "Waiting...";
+        ui.updateTimer.innerText = "waiting...";
         return;
     }
     
@@ -406,9 +454,9 @@ function updateFooterTimer() {
     const diff = Math.ceil((nextUpdate - now) / 1000);
     
     if (diff > 0) {
-        ui.updateTimer.innerText = `Next update: ${diff}s`;
+        ui.updateTimer.innerText = `fetching data in ${diff}s`;
     } else {
-        ui.updateTimer.innerText = "Updating...";
+        ui.updateTimer.innerText = "fetching data...";
     }
 }
 
@@ -572,7 +620,7 @@ function updateMapCompletionStatus(mapInfo) {
     // Highlight the currently viewed zone
     updateZoneBarActive();
 
-    ui.zoneBarContainer.style.display = 'block';
+    ui.zoneBarContainer.style.display = currentConfig.showZoneBar !== false ? 'block' : 'none';
 }
 
 function createZoneBox(zoneId, label, mapInfo) {
@@ -915,8 +963,16 @@ function populateProfile(d) {
     ui.profileTop10s.innerText = d.top10Groups?.top10 || "0";
     ui.profileGroups.innerText = d.top10Groups?.groups || "0";
 
-    ui.profileSection.style.display = 'block';
-    ui.profileDivider.style.display = 'block';
+    // Respect visibility toggles
+    const rankCard = document.getElementById('profile-rank-card');
+    const profileStatsGrids = document.getElementById('profile-stats-grids');
+    if (rankCard) rankCard.style.display = currentConfig.showRankCard !== false ? '' : 'none';
+    if (profileStatsGrids) profileStatsGrids.style.display = currentConfig.showProfileStats !== false ? '' : 'none';
+
+    // Show profile section if at least one sub-section is visible
+    const showAny = currentConfig.showRankCard !== false || currentConfig.showProfileStats !== false;
+    ui.profileSection.style.display = showAny ? 'block' : 'none';
+    ui.profileDivider.style.display = showAny ? 'block' : 'none';
     resizeOverlay();
 }
 

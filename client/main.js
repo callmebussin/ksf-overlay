@@ -19,6 +19,10 @@ let appConfig = {
     alwaysOnTop: true,
     showMainMapStats: false,
     showProfile: true,
+    showZoneBar: true,
+    showRankCard: true,
+    showProfileStats: true,
+    showDetailedStats: true,
     autoFollowStage: true,
     horizontalLayout: false,
     theme: {

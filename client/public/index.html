@@ -32,7 +32,7 @@
         </div>
 
         <div id="profile-section" class="profile-section" style="display: none;">
-            <div class="profile-rank-header">
+            <div id="profile-rank-card" class="profile-rank-header">
                 <div class="profile-rank-left">
                     <span class="profile-rank-title" id="profile-rank-title">-</span>
                     <span class="profile-rank-sub" id="profile-rank-sub">-</span>
@@ -43,60 +43,62 @@
                 </div>
             </div>
 
-            <div class="profile-grid">
-                <div class="profile-stat">
-                    <span class="label">Global Rank</span>
-                    <span class="value" id="profile-global-rank">-</span>
+            <div id="profile-stats-grids">
+                <div class="profile-grid">
+                    <div class="profile-stat">
+                        <span class="label">Global Rank</span>
+                        <span class="value" id="profile-global-rank">-</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="label">Country Rank</span>
+                        <span class="value" id="profile-country-rank">-</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="label">Completion</span>
+                        <span class="value" id="profile-completion">-</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="label">Playtime</span>
+                        <span class="value" id="profile-playtime">-</span>
+                    </div>
                 </div>
-                <div class="profile-stat">
-                    <span class="label">Country Rank</span>
-                    <span class="value" id="profile-country-rank">-</span>
-                </div>
-                <div class="profile-stat">
-                    <span class="label">Completion</span>
-                    <span class="value" id="profile-completion">-</span>
-                </div>
-                <div class="profile-stat">
-                    <span class="label">Playtime</span>
-                    <span class="value" id="profile-playtime">-</span>
-                </div>
-            </div>
 
-            <div class="profile-grid">
-                <div class="profile-stat">
-                    <span class="label">Maps</span>
-                    <span class="value" id="profile-maps">-</span>
+                <div class="profile-grid">
+                    <div class="profile-stat">
+                        <span class="label">Maps</span>
+                        <span class="value" id="profile-maps">-</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="label">Stages</span>
+                        <span class="value" id="profile-stages">-</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="label">Bonuses</span>
+                        <span class="value" id="profile-bonuses">-</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="label">Top 10s</span>
+                        <span class="value" id="profile-top10s">-</span>
+                    </div>
                 </div>
-                <div class="profile-stat">
-                    <span class="label">Stages</span>
-                    <span class="value" id="profile-stages">-</span>
-                </div>
-                <div class="profile-stat">
-                    <span class="label">Bonuses</span>
-                    <span class="value" id="profile-bonuses">-</span>
-                </div>
-                <div class="profile-stat">
-                    <span class="label">Top 10s</span>
-                    <span class="value" id="profile-top10s">-</span>
-                </div>
-            </div>
 
-            <div class="profile-grid">
-                <div class="profile-stat">
-                    <span class="label">WRs</span>
-                    <span class="value" id="profile-wrs">-</span>
-                </div>
-                <div class="profile-stat">
-                    <span class="label">WRCPs</span>
-                    <span class="value" id="profile-wrcps">-</span>
-                </div>
-                <div class="profile-stat">
-                    <span class="label">WRBs</span>
-                    <span class="value" id="profile-wrbs">-</span>
-                </div>
-                <div class="profile-stat">
-                    <span class="label">Groups</span>
-                    <span class="value" id="profile-groups">-</span>
+                <div class="profile-grid">
+                    <div class="profile-stat">
+                        <span class="label">WRs</span>
+                        <span class="value" id="profile-wrs">-</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="label">WRCPs</span>
+                        <span class="value" id="profile-wrcps">-</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="label">WRBs</span>
+                        <span class="value" id="profile-wrbs">-</span>
+                    </div>
+                    <div class="profile-stat">
+                        <span class="label">Groups</span>
+                        <span class="value" id="profile-groups">-</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -124,7 +126,7 @@
                     </div>
                 </div>
 
-                <div class="stats-grid">
+                <div class="stats-grid detailed-stats">
                     <div class="stat-item">
                         <span class="label">Completions</span>
                         <span class="value" id="main-stat-completions">-</span>
@@ -143,7 +145,7 @@
                     </div>
                 </div>
 
-                <div class="advanced-stats-grid">
+                <div class="advanced-stats-grid detailed-stats">
                     <div class="mini-stat">
                         <span class="label">Total Time</span>
                         <span class="value" id="main-stat-totaltime">-</span>
@@ -191,7 +193,7 @@
                             </div>
                         </div>
 
-                        <div class="stats-grid">
+                        <div class="stats-grid detailed-stats">
                             <div class="stat-item">
                                 <span class="label">Completions</span>
                                 <span class="value" id="stat-completions">-</span>
@@ -210,7 +212,7 @@
                             </div>
                         </div>
 
-                        <div class="advanced-stats-grid">
+                        <div class="advanced-stats-grid detailed-stats">
                             <div class="mini-stat">
                                 <span class="label">Total Time</span>
                                 <span class="value" id="stat-totaltime">-</span>
@@ -235,7 +237,7 @@
         </div>
 
         <div class="footer">
-            <span id="update-timer">Next update: --s</span>
+            <span id="update-timer" class="update-timer">fetching data in --s</span>
         </div>
     </div>
     <script src="script.js"></script>
