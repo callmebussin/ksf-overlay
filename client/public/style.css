@@ -60,8 +60,17 @@ body {
     flex-direction: column;
 }
 
+/* Ensure the stage panel's wrapper divs stretch to fill height */
+.cards-layout.horizontal .stage-slide-container,
+.cards-layout.horizontal .stage-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .cards-layout.horizontal .layout-panel .main-stats {
     flex: 1;
+    margin-bottom: 0;
 }
 
 .cards-layout.horizontal .section-divider {
@@ -84,6 +93,10 @@ body {
     font-weight: 800;
     margin-bottom: 6px;
     text-align: center;
+    min-height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .stage-nav {
@@ -92,11 +105,13 @@ body {
     justify-content: center;
     gap: 8px;
     margin-bottom: 6px;
+    min-height: 22px;
     -webkit-app-region: no-drag;
 }
 
 .stage-nav .section-label {
     margin-bottom: 0;
+    min-height: unset;
     min-width: 80px;
 }
 
