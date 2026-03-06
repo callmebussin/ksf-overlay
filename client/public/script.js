@@ -15,6 +15,7 @@ let currentConfig = {
     showProfileStats: true,
     showDetailedStats: true,
     showMapInfo: true,
+    showMapImage: true,
     showPointsBreakdown: true,
     showHeader: true,
     showPillToggles: true,
@@ -60,6 +61,68 @@ let displayedStageZone = null; // Tracks which zone the stage panel is actually 
 
 const zoneCache = new Map();
 let browsingZone = null;
+
+// ── Persistent local cache ──────────────────────────────────────────────────
+// Saves player state to localStorage so data survives app restarts.
+const LOCAL_CACHE_KEY = 'ksf_playerCache';
+const LOCAL_CACHE_MAX_AGE = 600000; // 10 minutes
+
+function saveLocalCache() {
+    try {
+        const key = `${currentConfig.steamId}:${currentConfig.gameType}:${currentConfig.surfType}`;
+        if (!currentConfig.steamId || zoneCache.size === 0) return;
+
+        const allCaches = JSON.parse(localStorage.getItem(LOCAL_CACHE_KEY) || '{}');
+        allCaches[key] = {
+            zoneCache: Object.fromEntries(zoneCache),
+            profileCache: profileCache,
+            lastProfileFetch,
+            currentMap,
+            currentZone,
+            lastRefreshTime,
+            headerName: ui.playerNameText.innerText,
+            headerAvatar: ui.avatar.style.backgroundImage,
+            headerFlag: ui.playerFlag.src,
+            headerFlagVisible: ui.playerFlag.style.display !== 'none',
+            timestamp: Date.now()
+        };
+
+        // Prune old entries to avoid unbounded growth
+        for (const [k, v] of Object.entries(allCaches)) {
+            if (Date.now() - v.timestamp > LOCAL_CACHE_MAX_AGE) delete allCaches[k];
+        }
+        localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(allCaches));
+    } catch (e) {}
+}
+
+function loadLocalCache() {
+    try {
+        const key = `${currentConfig.steamId}:${currentConfig.gameType}:${currentConfig.surfType}`;
+        const allCaches = JSON.parse(localStorage.getItem(LOCAL_CACHE_KEY) || '{}');
+        const snap = allCaches[key];
+        if (!snap) return false;
+        if (Date.now() - snap.timestamp > LOCAL_CACHE_MAX_AGE) return false;
+
+        // Restore state
+        zoneCache.clear();
+        for (const [k, v] of Object.entries(snap.zoneCache)) zoneCache.set(parseInt(k), v);
+        profileCache = snap.profileCache;
+        lastProfileFetch = snap.lastProfileFetch;
+        currentMap = snap.currentMap;
+        currentZone = snap.currentZone;
+        // Restore refresh time so the countdown picks up where it left off
+        lastRefreshTime = snap.lastRefreshTime || snap.timestamp;
+        // Restore header
+        if (snap.headerName) ui.playerNameText.innerText = snap.headerName;
+        if (snap.headerAvatar) ui.avatar.style.backgroundImage = snap.headerAvatar;
+        if (snap.headerFlag && snap.headerFlagVisible) {
+            ui.playerFlag.src = snap.headerFlag;
+            ui.playerFlag.style.display = 'inline';
+        }
+        return true;
+    } catch (e) {}
+    return false;
+}
 
 // ── Per-gameType/surfType snapshot cache ─────────────────────────────────────
 // Stores full UI state snapshots keyed by "gameType:surfType" so switching
@@ -130,6 +193,7 @@ const ui = {
     mapTierValue: document.getElementById('map-tier-value'),
     mapStageCount: document.getElementById('map-stage-count'),
     mapBonusCount: document.getElementById('map-bonus-count'),
+    mapInfoBg: document.getElementById('map-info-bg'),
     statusIndicator: document.getElementById('status-indicator'),
     updateTimer: document.getElementById('update-timer'),
     playingOnLabel: document.getElementById('playing-on-label'),
@@ -204,6 +268,59 @@ const ui = {
     mainStatStartVel: document.getElementById('main-stat-startvel'),
     mainStatEndVel: document.getElementById('main-stat-endvel')
 };
+
+// ── Map background image cache ──────────────────────────────────────────────
+const mapImageCache = new Map(); // mapName -> blob URL
+
+function formatMapDisplayName(mapName) {
+    if (!mapName) return mapName;
+    return mapName.replace(/^surf_/i, '');
+}
+
+function setMapBackground(mapName) {
+    if (!mapName || currentConfig.showMapImage === false) {
+        ui.mapInfoBg.style.backgroundImage = '';
+        ui.mapInfoBg.classList.remove('loaded');
+        return;
+    }
+
+    // Check cache first
+    const cached = mapImageCache.get(mapName);
+    if (cached) {
+        ui.mapInfoBg.style.backgroundImage = `url('${cached}')`;
+        ui.mapInfoBg.classList.add('loaded');
+        return;
+    }
+
+    // Fetch and cache as blob URL
+    const imgUrl = `https://ksf.surf/images/${encodeURIComponent(mapName)}.jpg`;
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+        // Create a blob URL from canvas for caching
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        canvas.toBlob((blob) => {
+            if (blob) {
+                const blobUrl = URL.createObjectURL(blob);
+                mapImageCache.set(mapName, blobUrl);
+                // Only apply if this map is still current
+                if (currentMap === mapName) {
+                    ui.mapInfoBg.style.backgroundImage = `url('${blobUrl}')`;
+                    ui.mapInfoBg.classList.add('loaded');
+                }
+            }
+        }, 'image/jpeg', 0.8);
+    };
+    img.onerror = () => {
+        // Image not available — just leave it blank
+        mapImageCache.set(mapName, ''); // cache the miss
+    };
+    img.src = imgUrl;
+}
 
 // ── Pill Toggle UI ──────────────────────────────────────────────────────────
 function initPillToggles() {
@@ -369,7 +486,8 @@ ui.stageNavLeft.addEventListener('click', () => navigateZone(-1));
 ui.stageNavRight.addEventListener('click', () => navigateZone(1));
 
 ui.mapName.addEventListener('click', () => {
-    const mapText = ui.mapName.innerText;
+    // Copy the full map name (with surf_ prefix) for use in game chat
+    const mapText = currentMap || ui.mapName.innerText;
     if (!mapText || mapText.includes('loading')) return;
     navigator.clipboard.writeText(mapText).then(() => {
         ui.mapName.classList.add('copied');
@@ -488,7 +606,7 @@ if (ipcRenderer) {
         const steamIdChanged = currentConfig.steamId !== prev.steamId;
         const rateChanged = currentConfig.refreshRate !== prev.refreshRate;
         const gameTypeChanged = currentConfig.gameType !== prev.gameType || currentConfig.surfType !== prev.surfType;
-        const layoutChanged = currentConfig.showMainMapStats !== prev.showMainMapStats || currentConfig.autoFollowStage !== prev.autoFollowStage || currentConfig.horizontalLayout !== prev.horizontalLayout || currentConfig.showZoneBar !== prev.showZoneBar || currentConfig.showRankCard !== prev.showRankCard || currentConfig.showProfileStats !== prev.showProfileStats || currentConfig.showDetailedStats !== prev.showDetailedStats || currentConfig.showMapInfo !== prev.showMapInfo || currentConfig.showPointsBreakdown !== prev.showPointsBreakdown || currentConfig.showHeader !== prev.showHeader || currentConfig.showPillToggles !== prev.showPillToggles || currentConfig.showStagePanel !== prev.showStagePanel || currentConfig.showFooter !== prev.showFooter;
+        const layoutChanged = currentConfig.showMainMapStats !== prev.showMainMapStats || currentConfig.autoFollowStage !== prev.autoFollowStage || currentConfig.horizontalLayout !== prev.horizontalLayout || currentConfig.showZoneBar !== prev.showZoneBar || currentConfig.showRankCard !== prev.showRankCard || currentConfig.showProfileStats !== prev.showProfileStats || currentConfig.showDetailedStats !== prev.showDetailedStats || currentConfig.showMapInfo !== prev.showMapInfo || currentConfig.showMapImage !== prev.showMapImage || currentConfig.showPointsBreakdown !== prev.showPointsBreakdown || currentConfig.showHeader !== prev.showHeader || currentConfig.showPillToggles !== prev.showPillToggles || currentConfig.showStagePanel !== prev.showStagePanel || currentConfig.showFooter !== prev.showFooter;
 
         syncPillsFromConfig();
 
@@ -611,6 +729,13 @@ function applyConfig() {
     if (ui.recordsCard) ui.recordsCard.style.display = showProfileStats ? '' : 'none';
     // Map info card is now outside profile-section, managed independently
     if (ui.mapInfoCard) ui.mapInfoCard.style.display = showMapInfo && currentMap ? '' : 'none';
+    // Map background image toggle
+    if (currentConfig.showMapImage === false) {
+        ui.mapInfoBg.style.backgroundImage = '';
+        ui.mapInfoBg.classList.remove('loaded');
+    } else if (currentMap) {
+        setMapBackground(currentMap);
+    }
     if (ui.pointsBreakdownCard) ui.pointsBreakdownCard.style.display = showPointsBreakdown ? '' : 'none';
 
     // Show/hide row containers
@@ -726,6 +851,10 @@ function applyRemoteConfig(cfg) {
         currentConfig.showMapInfo = cfg.showMapInfo;
         changed = true;
     }
+    if (cfg.showMapImage !== undefined && cfg.showMapImage !== currentConfig.showMapImage) {
+        currentConfig.showMapImage = cfg.showMapImage;
+        changed = true;
+    }
     if (cfg.showPointsBreakdown !== undefined && cfg.showPointsBreakdown !== currentConfig.showPointsBreakdown) {
         currentConfig.showPointsBreakdown = cfg.showPointsBreakdown;
         changed = true;
@@ -786,6 +915,17 @@ function startPolling(forceImmediate = false) {
 
     // Restore persisted timer to prevent Ctrl+R reload spam
     const storedTime = loadLastRefreshTime();
+
+    // Try to restore cached data from localStorage immediately
+    if (zoneCache.size === 0) {
+        const restored = loadLocalCache();
+        if (restored) {
+            if (profileCache) populateProfile(profileCache);
+            refreshLayoutFromCache();
+            if (currentMap) setMapBackground(currentMap);
+            resizeOverlay();
+        }
+    }
 
     if (forceImmediate) {
         const elapsed = Date.now() - storedTime;
@@ -908,6 +1048,8 @@ async function fetchStats() {
         saveLastRefreshTime(Date.now());
         // Update pill snapshot cache with fresh data
         savePillSnapshot();
+        // Persist to localStorage for app restart recovery
+        saveLocalCache();
 
         if (!ipcRenderer) {
             try {
@@ -1376,6 +1518,7 @@ async function fetchProfile() {
             profileCache = data;
             lastProfileFetch = now;
             populateProfile(data);
+            saveLocalCache();
         }
     } catch (e) {}
 }
@@ -1550,6 +1693,7 @@ async function fetchMapStats(map, baseData) {
         if (result.tier) setTierBadge(result.tier);
         // Update map-specific playtime from zone 0 data
         updateMapPlaytime();
+        saveLocalCache();
         resizeOverlay();
     } catch (e) {}
     finally {
@@ -1652,7 +1796,7 @@ function updateUI(data) {
         ui.statusIndicator.className = "status-badge online";
         
         if (ui.mapSpinner) ui.mapSpinner.style.display = 'none';
-        ui.mapName.innerText = data.map || "Unknown Map";
+        ui.mapName.innerText = formatMapDisplayName(data.map) || "Unknown Map";
 
         // Set tier from mapInfo (if available from server status)
         if (data.mapInfo && data.mapInfo.tier) {
@@ -1665,6 +1809,9 @@ function updateUI(data) {
         } else {
             ui.mapInfoCard.style.display = 'none';
         }
+
+        // Set map background image
+        setMapBackground(data.map);
 
         if (data.serverName) {
             const totalOnline = data.serverPlayers ? data.serverPlayers.length : 1;
@@ -1834,6 +1981,8 @@ function updateUI(data) {
         ui.profilePlaytime.innerText = '-';
         ui.mapStageCount.innerText = '-';
         ui.mapBonusCount.innerText = '-';
+        ui.mapInfoBg.style.backgroundImage = '';
+        ui.mapInfoBg.classList.remove('loaded');
         ui.mapInfoCard.style.display = 'none';
         ui.zoneBarContainer.style.display = 'none';
         ui.playingOnLabel.style.display = 'none';

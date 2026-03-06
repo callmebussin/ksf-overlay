@@ -25,6 +25,7 @@ let appConfig = {
     showProfileStats: true,
     showDetailedStats: true,
     showMapInfo: true,
+    showMapImage: true,
     showPointsBreakdown: true,
     showHeader: true,
     showPillToggles: true,

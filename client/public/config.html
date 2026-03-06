@@ -302,6 +302,10 @@
                     <span>Map Info Card</span>
                     <div class="toggle"><input type="checkbox" id="show-map-info" checked><span class="toggle-slider"></span></div>
                 </label>
+                <label class="toggle-row" for="show-map-image" id="show-map-image-row">
+                    <span>Map Background Image</span>
+                    <div class="toggle"><input type="checkbox" id="show-map-image" checked><span class="toggle-slider"></span></div>
+                </label>
                 <label class="toggle-row" for="show-points-breakdown">
                     <span>Points Breakdown Card</span>
                     <div class="toggle"><input type="checkbox" id="show-points-breakdown" checked><span class="toggle-slider"></span></div>
@@ -428,6 +432,8 @@
             showProfileStats: document.getElementById('show-profile-stats'),
             showDetailedStats: document.getElementById('show-detailed-stats'),
             showMapInfo: document.getElementById('show-map-info'),
+            showMapImage: document.getElementById('show-map-image'),
+            showMapImageRow: document.getElementById('show-map-image-row'),
             showPointsBreakdown: document.getElementById('show-points-breakdown'),
             showStagePanel: document.getElementById('show-stage-panel'),
             showDetailedStatsRow: document.getElementById('show-detailed-stats-row'),
@@ -463,6 +469,8 @@
             els.showProfileStats.checked = config.showProfileStats !== false;
             els.showDetailedStats.checked = config.showDetailedStats !== false;
             els.showMapInfo.checked = config.showMapInfo !== false;
+            els.showMapImage.checked = config.showMapImage !== false;
+            updateMapInfoDeps();
             els.showPointsBreakdown.checked = config.showPointsBreakdown !== false;
             els.showStagePanel.checked = config.showStagePanel !== false;
             updateStagePanelDeps();
@@ -501,6 +509,11 @@
             els.showPillTogglesRow.style.display = show ? '' : 'none';
         }
 
+        function updateMapInfoDeps() {
+            const show = els.showMapInfo.checked;
+            els.showMapImageRow.style.display = show ? '' : 'none';
+        }
+
         function updateStagePanelDeps() {
             const show = els.showStagePanel.checked;
             els.showDetailedStatsRow.style.display = show ? '' : 'none';
@@ -525,6 +538,7 @@
                     showProfileStats: els.showProfileStats.checked,
                     showDetailedStats: els.showDetailedStats.checked,
                     showMapInfo: els.showMapInfo.checked,
+                    showMapImage: els.showMapImage.checked,
                     showPointsBreakdown: els.showPointsBreakdown.checked,
                     showStagePanel: els.showStagePanel.checked,
                     opacity: parseInt(els.opacity.value),
@@ -556,7 +570,8 @@
         els.showRankCard.addEventListener('change', autoSave);
         els.showProfileStats.addEventListener('change', autoSave);
         els.showDetailedStats.addEventListener('change', autoSave);
-        els.showMapInfo.addEventListener('change', autoSave);
+        els.showMapInfo.addEventListener('change', () => { updateMapInfoDeps(); autoSave(); });
+        els.showMapImage.addEventListener('change', autoSave);
         els.showPointsBreakdown.addEventListener('change', autoSave);
         els.showStagePanel.addEventListener('change', () => { updateStagePanelDeps(); autoSave(); });
         els.opacity.addEventListener('input', autoSave);
