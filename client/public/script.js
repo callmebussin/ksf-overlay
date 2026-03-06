@@ -1867,6 +1867,11 @@ async function fetchMapStats(map, baseData) {
     if (mapStatsFetching === map) return;
     mapStatsFetching = map;
 
+    // Immediately create placeholder entries for ALL zones on this map so
+    // navigation arrows and zone-bar clicks work even before the API responds
+    // (and for zones the player has never completed).
+    ensureAllZonesInCache(map, baseData);
+
     try {
         const resp = await fetch(`${getBaseUrl()}/api/mapstats/${encodeURIComponent(currentConfig.steamId)}/${encodeURIComponent(map)}?${apiQuery()}`);
         if (!resp.ok) {
@@ -1884,9 +1889,11 @@ async function fetchMapStats(map, baseData) {
         for (const [zoneIdStr, zoneData] of Object.entries(result.zones)) {
             const zoneId = parseInt(zoneIdStr);
             if (isNaN(zoneId)) continue;
-            if (zoneCache.has(zoneId)) continue;
 
+            // Overwrite placeholder (or live zone) with real PR data
+            const existing = zoneCache.get(zoneId);
             zoneCache.set(zoneId, {
+                ...(existing || {}),
                 ...zoneData,
                 map: map,
                 mapInfo: baseData.mapInfo,
@@ -1913,6 +1920,66 @@ async function fetchMapStats(map, baseData) {
     finally {
         if (mapStatsFetching === map) mapStatsFetching = null;
     }
+}
+
+// Create placeholder zone cache entries for every stage and bonus on the map.
+// This ensures zone-bar clicks and arrow navigation work even for zones the
+// player has never completed (which the KSF PRInfo endpoint doesn't return).
+function ensureAllZonesInCache(map, baseData) {
+    if (!baseData.mapInfo) return;
+    const mapType = parseInt(baseData.mapInfo.type); // 0 = staged, 1 = linear
+    const totalStages = parseInt(baseData.mapInfo.cpCount) || 0;
+    const totalBonuses = parseInt(baseData.mapInfo.bCount) || 0;
+    const isLinear = mapType === 1;
+
+    const placeholder = {
+        map: map,
+        mapInfo: baseData.mapInfo,
+        playerName: baseData.playerName,
+        avatarUrl: baseData.avatarUrl,
+        steamId64: baseData.steamId64,
+        status: baseData.status,
+        time: null,
+        rank: null,
+        totalRanks: null,
+        completions: 0,
+        attempts: null,
+        group: null,
+        wrDiff: null,
+        wrTime: null
+    };
+
+    // Zone 0 = main map
+    if (!zoneCache.has(0)) {
+        zoneCache.set(0, { ...placeholder, zone: 0 });
+    }
+
+    if (isLinear) {
+        // Linear maps: zone 1 = the single stage (same as main map)
+        if (!zoneCache.has(1)) {
+            zoneCache.set(1, { ...placeholder, zone: 1 });
+        }
+    } else {
+        // Staged maps: zones 1..totalStages
+        for (let i = 1; i <= totalStages; i++) {
+            if (!zoneCache.has(i)) {
+                zoneCache.set(i, { ...placeholder, zone: i });
+            }
+        }
+    }
+
+    // Bonuses: zones 31..30+totalBonuses
+    for (let i = 1; i <= totalBonuses; i++) {
+        const zoneId = 30 + i;
+        if (!zoneCache.has(zoneId)) {
+            zoneCache.set(zoneId, { ...placeholder, zone: zoneId });
+        }
+    }
+
+    // Update nav and zone bar immediately with placeholders
+    updateNavButtons();
+    updateMapCompletionStatus(baseData.mapInfo);
+    resizeOverlay();
 }
 
 const COUNTRY_CODES = {
