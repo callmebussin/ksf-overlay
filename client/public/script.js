@@ -709,7 +709,8 @@ if (ipcRenderer) {
         currentConfig = { ...currentConfig, ...config };
         applyConfig();
 
-        // Push config to server so OBS web view stays in sync
+        // Always push config to server so OBS web view stays in sync
+        // (fires on initial load AND on every subsequent change)
         broadcastConfigToServer();
         
         const steamIdChanged = currentConfig.steamId !== prev.steamId;
@@ -1071,7 +1072,7 @@ function startPolling(forceImmediate = false) {
     timerInterval = setInterval(updateFooterTimer, 1000);
 
     if (!ipcRenderer) {
-        browseInterval = setInterval(pollBrowseState, 5000); // 5s instead of 1.5s to reduce load
+        browseInterval = setInterval(pollBrowseState, 1500);
     }
 }
 

@@ -43,6 +43,7 @@ body {
 .cards-layout {
     display: flex;
     flex-direction: column;
+    gap: 8px;
     transition: all 0.4s ease;
     margin-bottom: 8px;
 }
@@ -435,7 +436,7 @@ body {
 .main-stats {
     display: flex;
     flex-direction: column;
-    margin-bottom: 8px;
+    margin-bottom: 0;
     background: rgba(255,255,255,0.05);
     padding: 10px;
     border-radius: 6px;
