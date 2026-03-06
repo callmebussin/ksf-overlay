@@ -187,7 +187,7 @@ const ui = {
     playerName: document.getElementById('player-name'),
     playerNameText: document.getElementById('player-name-text'),
     playerFlag: document.getElementById('player-flag'),
-    headerPoints: document.getElementById('header-points'),
+    headerPoints: null, // removed — rank label replaced points
     mapName: document.getElementById('map-name'),
     mapSpinner: document.getElementById('map-spinner'),
     mapTierValue: document.getElementById('map-tier-value'),
@@ -541,6 +541,13 @@ function navigateZone(direction) {
 function getSortedCachedZones() {
     const all = Array.from(zoneCache.keys()).sort((a, b) => a - b);
     if (currentConfig.showMainMapStats) {
+        // When main map panel is shown, exclude zone 0 from stage navigation.
+        // On linear maps, also exclude zone 1 since it's the same as the main map.
+        const anyZone = zoneCache.values().next().value;
+        const isLinear = anyZone && anyZone.mapInfo && parseInt(anyZone.mapInfo.type) === 1;
+        if (isLinear) {
+            return all.filter(z => z !== 0 && z !== 1);
+        }
         return all.filter(z => z !== 0);
     }
     return all;
@@ -1559,14 +1566,10 @@ function getRankTitleCss(rankTitle) {
 }
 
 function populateProfile(d) {
-    // Update header points (under username)
-    const totalPts = d.points?.points ? Math.round(d.points.points) : 0;
-    ui.headerPoints.innerText = totalPts > 0 ? `${totalPts.toLocaleString()} points` : "-";
-
-    // Rank title in header
+    // Rank title under username
     const rankCss = getRankTitleCss(d.rankTitle);
     ui.profileRankTitle.innerText = d.rankTitle || "-";
-    ui.profileRankTitle.className = "header-rank-title";
+    ui.profileRankTitle.className = "header-rank-label";
     if (rankCss) ui.profileRankTitle.classList.add(rankCss);
 
     // Rank card: Points, Global Rank, Country Rank, PC%
@@ -1789,9 +1792,11 @@ function refreshLayoutFromCache() {
     // Re-render the stage panel with the correct zone
     const liveZone = browsingZone !== null ? browsingZone : currentZone;
     let stageZoneId = liveZone;
-    if (showMainMap && stageZoneId === 0) {
-        const nonZeroZones = getSortedCachedZones();
-        stageZoneId = nonZeroZones.length > 0 ? nonZeroZones[0] : 0;
+    const anyZoneData = zoneCache.values().next().value;
+    const isLinearMap = anyZoneData && anyZoneData.mapInfo && parseInt(anyZoneData.mapInfo.type) === 1;
+    if (showMainMap && (stageZoneId === 0 || (isLinearMap && stageZoneId === 1))) {
+        const nonMainZones = getSortedCachedZones();
+        stageZoneId = nonMainZones.length > 0 ? nonMainZones[0] : (isLinearMap ? 1 : 0);
     }
     displayedStageZone = stageZoneId;
     const cached = zoneCache.get(stageZoneId);
@@ -1940,13 +1945,14 @@ function updateUI(data) {
 
         // Determine which zone the stage panel should display.
         // When showMainMapStats is on, the stage panel never shows zone 0
-        // (that's what the Main Map panel is for).
+        // (or zone 1 on linear maps, since that's the same as Main Map).
         let stageZoneId = zoneId;
-        if (showMainMap && stageZoneId === 0) {
-            // Player is on zone 0 but main map panel is showing it.
-            // Show the first available non-zero zone, or fall back to zone 0.
-            const nonZeroZones = getSortedCachedZones();
-            stageZoneId = nonZeroZones.length > 0 ? nonZeroZones[0] : 0;
+        const isLinear = data.mapInfo && parseInt(data.mapInfo.type) === 1;
+        if (showMainMap && (stageZoneId === 0 || (isLinear && stageZoneId === 1))) {
+            // Player is on zone 0/1 but main map panel is showing it.
+            // Show the first available bonus/stage zone, or fall back.
+            const nonMainZones = getSortedCachedZones();
+            stageZoneId = nonMainZones.length > 0 ? nonMainZones[0] : (isLinear ? 1 : 0);
         }
 
         const stageData = zoneCache.get(stageZoneId) || data;
