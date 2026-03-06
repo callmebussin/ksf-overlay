@@ -676,28 +676,6 @@ function formatAnimatedNumber(value, template, format) {
             return intStr(value);
     }
 }
-        case 'rank': {
-            const parts = template.match(/^(-?\d[\d,]*)\s*\/\s*(-?\d[\d,]*)$/);
-            const total = parts ? parts[2] : '';
-            return `${Math.round(value).toLocaleString()}/${total}`;
-        }
-        case 'hash':
-            return `#${Math.round(value).toLocaleString()}`;
-        case 'pct':
-            return `${value.toFixed(2)}%`;
-        case 'frac': {
-            const parts = template.match(/^([\d,]+)\/([\d,]+)$/);
-            const total = parts ? parts[2] : '';
-            return `${Math.round(value).toLocaleString()}/${total}`;
-        }
-        case 'plain':
-        default:
-            // Preserve comma formatting if template had commas
-            if (template.includes(',')) return Math.round(value).toLocaleString();
-            if (template.includes('.')) return value.toFixed((template.split('.')[1] || '').length);
-            return Math.round(value).toString();
-    }
-}
 
 if (ipcRenderer) {
     ipcRenderer.on('config-updated', (event, config) => {
