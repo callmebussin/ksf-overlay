@@ -66,8 +66,8 @@ let browsingZone = null;
 // pills restores instantly without hitting the API.
 const pillSnapshotCache = new Map();
 
-function pillCacheKey(gameType, surfType) {
-    return `${gameType || 'css'}:${surfType || 0}`;
+function pillCacheKey(gameType, surfType, steamId) {
+    return `${steamId || currentConfig.steamId}:${gameType || 'css'}:${surfType || 0}`;
 }
 
 function savePillSnapshot() {
@@ -80,6 +80,11 @@ function savePillSnapshot() {
         currentZone,
         browsingZone,
         displayedStageZone,
+        // Store header display state so it can be restored on pill switch
+        headerName: ui.playerNameText.innerText,
+        headerAvatar: ui.avatar.style.backgroundImage,
+        headerFlag: ui.playerFlag.src,
+        headerFlagVisible: ui.playerFlag.style.display !== 'none',
         timestamp: Date.now()
     });
 }
@@ -102,6 +107,15 @@ function loadPillSnapshot(gameType, surfType) {
     currentZone = snap.currentZone;
     browsingZone = snap.browsingZone;
     displayedStageZone = snap.displayedStageZone;
+    // Restore header display state (name, avatar, flag)
+    if (snap.headerName) ui.playerNameText.innerText = snap.headerName;
+    if (snap.headerAvatar) ui.avatar.style.backgroundImage = snap.headerAvatar;
+    if (snap.headerFlag && snap.headerFlagVisible) {
+        ui.playerFlag.src = snap.headerFlag;
+        ui.playerFlag.style.display = 'inline';
+    } else if (snap.headerFlagVisible === false) {
+        ui.playerFlag.style.display = 'none';
+    }
     return true;
 }
 
@@ -136,7 +150,7 @@ const ui = {
     endVel: document.getElementById('stat-endvel'),
 
     profileSection: document.getElementById('profile-section'),
-    profileDivider: document.getElementById('profile-divider'),
+    profileDivider: null, // removed from DOM
     profileRankTitle: document.getElementById('profile-rank-title'),
     profilePoints: document.getElementById('profile-points'),
     profileGlobalRank: document.getElementById('profile-global-rank'),
@@ -458,6 +472,12 @@ function animateTimeChange(element, newText) {
 if (ipcRenderer) {
     ipcRenderer.on('config-updated', (event, config) => {
         const prev = { ...currentConfig };
+
+        // Save current player's pill snapshot before steamId changes
+        if (config.steamId && config.steamId !== prev.steamId) {
+            savePillSnapshot();
+        }
+
         currentConfig = { ...currentConfig, ...config };
         applyConfig();
         
@@ -472,6 +492,11 @@ if (ipcRenderer) {
             if (steamIdChanged) {
                 profileCache = null;
                 lastProfileFetch = 0;
+                zoneCache.clear();
+                currentMap = null;
+                currentZone = null;
+                browsingZone = null;
+                displayedStageZone = null;
                 // Clear stored refresh time so new player data is fetched immediately
                 saveLastRefreshTime(0);
             }
@@ -584,11 +609,10 @@ function applyConfig() {
     if (ui.mapInfoCard) ui.mapInfoCard.style.display = showMapInfo && currentMap ? '' : 'none';
     if (ui.pointsBreakdownCard) ui.pointsBreakdownCard.style.display = showPointsBreakdown ? '' : 'none';
 
-    // Show/hide the wrapper section + divider
+    // Show/hide the wrapper section
     if (showAnyProfile) {
         if (profileCache) {
             ui.profileSection.style.display = 'block';
-            ui.profileDivider.style.display = 'block';
             populateProfile(profileCache);
         } else if (currentConfig.steamId && hasInitialized) {
             // Profile data not yet fetched — trigger a fetch now
@@ -1421,7 +1445,6 @@ function populateProfile(d) {
     // Show profile section if at least one sub-section is visible
     const showAny = currentConfig.showRankCard !== false || currentConfig.showProfileStats !== false || currentConfig.showPointsBreakdown !== false;
     ui.profileSection.style.display = showAny ? 'block' : 'none';
-    ui.profileDivider.style.display = showAny ? 'block' : 'none';
     resizeOverlay();
 }
 
@@ -1466,7 +1489,6 @@ function populatePointsBreakdown(points) {
 
 function hideProfile() {
     ui.profileSection.style.display = 'none';
-    ui.profileDivider.style.display = 'none';
 }
 
 let mapStatsFetching = null;
@@ -1650,12 +1672,16 @@ function updateUI(data) {
                         isUpdating = false;
                         mapStatsFetching = null;
 
+                        // Save current player's state before switching
+                        savePillSnapshot();
+
                         // Switch to the selected player
                         currentConfig.steamId = p.steamid;
                         profileCache = null;
                         lastProfileFetch = 0;
                         zoneCache.clear();
-                        pillSnapshotCache.clear();
+                        // Don't clear pillSnapshotCache — keys are scoped per steamId,
+                        // so the original player's cache is preserved for switching back.
                         currentMap = null;
                         currentZone = null;
                         browsingZone = null;
