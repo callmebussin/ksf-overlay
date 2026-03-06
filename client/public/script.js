@@ -85,6 +85,7 @@ const ui = {
     profilePlaytime: document.getElementById('profile-playtime'),
     header: document.getElementById('header'),
     footer: document.getElementById('footer'),
+    emptyState: document.getElementById('empty-state'),
     cardsLayout: document.getElementById('cards-layout'),
     mapInfoCard: document.getElementById('map-info-card'),
     completionsCard: document.getElementById('completions-card'),
@@ -395,6 +396,17 @@ function applyConfig() {
         ui.statusIndicator.innerHTML = '<span class="status-dot"></span>SETUP';
         ui.statusIndicator.className = "status-badge offline";
     }
+
+    // ── Empty state when everything is disabled ─────────────────
+    const allOff = currentConfig.showHeader === false
+        && currentConfig.showFooter === false
+        && currentConfig.showStagePanel === false
+        && currentConfig.showRankCard === false
+        && currentConfig.showProfileStats === false
+        && currentConfig.showMapInfo === false
+        && currentConfig.showPointsBreakdown === false
+        && currentConfig.showZoneBar === false;
+    if (ui.emptyState) ui.emptyState.style.display = allOff ? '' : 'none';
 
     resizeOverlay();
 }

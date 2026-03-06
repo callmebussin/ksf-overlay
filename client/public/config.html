@@ -310,7 +310,7 @@
                     <span>Map PB &amp; Rank Section</span>
                     <div class="toggle"><input type="checkbox" id="show-stage-panel" checked><span class="toggle-slider"></span></div>
                 </label>
-                <label class="toggle-row" for="show-main-map-stats">
+                <label class="toggle-row" for="show-main-map-stats" id="show-main-map-stats-row">
                     <span>Show Map Stats Separately</span>
                     <div class="toggle"><input type="checkbox" id="show-main-map-stats"><span class="toggle-slider"></span></div>
                 </label>
@@ -414,6 +414,7 @@
             showMapInfo: document.getElementById('show-map-info'),
             showPointsBreakdown: document.getElementById('show-points-breakdown'),
             showStagePanel: document.getElementById('show-stage-panel'),
+            showMainMapStatsRow: document.getElementById('show-main-map-stats-row'),
             obsUrlDisplay: document.getElementById('obs-url-display'),
             opacity: document.getElementById('opacity'),
             opacityVal: document.getElementById('opacity-val'),
@@ -445,6 +446,7 @@
             els.showMapInfo.checked = config.showMapInfo !== false;
             els.showPointsBreakdown.checked = config.showPointsBreakdown !== false;
             els.showStagePanel.checked = config.showStagePanel !== false;
+            updateStagePanelDeps();
 
             els.opacity.value = config.opacity || 100;
             els.opacityVal.innerText = els.opacity.value + '%';
@@ -474,6 +476,11 @@
                 autoSave();
             }
         });
+
+        function updateStagePanelDeps() {
+            const show = els.showStagePanel.checked;
+            els.showMainMapStatsRow.style.display = show ? '' : 'none';
+        }
 
         let saveTimeout = null;
         function autoSave() {
@@ -524,7 +531,7 @@
         els.showDetailedStats.addEventListener('change', autoSave);
         els.showMapInfo.addEventListener('change', autoSave);
         els.showPointsBreakdown.addEventListener('change', autoSave);
-        els.showStagePanel.addEventListener('change', autoSave);
+        els.showStagePanel.addEventListener('change', () => { updateStagePanelDeps(); autoSave(); });
         els.opacity.addEventListener('input', autoSave);
         els.colors.bgColor.addEventListener('input', autoSave);
         els.colors.textColor.addEventListener('input', autoSave);

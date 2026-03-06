@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <!-- zone bar moved inside stage panel -->
+        <!-- zone bar sits above cards-layout, independent of stage panel toggle -->
 
         <div id="profile-section" class="profile-section" style="display: none;">
             <div id="profile-rank-card" class="profile-rank-header">
@@ -111,6 +111,12 @@
 
         <hr id="profile-divider" class="section-divider" style="display: none;">
 
+        <div id="zone-bar-container" class="zone-bar-container" style="display: none;">
+            <div id="zone-bar-stages" class="zone-bar-row"></div>
+            <div id="zone-bar-bonuses" class="zone-bar-row"></div>
+            <div id="zone-bar-tooltip" class="zone-bar-tooltip"></div>
+        </div>
+
         <div id="cards-layout" class="cards-layout">
 
             <div id="main-map-section" class="layout-panel" style="display: none;">
@@ -181,12 +187,6 @@
                     <button id="stage-nav-right" class="stage-nav-btn">&rsaquo;</button>
                 </div>
 
-                <div id="zone-bar-container" class="zone-bar-container" style="display: none;">
-                    <div id="zone-bar-stages" class="zone-bar-row"></div>
-                    <div id="zone-bar-bonuses" class="zone-bar-row"></div>
-                    <div id="zone-bar-tooltip" class="zone-bar-tooltip"></div>
-                </div>
-
                 <div id="stage-slide-container" class="stage-slide-container">
                     <div id="stage-content" class="stage-content">
                         <div class="main-stats">
@@ -249,6 +249,8 @@
             </div>
 
         </div>
+
+        <div id="empty-state" class="empty-state" style="display: none;">( .  )(  . )</div>
 
         <div id="footer" class="footer">
             <span id="status-indicator" class="status-badge offline"><span class="status-dot"></span>OFFLINE</span>
