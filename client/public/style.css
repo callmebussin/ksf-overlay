@@ -78,9 +78,7 @@ body {
 }
 
 .section-divider {
-    border: none;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    margin: 8px 0;
+    display: none !important;
 }
 
 /* card-divider removed — detailed stats now inside .main-stats */
@@ -1077,6 +1075,11 @@ body {
     opacity: 0.6;
     padding-top: 8px;
     border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* When footer is hidden, tighten bottom spacing */
+.overlay-mode #card.footer-hidden {
+    padding-bottom: 8px;
 }
 
 .update-timer {

@@ -293,28 +293,15 @@ function setMapBackground(mapName) {
         return;
     }
 
-    // Fetch and cache as blob URL
+    // Use the image URL directly (avoids CORS/canvas issues in browser mode)
     const imgUrl = `https://ksf.surf/images/${encodeURIComponent(mapName)}.jpg`;
     const img = new Image();
-    img.crossOrigin = 'anonymous';
     img.onload = () => {
-        // Create a blob URL from canvas for caching
-        const canvas = document.createElement('canvas');
-        canvas.width = img.naturalWidth;
-        canvas.height = img.naturalHeight;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0);
-        canvas.toBlob((blob) => {
-            if (blob) {
-                const blobUrl = URL.createObjectURL(blob);
-                mapImageCache.set(mapName, blobUrl);
-                // Only apply if this map is still current
-                if (currentMap === mapName) {
-                    ui.mapInfoBg.style.backgroundImage = `url('${blobUrl}')`;
-                    ui.mapInfoBg.classList.add('loaded');
-                }
-            }
-        }, 'image/jpeg', 0.8);
+        mapImageCache.set(mapName, imgUrl);
+        if (currentMap === mapName) {
+            ui.mapInfoBg.style.backgroundImage = `url('${imgUrl}')`;
+            ui.mapInfoBg.classList.add('loaded');
+        }
     };
     img.onerror = () => {
         // Image not available — just leave it blank
@@ -909,7 +896,9 @@ function applyConfig() {
     }
 
     // ── Footer visibility ───────────────────────────────────────
-    if (ui.footer) ui.footer.style.display = currentConfig.showFooter !== false ? '' : 'none';
+    const showFooter = currentConfig.showFooter !== false;
+    if (ui.footer) ui.footer.style.display = showFooter ? '' : 'none';
+    card.classList.toggle('footer-hidden', !showFooter);
 
     // ── Stage panel (main map + stage/bonus sections) visibility ─
     const showStage = currentConfig.showStagePanel !== false;
