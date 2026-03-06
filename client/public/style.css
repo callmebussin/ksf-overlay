@@ -1087,7 +1087,7 @@ body {
     position: absolute;
     height: calc(100% - 4px);
     border-radius: 12px;
-    background: #5b4fc4;
+    background: var(--accent-color);
     transition: left 0.25s ease, width 0.25s ease;
     top: 2px;
     z-index: 0;

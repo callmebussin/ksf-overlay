@@ -570,9 +570,30 @@ app.get('/api/profile/:input', async (req, res) => {
         }
 
         const d = response.data;
-        const surfRank = parseInt(d.SurfRank);
-        const points = parseInt(d.playerPoints?.points);
-        const rankTitle = calculateSurfRank(surfRank, points);
+
+        // Rank title is always based on FW (surfType 0) stats for the current gameType.
+        // Other surf styles don't have their own rank — it's determined by the gameType's FW rank/points.
+        let rankTitle;
+        if (surfType === 0) {
+            const surfRank = parseInt(d.SurfRank);
+            const points = parseInt(d.playerPoints?.points);
+            rankTitle = calculateSurfRank(surfRank, points);
+        } else {
+            // Fetch the FW profile to get the correct rank title
+            try {
+                const fwUrl = `${KSF_BASE_URL}/${gameType}/steamid/${steamid}/playerinfo/0`;
+                const fwResponse = await fetchKSFData(fwUrl);
+                if (fwResponse && fwResponse.status === 'OK' && fwResponse.data) {
+                    const fwRank = parseInt(fwResponse.data.SurfRank);
+                    const fwPoints = parseInt(fwResponse.data.playerPoints?.points);
+                    rankTitle = calculateSurfRank(fwRank, fwPoints);
+                } else {
+                    rankTitle = "Rookie";
+                }
+            } catch (e) {
+                rankTitle = "Rookie";
+            }
+        }
 
         if (d.basicInfo?.steamID && d.basicInfo?.country) {
             countryCache.set(d.basicInfo.steamID, d.basicInfo.country);

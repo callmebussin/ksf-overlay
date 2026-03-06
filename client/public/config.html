@@ -360,6 +360,11 @@
                         <option value="default">Default Dark</option>
                         <option value="light">Clean Light</option>
                         <option value="glass">Glass Blue</option>
+                        <option value="midnight">Midnight</option>
+                        <option value="ember">Ember</option>
+                        <option value="forest">Forest</option>
+                        <option value="sunset">Sunset</option>
+                        <option value="arctic">Arctic</option>
                     </select>
                 </div>
 
@@ -398,9 +403,14 @@
         const { ipcRenderer } = require('electron');
 
         const PRESETS = {
-            default: { bgColor: "#000000", textColor: "#ecf0f1", accentColor: "#3498db", borderColor: "#ffffff", opacity: 100 },
-            light:   { bgColor: "#ffffff", textColor: "#4a3f6b", accentColor: "#7c5cbf", borderColor: "#d5cee6", opacity: 90 },
-            glass:   { bgColor: "#001f3f", textColor: "#7FDBFF", accentColor: "#0074D9", borderColor: "#39CCCC", opacity: 85 }
+            default:  { bgColor: "#000000", textColor: "#ecf0f1", accentColor: "#3498db", borderColor: "#ffffff", opacity: 100 },
+            light:    { bgColor: "#ffffff", textColor: "#4a3f6b", accentColor: "#7c5cbf", borderColor: "#d5cee6", opacity: 90 },
+            glass:    { bgColor: "#001f3f", textColor: "#7FDBFF", accentColor: "#0074D9", borderColor: "#39CCCC", opacity: 85 },
+            midnight: { bgColor: "#0d1117", textColor: "#c9d1d9", accentColor: "#58a6ff", borderColor: "#30363d", opacity: 95 },
+            ember:    { bgColor: "#1a0a0a", textColor: "#f5c6aa", accentColor: "#e74c3c", borderColor: "#5c2018", opacity: 95 },
+            forest:   { bgColor: "#0a1a0a", textColor: "#a8d5a2", accentColor: "#2ecc71", borderColor: "#1e4d2b", opacity: 95 },
+            sunset:   { bgColor: "#1a0f1e", textColor: "#f0c4ff", accentColor: "#e056a0", borderColor: "#4a2060", opacity: 90 },
+            arctic:   { bgColor: "#0e1a2b", textColor: "#d0e8ff", accentColor: "#00bcd4", borderColor: "#1e3a5f", opacity: 90 }
         };
 
         const els = {

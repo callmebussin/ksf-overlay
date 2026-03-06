@@ -32,6 +32,7 @@ let timerInterval = null;
 let lastRefreshTime = 0;
 let isUpdating = false;
 let hasInitialized = false;
+let currentFetchController = null; // AbortController for in-flight fetches
 
 // Persist lastRefreshTime across reloads to prevent API spam on Ctrl+R
 function saveLastRefreshTime(timestamp) {
@@ -272,6 +273,14 @@ function onGameOrSurfTypeChanged(prevGameType, prevSurfType) {
     // Broadcast to OBS browser source
     broadcastPillState();
 
+    // Cancel any in-flight requests from the old gameType/surfType
+    if (currentFetchController) {
+        currentFetchController.abort();
+        currentFetchController = null;
+    }
+    isUpdating = false;
+    mapStatsFetching = null;
+
     // Try to restore from cache for the new combo
     const restored = loadPillSnapshot(newGameType, newSurfType);
 
@@ -288,9 +297,7 @@ function onGameOrSurfTypeChanged(prevGameType, prevSurfType) {
         currentMap = null;
         browsingZone = null;
         displayedStageZone = null;
-        mapStatsFetching = null;
         saveLastRefreshTime(0);
-        isUpdating = false;
         fetchStats();
     }
 }
@@ -827,11 +834,16 @@ async function fetchStats() {
     if (isUpdating) return;
     if (!currentConfig.steamId) return;
 
+    // Abort any previous in-flight request
+    if (currentFetchController) currentFetchController.abort();
+    currentFetchController = new AbortController();
+    const signal = currentFetchController.signal;
+
     isUpdating = true;
     
     try {
         const baseUrl = getBaseUrl();
-        const response = await fetch(`${baseUrl}/api/player/${encodeURIComponent(currentConfig.steamId)}?${apiQuery()}`);
+        const response = await fetch(`${baseUrl}/api/player/${encodeURIComponent(currentConfig.steamId)}?${apiQuery()}`, { signal });
         
         if (!response.ok) {
             throw new Error(`Server returned ${response.status}`);
@@ -865,6 +877,10 @@ async function fetchStats() {
         }
         
     } catch (error) {
+        if (error.name === 'AbortError') {
+            // Fetch was cancelled by a pill switch — not an error
+            return;
+        }
         console.error("Fetch failed:", error);
         ui.statusIndicator.innerHTML = '<span class="status-dot"></span>NET ERROR';
         ui.statusIndicator.className = "status-badge offline";
