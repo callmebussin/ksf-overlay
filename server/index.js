@@ -357,6 +357,7 @@ function mapRecordData(rData) {
 app.get('/api/player/:input', async (req, res) => {
     const { input } = req.params;
     const gameType = req.query.game || serverConfig.defaultGame || 'css';
+    const surfType = parseInt(req.query.surfType) || 0; // 0=FW, 1=SW, 2=HSW, 3=BW
 
     if (!input) {
         return res.status(400).json({ error: "Missing SteamID or Username" });
@@ -368,8 +369,21 @@ app.get('/api/player/:input', async (req, res) => {
              return res.status(404).json({ error: "Could not resolve SteamID" });
         }
 
+        // Auto-detect: try the requested gameType first
+        let detectedGameType = gameType;
         const statusUrl = `${KSF_BASE_URL}/${gameType}/steamid/${steamid}/onlinestatus`;
-        const statusResponse = await fetchKSFData(statusUrl);
+        let statusResponse = await fetchKSFData(statusUrl);
+
+        // If offline on the requested gameType, try the other one for auto-detection
+        const altGameType = gameType === 'css' ? 'css100t' : 'css';
+        if (statusResponse && statusResponse.status === 'OK' && statusResponse.data?.onlineStatus !== 'online') {
+            const altUrl = `${KSF_BASE_URL}/${altGameType}/steamid/${steamid}/onlinestatus`;
+            const altResponse = await fetchKSFData(altUrl);
+            if (altResponse && altResponse.status === 'OK' && altResponse.data?.onlineStatus === 'online') {
+                statusResponse = altResponse;
+                detectedGameType = altGameType;
+            }
+        }
 
         if (!statusResponse || statusResponse.status !== 'OK') {
             return res.status(502).json({ error: "Failed to fetch status from KSF API" });
@@ -389,7 +403,8 @@ app.get('/api/player/:input', async (req, res) => {
             steamid,
             steamId64,
             avatarUrl,
-            gameType,
+            gameType: detectedGameType,
+            surfType,
             status: "offline",
             lastUpdated: new Date().toISOString(),
             rawStatus: statusData
@@ -440,7 +455,7 @@ app.get('/api/player/:input', async (req, res) => {
                  responsePayload.zone = 0;
             }
 
-            const recordUrl = `${KSF_BASE_URL}/${gameType}/map/${responsePayload.map}/zone/${responsePayload.zone}/steamid/${steamid}/recordinfo/0`;
+            const recordUrl = `${KSF_BASE_URL}/${detectedGameType}/map/${responsePayload.map}/zone/${responsePayload.zone}/steamid/${steamid}/recordinfo/${surfType}`;
             const recordResponse = await fetchKSFData(recordUrl);
 
             if (recordResponse && recordResponse.status === 'OK' && recordResponse.data) {
@@ -449,7 +464,7 @@ app.get('/api/player/:input', async (req, res) => {
             }
 
             if (responsePayload.zone !== 0) {
-                 const mainMapUrl = `${KSF_BASE_URL}/${gameType}/map/${responsePayload.map}/zone/0/steamid/${steamid}/recordinfo/0`;
+                 const mainMapUrl = `${KSF_BASE_URL}/${detectedGameType}/map/${responsePayload.map}/zone/0/steamid/${steamid}/recordinfo/${surfType}`;
                  const mainMapResponse = await fetchKSFData(mainMapUrl);
                  
                  if (mainMapResponse && mainMapResponse.status === 'OK' && mainMapResponse.data) {
@@ -472,6 +487,7 @@ app.get('/api/player/:input', async (req, res) => {
 app.get('/api/mapstats/:input/:map', async (req, res) => {
     const { input, map } = req.params;
     const gameType = req.query.game || serverConfig.defaultGame || 'css';
+    const surfType = parseInt(req.query.surfType) || 0;
 
     if (!input || !map) {
         return res.status(400).json({ error: "Missing SteamID or map name" });
@@ -483,7 +499,7 @@ app.get('/api/mapstats/:input/:map', async (req, res) => {
             return res.status(404).json({ error: "Could not resolve SteamID" });
         }
 
-        const url = `${KSF_BASE_URL}/${gameType}/steamid/${steamid}/prinfo/map/${map}/0`;
+        const url = `${KSF_BASE_URL}/${gameType}/steamid/${steamid}/prinfo/map/${map}/${surfType}`;
         const response = await fetchKSFData(url);
 
         if (!response || response.status !== 'OK' || !response.data) {
@@ -534,6 +550,7 @@ app.get('/api/mapstats/:input/:map', async (req, res) => {
 app.get('/api/profile/:input', async (req, res) => {
     const { input } = req.params;
     const gameType = req.query.game || serverConfig.defaultGame || 'css';
+    const surfType = parseInt(req.query.surfType) || 0;
 
     if (!input) {
         return res.status(400).json({ error: "Missing SteamID or Username" });
@@ -545,7 +562,7 @@ app.get('/api/profile/:input', async (req, res) => {
             return res.status(404).json({ error: "Could not resolve SteamID" });
         }
 
-        const url = `${KSF_BASE_URL}/${gameType}/steamid/${steamid}/playerinfo/0`;
+        const url = `${KSF_BASE_URL}/${gameType}/steamid/${steamid}/playerinfo/${surfType}`;
         const response = await fetchKSFData(url);
 
         if (!response || response.status !== 'OK' || !response.data) {
@@ -598,7 +615,7 @@ app.get('/api/config', (req, res) => {
     } catch (e) {
         console.error("Failed to read overlay config:", e.message);
     }
-    res.json({ steamId: "", refreshRate: 60, showMainMapStats: false, showZoneBar: true, showRankCard: true, showProfileStats: true, showDetailedStats: true, showMapInfo: true, showPointsBreakdown: true, showHeader: true, showStagePanel: true, showFooter: true, theme: {} });
+    res.json({ steamId: "", refreshRate: 60, gameType: "css", surfType: 0, showMainMapStats: false, showZoneBar: true, showRankCard: true, showProfileStats: true, showDetailedStats: true, showMapInfo: true, showPointsBreakdown: true, showHeader: true, showStagePanel: true, showFooter: true, theme: {} });
 });
 
 // ── Diagnostic endpoints ─────────────────────────────────────────────────────
@@ -653,10 +670,14 @@ app.get('/api/debug/stats', (req, res) => {
     });
 });
 
-let browseState = { zone: null };
+let browseState = { zone: null, gameType: undefined, surfType: undefined };
 
 app.post('/api/browse', (req, res) => {
-    browseState = { zone: req.body.zone !== undefined ? req.body.zone : null };
+    browseState = {
+        zone: req.body.zone !== undefined ? req.body.zone : null,
+        gameType: req.body.gameType !== undefined ? req.body.gameType : browseState.gameType,
+        surfType: req.body.surfType !== undefined ? req.body.surfType : browseState.surfType
+    };
     res.json({ ok: true });
 });
 
@@ -668,7 +689,12 @@ app.get('/api/browse', (req, res) => {
             config = JSON.parse(fs.readFileSync(OVERLAY_CONFIG_PATH));
         }
     } catch (e) {}
-    res.json({ ...browseState, config });
+    res.json({
+        zone: browseState.zone,
+        gameType: browseState.gameType,
+        surfType: browseState.surfType,
+        config
+    });
 });
 
 app.listen(PORT, '0.0.0.0', () => {

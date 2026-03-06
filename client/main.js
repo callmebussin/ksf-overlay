@@ -17,6 +17,8 @@ let appConfig = {
     windowY: 100,
     scale: 1.0,
     alwaysOnTop: true,
+    gameType: "css",
+    surfType: 0,
     showMainMapStats: false,
     showZoneBar: true,
     showRankCard: true,

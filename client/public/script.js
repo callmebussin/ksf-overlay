@@ -7,6 +7,8 @@ let currentConfig = {
     steamId: "",
     refreshRate: 60,
     opacity: 100,
+    gameType: "css",
+    surfType: 0,
     showMainMapStats: false,
     showZoneBar: true,
     showRankCard: true,
@@ -139,6 +141,118 @@ const ui = {
     mainStatEndVel: document.getElementById('main-stat-endvel')
 };
 
+// ── Pill Toggle UI ──────────────────────────────────────────────────────────
+function initPillToggles() {
+    const gameTypePill = document.getElementById('gametype-pill');
+    const surfTypePill = document.getElementById('surftype-pill');
+
+    if (gameTypePill) {
+        const btns = gameTypePill.querySelectorAll('.pill-option');
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const val = btn.dataset.value;
+                if (val === currentConfig.gameType) return;
+                currentConfig.gameType = val;
+                updatePillUI(gameTypePill, val);
+                onGameOrSurfTypeChanged();
+            });
+        });
+    }
+
+    if (surfTypePill) {
+        const btns = surfTypePill.querySelectorAll('.pill-option');
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const val = parseInt(btn.dataset.value);
+                if (val === currentConfig.surfType) return;
+                currentConfig.surfType = val;
+                updatePillUI(surfTypePill, val.toString());
+                onGameOrSurfTypeChanged();
+            });
+        });
+    }
+}
+
+function updatePillUI(pillGroup, activeValue) {
+    const btns = pillGroup.querySelectorAll('.pill-option');
+    const indicator = pillGroup.querySelector('.pill-indicator');
+    let activeBtn = null;
+
+    btns.forEach(btn => {
+        if (btn.dataset.value === activeValue) {
+            btn.classList.add('active');
+            activeBtn = btn;
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    if (activeBtn && indicator) {
+        indicator.style.left = activeBtn.offsetLeft + 'px';
+        indicator.style.width = activeBtn.offsetWidth + 'px';
+    }
+}
+
+function syncPillsFromConfig() {
+    const gameTypePill = document.getElementById('gametype-pill');
+    const surfTypePill = document.getElementById('surftype-pill');
+    if (gameTypePill) updatePillUI(gameTypePill, currentConfig.gameType || 'css');
+    if (surfTypePill) updatePillUI(surfTypePill, (currentConfig.surfType || 0).toString());
+}
+
+function onGameOrSurfTypeChanged() {
+    // Clear cached data since it's for the old gameType/surfType
+    zoneCache.clear();
+    profileCache = null;
+    lastProfileFetch = 0;
+    currentMap = null;
+    browsingZone = null;
+    displayedStageZone = null;
+    mapStatsFetching = null;
+
+    // Save to config if in Electron
+    if (ipcRenderer) {
+        ipcRenderer.send('save-config', {
+            gameType: currentConfig.gameType,
+            surfType: currentConfig.surfType
+        });
+    }
+
+    // Broadcast to OBS browser source
+    broadcastPillState();
+
+    // Fetch fresh data immediately
+    saveLastRefreshTime(0);
+    isUpdating = false;
+    fetchStats();
+}
+
+function broadcastPillState() {
+    fetch(`${getBaseUrl()}/api/browse`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            zone: browsingZone,
+            gameType: currentConfig.gameType,
+            surfType: currentConfig.surfType
+        })
+    }).catch(() => {});
+}
+
+// Build query string for API calls
+function apiQuery() {
+    const params = new URLSearchParams();
+    params.set('game', currentConfig.gameType || 'css');
+    params.set('surfType', (currentConfig.surfType || 0).toString());
+    return params.toString();
+}
+
+// Initialize pill toggles after DOM is ready
+initPillToggles();
+
+// Sync pill positions after layout settles (fonts loaded etc)
+requestAnimationFrame(() => syncPillsFromConfig());
+
 function getBaseUrl() {
     return SERVER_URL;
 }
@@ -147,7 +261,11 @@ function broadcastBrowseState(zone) {
     fetch(`${getBaseUrl()}/api/browse`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ zone: zone })
+        body: JSON.stringify({
+            zone: zone,
+            gameType: currentConfig.gameType,
+            surfType: currentConfig.surfType
+        })
     }).catch(() => {});
 }
 
@@ -267,7 +385,10 @@ if (ipcRenderer) {
         
         const steamIdChanged = currentConfig.steamId !== prev.steamId;
         const rateChanged = currentConfig.refreshRate !== prev.refreshRate;
+        const gameTypeChanged = currentConfig.gameType !== prev.gameType || currentConfig.surfType !== prev.surfType;
         const layoutChanged = currentConfig.showMainMapStats !== prev.showMainMapStats || currentConfig.autoFollowStage !== prev.autoFollowStage || currentConfig.horizontalLayout !== prev.horizontalLayout || currentConfig.showZoneBar !== prev.showZoneBar || currentConfig.showRankCard !== prev.showRankCard || currentConfig.showProfileStats !== prev.showProfileStats || currentConfig.showDetailedStats !== prev.showDetailedStats || currentConfig.showMapInfo !== prev.showMapInfo || currentConfig.showPointsBreakdown !== prev.showPointsBreakdown || currentConfig.showHeader !== prev.showHeader || currentConfig.showStagePanel !== prev.showStagePanel || currentConfig.showFooter !== prev.showFooter;
+
+        syncPillsFromConfig();
 
         if (!hasInitialized || steamIdChanged) {
             if (steamIdChanged) {
@@ -309,6 +430,8 @@ if (ipcRenderer) {
                 if (serverCfg.showFooter !== undefined) currentConfig.showFooter = serverCfg.showFooter;
                 if (serverCfg.autoFollowStage !== undefined) currentConfig.autoFollowStage = serverCfg.autoFollowStage;
                 if (serverCfg.horizontalLayout !== undefined) currentConfig.horizontalLayout = serverCfg.horizontalLayout;
+                if (serverCfg.gameType) currentConfig.gameType = serverCfg.gameType;
+                if (serverCfg.surfType !== undefined) currentConfig.surfType = serverCfg.surfType;
                 if (serverCfg.theme) currentConfig.theme = serverCfg.theme;
             }
         } catch (e) {
@@ -325,6 +448,12 @@ if (ipcRenderer) {
         if (params.get('showMainMapStats') === 'true' || params.get('showMainMapStats') === '1') {
             currentConfig.showMainMapStats = true;
         }
+        if (params.get('gameType') || params.get('game')) {
+            currentConfig.gameType = params.get('gameType') || params.get('game');
+        }
+        if (params.get('surfType')) {
+            currentConfig.surfType = parseInt(params.get('surfType')) || 0;
+        }
         const theme = {};
         if (params.get('bgColor')) theme.bgColor = params.get('bgColor');
         if (params.get('textColor')) theme.textColor = params.get('textColor');
@@ -333,6 +462,7 @@ if (ipcRenderer) {
         if (Object.keys(theme).length > 0) currentConfig.theme = { ...currentConfig.theme, ...theme };
 
         applyConfig();
+        syncPillsFromConfig();
         hasInitialized = true;
         startPolling(true);
     })();
@@ -494,6 +624,14 @@ function applyRemoteConfig(cfg) {
         currentConfig.showFooter = cfg.showFooter;
         changed = true;
     }
+    if (cfg.gameType !== undefined && cfg.gameType !== currentConfig.gameType) {
+        currentConfig.gameType = cfg.gameType;
+        changed = true;
+    }
+    if (cfg.surfType !== undefined && cfg.surfType !== currentConfig.surfType) {
+        currentConfig.surfType = cfg.surfType;
+        changed = true;
+    }
     if (cfg.theme) {
         const t = currentConfig.theme;
         if (cfg.theme.accentColor !== t.accentColor || cfg.theme.textColor !== t.textColor ||
@@ -504,6 +642,7 @@ function applyRemoteConfig(cfg) {
     }
 
     if (changed) {
+        syncPillsFromConfig();
         applyConfig();
         if (hasInitialized && currentMap) {
             refreshLayoutFromCache();
@@ -561,6 +700,25 @@ async function pollBrowseState() {
             if (data.config) {
                 applyRemoteConfig(data.config);
             }
+            // Sync gameType/surfType from browse state (set by Electron overlay)
+            let needRefetch = false;
+            if (data.gameType !== undefined && data.gameType !== currentConfig.gameType) {
+                currentConfig.gameType = data.gameType;
+                syncPillsFromConfig();
+                needRefetch = true;
+            }
+            if (data.surfType !== undefined && data.surfType !== currentConfig.surfType) {
+                currentConfig.surfType = data.surfType;
+                syncPillsFromConfig();
+                needRefetch = true;
+            }
+            if (needRefetch) {
+                zoneCache.clear();
+                profileCache = null;
+                lastProfileFetch = 0;
+                currentMap = null;
+                fetchStats();
+            }
             applyRemoteBrowseState(data.zone);
         }
     } catch (e) {}
@@ -592,13 +750,23 @@ async function fetchStats() {
     
     try {
         const baseUrl = getBaseUrl();
-        const response = await fetch(`${baseUrl}/api/player/${encodeURIComponent(currentConfig.steamId)}`);
+        const response = await fetch(`${baseUrl}/api/player/${encodeURIComponent(currentConfig.steamId)}?${apiQuery()}`);
         
         if (!response.ok) {
             throw new Error(`Server returned ${response.status}`);
         }
         
         const data = await response.json();
+
+        // Auto-detect gameType from server response
+        if (data.gameType && data.gameType !== currentConfig.gameType) {
+            currentConfig.gameType = data.gameType;
+            syncPillsFromConfig();
+            if (ipcRenderer) {
+                ipcRenderer.send('save-config', { gameType: data.gameType });
+            }
+        }
+
         updateUI(data);
         fetchProfile();
         saveLastRefreshTime(Date.now());
@@ -1045,7 +1213,7 @@ async function fetchProfile() {
     }
 
     try {
-        const resp = await fetch(`${getBaseUrl()}/api/profile/${encodeURIComponent(currentConfig.steamId)}`);
+        const resp = await fetch(`${getBaseUrl()}/api/profile/${encodeURIComponent(currentConfig.steamId)}?${apiQuery()}`);
         if (resp.ok) {
             const data = await resp.json();
             profileCache = data;
@@ -1189,7 +1357,7 @@ async function fetchMapStats(map, baseData) {
     mapStatsFetching = map;
 
     try {
-        const resp = await fetch(`${getBaseUrl()}/api/mapstats/${encodeURIComponent(currentConfig.steamId)}/${encodeURIComponent(map)}`);
+        const resp = await fetch(`${getBaseUrl()}/api/mapstats/${encodeURIComponent(currentConfig.steamId)}/${encodeURIComponent(map)}?${apiQuery()}`);
         if (!resp.ok) return;
         const result = await resp.json();
 
