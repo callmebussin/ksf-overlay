@@ -30,6 +30,26 @@ let lastRefreshTime = 0;
 let isUpdating = false;
 let hasInitialized = false;
 
+// Persist lastRefreshTime across reloads to prevent API spam on Ctrl+R
+function saveLastRefreshTime(timestamp) {
+    lastRefreshTime = timestamp;
+    try { localStorage.setItem('ksf_lastRefreshTime', timestamp.toString()); } catch (e) {}
+}
+
+function loadLastRefreshTime() {
+    try {
+        const stored = localStorage.getItem('ksf_lastRefreshTime');
+        if (stored) {
+            const ts = parseInt(stored);
+            if (!isNaN(ts) && ts > 0) {
+                lastRefreshTime = ts;
+                return ts;
+            }
+        }
+    } catch (e) {}
+    return 0;
+}
+
 let currentZone = null;
 let currentMap = null;
 let displayedStageZone = null; // Tracks which zone the stage panel is actually showing
@@ -250,7 +270,12 @@ if (ipcRenderer) {
         const layoutChanged = currentConfig.showMainMapStats !== prev.showMainMapStats || currentConfig.autoFollowStage !== prev.autoFollowStage || currentConfig.horizontalLayout !== prev.horizontalLayout || currentConfig.showZoneBar !== prev.showZoneBar || currentConfig.showRankCard !== prev.showRankCard || currentConfig.showProfileStats !== prev.showProfileStats || currentConfig.showDetailedStats !== prev.showDetailedStats || currentConfig.showMapInfo !== prev.showMapInfo || currentConfig.showPointsBreakdown !== prev.showPointsBreakdown || currentConfig.showHeader !== prev.showHeader || currentConfig.showStagePanel !== prev.showStagePanel || currentConfig.showFooter !== prev.showFooter;
 
         if (!hasInitialized || steamIdChanged) {
-            if (steamIdChanged) { profileCache = null; lastProfileFetch = 0; }
+            if (steamIdChanged) {
+                profileCache = null;
+                lastProfileFetch = 0;
+                // Clear stored refresh time so new player data is fetched immediately
+                saveLastRefreshTime(0);
+            }
             hasInitialized = true;
             startPolling(true);
         } else if (rateChanged) {
@@ -355,6 +380,9 @@ function applyConfig() {
             ui.profileSection.style.display = 'block';
             ui.profileDivider.style.display = 'block';
             populateProfile(profileCache);
+        } else if (currentConfig.steamId && hasInitialized) {
+            // Profile data not yet fetched — trigger a fetch now
+            fetchProfile();
         }
     } else {
         hideProfile();
@@ -492,12 +520,32 @@ function startPolling(forceImmediate = false) {
     
     if (!currentConfig.steamId) return;
 
-    if (forceImmediate) {
-        fetchStats();
-    }
-
     const rate = Math.max(currentConfig.refreshRate || 60, 60); // minimum 60s to avoid spamming KSF API
-    refreshInterval = setInterval(fetchStats, rate * 1000);
+    const rateMs = rate * 1000;
+
+    // Restore persisted timer to prevent Ctrl+R reload spam
+    const storedTime = loadLastRefreshTime();
+
+    if (forceImmediate) {
+        const elapsed = Date.now() - storedTime;
+        if (storedTime > 0 && elapsed < rateMs) {
+            // Still within cooldown — schedule fetch for remaining time instead of fetching now
+            const remaining = rateMs - elapsed;
+            console.log(`[POLL] Reload detected. Waiting ${Math.ceil(remaining / 1000)}s before next fetch.`);
+            setTimeout(() => {
+                fetchStats();
+                // Start the regular interval aligned to this deferred fetch
+                if (refreshInterval) clearInterval(refreshInterval);
+                refreshInterval = setInterval(fetchStats, rateMs);
+            }, remaining);
+            // Don't start the regular interval yet — the timeout above will start it
+        } else {
+            fetchStats();
+            refreshInterval = setInterval(fetchStats, rateMs);
+        }
+    } else {
+        refreshInterval = setInterval(fetchStats, rateMs);
+    }
     timerInterval = setInterval(updateFooterTimer, 1000);
 
     if (!ipcRenderer) {
@@ -553,7 +601,7 @@ async function fetchStats() {
         const data = await response.json();
         updateUI(data);
         fetchProfile();
-        lastRefreshTime = Date.now();
+        saveLastRefreshTime(Date.now());
 
         if (!ipcRenderer) {
             try {
@@ -987,9 +1035,8 @@ let lastProfileFetch = 0;
 const PROFILE_CACHE_TTL = 300000;
 
 async function fetchProfile() {
-    // Skip fetch if all profile-related cards are off
-    const needsProfile = currentConfig.showRankCard !== false || currentConfig.showProfileStats !== false || currentConfig.showPointsBreakdown !== false || currentConfig.showMapInfo !== false;
-    if (!needsProfile || !currentConfig.steamId) return;
+    // Always fetch profile data even if cards are hidden, so data is ready when toggled on
+    if (!currentConfig.steamId) return;
 
     const now = Date.now();
     if (profileCache && (now - lastProfileFetch) < PROFILE_CACHE_TTL) {

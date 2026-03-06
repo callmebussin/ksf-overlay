@@ -294,10 +294,6 @@
                     <span>Profile Stats</span>
                     <div class="toggle"><input type="checkbox" id="show-profile-stats" checked><span class="toggle-slider"></span></div>
                 </label>
-                <label class="toggle-row" for="show-detailed-stats">
-                    <span>Detailed Map Stats</span>
-                    <div class="toggle"><input type="checkbox" id="show-detailed-stats" checked><span class="toggle-slider"></span></div>
-                </label>
                 <label class="toggle-row" for="show-map-info">
                     <span>Map Info Card</span>
                     <div class="toggle"><input type="checkbox" id="show-map-info" checked><span class="toggle-slider"></span></div>
@@ -309,6 +305,10 @@
                 <label class="toggle-row" for="show-stage-panel">
                     <span>Map PB &amp; Rank Section</span>
                     <div class="toggle"><input type="checkbox" id="show-stage-panel" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-detailed-stats" id="show-detailed-stats-row">
+                    <span>Detailed Map Stats</span>
+                    <div class="toggle"><input type="checkbox" id="show-detailed-stats" checked><span class="toggle-slider"></span></div>
                 </label>
                 <label class="toggle-row" for="show-main-map-stats" id="show-main-map-stats-row">
                     <span>Show Map Stats Separately</span>
@@ -414,6 +414,7 @@
             showMapInfo: document.getElementById('show-map-info'),
             showPointsBreakdown: document.getElementById('show-points-breakdown'),
             showStagePanel: document.getElementById('show-stage-panel'),
+            showDetailedStatsRow: document.getElementById('show-detailed-stats-row'),
             showMainMapStatsRow: document.getElementById('show-main-map-stats-row'),
             obsUrlDisplay: document.getElementById('obs-url-display'),
             opacity: document.getElementById('opacity'),
@@ -479,6 +480,7 @@
 
         function updateStagePanelDeps() {
             const show = els.showStagePanel.checked;
+            els.showDetailedStatsRow.style.display = show ? '' : 'none';
             els.showMainMapStatsRow.style.display = show ? '' : 'none';
         }
 
