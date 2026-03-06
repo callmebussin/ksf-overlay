@@ -16,6 +16,7 @@ let currentConfig = {
     showPointsBreakdown: true,
     showHeader: true,
     showStagePanel: true,
+    showFooter: true,
     autoFollowStage: true,
     horizontalLayout: false,
     theme: {},
@@ -83,6 +84,7 @@ const ui = {
     profileGroups: document.getElementById('profile-groups'),
     profilePlaytime: document.getElementById('profile-playtime'),
     header: document.getElementById('header'),
+    footer: document.getElementById('footer'),
     cardsLayout: document.getElementById('cards-layout'),
     mapInfoCard: document.getElementById('map-info-card'),
     completionsCard: document.getElementById('completions-card'),
@@ -244,7 +246,7 @@ if (ipcRenderer) {
         
         const steamIdChanged = currentConfig.steamId !== prev.steamId;
         const rateChanged = currentConfig.refreshRate !== prev.refreshRate;
-        const layoutChanged = currentConfig.showMainMapStats !== prev.showMainMapStats || currentConfig.autoFollowStage !== prev.autoFollowStage || currentConfig.horizontalLayout !== prev.horizontalLayout || currentConfig.showZoneBar !== prev.showZoneBar || currentConfig.showRankCard !== prev.showRankCard || currentConfig.showProfileStats !== prev.showProfileStats || currentConfig.showDetailedStats !== prev.showDetailedStats || currentConfig.showMapInfo !== prev.showMapInfo || currentConfig.showPointsBreakdown !== prev.showPointsBreakdown || currentConfig.showHeader !== prev.showHeader || currentConfig.showStagePanel !== prev.showStagePanel;
+        const layoutChanged = currentConfig.showMainMapStats !== prev.showMainMapStats || currentConfig.autoFollowStage !== prev.autoFollowStage || currentConfig.horizontalLayout !== prev.horizontalLayout || currentConfig.showZoneBar !== prev.showZoneBar || currentConfig.showRankCard !== prev.showRankCard || currentConfig.showProfileStats !== prev.showProfileStats || currentConfig.showDetailedStats !== prev.showDetailedStats || currentConfig.showMapInfo !== prev.showMapInfo || currentConfig.showPointsBreakdown !== prev.showPointsBreakdown || currentConfig.showHeader !== prev.showHeader || currentConfig.showStagePanel !== prev.showStagePanel || currentConfig.showFooter !== prev.showFooter;
 
         if (!hasInitialized || steamIdChanged) {
             if (steamIdChanged) { profileCache = null; lastProfileFetch = 0; }
@@ -278,6 +280,7 @@ if (ipcRenderer) {
                 if (serverCfg.showPointsBreakdown !== undefined) currentConfig.showPointsBreakdown = serverCfg.showPointsBreakdown;
                 if (serverCfg.showHeader !== undefined) currentConfig.showHeader = serverCfg.showHeader;
                 if (serverCfg.showStagePanel !== undefined) currentConfig.showStagePanel = serverCfg.showStagePanel;
+                if (serverCfg.showFooter !== undefined) currentConfig.showFooter = serverCfg.showFooter;
                 if (serverCfg.autoFollowStage !== undefined) currentConfig.autoFollowStage = serverCfg.autoFollowStage;
                 if (serverCfg.horizontalLayout !== undefined) currentConfig.horizontalLayout = serverCfg.horizontalLayout;
                 if (serverCfg.theme) currentConfig.theme = serverCfg.theme;
@@ -377,6 +380,9 @@ function applyConfig() {
     // ── Header visibility ───────────────────────────────────────
     if (ui.header) ui.header.style.display = currentConfig.showHeader !== false ? '' : 'none';
 
+    // ── Footer visibility ───────────────────────────────────────
+    if (ui.footer) ui.footer.style.display = currentConfig.showFooter !== false ? '' : 'none';
+
     // ── Stage panel (main map + stage/bonus sections) visibility ─
     const showStage = currentConfig.showStagePanel !== false;
     if (ui.cardsLayout) ui.cardsLayout.style.display = showStage ? '' : 'none';
@@ -442,6 +448,10 @@ function applyRemoteConfig(cfg) {
     }
     if (cfg.showStagePanel !== undefined && cfg.showStagePanel !== currentConfig.showStagePanel) {
         currentConfig.showStagePanel = cfg.showStagePanel;
+        changed = true;
+    }
+    if (cfg.showFooter !== undefined && cfg.showFooter !== currentConfig.showFooter) {
+        currentConfig.showFooter = cfg.showFooter;
         changed = true;
     }
     if (cfg.theme) {

@@ -278,6 +278,10 @@
                     <span>Header</span>
                     <div class="toggle"><input type="checkbox" id="show-header" checked><span class="toggle-slider"></span></div>
                 </label>
+                <label class="toggle-row" for="show-footer">
+                    <span>Footer</span>
+                    <div class="toggle"><input type="checkbox" id="show-footer" checked><span class="toggle-slider"></span></div>
+                </label>
                 <label class="toggle-row" for="show-zone-bar">
                     <span>Zone Completion Bar</span>
                     <div class="toggle"><input type="checkbox" id="show-zone-bar" checked><span class="toggle-slider"></span></div>
@@ -402,6 +406,7 @@
             autoFollowStage: document.getElementById('auto-follow-stage'),
             horizontalLayout: document.getElementById('horizontal-layout'),
             showHeader: document.getElementById('show-header'),
+            showFooter: document.getElementById('show-footer'),
             showZoneBar: document.getElementById('show-zone-bar'),
             showRankCard: document.getElementById('show-rank-card'),
             showProfileStats: document.getElementById('show-profile-stats'),
@@ -432,6 +437,7 @@
             els.autoFollowStage.checked = config.autoFollowStage !== false;
             els.horizontalLayout.checked = config.horizontalLayout || false;
             els.showHeader.checked = config.showHeader !== false;
+            els.showFooter.checked = config.showFooter !== false;
             els.showZoneBar.checked = config.showZoneBar !== false;
             els.showRankCard.checked = config.showRankCard !== false;
             els.showProfileStats.checked = config.showProfileStats !== false;
@@ -480,6 +486,7 @@
                     autoFollowStage: els.autoFollowStage.checked,
                     horizontalLayout: els.horizontalLayout.checked,
                     showHeader: els.showHeader.checked,
+                    showFooter: els.showFooter.checked,
                     showZoneBar: els.showZoneBar.checked,
                     showRankCard: els.showRankCard.checked,
                     showProfileStats: els.showProfileStats.checked,
@@ -510,6 +517,7 @@
         els.autoFollowStage.addEventListener('change', autoSave);
         els.horizontalLayout.addEventListener('change', autoSave);
         els.showHeader.addEventListener('change', autoSave);
+        els.showFooter.addEventListener('change', autoSave);
         els.showZoneBar.addEventListener('change', autoSave);
         els.showRankCard.addEventListener('change', autoSave);
         els.showProfileStats.addEventListener('change', autoSave);

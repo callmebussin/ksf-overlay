@@ -26,6 +26,7 @@ let appConfig = {
     showPointsBreakdown: true,
     showHeader: true,
     showStagePanel: true,
+    showFooter: true,
     autoFollowStage: true,
     horizontalLayout: false,
     zoneCompletedColor: "#2ecc71",
