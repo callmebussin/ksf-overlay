@@ -688,7 +688,59 @@ body {
     line-height: 1.3;
 }
 
-/* ── Info Cards (Map Info, Points Breakdown, Completions, Records) ── */
+/* ── Map Info Card (redesigned) ──────────────────────────────── */
+.map-info-card {
+    background: rgba(255,255,255,0.05);
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.map-info-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--accent-color);
+    line-height: 1.3;
+    margin-bottom: 6px;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+    transition: opacity 0.15s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.map-info-name:hover {
+    opacity: 0.8;
+}
+
+.map-info-name.copied {
+    color: #2ecc71 !important;
+}
+
+.map-info-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 4px 0;
+}
+
+/* ── Profile Card Rows (horizontal pairing) ─────────────────── */
+.profile-card-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 0;
+}
+
+.profile-card-row > .profile-rank-header,
+.profile-card-row > .info-card {
+    flex: 1;
+    min-width: 0;
+}
+
+/* When only one card is visible in a row, it takes full width automatically via flex */
+
+/* ── Info Cards (Points Breakdown, Completions, Records) ── */
 .info-card {
     display: flex;
     flex-wrap: wrap;
@@ -741,20 +793,7 @@ body {
     max-width: 100%;
 }
 
-.info-card-value.map-name-clickable {
-    cursor: pointer;
-    -webkit-app-region: no-drag;
-    transition: opacity 0.15s;
-    color: var(--accent-color);
-}
-
-.info-card-value.map-name-clickable:hover {
-    opacity: 0.8;
-}
-
-.info-card-value.map-name-clickable.copied {
-    color: #2ecc71 !important;
-}
+/* map-name-clickable styles now on .map-info-name */
 
 .profile-rank-title {
     font-size: 18px;

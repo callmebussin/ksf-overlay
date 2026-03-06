@@ -128,6 +128,8 @@ const ui = {
     mapName: document.getElementById('map-name'),
     mapSpinner: document.getElementById('map-spinner'),
     mapTierValue: document.getElementById('map-tier-value'),
+    mapStageCount: document.getElementById('map-stage-count'),
+    mapBonusCount: document.getElementById('map-bonus-count'),
     statusIndicator: document.getElementById('status-indicator'),
     updateTimer: document.getElementById('update-timer'),
     playingOnLabel: document.getElementById('playing-on-label'),
@@ -151,6 +153,8 @@ const ui = {
 
     profileSection: document.getElementById('profile-section'),
     profileDivider: null, // removed from DOM
+    profileRowTop: document.getElementById('profile-row-top'),
+    profileRowBottom: document.getElementById('profile-row-bottom'),
     profileRankTitle: document.getElementById('profile-rank-title'),
     profilePoints: document.getElementById('profile-points'),
     profileGlobalRank: document.getElementById('profile-global-rank'),
@@ -609,6 +613,10 @@ function applyConfig() {
     if (ui.mapInfoCard) ui.mapInfoCard.style.display = showMapInfo && currentMap ? '' : 'none';
     if (ui.pointsBreakdownCard) ui.pointsBreakdownCard.style.display = showPointsBreakdown ? '' : 'none';
 
+    // Show/hide row containers
+    if (ui.profileRowTop) ui.profileRowTop.style.display = (showRankCard || showProfileStats) ? '' : 'none';
+    if (ui.profileRowBottom) ui.profileRowBottom.style.display = (showProfileStats || showPointsBreakdown) ? '' : 'none';
+
     // Show/hide the wrapper section
     if (showAnyProfile) {
         if (profileCache) {
@@ -1043,6 +1051,10 @@ function updateMapCompletionStatus(mapInfo) {
     const isLinear = mapType === 1;
     const hasBonuses = totalBonuses > 0;
 
+    // Update map info card stage/bonus counts
+    ui.mapStageCount.innerText = isLinear ? 'Linear' : totalStages.toString();
+    ui.mapBonusCount.innerText = totalBonuses.toString();
+
     // Toggle class for taller boxes when no bonuses
     if (hasBonuses) {
         ui.zoneBarContainer.classList.remove('no-bonuses');
@@ -1267,6 +1279,8 @@ function showLoadingState() {
     ui.zoneBarContainer.style.display = 'none';
     ui.mapName.innerHTML = '<span id="map-spinner" class="spinner" style="display: inline-block;"></span> loading...';
     ui.mapSpinner = document.getElementById('map-spinner');
+    ui.mapStageCount.innerText = '-';
+    ui.mapBonusCount.innerText = '-';
 }
 
 function hasCompletions(completions) {
@@ -1434,16 +1448,25 @@ function populateProfile(d) {
     populatePointsBreakdown(d.points);
 
     // Respect visibility toggles
+    const showRank = currentConfig.showRankCard !== false;
+    const showComps = currentConfig.showProfileStats !== false;
+    const showRecs = currentConfig.showProfileStats !== false;
+    const showPB = currentConfig.showPointsBreakdown !== false;
+
     const rankCard = document.getElementById('profile-rank-card');
-    if (rankCard) rankCard.style.display = currentConfig.showRankCard !== false ? '' : 'none';
-    ui.completionsCard.style.display = currentConfig.showProfileStats !== false ? '' : 'none';
-    ui.recordsCard.style.display = currentConfig.showProfileStats !== false ? '' : 'none';
+    if (rankCard) rankCard.style.display = showRank ? '' : 'none';
+    ui.completionsCard.style.display = showComps ? '' : 'none';
+    ui.recordsCard.style.display = showRecs ? '' : 'none';
     // Map info card is outside profile-section, managed separately
     ui.mapInfoCard.style.display = (currentConfig.showMapInfo !== false && currentMap) ? '' : 'none';
-    ui.pointsBreakdownCard.style.display = currentConfig.showPointsBreakdown !== false ? '' : 'none';
+    ui.pointsBreakdownCard.style.display = showPB ? '' : 'none';
+
+    // Show/hide row containers based on which cards are visible
+    if (ui.profileRowTop) ui.profileRowTop.style.display = (showRank || showComps) ? '' : 'none';
+    if (ui.profileRowBottom) ui.profileRowBottom.style.display = (showRecs || showPB) ? '' : 'none';
 
     // Show profile section if at least one sub-section is visible
-    const showAny = currentConfig.showRankCard !== false || currentConfig.showProfileStats !== false || currentConfig.showPointsBreakdown !== false;
+    const showAny = showRank || showComps || showRecs || showPB;
     ui.profileSection.style.display = showAny ? 'block' : 'none';
     resizeOverlay();
 }
@@ -1809,6 +1832,8 @@ function updateUI(data) {
         ui.mapName.innerText = "Offline";
         ui.mapTierValue.innerText = '-';
         ui.profilePlaytime.innerText = '-';
+        ui.mapStageCount.innerText = '-';
+        ui.mapBonusCount.innerText = '-';
         ui.mapInfoCard.style.display = 'none';
         ui.zoneBarContainer.style.display = 'none';
         ui.playingOnLabel.style.display = 'none';
