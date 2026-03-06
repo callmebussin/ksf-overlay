@@ -36,6 +36,7 @@ let isUpdating = false;
 let hasInitialized = false;
 let currentFetchController = null; // AbortController for in-flight fetches
 let viewingOtherPlayer = null; // When set, we're viewing another player's stats (not our own)
+let userExplicitPillChoice = false; // True when user clicked a pill — suppresses auto-detect
 
 // Persist lastRefreshTime across reloads AND full app restarts.
 // Uses both localStorage (fast, survives Ctrl+R) and Electron IPC (survives full restart).
@@ -342,6 +343,7 @@ function initPillToggles() {
                 const prevGame = currentConfig.gameType;
                 const prevSurf = currentConfig.surfType;
                 currentConfig.gameType = val;
+                userExplicitPillChoice = true; // User chose this — don't auto-detect away
                 updatePillUI(gameTypePill, val);
                 onGameOrSurfTypeChanged(prevGame, prevSurf);
             });
@@ -357,6 +359,7 @@ function initPillToggles() {
                 const prevGame = currentConfig.gameType;
                 const prevSurf = currentConfig.surfType;
                 currentConfig.surfType = val;
+                userExplicitPillChoice = true; // User chose this — don't auto-detect away
                 updatePillUI(surfTypePill, val.toString());
                 onGameOrSurfTypeChanged(prevGame, prevSurf);
             });
@@ -1250,8 +1253,10 @@ async function fetchStats() {
 
     // UI update phase — errors here are JS bugs, not network issues
     try {
-        // Auto-detect gameType from server response
-        if (data.gameType && data.gameType !== currentConfig.gameType) {
+        // Auto-detect gameType from server response — but only if the user
+        // didn't explicitly pick a pill.  When they click 100t they want 100t
+        // stats even though the player is online on a 66t server.
+        if (!userExplicitPillChoice && data.gameType && data.gameType !== currentConfig.gameType) {
             currentConfig.gameType = data.gameType;
             syncPillsFromConfig();
             if (ipcRenderer) {

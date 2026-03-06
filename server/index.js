@@ -405,17 +405,11 @@ app.get('/api/player/:input', async (req, res) => {
         }
 
         // Check player response cache first (instant response for recently-fetched players)
-        // Also check the alternate gameType since auto-detection may have stored under a different key
+        // Only check the exact requested gameType — don't cross-serve css/css100t data
         const cachedResponse = getCachedPlayerResponse(steamid, gameType, surfType);
         if (cachedResponse) {
             console.log(`[PLAYER] CACHE HIT for ${steamid} (${gameType}/${surfType})`);
             return res.json(cachedResponse);
-        }
-        const altGameTypeForCache = gameType === 'css' ? 'css100t' : 'css';
-        const altCachedResponse = getCachedPlayerResponse(steamid, altGameTypeForCache, surfType);
-        if (altCachedResponse) {
-            console.log(`[PLAYER] CACHE HIT (alt gameType) for ${steamid} (${altGameTypeForCache}/${surfType})`);
-            return res.json(altCachedResponse);
         }
 
         // Auto-detect: try the requested gameType first
@@ -448,11 +442,16 @@ app.get('/api/player/:input', async (req, res) => {
         const steamId64 = steamIdTo64(steamid);
         const avatarUrl = await fetchSteamAvatar(steamId64);
 
+        // Use the requested gameType in the response — not the auto-detected one.
+        // The client chose a specific pill (66t/100t) and expects stats for that.
+        // Auto-detection is only used to find the player's online status / current map.
+        const recordGameType = gameType; // always use what the client asked for
+        
         let responsePayload = {
             steamid,
             steamId64,
             avatarUrl,
-            gameType: detectedGameType,
+            gameType: gameType,
             surfType,
             status: "offline",
             lastUpdated: new Date().toISOString(),
@@ -504,7 +503,7 @@ app.get('/api/player/:input', async (req, res) => {
                  responsePayload.zone = 0;
             }
 
-            const recordUrl = `${KSF_BASE_URL}/${detectedGameType}/map/${responsePayload.map}/zone/${responsePayload.zone}/steamid/${steamid}/recordinfo/${surfType}`;
+            const recordUrl = `${KSF_BASE_URL}/${recordGameType}/map/${responsePayload.map}/zone/${responsePayload.zone}/steamid/${steamid}/recordinfo/${surfType}`;
             const recordResponse = await fetchKSFData(recordUrl);
 
             if (recordResponse && recordResponse.status === 'OK' && recordResponse.data) {
@@ -513,7 +512,7 @@ app.get('/api/player/:input', async (req, res) => {
             }
 
             if (responsePayload.zone !== 0) {
-                 const mainMapUrl = `${KSF_BASE_URL}/${detectedGameType}/map/${responsePayload.map}/zone/0/steamid/${steamid}/recordinfo/${surfType}`;
+                 const mainMapUrl = `${KSF_BASE_URL}/${recordGameType}/map/${responsePayload.map}/zone/0/steamid/${steamid}/recordinfo/${surfType}`;
                  const mainMapResponse = await fetchKSFData(mainMapUrl);
                  
                  if (mainMapResponse && mainMapResponse.status === 'OK' && mainMapResponse.data) {
@@ -549,12 +548,8 @@ app.get('/api/player/:input', async (req, res) => {
             }
         }
 
-        // Cache this player's full response under both the requested and detected gameType
-        // so lookups for either key hit the cache
-        cachePlayerResponse(steamid, detectedGameType, surfType, responsePayload);
-        if (detectedGameType !== gameType) {
-            cachePlayerResponse(steamid, gameType, surfType, responsePayload);
-        }
+        // Cache this player's full response under the requested gameType
+        cachePlayerResponse(steamid, gameType, surfType, responsePayload);
 
         res.json(responsePayload);
 
