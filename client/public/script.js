@@ -1318,8 +1318,6 @@ async function fetchStats() {
         updateUI(data);
         fetchProfile();
         saveLastRefreshTime(Date.now());
-        // Cache this player's data for instant switching
-        cachePlayerData(currentConfig.steamId, data, profileCache);
         // Update pill snapshot cache with fresh data
         savePillSnapshot();
         // Persist to localStorage for app restart recovery
@@ -1761,13 +1759,18 @@ async function fetchProfile() {
     // Profile is re-fetched every poll cycle so stage/bonus/WR counts stay current.
     if (!currentConfig.steamId) return;
 
+    const steamIdAtStart = currentConfig.steamId;
     try {
-        const resp = await fetch(`${getBaseUrl()}/api/profile/${encodeURIComponent(currentConfig.steamId)}?${apiQuery()}`);
+        const resp = await fetch(`${getBaseUrl()}/api/profile/${encodeURIComponent(steamIdAtStart)}?${apiQuery()}`);
         if (resp.ok) {
             const data = await resp.json();
+            // Discard if player changed while we were fetching
+            if (currentConfig.steamId !== steamIdAtStart) return;
             profileCache = data;
             lastProfileFetch = Date.now();
             populateProfile(data);
+            // Update player data cache with fresh profile
+            if (lastFetchData) cachePlayerData(steamIdAtStart, lastFetchData, data);
             saveLocalCache();
         }
     } catch (e) {}
@@ -1933,8 +1936,12 @@ let mapStatsFetching = null;
 
 async function fetchMapStats(map, baseData) {
     if (!currentConfig.steamId || !map) return;
-    if (mapStatsFetching === map) return;
-    mapStatsFetching = map;
+    // Guard: include steamId so switching players on the same map triggers a re-fetch
+    const fetchKey = `${currentConfig.steamId}:${map}`;
+    if (mapStatsFetching === fetchKey) return;
+    mapStatsFetching = fetchKey;
+
+    const steamIdAtStart = currentConfig.steamId;
 
     // Immediately create placeholder entries for ALL zones on this map so
     // navigation arrows and zone-bar clicks work even before the API responds
@@ -1942,15 +1949,16 @@ async function fetchMapStats(map, baseData) {
     ensureAllZonesInCache(map, baseData);
 
     try {
-        const resp = await fetch(`${getBaseUrl()}/api/mapstats/${encodeURIComponent(currentConfig.steamId)}/${encodeURIComponent(map)}?${apiQuery()}`);
+        const resp = await fetch(`${getBaseUrl()}/api/mapstats/${encodeURIComponent(steamIdAtStart)}/${encodeURIComponent(map)}?${apiQuery()}`);
         if (!resp.ok) {
             console.error(`[MAPSTATS] Failed: ${resp.status} for ${map}`);
             return;
         }
         const result = await resp.json();
 
-        if (!result.zones || currentMap !== map) {
-            console.warn(`[MAPSTATS] Discarded: zones=${!!result.zones} currentMap=${currentMap} requestedMap=${map}`);
+        // Discard if player or map changed while we were fetching
+        if (!result.zones || currentMap !== map || currentConfig.steamId !== steamIdAtStart) {
+            console.warn(`[MAPSTATS] Discarded stale response`);
             return;
         }
 
@@ -1987,7 +1995,7 @@ async function fetchMapStats(map, baseData) {
         console.error(`[MAPSTATS] Error fetching ${map}:`, e);
     }
     finally {
-        if (mapStatsFetching === map) mapStatsFetching = null;
+        if (mapStatsFetching === fetchKey) mapStatsFetching = null;
     }
 }
 

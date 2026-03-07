@@ -531,14 +531,12 @@ app.get('/api/player/:input', async (req, res) => {
                  }
             }
 
-            // Pre-cache online status for all players on this server.
-            // When the user clicks another player from the lobby list, their
-            // /onlinestatus KSF call will be a cache hit instead of a fresh API call.
+            // Pre-cache co-players: build full /api/player responses in background
+            // so switching to a lobby player from the client is instant.
             if (statusData.server.players && Array.isArray(statusData.server.players)) {
                 for (const p of statusData.server.players) {
                     if (p.steamid && p.steamid !== steamid) {
-                        // Build a synthetic onlinestatus response for each co-player.
-                        // The server info is the same; only the player field differs.
+                        // Pre-cache onlinestatus (synthetic) for instant status lookup
                         const syntheticResponse = {
                             status: 'OK',
                             data: {
@@ -548,11 +546,66 @@ app.get('/api/player/:input', async (req, res) => {
                             }
                         };
                         const pStatusUrl = `${KSF_BASE_URL}/${detectedGameType}/steamid/${p.steamid}/onlinestatus`;
-                        // Only populate if not already cached (don't overwrite fresher data)
                         const existing = ksfResponseCache.get(pStatusUrl);
                         if (!existing || (Date.now() - existing.timestamp) > KSF_CACHE_TTL) {
                             ksfResponseCache.set(pStatusUrl, { data: syntheticResponse, timestamp: Date.now() });
-                            console.log(`${c.green}[PLAYER]${c.reset} ${c.dim}Pre-cached ${p.playername}${c.reset}`);
+                        }
+
+                        // Build full player response in background (non-blocking)
+                        const pCacheKey = getPlayerCacheKey(p.steamid, gameType, surfType);
+                        const existingPlayer = playerResponseCache.get(pCacheKey);
+                        if (!existingPlayer || (Date.now() - existingPlayer.timestamp) > PLAYER_CACHE_TTL) {
+                            (async () => {
+                                try {
+                                    let pZone = parseInt(p.zone);
+                                    if (isNaN(pZone) || pZone < 0) pZone = 0;
+                                    if (statusData.server.maptype == 1 && pZone >= 1) pZone = 0;
+
+                                    const pSteamId64 = steamIdTo64(p.steamid);
+                                    const pAvatar = await fetchSteamAvatar(pSteamId64);
+
+                                    const pPayload = {
+                                        steamid: p.steamid,
+                                        steamId64: pSteamId64,
+                                        avatarUrl: pAvatar,
+                                        gameType,
+                                        surfType,
+                                        status: 'online',
+                                        lastUpdated: new Date().toISOString(),
+                                        map: statusData.server.currentmap,
+                                        mapInfo: responsePayload.mapInfo,
+                                        serverName: responsePayload.serverName,
+                                        serverPlayers: responsePayload.serverPlayers,
+                                        zone: pZone,
+                                        playerName: p.playername,
+                                        timeConnected: p.timeconnected,
+                                        country: countryCache.get(p.steamid) || null
+                                    };
+
+                                    // Fetch record info for this co-player's current zone
+                                    const pRecordUrl = `${KSF_BASE_URL}/${recordGameType}/map/${pPayload.map}/zone/${pZone}/steamid/${p.steamid}/recordinfo/${surfType}`;
+                                    const pRecord = await fetchKSFData(pRecordUrl);
+                                    if (pRecord && pRecord.status === 'OK' && pRecord.data) {
+                                        Object.assign(pPayload, mapRecordData(pRecord.data));
+                                        pPayload.group = calculateGroup(pPayload.rank, pPayload.totalRanks, pPayload.completions);
+                                    }
+
+                                    // Fetch main map stats if on a stage/bonus
+                                    if (pZone !== 0) {
+                                        const pMainUrl = `${KSF_BASE_URL}/${recordGameType}/map/${pPayload.map}/zone/0/steamid/${p.steamid}/recordinfo/${surfType}`;
+                                        const pMain = await fetchKSFData(pMainUrl);
+                                        if (pMain && pMain.status === 'OK' && pMain.data) {
+                                            pPayload.mainMapStats = mapRecordData(pMain.data);
+                                            pPayload.mainMapStats.group = calculateGroup(pPayload.mainMapStats.rank, pPayload.mainMapStats.totalRanks, pPayload.mainMapStats.completions);
+                                        }
+                                    }
+
+                                    cachePlayerResponse(p.steamid, gameType, surfType, pPayload);
+                                    console.log(`${c.green}[PLAYER]${c.reset} ${c.dim}Pre-cached ${p.playername}${c.reset}`);
+                                } catch (e) {
+                                    // Non-critical — pre-caching is best-effort
+                                }
+                            })();
                         }
                     }
                 }
