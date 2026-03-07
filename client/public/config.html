@@ -127,6 +127,15 @@
             font-weight: 500;
             color: #ccc;
         }
+        .toggle-row.sub-option {
+            padding-left: 14px;
+            border-left: 2px solid #333;
+            margin-left: 4px;
+        }
+        .toggle-row.sub-option span {
+            font-size: 11px;
+            color: #999;
+        }
         .toggle {
             position: relative;
             width: 34px;
@@ -262,7 +271,7 @@
 </head>
 <body>
     <div class="main-grid" style="padding-top: 16px;">
-        <!-- Column 1: Player + Toggles -->
+        <!-- Column 1: Player + Theme -->
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <div class="panel">
                 <div class="panel-title">Player</div>
@@ -273,55 +282,38 @@
             </div>
 
             <div class="panel" style="flex: 1;">
-                <div class="panel-title">Display</div>
-                <label class="toggle-row" for="show-header">
-                    <span>Header</span>
-                    <div class="toggle"><input type="checkbox" id="show-header" checked><span class="toggle-slider"></span></div>
-                </label>
-                <label class="toggle-row" for="show-pill-toggles" id="show-pill-toggles-row">
-                    <span>Game/Style Toggles</span>
-                    <div class="toggle"><input type="checkbox" id="show-pill-toggles" checked><span class="toggle-slider"></span></div>
-                </label>
-                <label class="toggle-row" for="show-footer">
-                    <span>Footer</span>
-                    <div class="toggle"><input type="checkbox" id="show-footer" checked><span class="toggle-slider"></span></div>
-                </label>
-                <label class="toggle-row" for="show-rank-card">
-                    <span>Rank Card</span>
-                    <div class="toggle"><input type="checkbox" id="show-rank-card" checked><span class="toggle-slider"></span></div>
-                </label>
-                <label class="toggle-row" for="show-profile-stats">
-                    <span>Profile Stats</span>
-                    <div class="toggle"><input type="checkbox" id="show-profile-stats" checked><span class="toggle-slider"></span></div>
-                </label>
-                <label class="toggle-row" for="show-map-info">
-                    <span>Map Info Card</span>
-                    <div class="toggle"><input type="checkbox" id="show-map-info" checked><span class="toggle-slider"></span></div>
-                </label>
-                <label class="toggle-row" for="show-map-image" id="show-map-image-row">
-                    <span>Map Background Image</span>
-                    <div class="toggle"><input type="checkbox" id="show-map-image" checked><span class="toggle-slider"></span></div>
-                </label>
-                <label class="toggle-row" for="show-zone-bar" id="show-zone-bar-row">
-                    <span>Zone Completion Bar</span>
-                    <div class="toggle"><input type="checkbox" id="show-zone-bar" checked><span class="toggle-slider"></span></div>
-                </label>
-                <label class="toggle-row" for="show-points-breakdown">
-                    <span>Points Breakdown Card</span>
-                    <div class="toggle"><input type="checkbox" id="show-points-breakdown" checked><span class="toggle-slider"></span></div>
-                </label>
-                <label class="toggle-row" for="show-stage-panel">
-                    <span>Map PB &amp; Rank Section</span>
-                    <div class="toggle"><input type="checkbox" id="show-stage-panel" checked><span class="toggle-slider"></span></div>
-                </label>
-                <label class="toggle-row" for="show-detailed-stats" id="show-detailed-stats-row">
-                    <span>Detailed Map Stats</span>
-                    <div class="toggle"><input type="checkbox" id="show-detailed-stats" checked><span class="toggle-slider"></span></div>
-                </label>
-                <label class="toggle-row" for="show-main-map-stats" id="show-main-map-stats-row">
-                    <span>Show Map Stats Separately</span>
-                    <div class="toggle"><input type="checkbox" id="show-main-map-stats"><span class="toggle-slider"></span></div>
-                </label>
+                <div class="panel-title">Theme</div>
+                <div class="input-group">
+                    <label class="input-label">Preset</label>
+                    <select id="theme-preset">
+                        <option value="custom">Custom</option>
+                        <option value="default">Default Dark</option>
+                        <option value="light">Clean Light</option>
+                        <option value="glass">Glass Blue</option>
+                        <option value="midnight">Midnight</option>
+                        <option value="ember">Ember</option>
+                        <option value="forest">Forest</option>
+                        <option value="sunset">Sunset</option>
+                        <option value="arctic">Arctic</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Opacity <span id="opacity-val" style="color:#0078d4; font-weight:700;">100%</span></label>
+                    <input type="range" id="opacity" min="10" max="100" value="100">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Colors</label>
+                    <div class="colors-grid">
+                        <div class="color-item">Background <input type="color" id="bg-color" value="#000000"></div>
+                        <div class="color-item">Text <input type="color" id="text-color" value="#ffffff"></div>
+                        <div class="color-item">Accent <input type="color" id="accent-color" value="#3498db"></div>
+                        <div class="color-item">Border <input type="color" id="border-color" value="#ffffff"></div>
+                        <div class="color-item">Completed <input type="color" id="zone-completed-color" value="#2ecc71"></div>
+                        <div class="color-item">Incomplete <input type="color" id="zone-not-completed-color" value="#e74c3c"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -353,46 +345,62 @@
             </div>
         </div>
 
-        <!-- Column 3: Theme -->
+        <!-- Column 3: Display -->
         <div style="display: flex; flex-direction: column; gap: 12px;">
             <div class="panel" style="flex: 1;">
-                <div class="panel-title">Theme</div>
-                <div class="input-group">
-                    <label class="input-label">Preset</label>
-                    <select id="theme-preset">
-                        <option value="custom">Custom</option>
-                        <option value="default">Default Dark</option>
-                        <option value="light">Clean Light</option>
-                        <option value="glass">Glass Blue</option>
-                        <option value="midnight">Midnight</option>
-                        <option value="ember">Ember</option>
-                        <option value="forest">Forest</option>
-                        <option value="sunset">Sunset</option>
-                        <option value="arctic">Arctic</option>
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <label class="input-label">Opacity <span id="opacity-val" style="color:#0078d4; font-weight:700;">100%</span></label>
-                    <input type="range" id="opacity" min="10" max="100" value="100">
-                </div>
-
-                <div class="input-group">
-                    <label class="input-label">Colors</label>
-                    <div class="colors-grid">
-                        <div class="color-item">Background <input type="color" id="bg-color" value="#000000"></div>
-                        <div class="color-item">Text <input type="color" id="text-color" value="#ffffff"></div>
-                        <div class="color-item">Accent <input type="color" id="accent-color" value="#3498db"></div>
-                        <div class="color-item">Border <input type="color" id="border-color" value="#ffffff"></div>
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label class="input-label">Zone Bar Colors</label>
-                    <div class="colors-grid">
-                        <div class="color-item">Completed <input type="color" id="zone-completed-color" value="#2ecc71"></div>
-                        <div class="color-item">Incomplete <input type="color" id="zone-not-completed-color" value="#e74c3c"></div>
-                    </div>
-                </div>
+                <div class="panel-title">Display</div>
+                <label class="toggle-row" for="show-header">
+                    <span>Header</span>
+                    <div class="toggle"><input type="checkbox" id="show-header" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row sub-option" for="show-pill-toggles" id="show-pill-toggles-row">
+                    <span>Game/Style Toggles</span>
+                    <div class="toggle"><input type="checkbox" id="show-pill-toggles" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-footer">
+                    <span>Footer</span>
+                    <div class="toggle"><input type="checkbox" id="show-footer" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-rank-card">
+                    <span>Rank Card</span>
+                    <div class="toggle"><input type="checkbox" id="show-rank-card" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-profile-stats">
+                    <span>Profile Stats</span>
+                    <div class="toggle"><input type="checkbox" id="show-profile-stats" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-map-info">
+                    <span>Map Info Card</span>
+                    <div class="toggle"><input type="checkbox" id="show-map-info" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row sub-option" for="show-map-image" id="show-map-image-row">
+                    <span>Map Background Image</span>
+                    <div class="toggle"><input type="checkbox" id="show-map-image" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row sub-option" for="show-zone-bar" id="show-zone-bar-row">
+                    <span>Zone Completion Bar</span>
+                    <div class="toggle"><input type="checkbox" id="show-zone-bar" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-points-breakdown">
+                    <span>Points Breakdown Card</span>
+                    <div class="toggle"><input type="checkbox" id="show-points-breakdown" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row" for="show-stage-panel">
+                    <span>Map PB &amp; Rank Section</span>
+                    <div class="toggle"><input type="checkbox" id="show-stage-panel" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row sub-option" for="show-detailed-stats" id="show-detailed-stats-row">
+                    <span>Detailed Map Stats</span>
+                    <div class="toggle"><input type="checkbox" id="show-detailed-stats" checked><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row sub-option" for="show-main-map-stats" id="show-main-map-stats-row">
+                    <span>Show Map Stats Separately</span>
+                    <div class="toggle"><input type="checkbox" id="show-main-map-stats"><span class="toggle-slider"></span></div>
+                </label>
+                <label class="toggle-row sub-option" for="hide-stages" id="hide-stages-row">
+                    <span>Hide Stages (Bonuses Only)</span>
+                    <div class="toggle"><input type="checkbox" id="hide-stages"><span class="toggle-slider"></span></div>
+                </label>
             </div>
         </div>
     </div>
@@ -421,6 +429,8 @@
             steamid: document.getElementById('steamid'),
             alwaysOnTop: document.getElementById('always-on-top'),
             showMainMapStats: document.getElementById('show-main-map-stats'),
+            hideStages: document.getElementById('hide-stages'),
+            hideStagesRow: document.getElementById('hide-stages-row'),
             autoFollowStage: document.getElementById('auto-follow-stage'),
             horizontalLayout: document.getElementById('horizontal-layout'),
             showHeader: document.getElementById('show-header'),
@@ -459,6 +469,7 @@
             els.obsUrlDisplay.innerText = `http://108.61.222.248:3000?steamId=${config.steamId || ''}`;
             els.alwaysOnTop.checked = config.alwaysOnTop !== false;
             els.showMainMapStats.checked = config.showMainMapStats || false;
+            els.hideStages.checked = config.hideStages || false;
             els.autoFollowStage.checked = config.autoFollowStage !== false;
             els.horizontalLayout.checked = config.horizontalLayout || false;
             els.showHeader.checked = config.showHeader !== false;
@@ -520,6 +531,8 @@
             const show = els.showStagePanel.checked;
             els.showDetailedStatsRow.style.display = show ? '' : 'none';
             els.showMainMapStatsRow.style.display = show ? '' : 'none';
+            // Hide Stages is only relevant when Show Map Stats Separately is OFF
+            els.hideStagesRow.style.display = (show && !els.showMainMapStats.checked) ? '' : 'none';
         }
 
         let saveTimeout = null;
@@ -530,6 +543,7 @@
                     steamId: els.steamid.value,
                     alwaysOnTop: els.alwaysOnTop.checked,
                     showMainMapStats: els.showMainMapStats.checked,
+                    hideStages: els.hideStages.checked,
                     autoFollowStage: els.autoFollowStage.checked,
                     horizontalLayout: els.horizontalLayout.checked,
                     showHeader: els.showHeader.checked,
@@ -562,7 +576,8 @@
             autoSave();
         });
         els.alwaysOnTop.addEventListener('change', autoSave);
-        els.showMainMapStats.addEventListener('change', autoSave);
+        els.showMainMapStats.addEventListener('change', () => { updateStagePanelDeps(); autoSave(); });
+        els.hideStages.addEventListener('change', autoSave);
         els.autoFollowStage.addEventListener('change', autoSave);
         els.horizontalLayout.addEventListener('change', autoSave);
         els.showHeader.addEventListener('change', () => { updateHeaderDeps(); autoSave(); });

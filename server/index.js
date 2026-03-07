@@ -517,6 +517,11 @@ app.get('/api/player/:input', async (req, res) => {
                  
                  if (mainMapResponse && mainMapResponse.status === 'OK' && mainMapResponse.data) {
                      responsePayload.mainMapStats = mapRecordData(mainMapResponse.data);
+                     responsePayload.mainMapStats.group = calculateGroup(
+                         responsePayload.mainMapStats.rank,
+                         responsePayload.mainMapStats.totalRanks,
+                         responsePayload.mainMapStats.completions
+                     );
                  }
             }
 
@@ -714,7 +719,7 @@ app.get('/api/config', (req, res) => {
     } catch (e) {
         console.error("Failed to read overlay config:", e.message);
     }
-    res.json({ steamId: "", refreshRate: 60, gameType: "css", surfType: 0, showMainMapStats: false, showZoneBar: true, showRankCard: true, showProfileStats: true, showDetailedStats: true, showMapInfo: true, showPointsBreakdown: true, showHeader: true, showStagePanel: true, showFooter: true, theme: {} });
+    res.json({ steamId: "", refreshRate: 60, gameType: "css", surfType: 0, showMainMapStats: false, hideStages: false, showZoneBar: true, showRankCard: true, showProfileStats: true, showDetailedStats: true, showMapInfo: true, showPointsBreakdown: true, showHeader: true, showStagePanel: true, showFooter: true, theme: {} });
 });
 
 // ── Diagnostic endpoints ─────────────────────────────────────────────────────

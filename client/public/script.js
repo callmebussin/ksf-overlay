@@ -10,6 +10,7 @@ let currentConfig = {
     gameType: "css",
     surfType: 0,
     showMainMapStats: false,
+    hideStages: false,
     showZoneBar: true,
     showRankCard: true,
     showProfileStats: true,
@@ -467,6 +468,7 @@ function broadcastConfigToServer() {
         steamId: currentConfig.steamId,
         refreshRate: currentConfig.refreshRate,
         showMainMapStats: currentConfig.showMainMapStats,
+        hideStages: currentConfig.hideStages,
         showZoneBar: currentConfig.showZoneBar,
         showRankCard: currentConfig.showRankCard,
         showProfileStats: currentConfig.showProfileStats,
@@ -610,16 +612,24 @@ function navigateZone(direction) {
 
 function getSortedCachedZones() {
     const all = Array.from(zoneCache.keys()).sort((a, b) => a - b);
+    const anyZone = zoneCache.values().next().value;
+    const isLinear = anyZone && anyZone.mapInfo && parseInt(anyZone.mapInfo.type) === 1;
+
     if (currentConfig.showMainMapStats) {
         // When main map panel is shown, exclude zone 0 from stage navigation.
         // On linear maps, also exclude zone 1 since it's the same as the main map.
-        const anyZone = zoneCache.values().next().value;
-        const isLinear = anyZone && anyZone.mapInfo && parseInt(anyZone.mapInfo.type) === 1;
         if (isLinear) {
             return all.filter(z => z !== 0 && z !== 1);
         }
         return all.filter(z => z !== 0);
     }
+
+    // When hideStages is on (and showMainMapStats is off), only show zone 0 and bonuses (31+).
+    // This keeps the main map time cycling through with bonuses but skips individual stages.
+    if (currentConfig.hideStages) {
+        return all.filter(z => z === 0 || z >= 31);
+    }
+
     return all;
 }
 
@@ -786,7 +796,7 @@ if (ipcRenderer) {
         const steamIdChanged = persistedSteamIdChanged || ownSteamIdChanged;
         const rateChanged = currentConfig.refreshRate !== prev.refreshRate;
         const gameTypeChanged = currentConfig.gameType !== prev.gameType || currentConfig.surfType !== prev.surfType;
-        const layoutChanged = currentConfig.showMainMapStats !== prev.showMainMapStats || currentConfig.autoFollowStage !== prev.autoFollowStage || currentConfig.horizontalLayout !== prev.horizontalLayout || currentConfig.showZoneBar !== prev.showZoneBar || currentConfig.showRankCard !== prev.showRankCard || currentConfig.showProfileStats !== prev.showProfileStats || currentConfig.showDetailedStats !== prev.showDetailedStats || currentConfig.showMapInfo !== prev.showMapInfo || currentConfig.showMapImage !== prev.showMapImage || currentConfig.showPointsBreakdown !== prev.showPointsBreakdown || currentConfig.showHeader !== prev.showHeader || currentConfig.showPillToggles !== prev.showPillToggles || currentConfig.showStagePanel !== prev.showStagePanel || currentConfig.showFooter !== prev.showFooter;
+        const layoutChanged = currentConfig.showMainMapStats !== prev.showMainMapStats || currentConfig.hideStages !== prev.hideStages || currentConfig.autoFollowStage !== prev.autoFollowStage || currentConfig.horizontalLayout !== prev.horizontalLayout || currentConfig.showZoneBar !== prev.showZoneBar || currentConfig.showRankCard !== prev.showRankCard || currentConfig.showProfileStats !== prev.showProfileStats || currentConfig.showDetailedStats !== prev.showDetailedStats || currentConfig.showMapInfo !== prev.showMapInfo || currentConfig.showMapImage !== prev.showMapImage || currentConfig.showPointsBreakdown !== prev.showPointsBreakdown || currentConfig.showHeader !== prev.showHeader || currentConfig.showPillToggles !== prev.showPillToggles || currentConfig.showStagePanel !== prev.showStagePanel || currentConfig.showFooter !== prev.showFooter;
 
         syncPillsFromConfig();
 
@@ -824,6 +834,7 @@ if (ipcRenderer) {
                 if (serverCfg.steamId) currentConfig.steamId = serverCfg.steamId;
                 if (serverCfg.refreshRate) currentConfig.refreshRate = serverCfg.refreshRate;
                 if (serverCfg.showMainMapStats !== undefined) currentConfig.showMainMapStats = serverCfg.showMainMapStats;
+                if (serverCfg.hideStages !== undefined) currentConfig.hideStages = serverCfg.hideStages;
                 if (serverCfg.showProfileStats !== undefined) currentConfig.showProfileStats = serverCfg.showProfileStats;
                 if (serverCfg.showZoneBar !== undefined) currentConfig.showZoneBar = serverCfg.showZoneBar;
                 if (serverCfg.showRankCard !== undefined) currentConfig.showRankCard = serverCfg.showRankCard;
@@ -984,14 +995,14 @@ function applyConfig() {
     }
 
     // ── Empty state when everything is disabled ─────────────────
+    // Only check top-level options — sub-options don't independently show content
     const allOff = currentConfig.showHeader === false
         && currentConfig.showFooter === false
         && currentConfig.showStagePanel === false
         && currentConfig.showRankCard === false
         && currentConfig.showProfileStats === false
         && currentConfig.showMapInfo === false
-        && currentConfig.showPointsBreakdown === false
-        && currentConfig.showZoneBar === false;
+        && currentConfig.showPointsBreakdown === false;
     if (ui.emptyState) ui.emptyState.style.display = allOff ? '' : 'none';
 
     resizeOverlay();
@@ -1002,6 +1013,10 @@ function applyRemoteConfig(cfg) {
 
     if (cfg.showMainMapStats !== undefined && cfg.showMainMapStats !== currentConfig.showMainMapStats) {
         currentConfig.showMainMapStats = cfg.showMainMapStats;
+        changed = true;
+    }
+    if (cfg.hideStages !== undefined && cfg.hideStages !== currentConfig.hideStages) {
+        currentConfig.hideStages = cfg.hideStages;
         changed = true;
     }
     if (cfg.autoFollowStage !== undefined && cfg.autoFollowStage !== currentConfig.autoFollowStage) {
@@ -1685,24 +1700,18 @@ function populateZoneStats(data) {
 
 let profileCache = null;
 let lastProfileFetch = 0;
-const PROFILE_CACHE_TTL = 300000;
 
 async function fetchProfile() {
-    // Always fetch profile data even if cards are hidden, so data is ready when toggled on
+    // Always fetch profile data even if cards are hidden, so data is ready when toggled on.
+    // Profile is re-fetched every poll cycle so stage/bonus/WR counts stay current.
     if (!currentConfig.steamId) return;
-
-    const now = Date.now();
-    if (profileCache && (now - lastProfileFetch) < PROFILE_CACHE_TTL) {
-        populateProfile(profileCache);
-        return;
-    }
 
     try {
         const resp = await fetch(`${getBaseUrl()}/api/profile/${encodeURIComponent(currentConfig.steamId)}?${apiQuery()}`);
         if (resp.ok) {
             const data = await resp.json();
             profileCache = data;
-            lastProfileFetch = now;
+            lastProfileFetch = Date.now();
             populateProfile(data);
             saveLocalCache();
         }
@@ -2103,6 +2112,9 @@ function refreshLayoutFromCache() {
     if (showMainMap && (stageZoneId === 0 || (isLinearMap && stageZoneId === 1))) {
         const nonMainZones = getSortedCachedZones();
         stageZoneId = nonMainZones.length > 0 ? nonMainZones[0] : (isLinearMap ? 1 : 0);
+    } else if (!showMainMap && currentConfig.hideStages && stageZoneId >= 1 && stageZoneId <= 30) {
+        const allowedZones = getSortedCachedZones();
+        stageZoneId = allowedZones.length > 0 ? allowedZones[0] : 0;
     }
     displayedStageZone = stageZoneId;
     const cached = zoneCache.get(stageZoneId);
@@ -2217,6 +2229,9 @@ function updateUI(data) {
             displayedStageZone = null;
             currentMap = data.map;
             fetchMapStats(data.map, data);
+        } else if (data.map) {
+            // Re-fetch all zone stats on every poll so stages/bonuses stay current
+            fetchMapStats(data.map, data);
         }
 
         const zoneId = data.zone !== undefined ? parseInt(data.zone) : null;
@@ -2263,6 +2278,7 @@ function updateUI(data) {
         // Determine which zone the stage panel should display.
         // When showMainMapStats is on, the stage panel never shows zone 0
         // (or zone 1 on linear maps, since that's the same as Main Map).
+        // When hideStages is on, skip stage zones (1-30) and show zone 0 or bonuses.
         let stageZoneId = zoneId;
         const isLinear = data.mapInfo && parseInt(data.mapInfo.type) === 1;
         if (showMainMap && (stageZoneId === 0 || (isLinear && stageZoneId === 1))) {
@@ -2270,6 +2286,11 @@ function updateUI(data) {
             // Show the first available bonus/stage zone, or fall back.
             const nonMainZones = getSortedCachedZones();
             stageZoneId = nonMainZones.length > 0 ? nonMainZones[0] : (isLinear ? 1 : 0);
+        } else if (!showMainMap && currentConfig.hideStages && stageZoneId >= 1 && stageZoneId <= 30) {
+            // hideStages is on: player is on a stage but stages are hidden.
+            // Show zone 0 (main map) or first bonus instead.
+            const allowedZones = getSortedCachedZones();
+            stageZoneId = allowedZones.length > 0 ? allowedZones[0] : 0;
         }
 
         const stageData = zoneCache.get(stageZoneId) || data;
