@@ -33,6 +33,20 @@ const originalLog = console.log.bind(console);
 const originalError = console.error.bind(console);
 const originalWarn = console.warn.bind(console);
 
+// ANSI color helpers for terminal output
+const c = {
+    reset: '\x1b[0m',
+    dim: '\x1b[2m',
+    red: '\x1b[31m',
+    green: '\x1b[32m',
+    yellow: '\x1b[33m',
+    blue: '\x1b[34m',
+    magenta: '\x1b[35m',
+    cyan: '\x1b[36m',
+    white: '\x1b[37m',
+    bold: '\x1b[1m',
+};
+
 console.log = (...args) => { originalLog(...args); writeToLog('INFO', ...args); };
 console.error = (...args) => { originalError(...args); writeToLog('ERROR', ...args); };
 console.warn = (...args) => { originalWarn(...args); writeToLog('WARN', ...args); };
@@ -52,13 +66,13 @@ try {
     if (fs.existsSync(CONFIG_PATH)) {
         const data = fs.readFileSync(CONFIG_PATH);
         serverConfig = { ...serverConfig, ...JSON.parse(data) };
-        console.log("Loaded server config:", serverConfig);
+        console.log(`${c.green}[INIT]${c.reset} Config loaded from config.json`);
     }
 } catch (e) {
-    console.error("Failed to load config.json, using defaults", e);
+    console.error(`${c.red}[INIT]${c.reset} Failed to load config.json, using defaults`);
 }
 
-console.log(`Log file: ${getLogFilePath()}`);
+console.log(`${c.dim}[INIT] Log file: ${getLogFilePath()}${c.reset}`);
 
 const app = express();
 const PORT = process.env.PORT || serverConfig.port;
@@ -77,8 +91,8 @@ app.use((req, res, next) => {
     res.on('finish', () => {
         if (req.originalUrl.startsWith('/api/browse')) return;
         const duration = Date.now() - start;
-        const ip = req.ip || req.connection?.remoteAddress || 'unknown';
-        console.log(`[REQ] ${req.method} ${req.originalUrl} -> ${res.statusCode} ${duration}ms (from ${ip})`);
+        const statusColor = res.statusCode >= 400 ? c.red : c.dim;
+        console.log(`${c.dim}[REQ]${c.reset} ${req.method} ${req.originalUrl} ${statusColor}${res.statusCode}${c.reset} ${c.dim}${duration}ms${c.reset}`);
     });
     next();
 });
@@ -117,7 +131,8 @@ let ksfCallStats = { total: 0, cached: 0, errors: 0, lastReset: Date.now() };
 
 function getKsfStats() {
     const elapsed = ((Date.now() - ksfCallStats.lastReset) / 1000).toFixed(0);
-    return `[KSF STATS] total=${ksfCallStats.total} cached=${ksfCallStats.cached} errors=${ksfCallStats.errors} over ${elapsed}s`;
+    const errStr = ksfCallStats.errors > 0 ? `${c.red}${ksfCallStats.errors} errors${c.reset}` : `${c.green}0 errors${c.reset}`;
+    return `${c.cyan}[KSF]${c.reset} ${c.bold}Stats:${c.reset} ${ksfCallStats.total} calls, ${ksfCallStats.cached} cached, ${errStr} ${c.dim}(${elapsed}s window)${c.reset}`;
 }
 
 // Log stats every 5 minutes
@@ -136,13 +151,13 @@ async function fetchKSFData(url) {
     const cached = ksfResponseCache.get(url);
     if (cached && (Date.now() - cached.timestamp) < KSF_CACHE_TTL) {
         ksfCallStats.cached++;
-        console.log(`[KSF] CACHE HIT (${((Date.now() - cached.timestamp) / 1000).toFixed(1)}s old) ${url}`);
+        console.log(`${c.cyan}[KSF]${c.reset} ${c.green}CACHE${c.reset} ${c.dim}${url}${c.reset}`);
         return cached.data;
     }
 
     // Dedup inflight requests to the same URL
     if (ksfInflight.has(url)) {
-        console.log(`[KSF] DEDUP (waiting on inflight request) ${url}`);
+        console.log(`${c.cyan}[KSF]${c.reset} ${c.yellow}DEDUP${c.reset} ${c.dim}${url}${c.reset}`);
         ksfCallStats.cached++;
         return ksfInflight.get(url);
     }
@@ -150,17 +165,14 @@ async function fetchKSFData(url) {
     const promise = (async () => {
         const start = Date.now();
         try {
-            console.log(`[KSF] -> GET ${url}`);
+            console.log(`${c.cyan}[KSF]${c.reset} ${c.bold}->${c.reset} ${c.dim}${url}${c.reset}`);
             const response = await axios.get(url, {
                 headers: { 'discord-bot-token': KSF_API_TOKEN },
                 timeout: serverConfig.timeouts.ksfApiFetch
             });
             const duration = Date.now() - start;
 
-            // Detailed response logging
-            console.log(`[KSF] <- ${response.status} ${duration}ms ${url}`);
-            console.log(`[KSF]    All Headers: ${JSON.stringify(response.headers)}`);
-            console.log(`[KSF]    Response status field: ${response.data?.status || 'N/A'}`);
+            console.log(`${c.cyan}[KSF]${c.reset} ${c.bold}<-${c.reset} ${c.green}${response.status}${c.reset} ${c.dim}${duration}ms${c.reset}`);
 
             // Only cache responses that have actual data (don't cache soft rate-limit "offline" responses)
             const isOnlineStatusCall = url.includes('/onlinestatus');
@@ -169,7 +181,7 @@ async function fetchKSFData(url) {
                 response.data?.data?.player === null;
             
             if (looksLikeRateLimit) {
-                console.warn(`[KSF]    SUSPICIOUS: onlinestatus returned offline with null player - possible soft rate limit. NOT caching.`);
+                console.warn(`${c.yellow}[KSF]${c.reset} ${c.yellow}Possible soft rate limit — not caching${c.reset}`);
             } else {
                 ksfResponseCache.set(url, { data: response.data, timestamp: Date.now() });
             }
@@ -178,13 +190,10 @@ async function fetchKSFData(url) {
         } catch (error) {
             ksfCallStats.errors++;
             const duration = Date.now() - start;
-            console.error(`[KSF] ERROR ${duration}ms ${url}: ${error.message}`);
-            if (error.response) {
-                console.error(`[KSF]    HTTP Status: ${error.response.status}`);
-                console.error(`[KSF]    Response Body: ${JSON.stringify(error.response.data).substring(0, 500)}`);
-                if (error.response.status === 429) {
-                    console.error(`[KSF]    RATE LIMITED! Retry-After: ${error.response.headers['retry-after'] || 'unknown'}`);
-                }
+            const status = error.response ? error.response.status : 'TIMEOUT';
+            console.error(`${c.red}[KSF]${c.reset} ${c.red}${status}${c.reset} ${duration}ms ${c.dim}${url}${c.reset} ${c.red}${error.message}${c.reset}`);
+            if (error.response?.status === 429) {
+                console.error(`${c.red}[KSF]${c.reset} ${c.red}${c.bold}RATE LIMITED${c.reset} ${c.dim}Retry-After: ${error.response.headers['retry-after'] || '?'}${c.reset}`);
             }
             return null;
         } finally {
@@ -237,7 +246,7 @@ setInterval(() => {
         }
     }
     if (cleaned > 0) {
-        console.log(`[CACHE] Cleaned ${cleaned} expired entries. KSF=${ksfResponseCache.size} Player=${playerResponseCache.size}`);
+        console.log(`${c.yellow}[CACHE]${c.reset} Cleaned ${cleaned} entries ${c.dim}(KSF: ${ksfResponseCache.size}, Player: ${playerResponseCache.size})${c.reset}`);
     }
 }, 60000);
 
@@ -283,7 +292,7 @@ async function resolveSteamID(input) {
             return steamid;
         }
     } catch (e) {
-        console.error("Failed to resolve SteamID from username", e.message);
+        console.error(`${c.red}[STEAM]${c.reset} Failed to resolve SteamID: ${c.dim}${e.message}${c.reset}`);
     }
     return null;
 }
@@ -306,7 +315,7 @@ async function fetchSteamAvatar(steamId64) {
             return avatarUrl;
         }
     } catch (e) {
-        console.error("Failed to fetch Steam avatar", e.message);
+        console.error(`${c.red}[STEAM]${c.reset} Failed to fetch avatar: ${c.dim}${e.message}${c.reset}`);
     }
     return null;
 }
@@ -408,7 +417,7 @@ app.get('/api/player/:input', async (req, res) => {
         // Only check the exact requested gameType — don't cross-serve css/css100t data
         const cachedResponse = getCachedPlayerResponse(steamid, gameType, surfType);
         if (cachedResponse) {
-            console.log(`[PLAYER] CACHE HIT for ${steamid} (${gameType}/${surfType})`);
+            console.log(`${c.green}[PLAYER]${c.reset} ${c.green}CACHE${c.reset} ${steamid} ${c.dim}(${gameType}/${surfType})${c.reset}`);
             return res.json(cachedResponse);
         }
 
@@ -432,12 +441,9 @@ app.get('/api/player/:input', async (req, res) => {
             return res.status(502).json({ error: "Failed to fetch status from KSF API" });
         }
 
-        // Log full response structure to diagnose issues
-        console.log(`[PLAYER] Raw KSF response keys for ${steamid}: ${JSON.stringify(Object.keys(statusResponse || {}))}`);
-        console.log(`[PLAYER] Raw KSF response.data snippet for ${steamid}: ${JSON.stringify(statusResponse.data || {}).substring(0, 500)}`);
-
         const statusData = statusResponse.data;
-        console.log(`[PLAYER] Parsed status for ${steamid}: onlineStatus=${statusData?.onlineStatus} hasServer=${!!statusData?.server}`);
+        const statusStr = statusData?.onlineStatus === 'online' ? `${c.green}online${c.reset}` : `${c.dim}offline${c.reset}`;
+        console.log(`${c.green}[PLAYER]${c.reset} ${steamid} ${statusStr} ${c.dim}(${gameType}/${surfType})${c.reset}`);
 
         const steamId64 = steamIdTo64(steamid);
         const avatarUrl = await fetchSteamAvatar(steamId64);
@@ -493,7 +499,7 @@ app.get('/api/player/:input', async (req, res) => {
                     zone = 0;
                 }
 
-                console.log(`[PLAYER] ${playerObj.playername} on ${statusData.server.currentmap} | maptype=${statusData.server.maptype} rawZone=${rawZone} resolvedZone=${zone}`);
+                console.log(`${c.green}[PLAYER]${c.reset} ${c.bold}${playerObj.playername}${c.reset} on ${c.cyan}${statusData.server.currentmap}${c.reset} zone ${c.bold}${zone}${c.reset}`);
 
                 responsePayload.zone = zone;
                 responsePayload.playerName = playerObj.playername;
@@ -546,7 +552,7 @@ app.get('/api/player/:input', async (req, res) => {
                         const existing = ksfResponseCache.get(pStatusUrl);
                         if (!existing || (Date.now() - existing.timestamp) > KSF_CACHE_TTL) {
                             ksfResponseCache.set(pStatusUrl, { data: syntheticResponse, timestamp: Date.now() });
-                            console.log(`[PLAYER] Pre-cached onlinestatus for co-player ${p.playername} (${p.steamid})`);
+                            console.log(`${c.green}[PLAYER]${c.reset} ${c.dim}Pre-cached ${p.playername}${c.reset}`);
                         }
                     }
                 }
@@ -559,7 +565,7 @@ app.get('/api/player/:input', async (req, res) => {
         res.json(responsePayload);
 
     } catch (error) {
-        console.error("Server Error:", error);
+        console.error(`${c.red}[PLAYER]${c.reset} ${c.red}${error.message}${c.reset}`);
         res.status(500).json({ 
             error: "Internal Server Error", 
             details: error.message 
@@ -625,7 +631,7 @@ app.get('/api/mapstats/:input/:map', async (req, res) => {
         });
 
     } catch (error) {
-        console.error("MapStats Error:", error);
+        console.error(`${c.red}[MAPSTATS]${c.reset} ${c.red}${error.message}${c.reset}`);
         res.status(500).json({ error: "Internal Server Error", details: error.message });
     }
 });
@@ -702,7 +708,7 @@ app.get('/api/profile/:input', async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Profile Error:", error);
+        console.error(`${c.red}[PROFILE]${c.reset} ${c.red}${error.message}${c.reset}`);
         res.status(500).json({ error: "Internal Server Error", details: error.message });
     }
 });
@@ -717,7 +723,7 @@ app.get('/api/config', (req, res) => {
             return res.json(data);
         }
     } catch (e) {
-        console.error("Failed to read overlay config:", e.message);
+        console.error(`${c.red}[CONFIG]${c.reset} ${c.dim}${e.message}${c.reset}`);
     }
     res.json({ steamId: "", refreshRate: 60, gameType: "css", surfType: 0, showMainMapStats: false, hideStages: false, showZoneBar: true, showRankCard: true, showProfileStats: true, showDetailedStats: true, showMapInfo: true, showPointsBreakdown: true, showHeader: true, showStagePanel: true, showFooter: true, theme: {} });
 });
@@ -735,7 +741,7 @@ app.get('/api/debug/ksf-raw/:steamid', async (req, res) => {
         }
         
         const url = `${KSF_BASE_URL}/${gameType}/steamid/${resolved}/onlinestatus`;
-        console.log(`[DEBUG] Raw KSF test -> ${url}`);
+        console.log(`${c.magenta}[DEBUG]${c.reset} ${c.dim}${url}${c.reset}`);
         
         const response = await axios.get(url, {
             headers: { 'discord-bot-token': KSF_API_TOKEN },
@@ -785,7 +791,7 @@ app.post('/api/config', (req, res) => {
         }
         res.json({ ok: true });
     } catch (e) {
-        console.error("Failed to write overlay config:", e.message);
+        console.error(`${c.red}[CONFIG]${c.reset} ${c.dim}Write failed: ${e.message}${c.reset}`);
         res.status(500).json({ error: e.message });
     }
 });
@@ -816,5 +822,5 @@ app.get('/api/browse', (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on 0.0.0.0:${PORT}`);
+    console.log(`${c.green}${c.bold}[SERVER]${c.reset} ${c.green}Running on 0.0.0.0:${PORT}${c.reset}`);
 });

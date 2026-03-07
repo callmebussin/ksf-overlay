@@ -721,7 +721,22 @@ body {
     display: flex;
     align-items: center;
     flex: 1;
-    justify-content: space-around;
+    justify-content: flex-end;
+    gap: 14px;
+}
+
+.map-stat {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-color);
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.map-stat-playtime {
+    opacity: 0.6;
+    font-weight: 600;
 }
 
 /* ── Profile Card Rows (horizontal pairing) ─────────────────── */

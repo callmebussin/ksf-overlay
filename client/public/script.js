@@ -38,6 +38,26 @@ let hasInitialized = false;
 let currentFetchController = null; // AbortController for in-flight fetches
 let viewingOtherPlayer = null; // When set, we're viewing another player's stats (not our own)
 let userExplicitPillChoice = false; // True when user clicked a pill — suppresses auto-detect
+let lastFetchData = null; // Last successful fetch response, used for caching on player switch
+
+// Per-player data cache for instant switching between online players.
+// Keys: "steamid:gameType:surfType", Values: { data, profile, timestamp }
+const playerDataCache = new Map();
+const PLAYER_DATA_CACHE_TTL = 60000; // 1 minute per user
+
+function cachePlayerData(steamid, data, profile) {
+    const key = `${steamid}:${currentConfig.gameType}:${currentConfig.surfType}`;
+    playerDataCache.set(key, { data, profile, timestamp: Date.now() });
+}
+
+function getCachedPlayerData(steamid) {
+    const key = `${steamid}:${currentConfig.gameType}:${currentConfig.surfType}`;
+    const cached = playerDataCache.get(key);
+    if (cached && (Date.now() - cached.timestamp) < PLAYER_DATA_CACHE_TTL) {
+        return cached;
+    }
+    return null;
+}
 
 // Persist lastRefreshTime across reloads AND full app restarts.
 // Uses both localStorage (fast, survives Ctrl+R) and Electron IPC (survives full restart).
@@ -210,9 +230,10 @@ const ui = {
     headerPoints: null, // removed — rank label replaced points
     mapName: document.getElementById('map-name'),
     mapSpinner: document.getElementById('map-spinner'),
-    mapTierValue: document.getElementById('map-tier-value'),
-    mapStageCount: document.getElementById('map-stage-count'),
-    mapBonusCount: document.getElementById('map-bonus-count'),
+    mapTierStat: document.getElementById('map-tier-stat'),
+    mapStageStat: document.getElementById('map-stage-stat'),
+    mapBonusStat: document.getElementById('map-bonus-stat'),
+    mapPlaytimeStat: document.getElementById('map-playtime-stat'),
     mapInfoBg: document.getElementById('map-info-bg'),
     statusIndicator: document.getElementById('status-indicator'),
     updateTimer: document.getElementById('update-timer'),
@@ -252,7 +273,7 @@ const ui = {
     profileWrbs: document.getElementById('profile-wrbs'),
     profileTop10s: document.getElementById('profile-top10s'),
     profileGroups: document.getElementById('profile-groups'),
-    profilePlaytime: document.getElementById('profile-playtime'),
+
     header: document.getElementById('header'),
     footer: document.getElementById('footer'),
     emptyState: document.getElementById('empty-state'),
@@ -567,11 +588,13 @@ ui.playerName.addEventListener('click', () => {
     isUpdating = false;
     mapStatsFetching = null;
 
-    // Save current viewed player's state
+    // Cache current viewed player's data before switching away
     savePillSnapshot();
+    cachePlayerData(currentConfig.steamId, lastFetchData, profileCache);
 
     // Restore our own steamId
-    currentConfig.steamId = viewingOtherPlayer;
+    const ownSteamId = viewingOtherPlayer;
+    currentConfig.steamId = ownSteamId;
     viewingOtherPlayer = null;
 
     profileCache = null;
@@ -581,10 +604,23 @@ ui.playerName.addEventListener('click', () => {
     currentZone = null;
     browsingZone = null;
     displayedStageZone = null;
-    saveLastRefreshTime(0);
 
-    // Restart polling for our own stats
-    startPolling(true);
+    // Check if we have cached data for our own profile (instant switch-back)
+    const cached = getCachedPlayerData(ownSteamId);
+    if (cached) {
+        updateUI(cached.data);
+        if (cached.profile) {
+            profileCache = cached.profile;
+            populateProfile(cached.profile);
+        }
+        saveLastRefreshTime(Date.now());
+        savePillSnapshot();
+        saveLocalCache();
+        startPolling(false);
+    } else {
+        saveLastRefreshTime(0);
+        startPolling(true);
+    }
 });
 
 function navigateZone(direction) {
@@ -1279,9 +1315,12 @@ async function fetchStats() {
             }
         }
 
+        lastFetchData = data;
         updateUI(data);
         fetchProfile();
         saveLastRefreshTime(Date.now());
+        // Cache this player's data for instant switching
+        cachePlayerData(currentConfig.steamId, data, profileCache);
         // Update pill snapshot cache with fresh data
         savePillSnapshot();
         // Persist to localStorage for app restart recovery
@@ -1389,23 +1428,37 @@ function formatDate(dateVal) {
 
 let currentMapTier = null;
 
+// Tier colors: T1 (green) -> T8 (dark red) gradient
+const TIER_COLORS = {
+    1: '#2ecc71',  // green
+    2: '#6dbd45',  // yellow-green
+    3: '#a8b032',  // olive
+    4: '#d4a830',  // gold
+    5: '#e8963b',  // orange
+    6: '#d46a36',  // red-orange
+    7: '#c0392b',  // red
+    8: '#8e1a1a',  // dark red
+};
+
 function setTierBadge(tier) {
     const t = parseInt(tier);
     if (!t || t < 1 || t > 8) {
-        ui.mapTierValue.innerText = '-';
+        ui.mapTierStat.innerText = 'Tier -';
+        ui.mapTierStat.style.color = '';
         return;
     }
     currentMapTier = t;
-    ui.mapTierValue.innerText = t.toString();
+    ui.mapTierStat.innerText = `Tier ${t}`;
+    ui.mapTierStat.style.color = TIER_COLORS[t] || '';
 }
 
 function updateMapPlaytime() {
     // Use zone 0 totalTime (map-specific playtime)
     const zone0 = zoneCache.get(0);
     if (zone0 && zone0.totalTime) {
-        ui.profilePlaytime.innerText = formatTotalTime(zone0.totalTime);
+        ui.mapPlaytimeStat.innerText = formatTotalTime(zone0.totalTime);
     } else {
-        ui.profilePlaytime.innerText = "-";
+        ui.mapPlaytimeStat.innerText = "-";
     }
 }
 
@@ -1422,8 +1475,8 @@ function updateMapCompletionStatus(mapInfo) {
     const hasBonuses = totalBonuses > 0;
 
     // Update map info card stage/bonus counts
-    ui.mapStageCount.innerText = isLinear ? 'Linear' : totalStages.toString();
-    ui.mapBonusCount.innerText = totalBonuses.toString();
+    ui.mapStageStat.innerText = isLinear ? 'Linear' : `${totalStages} Stages`;
+    ui.mapBonusStat.innerText = `${totalBonuses} Bonuses`;
 
     // Toggle class for taller boxes when no bonuses
     if (hasBonuses) {
@@ -1642,8 +1695,11 @@ function showLoadingState() {
     ui.zoneBarContainer.style.display = 'none';
     ui.mapName.innerHTML = '<span id="map-spinner" class="spinner" style="display: inline-block;"></span> loading...';
     ui.mapSpinner = document.getElementById('map-spinner');
-    ui.mapStageCount.innerText = '-';
-    ui.mapBonusCount.innerText = '-';
+    ui.mapTierStat.innerText = 'Tier -';
+    ui.mapTierStat.style.color = '';
+    ui.mapStageStat.innerText = '- Stages';
+    ui.mapBonusStat.innerText = '- Bonuses';
+    ui.mapPlaytimeStat.innerText = '-';
 }
 
 function hasCompletions(completions) {
@@ -2187,6 +2243,8 @@ function updateUI(data) {
 
                         // Save current player's state before switching
                         savePillSnapshot();
+                        // Cache current player's data for instant switch-back
+                        cachePlayerData(currentConfig.steamId, lastFetchData, profileCache);
 
                         // Track whether we're viewing another player or switching back to our own.
                         // viewingOtherPlayer stores our "own" steamId when viewing someone else.
@@ -2206,12 +2264,29 @@ function updateUI(data) {
                         currentZone = null;
                         browsingZone = null;
                         displayedStageZone = null;
-                        saveLastRefreshTime(0);
 
                         ui.playersModal.style.display = 'none';
 
-                        // Restart polling from scratch for the new player
-                        startPolling(true);
+                        // Check if we have cached data for this player (instant switch)
+                        const cached = getCachedPlayerData(p.steamid);
+                        if (cached) {
+                            // Instantly populate UI from cache
+                            updateUI(cached.data);
+                            if (cached.profile) {
+                                profileCache = cached.profile;
+                                populateProfile(cached.profile);
+                            }
+                            saveLastRefreshTime(Date.now());
+                            savePillSnapshot();
+                            saveLocalCache();
+                            // Start polling but don't force immediate fetch — cache is fresh
+                            startPolling(false);
+                            // Schedule a background refresh at next interval
+                        } else {
+                            // No cache — fetch immediately
+                            saveLastRefreshTime(0);
+                            startPolling(true);
+                        }
                     });
                     
                     ui.playersList.appendChild(item);
@@ -2342,10 +2417,11 @@ function updateUI(data) {
         // Restore stage panel visibility (may have been hidden for linear-only map)
         if (ui.stagePanel) ui.stagePanel.style.display = '';
         ui.mapName.innerText = "Offline";
-        ui.mapTierValue.innerText = '-';
-        ui.profilePlaytime.innerText = '-';
-        ui.mapStageCount.innerText = '-';
-        ui.mapBonusCount.innerText = '-';
+        ui.mapTierStat.innerText = 'Tier -';
+        ui.mapTierStat.style.color = '';
+        ui.mapStageStat.innerText = '- Stages';
+        ui.mapBonusStat.innerText = '- Bonuses';
+        ui.mapPlaytimeStat.innerText = '-';
         ui.mapInfoBg.style.backgroundImage = '';
         ui.mapInfoBg.classList.remove('loaded');
         ui.mapInfoCard.style.display = 'none';
