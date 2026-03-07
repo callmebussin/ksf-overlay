@@ -193,9 +193,6 @@ body {
 
 .player-info h2.viewing-other {
     cursor: pointer;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-underline-offset: 3px;
 }
 
 .player-info h2.viewing-other:hover {

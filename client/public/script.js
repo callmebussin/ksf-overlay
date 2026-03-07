@@ -43,7 +43,7 @@ let lastFetchData = null; // Last successful fetch response, used for caching on
 // Per-player data cache for instant switching between online players.
 // Keys: "steamid:gameType:surfType", Values: { data, profile, timestamp }
 const playerDataCache = new Map();
-const PLAYER_DATA_CACHE_TTL = 60000; // 1 minute per user
+const PLAYER_DATA_CACHE_TTL = 300000; // 5 minutes — survives time spent viewing other players
 
 function cachePlayerData(steamid, data, profile) {
     const key = `${steamid}:${currentConfig.gameType}:${currentConfig.surfType}`;
@@ -608,19 +608,18 @@ ui.playerName.addEventListener('click', () => {
     // Check if we have cached data for our own profile (instant switch-back)
     const cached = getCachedPlayerData(ownSteamId);
     if (cached) {
+        // Instantly show cached data
         updateUI(cached.data);
         if (cached.profile) {
             profileCache = cached.profile;
             populateProfile(cached.profile);
         }
-        saveLastRefreshTime(Date.now());
         savePillSnapshot();
         saveLocalCache();
-        startPolling(false);
-    } else {
-        saveLastRefreshTime(0);
-        startPolling(true);
     }
+    // Always fetch fresh data (immediately if no cache, background refresh if cached)
+    saveLastRefreshTime(0);
+    startPolling(true);
 });
 
 function navigateZone(direction) {
@@ -2276,17 +2275,12 @@ function updateUI(data) {
                                 profileCache = cached.profile;
                                 populateProfile(cached.profile);
                             }
-                            saveLastRefreshTime(Date.now());
                             savePillSnapshot();
                             saveLocalCache();
-                            // Start polling but don't force immediate fetch — cache is fresh
-                            startPolling(false);
-                            // Schedule a background refresh at next interval
-                        } else {
-                            // No cache — fetch immediately
-                            saveLastRefreshTime(0);
-                            startPolling(true);
                         }
+                        // Always fetch fresh data in background
+                        saveLastRefreshTime(0);
+                        startPolling(true);
                     });
                     
                     ui.playersList.appendChild(item);
