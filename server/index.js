@@ -551,10 +551,13 @@ app.get('/api/player/:input', async (req, res) => {
                             ksfResponseCache.set(pStatusUrl, { data: syntheticResponse, timestamp: Date.now() });
                         }
 
-                        // Build full player response in background (non-blocking)
+                        // Build full player response in background (non-blocking).
+                        // Skip if already cached or if KSF requests for this player are in-flight.
                         const pCacheKey = getPlayerCacheKey(p.steamid, gameType, surfType);
                         const existingPlayer = playerResponseCache.get(pCacheKey);
-                        if (!existingPlayer || (Date.now() - existingPlayer.timestamp) > PLAYER_CACHE_TTL) {
+                        const alreadyCached = existingPlayer && (Date.now() - existingPlayer.timestamp) <= PLAYER_CACHE_TTL;
+                        const alreadyInFlight = ksfInflight.has(`${KSF_BASE_URL}/${recordGameType}/map/${statusData.server.currentmap}/zone/0/steamid/${p.steamid}/recordinfo/${surfType}`);
+                        if (!alreadyCached && !alreadyInFlight) {
                             (async () => {
                                 try {
                                     let pZone = parseInt(p.zone);

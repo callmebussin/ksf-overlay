@@ -576,6 +576,28 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Direct fetch + render for instant player switching.
+// Hits the server (which has pre-cached co-player data) and renders immediately.
+async function directFetchAndRender(steamId) {
+    try {
+        const baseUrl = getBaseUrl();
+        const response = await fetch(`${baseUrl}/api/player/${encodeURIComponent(steamId)}?${apiQuery()}`);
+        if (!response.ok) return false;
+        const data = await response.json();
+        // Discard if player changed while we were fetching
+        if (currentConfig.steamId !== steamId) return false;
+        lastFetchData = data;
+        updateUI(data);
+        fetchProfile();
+        saveLastRefreshTime(Date.now());
+        savePillSnapshot();
+        saveLocalCache();
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+
 // Click player name to switch back to own stats when viewing another player
 ui.playerName.addEventListener('click', () => {
     if (!viewingOtherPlayer) return; // Not viewing someone else — nothing to do
@@ -605,21 +627,21 @@ ui.playerName.addEventListener('click', () => {
     browsingZone = null;
     displayedStageZone = null;
 
-    // Check if we have cached data for our own profile (instant switch-back)
+    // Show cached data instantly while fetching fresh data
     const cached = getCachedPlayerData(ownSteamId);
     if (cached) {
-        // Instantly show cached data
         updateUI(cached.data);
         if (cached.profile) {
             profileCache = cached.profile;
             populateProfile(cached.profile);
         }
-        savePillSnapshot();
-        saveLocalCache();
     }
-    // Always fetch fresh data (immediately if no cache, background refresh if cached)
-    saveLastRefreshTime(0);
-    startPolling(true);
+
+    // Direct fetch from server (hits server cache = instant) then start polling
+    directFetchAndRender(ownSteamId).then(() => {
+        saveLastRefreshTime(Date.now());
+        startPolling(false);
+    });
 });
 
 function navigateZone(direction) {
@@ -2256,7 +2278,6 @@ function updateUI(data) {
                         // Track whether we're viewing another player or switching back to our own.
                         // viewingOtherPlayer stores our "own" steamId when viewing someone else.
                         if (!viewingOtherPlayer) {
-                            // We're currently viewing our own profile — remember our steamId
                             viewingOtherPlayer = currentConfig.steamId;
                         }
                         
@@ -2265,8 +2286,6 @@ function updateUI(data) {
                         profileCache = null;
                         lastProfileFetch = 0;
                         zoneCache.clear();
-                        // Don't clear pillSnapshotCache — keys are scoped per steamId,
-                        // so the original player's cache is preserved for switching back.
                         currentMap = null;
                         currentZone = null;
                         browsingZone = null;
@@ -2274,21 +2293,21 @@ function updateUI(data) {
 
                         ui.playersModal.style.display = 'none';
 
-                        // Check if we have cached data for this player (instant switch)
+                        // Show cached data instantly if available
                         const cached = getCachedPlayerData(p.steamid);
                         if (cached) {
-                            // Instantly populate UI from cache
                             updateUI(cached.data);
                             if (cached.profile) {
                                 profileCache = cached.profile;
                                 populateProfile(cached.profile);
                             }
-                            savePillSnapshot();
-                            saveLocalCache();
                         }
-                        // Always fetch fresh data in background
-                        saveLastRefreshTime(0);
-                        startPolling(true);
+
+                        // Direct fetch from server (hits server cache = instant) then start polling
+                        directFetchAndRender(p.steamid).then(() => {
+                            saveLastRefreshTime(Date.now());
+                            startPolling(false);
+                        });
                     });
                     
                     ui.playersList.appendChild(item);
