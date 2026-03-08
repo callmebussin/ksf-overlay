@@ -1,0 +1,8327 @@
+[
+  {
+    "MapName": "surf_sanguine",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "biji, Krealington",
+    "Added to KSF": "May 22, 2020"
+  },
+  {
+    "MapName": "surf_scarlet_ksf",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "PrisonNightmare",
+    "Added to KSF": "Dec 11, 2021"
+  },
+  {
+    "MapName": "surf_sci_fi",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 0,
+    "Mapper": "BILLZ0R",
+    "Added to KSF": "Feb 19, 2014"
+  },
+  {
+    "MapName": "surf_seaside",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 3,
+    "Mapper": "Exxe",
+    "Added to KSF": "Mar 1, 2023"
+  },
+  {
+    "MapName": "surf_second",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "not_a_zombie",
+    "Added to KSF": "Feb 28, 2016"
+  },
+  {
+    "MapName": "surf_sequoia_fix",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 2,
+    "Mapper": "maz",
+    "Added to KSF": "Sep 7, 2020"
+  },
+  {
+    "MapName": "surf_serenity",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 3,
+    "Mapper": "Hardex",
+    "Added to KSF": "Feb 11, 2017"
+  },
+  {
+    "MapName": "surf_sinner_ksf",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 4,
+    "Mapper": "Benchmarked",
+    "Added to KSF": "Nov 1, 2023"
+  },
+  {
+    "MapName": "surf_sinsane_ez",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Bocuma",
+    "Added to KSF": "Jun 3, 2017"
+  },
+  {
+    "MapName": "surf_sirius",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "granis",
+    "Added to KSF": "Jan 23, 2022"
+  },
+  {
+    "MapName": "surf_sketchy",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "GorangeNinja",
+    "Added to KSF": "Jun 14, 2023"
+  },
+  {
+    "MapName": "surf_sky_ages",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Helix",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_slob2_fix",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "Dorito, Sam",
+    "Added to KSF": "Oct 20, 2020"
+  },
+  {
+    "MapName": "surf_slobs",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 16,
+    "Bonuses": 2,
+    "Mapper": "Sam",
+    "Added to KSF": "Feb 5, 2022"
+  },
+  {
+    "MapName": "surf_smaragd_fix",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Shoop, ChiChiN, Klickz",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_happyhands",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Kiiru",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_harmony_fix",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 3,
+    "Mapper": "PrisonNightmare",
+    "Added to KSF": "Jun 5, 2021"
+  },
+  {
+    "MapName": "surf_smile_njv",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Compact",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_spaceship_ksf",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Darck",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_heaven_njv",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Ch1!!3r",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_spectrum_njv",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "SKAR",
+    "Added to KSF": "Aug 20, 2012"
+  },
+  {
+    "MapName": "surf_stagejuan_ksf",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "InvertedMoongoat",
+    "Added to KSF": "Jan 13, 2013"
+  },
+  {
+    "MapName": "surf_holiday",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "iNooVa",
+    "Added to KSF": "Jun 9, 2020"
+  },
+  {
+    "MapName": "surf_static",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "Godowner",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_hotwheels_fix",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 8,
+    "Mapper": "Hardex",
+    "Added to KSF": "Dec 24, 2019"
+  },
+  {
+    "MapName": "surf_stick",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "VZERo",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_hurrr",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "SKAR",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_stickybutt_alpha",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Roosta",
+    "Added to KSF": "Aug 10, 2012"
+  },
+  {
+    "MapName": "surf_stonework2",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "MrCow",
+    "Added to KSF": "Nov 11, 2012"
+  },
+  {
+    "MapName": "surf_illusion",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 3,
+    "Mapper": "Juxtapo, maz, Phurix, Syncronyze",
+    "Added to KSF": "Dec 29, 2020"
+  },
+  {
+    "MapName": "surf_imex",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Junior",
+    "Added to KSF": "Aug 9, 2012"
+  },
+  {
+    "MapName": "surf_strafe",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "masog",
+    "Added to KSF": "Jan 18, 2016"
+  },
+  {
+    "MapName": "surf_subway",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "pretzL",
+    "Added to KSF": "Jan 16, 2018"
+  },
+  {
+    "MapName": "surf_in_space",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 1,
+    "Mapper": "KappaEliitti",
+    "Added to KSF": "Dec 8, 2020"
+  },
+  {
+    "MapName": "surf_swagtoast",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 1,
+    "Mapper": "WALL-E",
+    "Added to KSF": "May 10, 2015"
+  },
+  {
+    "MapName": "surf_indecisive",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "elly, Moxx",
+    "Added to KSF": "Aug 25, 2023"
+  },
+  {
+    "MapName": "surf_sylvan",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Sagan",
+    "Added to KSF": "Mar 29, 2020"
+  },
+  {
+    "MapName": "surf_ing",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "RambJoe",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_take1",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "monkeywithagun",
+    "Added to KSF": "Nov 24, 2017"
+  },
+  {
+    "MapName": "surf_inspire",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "ins",
+    "Added to KSF": "May 5, 2014"
+  },
+  {
+    "MapName": "surf_tempest",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Hardex",
+    "Added to KSF": "Nov 12, 2016"
+  },
+  {
+    "MapName": "surf_instantdeath",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Hardex",
+    "Added to KSF": "Jul 23, 2022"
+  },
+  {
+    "MapName": "surf_tempest2",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Hardex",
+    "Added to KSF": "May 6, 2017"
+  },
+  {
+    "MapName": "surf_tenacious",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Nikki",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_interference",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "NvC_DmN_CH",
+    "Added to KSF": "Apr 14, 2019"
+  },
+  {
+    "MapName": "surf_island",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "scaz",
+    "Added to KSF": "Aug 13, 2014"
+  },
+  {
+    "MapName": "surf_the_internet",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 12,
+    "Bonuses": 2,
+    "Mapper": "Xbmann",
+    "Added to KSF": "May 16, 2023"
+  },
+  {
+    "MapName": "surf_thembrium_njv",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "Razer",
+    "Added to KSF": "Aug 19, 2012"
+  },
+  {
+    "MapName": "surf_theunexpected",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "EICHHOERNCHEN",
+    "Added to KSF": "Nov 28, 2021"
+  },
+  {
+    "MapName": "surf_threnody",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 2,
+    "Mapper": "disres",
+    "Added to KSF": "Nov 1, 2023"
+  },
+  {
+    "MapName": "surf_togo",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Justin, Jon",
+    "Added to KSF": "Aug 12, 2012"
+  },
+  {
+    "MapName": "surf_torque",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "SangreNueva",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_torque2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "SangreNueva",
+    "Added to KSF": "Aug 14, 2012"
+  },
+  {
+    "MapName": "surf_tron_njv",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "PireS",
+    "Added to KSF": "Aug 10, 2012"
+  },
+  {
+    "MapName": "surf_tronia_refix",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 4,
+    "Mapper": "SangreNueva",
+    "Added to KSF": "Oct 27, 2013"
+  },
+  {
+    "MapName": "surf_tropic_ksf",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 6,
+    "Mapper": "quethesurfer",
+    "Added to KSF": "Jul 19, 2024"
+  },
+  {
+    "MapName": "surf_two_colour",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "InCognIto, Pyaniy_ezhik",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_ultimatum",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Godowner",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_undergrowth",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Juxtapo, Phurix",
+    "Added to KSF": "May 8, 2022"
+  },
+  {
+    "MapName": "surf_unraveled",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 1,
+    "Mapper": "SpyComplex",
+    "Added to KSF": "Jul 3, 2020"
+  },
+  {
+    "MapName": "surf_vale",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "Dizzy",
+    "Added to KSF": "Mar 6, 2016"
+  },
+  {
+    "MapName": "surf_vale2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "Dizzy",
+    "Added to KSF": "Jun 12, 2016"
+  },
+  {
+    "MapName": "surf_vegetables",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 1,
+    "Mapper": "JackTheStripper",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_velocity",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "copy-mark",
+    "Added to KSF": "Aug 14, 2012"
+  },
+  {
+    "MapName": "surf_voteforthisone",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 2,
+    "Mapper": "FalseLogic",
+    "Added to KSF": "Apr 7, 2014"
+  },
+  {
+    "MapName": "surf_wasteland",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 3,
+    "Mapper": "Pyllytonttu, TaiiKii",
+    "Added to KSF": "Sep 5, 2021"
+  },
+  {
+    "MapName": "surf_wasteland2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 5,
+    "Mapper": "Pyllytonttu",
+    "Added to KSF": "May 1, 2022"
+  },
+  {
+    "MapName": "surf_whoknows_ksf",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Malt",
+    "Added to KSF": "Mar 21, 2015"
+  },
+  {
+    "MapName": "surf_wicked",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 3,
+    "Mapper": "EICHHOERNCHEN, Pyllytonttu, TaiiKii",
+    "Added to KSF": "Mar 4, 2022"
+  },
+  {
+    "MapName": "surf_ivory",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "sid",
+    "Added to KSF": "Mar 7, 2018"
+  },
+  {
+    "MapName": "surf_wizard",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 3,
+    "Mapper": "biji",
+    "Added to KSF": "Mar 31, 2017"
+  },
+  {
+    "MapName": "surf_journeys",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Razer",
+    "Added to KSF": "Feb 21, 2019"
+  },
+  {
+    "MapName": "surf_yellow",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "M_Lama",
+    "Added to KSF": "Sep 19, 2021"
+  },
+  {
+    "MapName": "surf_juturna",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "ashm0re",
+    "Added to KSF": "Mar 31, 2016"
+  },
+  {
+    "MapName": "surf_zbig2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 2,
+    "Mapper": "bigblue, Muta, SpyComplex",
+    "Added to KSF": "Aug 24, 2018"
+  },
+  {
+    "MapName": "surf_zeitgeist",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 12,
+    "Bonuses": 4,
+    "Mapper": "SpyComplex",
+    "Added to KSF": "Jul 2, 2021"
+  },
+  {
+    "MapName": "surf_zion",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "monkeywithagun",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_kismet",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Sneakyy",
+    "Added to KSF": "Nov 13, 2022"
+  },
+  {
+    "MapName": "surf_zoomboys",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "sid",
+    "Added to KSF": "Jan 6, 2019"
+  },
+  {
+    "MapName": "surf_kloakk",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "pretzL",
+    "Added to KSF": "Mar 12, 2020"
+  },
+  {
+    "MapName": "surf_klue",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Klemix",
+    "Added to KSF": "Apr 14, 2019"
+  },
+  {
+    "MapName": "surf_25_lighters",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "bigblue",
+    "Added to KSF": "Jun 10, 2015"
+  },
+  {
+    "MapName": "surf_korn",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 3,
+    "Mapper": "payn",
+    "Added to KSF": "Apr 19, 2020"
+  },
+  {
+    "MapName": "surf_ace",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 1,
+    "Mapper": "Juxtapo",
+    "Added to KSF": "Feb 24, 2015"
+  },
+  {
+    "MapName": "surf_4dimensional",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 1,
+    "Mapper": "streebree",
+    "Added to KSF": "Mar 17, 2014"
+  },
+  {
+    "MapName": "surf_kvas",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Heisen",
+    "Added to KSF": "Apr 26, 2023"
+  },
+  {
+    "MapName": "surf_aircontrol_ksf",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "SnoopSh",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_kz_mix_journeys",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "SoUlFaThEr",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_adrift_fix",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "murglegurgle",
+    "Added to KSF": "Jul 1, 2023"
+  },
+  {
+    "MapName": "surf_kz_protraining",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 16,
+    "Bonuses": 4,
+    "Mapper": "SoUlFaThEr",
+    "Added to KSF": "Jan 3, 2013"
+  },
+  {
+    "MapName": "surf_adventure_final",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 7,
+    "Mapper": "GorangeNinja",
+    "Added to KSF": "Feb 2, 2016"
+  },
+  {
+    "MapName": "surf_lies_ksf",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "umg_",
+    "Added to KSF": "Sep 19, 2013"
+  },
+  {
+    "MapName": "surf_airflow",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "enjooi",
+    "Added to KSF": "Feb 28, 2013"
+  },
+  {
+    "MapName": "surf_lockdown",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "pedroknz",
+    "Added to KSF": "Oct 10, 2021"
+  },
+  {
+    "MapName": "surf_alend",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Ranth",
+    "Added to KSF": "Apr 8, 2018"
+  },
+  {
+    "MapName": "surf_lore",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 2,
+    "Mapper": "TargetPractice",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_ambient_njv",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Razer, PimpJuice",
+    "Added to KSF": "Aug 24, 2012"
+  },
+  {
+    "MapName": "surf_lullaby_ksf",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "nappa",
+    "Added to KSF": "Sep 29, 2013"
+  },
+  {
+    "MapName": "surf_angst",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Proxychains",
+    "Added to KSF": "Jan 23, 2022"
+  },
+  {
+    "MapName": "surf_mate",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "edy",
+    "Added to KSF": "Jul 18, 2021"
+  },
+  {
+    "MapName": "surf_antimatter_v2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Horsefeathers",
+    "Added to KSF": "Jan 11, 2015"
+  },
+  {
+    "MapName": "surf_mellow",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Rezonate",
+    "Added to KSF": "Aug 3, 2014"
+  },
+  {
+    "MapName": "surf_anything",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 2,
+    "Mapper": "Phurix",
+    "Added to KSF": "Feb 16, 2020"
+  },
+  {
+    "MapName": "surf_apollonian",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 0,
+    "Mapper": "Tioga060",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_mesa_mine",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Arblarg",
+    "Added to KSF": "Jul 8, 2014"
+  },
+  {
+    "MapName": "surf_artifex",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "Billy",
+    "Added to KSF": "Dec 16, 2012"
+  },
+  {
+    "MapName": "surf_mwag_reloaded",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 14,
+    "Bonuses": 5,
+    "Mapper": "monkeywithagun",
+    "Added to KSF": "Jun 16, 2019"
+  },
+  {
+    "MapName": "surf_auroria2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "Escencia",
+    "Added to KSF": "Nov 6, 2013"
+  },
+  {
+    "MapName": "surf_nebula",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "iNooVa",
+    "Added to KSF": "Dec 2, 2018"
+  },
+  {
+    "MapName": "surf_aux",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 2,
+    "Mapper": "Aux",
+    "Added to KSF": "Nov 21, 2013"
+  },
+  {
+    "MapName": "surf_network_2009",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "RyanS",
+    "Added to KSF": "Aug 9, 2012"
+  },
+  {
+    "MapName": "surf_axil",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 2,
+    "Mapper": "Klemix",
+    "Added to KSF": "Oct 28, 2020"
+  },
+  {
+    "MapName": "surf_noble",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Nov 2, 2016"
+  },
+  {
+    "MapName": "surf_axiom",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Krealington",
+    "Added to KSF": "Mar 27, 2018"
+  },
+  {
+    "MapName": "surf_not_so_disaster",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "joker",
+    "Added to KSF": "Feb 23, 2018"
+  },
+  {
+    "MapName": "surf_banana_fix",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 3,
+    "Mapper": "Geoff",
+    "Added to KSF": "Sep 11, 2022"
+  },
+  {
+    "MapName": "surf_not_so_sinister_ksf",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 3,
+    "Mapper": "wind",
+    "Added to KSF": "Dec 1, 2022"
+  },
+  {
+    "MapName": "surf_nova",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "KappaEliitti",
+    "Added to KSF": "Jun 13, 2021"
+  },
+  {
+    "MapName": "surf_barbies_malibu_adventure",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 9,
+    "Mapper": "TheJazzAgenT",
+    "Added to KSF": "Sep 2, 2023"
+  },
+  {
+    "MapName": "surf_ny_momentum_v3_1",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "FAJ",
+    "Added to KSF": "Aug 10, 2012"
+  },
+  {
+    "MapName": "surf_beginner_hell",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "dotone",
+    "Added to KSF": "Jan 28, 2016"
+  },
+  {
+    "MapName": "surf_ny_platinum",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "FAJ",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_beyer",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Juxtapo",
+    "Added to KSF": "Mar 17, 2013"
+  },
+  {
+    "MapName": "surf_beyer2",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "Juxtapo",
+    "Added to KSF": "Oct 27, 2014"
+  },
+  {
+    "MapName": "surf_ny_superhappiest_b3",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "FAJ",
+    "Added to KSF": "Aug 9, 2012"
+  },
+  {
+    "MapName": "surf_odyssey",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Riddler",
+    "Added to KSF": "Sep 6, 2012"
+  },
+  {
+    "MapName": "surf_blackside",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Pupsik",
+    "Added to KSF": "Oct 13, 2013"
+  },
+  {
+    "MapName": "surf_orthodox",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 16,
+    "Bonuses": 4,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Jul 21, 2020"
+  },
+  {
+    "MapName": "surf_blub",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Chayma",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_palais",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Dizzy",
+    "Added to KSF": "May 16, 2020"
+  },
+  {
+    "MapName": "surf_bonk",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "TheJazzAgenT",
+    "Added to KSF": "Feb 13, 2022"
+  },
+  {
+    "MapName": "surf_palm",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Dizzy",
+    "Added to KSF": "Jul 20, 2018"
+  },
+  {
+    "MapName": "surf_brodderlands",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "Flow",
+    "Added to KSF": "Aug 22, 2021"
+  },
+  {
+    "MapName": "surf_papertown",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "Sam",
+    "Added to KSF": "May 29, 2018"
+  },
+  {
+    "MapName": "surf_calamity2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "SacRed",
+    "Added to KSF": "Sep 5, 2012"
+  },
+  {
+    "MapName": "surf_pathfinder",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Dizzy",
+    "Added to KSF": "Mar 28, 2016"
+  },
+  {
+    "MapName": "surf_calibration",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "SacRed",
+    "Added to KSF": "Jan 18, 2013"
+  },
+  {
+    "MapName": "surf_perennial",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 3,
+    "Mapper": "granis",
+    "Added to KSF": "Dec 24, 2021"
+  },
+  {
+    "MapName": "surf_cannonball",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "EICHHOERNCHEN",
+    "Added to KSF": "Oct 10, 2020"
+  },
+  {
+    "MapName": "surf_premium",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 2,
+    "Mapper": "maz",
+    "Added to KSF": "Aug 29, 2020"
+  },
+  {
+    "MapName": "surf_catalyst",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "copy-mark",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_presmon_fix",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Arroba",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_catalyst2",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Billy, Razer",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_cement",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 7,
+    "Mapper": "EICHHOERNCHEN",
+    "Added to KSF": "Feb 28, 2020"
+  },
+  {
+    "MapName": "surf_akai_final",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "akai",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_progress_fix",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Dizzy, Sam",
+    "Added to KSF": "Feb 10, 2019"
+  },
+  {
+    "MapName": "surf_chasm",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "sid",
+    "Added to KSF": "Aug 2, 2018"
+  },
+  {
+    "MapName": "surf_psycho",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "Chicken",
+    "Added to KSF": "Aug 10, 2012"
+  },
+  {
+    "MapName": "surf_andromeda",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Syncronyze",
+    "Added to KSF": "Aug 29, 2018"
+  },
+  {
+    "MapName": "surf_chateau_fix",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Hesuka",
+    "Added to KSF": "Dec 24, 2018"
+  },
+  {
+    "MapName": "surf_quirky",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 9,
+    "Mapper": "Sam",
+    "Added to KSF": "Jan 21, 2023"
+  },
+  {
+    "MapName": "surf_apollo",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "ApeXe",
+    "Added to KSF": "Apr 9, 2022"
+  },
+  {
+    "MapName": "surf_artois",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 5,
+    "Mapper": "ApeXe",
+    "Added to KSF": "Dec 17, 2023"
+  },
+  {
+    "MapName": "surf_ravine",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "FriendlyChemist",
+    "Added to KSF": "Dec 8, 2020"
+  },
+  {
+    "MapName": "surf_reprise",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "TeMP",
+    "Added to KSF": "Mar 13, 2015"
+  },
+  {
+    "MapName": "surf_collaboration",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 0,
+    "Mapper": "ChuckNorris, Grueddi",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_rez",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "Xbmann",
+    "Added to KSF": "Apr 7, 2017"
+  },
+  {
+    "MapName": "surf_commune_too_beta5",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 2,
+    "Mapper": "FAJ",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_rocco_v2",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "FPSGod",
+    "Added to KSF": "Oct 13, 2018"
+  },
+  {
+    "MapName": "surf_compulsive_njv_h",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Razer",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_rookie",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 18,
+    "Bonuses": 0,
+    "Mapper": "Kiiru",
+    "Added to KSF": "Aug 22, 2014"
+  },
+  {
+    "MapName": "surf_concretejungle_fix",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 5,
+    "Mapper": "pretzL",
+    "Added to KSF": "Jun 15, 2020"
+  },
+  {
+    "MapName": "surf_salvador_ksf",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "iNooVa",
+    "Added to KSF": "May 10, 2024"
+  },
+  {
+    "MapName": "surf_aser",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "TruMatrix",
+    "Added to KSF": "Jan 5, 2019"
+  },
+  {
+    "MapName": "surf_consistenza_diversa",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 2,
+    "Mapper": "wakthor",
+    "Added to KSF": "Aug 14, 2021"
+  },
+  {
+    "MapName": "surf_sanctuary",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 3,
+    "Mapper": "Benchmarked",
+    "Added to KSF": "Aug 15, 2020"
+  },
+  {
+    "MapName": "surf_aura",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 8,
+    "Mapper": "ApeXe",
+    "Added to KSF": "Jan 29, 2022"
+  },
+  {
+    "MapName": "surf_constrictor_remix",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "sid",
+    "Added to KSF": "Aug 7, 2021"
+  },
+  {
+    "MapName": "surf_sandtrap",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Feb 1, 2017"
+  },
+  {
+    "MapName": "surf_construction",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 1,
+    "Mapper": "copy-mark",
+    "Added to KSF": "Aug 10, 2012"
+  },
+  {
+    "MapName": "surf_awp_sk337_v3",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Zalos",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_beginner",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "Kiiru",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_benevolent_refix",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "Syncronyze",
+    "Added to KSF": "Oct 27, 2017"
+  },
+  {
+    "MapName": "surf_sandtrap2",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "ArcticPanda, ShadowSheep",
+    "Added to KSF": "Jul 14, 2018"
+  },
+  {
+    "MapName": "surf_beyond",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 2,
+    "Mapper": "granis, sh_bro",
+    "Added to KSF": "Jul 8, 2020"
+  },
+  {
+    "MapName": "surf_cordelia",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 0,
+    "Mapper": "Razer",
+    "Added to KSF": "Nov 2, 2015"
+  },
+  {
+    "MapName": "surf_saturday",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "iamsupaman",
+    "Added to KSF": "Mar 3, 2018"
+  },
+  {
+    "MapName": "surf_beyond2",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "granis, sh_bro",
+    "Added to KSF": "Jul 22, 2023"
+  },
+  {
+    "MapName": "surf_seaworld_fix",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Stifler",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_semesterbreak",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Sam",
+    "Added to KSF": "Jun 17, 2017"
+  },
+  {
+    "MapName": "surf_simpsons_source",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 4,
+    "Mapper": "The-Goose",
+    "Added to KSF": "Nov 28, 2013"
+  },
+  {
+    "MapName": "surf_borderlands",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "WALL-E",
+    "Added to KSF": "Jun 1, 2016"
+  },
+  {
+    "MapName": "surf_skipalot",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "EICHHOERNCHEN",
+    "Added to KSF": "Oct 20, 2019"
+  },
+  {
+    "MapName": "surf_boreas",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Syncronyze",
+    "Added to KSF": "Dec 8, 2020"
+  },
+  {
+    "MapName": "surf_slob",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "Sam",
+    "Added to KSF": "Oct 10, 2020"
+  },
+  {
+    "MapName": "surf_spacejam",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Juxtapo, Syncronyze",
+    "Added to KSF": "May 21, 2015"
+  },
+  {
+    "MapName": "surf_spooky",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "rem",
+    "Added to KSF": "Nov 1, 2023"
+  },
+  {
+    "MapName": "surf_crucible",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "disres",
+    "Added to KSF": "Aug 25, 2024"
+  },
+  {
+    "MapName": "surf_crush",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Dizzy",
+    "Added to KSF": "Mar 25, 2017"
+  },
+  {
+    "MapName": "surf_squirrelsonvacation",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "EICHHOERNCHEN",
+    "Added to KSF": "May 31, 2020"
+  },
+  {
+    "MapName": "surf_stonks",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 2,
+    "Mapper": "Hardex",
+    "Added to KSF": "Mar 13, 2021"
+  },
+  {
+    "MapName": "surf_summer_ksf",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 11,
+    "Bonuses": 1,
+    "Mapper": "Guadalupe, Hardex, Juxtapo, Tioga060",
+    "Added to KSF": "Jan 13, 2019"
+  },
+  {
+    "MapName": "surf_sunnyhappylove",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "streebree",
+    "Added to KSF": "Oct 4, 2014"
+  },
+  {
+    "MapName": "surf_syria",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 0,
+    "Mapper": "Razer",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_tensile_njv",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "felix",
+    "Added to KSF": "Nov 25, 2012"
+  },
+  {
+    "MapName": "surf_the_gloaming",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Roosta",
+    "Added to KSF": "Aug 8, 2012"
+  },
+  {
+    "MapName": "surf_tomb_redone",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Bravesurf",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_tranquil",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "PrisonNightmare",
+    "Added to KSF": "Oct 28, 2020"
+  },
+  {
+    "MapName": "surf_tuscany",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 4,
+    "Mapper": "Exxe",
+    "Added to KSF": "Aug 28, 2021"
+  },
+  {
+    "MapName": "surf_twilight_njv",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "nappa",
+    "Added to KSF": "Aug 29, 2016"
+  },
+  {
+    "MapName": "surf_verge",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "TaiiKii",
+    "Added to KSF": "Jan 23, 2022"
+  },
+  {
+    "MapName": "surf_waterworks",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Skittl35",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_wood",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "enjooi",
+    "Added to KSF": "Oct 5, 2012"
+  },
+  {
+    "MapName": "surf_zbig_ksf",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 2,
+    "Mapper": "bigblue",
+    "Added to KSF": "Jun 7, 2017"
+  },
+  {
+    "MapName": "surf_zealand",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Xbmann, FrostyScales",
+    "Added to KSF": "Jul 21, 2017"
+  },
+  {
+    "MapName": "surf_cozy",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 0,
+    "Mapper": "MrCow",
+    "Added to KSF": "Nov 7, 2021"
+  },
+  {
+    "MapName": "surf_damn",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "biji",
+    "Added to KSF": "May 14, 2017"
+  },
+  {
+    "MapName": "surf_zenith",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Sneakyy",
+    "Added to KSF": "Jan 23, 2022"
+  },
+  {
+    "MapName": "surf_curious",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Lightning",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_zor",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Kralle",
+    "Added to KSF": "May 27, 2018"
+  },
+  {
+    "MapName": "surf_delta",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Sense, Krealington",
+    "Added to KSF": "Sep 24, 2017"
+  },
+  {
+    "MapName": "surf_damnation",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Pyllytonttu",
+    "Added to KSF": "Apr 4, 2023"
+  },
+  {
+    "MapName": "surf_1day",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 11,
+    "Bonuses": 1,
+    "Mapper": "Panzer, SKAR, lody",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_desolate",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 3,
+    "Mapper": "Juxtapo",
+    "Added to KSF": "Jan 20, 2015"
+  },
+  {
+    "MapName": "surf_2012_beta12",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "RyanS",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_diamond_beta1",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "monkeywithagun",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_discovery",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Billy",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_divided_fix",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Skyppy",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_dionysus",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Lightning",
+    "Added to KSF": "Aug 31, 2012"
+  },
+  {
+    "MapName": "surf_drifting",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "murglegurgle",
+    "Added to KSF": "Jan 27, 2018"
+  },
+  {
+    "MapName": "surf_a",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "umg_",
+    "Added to KSF": "Apr 13, 2018"
+  },
+  {
+    "MapName": "surf_abstinens",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "olk, umg_",
+    "Added to KSF": "Oct 31, 2015"
+  },
+  {
+    "MapName": "surf_efficacy",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "MvRouC12",
+    "Added to KSF": "Dec 9, 2012"
+  },
+  {
+    "MapName": "surf_ember2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "Hardex, AyRunner",
+    "Added to KSF": "Jan 11, 2019"
+  },
+  {
+    "MapName": "surf_disneyland",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "Kiiru, SyFo",
+    "Added to KSF": "May 16, 2015"
+  },
+  {
+    "MapName": "surf_acp_fix",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 0,
+    "Mapper": "Panzer",
+    "Added to KSF": "Aug 8, 2012"
+  },
+  {
+    "MapName": "surf_endeavor",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 2,
+    "Mapper": "IrynStyl",
+    "Added to KSF": "Jan 29, 2023"
+  },
+  {
+    "MapName": "surf_dova",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "hork",
+    "Added to KSF": "May 20, 2018"
+  },
+  {
+    "MapName": "surf_adtr_njv",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "Ch1!!3r",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_aeron",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "ins",
+    "Added to KSF": "May 24, 2017"
+  },
+  {
+    "MapName": "surf_epithet",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "BlueRaven",
+    "Added to KSF": "Apr 27, 2018"
+  },
+  {
+    "MapName": "surf_amateur_v2b",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "InCognIto, Pyaniy_ezhik, XaLo",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_eryr",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 3,
+    "Mapper": "RNC1839",
+    "Added to KSF": "Oct 17, 2017"
+  },
+  {
+    "MapName": "surf_botanica",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 6,
+    "Mapper": "Exxe",
+    "Added to KSF": "May 9, 2023"
+  },
+  {
+    "MapName": "surf_amplitude_apex",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 0,
+    "Mapper": "BuckNasty",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_eternal_beta",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 0,
+    "Mapper": "Panzer",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_animals_ksf",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 11,
+    "Bonuses": 1,
+    "Mapper": "AmstaFF",
+    "Added to KSF": "Jan 4, 2016"
+  },
+  {
+    "MapName": "surf_calycate_ksf",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Aug 18, 2022"
+  },
+  {
+    "MapName": "surf_drift",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 0,
+    "Mapper": "murglegurgle",
+    "Added to KSF": "Aug 25, 2019"
+  },
+  {
+    "MapName": "surf_euphoria",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 0,
+    "Mapper": "Billy",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_anthropomorphic",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 1,
+    "Mapper": "Furchee",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_dynamics_fixed",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Blaine",
+    "Added to KSF": "Aug 9, 2012"
+  },
+  {
+    "MapName": "surf_calycate2",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Feb 28, 2018"
+  },
+  {
+    "MapName": "surf_exclave_fix",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Malt",
+    "Added to KSF": "Jun 20, 2013"
+  },
+  {
+    "MapName": "surf_elysium",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "SacRed",
+    "Added to KSF": "Jul 26, 2013"
+  },
+  {
+    "MapName": "surf_chaos_fix",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 1,
+    "Mapper": "Panzer",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_elysium2",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "SacRed",
+    "Added to KSF": "Aug 15, 2015"
+  },
+  {
+    "MapName": "surf_arghmyeyes_retexture",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "t3tra",
+    "Added to KSF": "Nov 23, 2012"
+  },
+  {
+    "MapName": "surf_fabas",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "MaKo, nmroxy",
+    "Added to KSF": "Mar 19, 2020"
+  },
+  {
+    "MapName": "surf_elysium3",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "SacRed",
+    "Added to KSF": "Dec 14, 2016"
+  },
+  {
+    "MapName": "surf_facility",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Krealington",
+    "Added to KSF": "Oct 15, 2017"
+  },
+  {
+    "MapName": "surf_finesse_final",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 4,
+    "Mapper": "GorgeousGentleman, LuckyCharms",
+    "Added to KSF": "Aug 10, 2012"
+  },
+  {
+    "MapName": "surf_fire_eye",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "recoil",
+    "Added to KSF": "Nov 5, 2020"
+  },
+  {
+    "MapName": "surf_elysium4",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 3,
+    "Mapper": "SacRed",
+    "Added to KSF": "Mar 30, 2019"
+  },
+  {
+    "MapName": "surf_forbidden_tomb",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 1,
+    "Mapper": "Riddler, Spliff",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_enigma",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "nao",
+    "Added to KSF": "Sep 29, 2024"
+  },
+  {
+    "MapName": "surf_deathstar",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "DownyCat",
+    "Added to KSF": "Nov 14, 2021"
+  },
+  {
+    "MapName": "surf_demise",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "elly",
+    "Added to KSF": "Nov 1, 2023"
+  },
+  {
+    "MapName": "surf_forbidden_tomb2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 0,
+    "Mapper": "Rapsodia",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_forbidden_tomb3",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 0,
+    "Mapper": "Rapsodia",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_forbidden_tomb4",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Rapsodia",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_derpis_ksf",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "felix",
+    "Added to KSF": "Oct 16, 2013"
+  },
+  {
+    "MapName": "surf_egypt2",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Mariowned",
+    "Added to KSF": "May 5, 2019"
+  },
+  {
+    "MapName": "surf_fortress_ksf",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 6,
+    "Mapper": "Emma, HI-TECH_USER",
+    "Added to KSF": "May 29, 2021"
+  },
+  {
+    "MapName": "surf_enlightened_ksf",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Benchmarked",
+    "Added to KSF": "Apr 24, 2021"
+  },
+  {
+    "MapName": "surf_freedom",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "notSmashed",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_flow_ksf",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Koga73",
+    "Added to KSF": "Apr 20, 2018"
+  },
+  {
+    "MapName": "surf_forgotten",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "biji",
+    "Added to KSF": "Apr 15, 2017"
+  },
+  {
+    "MapName": "surf_fuckyall",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 1,
+    "Mapper": "EICHHOERNCHEN",
+    "Added to KSF": "Jan 15, 2023"
+  },
+  {
+    "MapName": "surf_fornax",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 7,
+    "Mapper": "iNooVa",
+    "Added to KSF": "Dec 21, 2019"
+  },
+  {
+    "MapName": "surf_fungus",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "MaKo",
+    "Added to KSF": "Jul 13, 2020"
+  },
+  {
+    "MapName": "surf_frost",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 8,
+    "Mapper": "Dizzy",
+    "Added to KSF": "Apr 15, 2018"
+  },
+  {
+    "MapName": "surf_funhouse_v1",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Steve",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_gauntlet_final",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "unknown",
+    "Added to KSF": "Aug 8, 2012"
+  },
+  {
+    "MapName": "surf_garden",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 3,
+    "Mapper": "sid",
+    "Added to KSF": "May 25, 2019"
+  },
+  {
+    "MapName": "surf_gekar",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "caaz",
+    "Added to KSF": "Mar 11, 2018"
+  },
+  {
+    "MapName": "surf_hourglass",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "masog",
+    "Added to KSF": "Dec 8, 2020"
+  },
+  {
+    "MapName": "surf_ghost_busters",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 16,
+    "Bonuses": 1,
+    "Mapper": "Panzer",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_kepler",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 2,
+    "Mapper": "FriendlyChemist",
+    "Added to KSF": "Jan 23, 2022"
+  },
+  {
+    "MapName": "surf_kitsune",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 0,
+    "Mapper": "Arblarg",
+    "Added to KSF": "Mar 26, 2015"
+  },
+  {
+    "MapName": "surf_goldarn",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "FalseLogic, Furchee",
+    "Added to KSF": "Jan 24, 2014"
+  },
+  {
+    "MapName": "surf_lament_ksf",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "nappa",
+    "Added to KSF": "Jul 12, 2022"
+  },
+  {
+    "MapName": "surf_leet_xl_beta7z",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "unknown",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_greenhouse",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Sagan",
+    "Added to KSF": "May 13, 2018"
+  },
+  {
+    "MapName": "surf_legends",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "SintaxError",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_lessons",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 3,
+    "Mapper": "Helix",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_grotto",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 3,
+    "Mapper": "Dizzy",
+    "Added to KSF": "Jan 6, 2020"
+  },
+  {
+    "MapName": "surf_listless_ksf",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 5,
+    "Mapper": "Fin",
+    "Added to KSF": "Dec 18, 2022"
+  },
+  {
+    "MapName": "surf_halloween_fix",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "PROTOTYPE",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_happyhug",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 16,
+    "Bonuses": 4,
+    "Mapper": "xen",
+    "Added to KSF": "Apr 20, 2019"
+  },
+  {
+    "MapName": "surf_lovetunnel",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "maz",
+    "Added to KSF": "May 8, 2020"
+  },
+  {
+    "MapName": "surf_hektik",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "Fizu",
+    "Added to KSF": "Jul 31, 2021"
+  },
+  {
+    "MapName": "surf_entropy_hardmode",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "GorgeousGentleman",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_lux",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "SSStormy",
+    "Added to KSF": "Jul 29, 2018"
+  },
+  {
+    "MapName": "surf_hope",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 1,
+    "Mapper": "masog",
+    "Added to KSF": "Oct 21, 2017"
+  },
+  {
+    "MapName": "surf_eon_fix",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Sense",
+    "Added to KSF": "Sep 30, 2016"
+  },
+  {
+    "MapName": "surf_me",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 4,
+    "Mapper": "not_a_zombie",
+    "Added to KSF": "Jun 25, 2016"
+  },
+  {
+    "MapName": "surf_eryr2_fix",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 3,
+    "Mapper": "RNC1839",
+    "Added to KSF": "Oct 21, 2018"
+  },
+  {
+    "MapName": "surf_hydrogen",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Waffleburger",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_excavation",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 12,
+    "Bonuses": 7,
+    "Mapper": "Lucy, Luna",
+    "Added to KSF": "Jun 28, 2024"
+  },
+  {
+    "MapName": "surf_exocube_h",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Pyaniy_ezhik",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_extremex2_5",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "Tioga060",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_mesa_fixed",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Arblarg",
+    "Added to KSF": "Jan 13, 2014"
+  },
+  {
+    "MapName": "surf_minuet_ksf",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "nappa",
+    "Added to KSF": "Jun 11, 2022"
+  },
+  {
+    "MapName": "surf_hyper",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "Helix",
+    "Added to KSF": "Aug 21, 2012"
+  },
+  {
+    "MapName": "surf_mom_fix",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Dizzy",
+    "Added to KSF": "Dec 4, 2016"
+  },
+  {
+    "MapName": "surf_n_turf",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 10,
+    "Mapper": "ApeXe",
+    "Added to KSF": "Oct 6, 2024"
+  },
+  {
+    "MapName": "surf_hyper2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "Helix",
+    "Added to KSF": "Apr 4, 2020"
+  },
+  {
+    "MapName": "surf_forsaken",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "rathe",
+    "Added to KSF": "Sep 17, 2022"
+  },
+  {
+    "MapName": "surf_network2008_final",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "RyanS",
+    "Added to KSF": "Aug 20, 2012"
+  },
+  {
+    "MapName": "surf_asrown",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 1,
+    "Mapper": "Escencia",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_freaky",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Freaky",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_ataque_final",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Junior",
+    "Added to KSF": "Aug 15, 2012"
+  },
+  {
+    "MapName": "surf_auroria_ksf",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Escencia",
+    "Added to KSF": "Jun 25, 2013"
+  },
+  {
+    "MapName": "surf_awakening",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "Skyppy",
+    "Added to KSF": "Apr 6, 2013"
+  },
+  {
+    "MapName": "surf_froots2",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 20,
+    "Bonuses": 4,
+    "Mapper": "KrazyCSS",
+    "Added to KSF": "Jul 20, 2019"
+  },
+  {
+    "MapName": "surf_b_r_o_x_x_x",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "AmstaFF, Spider",
+    "Added to KSF": "Aug 12, 2012"
+  },
+  {
+    "MapName": "surf_illumination",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "DoinkFace",
+    "Added to KSF": "Oct 7, 2014"
+  },
+  {
+    "MapName": "surf_nuclear",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 2,
+    "Mapper": "SpyComplex",
+    "Added to KSF": "Jul 4, 2022"
+  },
+  {
+    "MapName": "surf_gary_barlow",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 2,
+    "Mapper": "ApeXe, rathe",
+    "Added to KSF": "Nov 28, 2022"
+  },
+  {
+    "MapName": "surf_banger",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 11,
+    "Bonuses": 1,
+    "Mapper": "illxjoey, not_a_zombie",
+    "Added to KSF": "Jun 26, 2021"
+  },
+  {
+    "MapName": "surf_illumination2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 3,
+    "Mapper": "DoinkFace",
+    "Added to KSF": "Mar 22, 2017"
+  },
+  {
+    "MapName": "surf_nyx",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Syncronyze, ShadowSheep",
+    "Added to KSF": "Jul 22, 2019"
+  },
+  {
+    "MapName": "surf_germania",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "krealington",
+    "Added to KSF": "Jun 24, 2018"
+  },
+  {
+    "MapName": "surf_grid_ksf",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 4,
+    "Mapper": "GorangeNinja",
+    "Added to KSF": "Nov 24, 2022"
+  },
+  {
+    "MapName": "surf_pantheon",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Garanimal, Bonjorno7",
+    "Added to KSF": "May 5, 2019"
+  },
+  {
+    "MapName": "surf_infected",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Hulda",
+    "Added to KSF": "Aug 12, 2012"
+  },
+  {
+    "MapName": "surf_gurus_fix",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "Lightning",
+    "Added to KSF": "Aug 9, 2012"
+  },
+  {
+    "MapName": "surf_pox",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Krusty",
+    "Added to KSF": "Aug 20, 2012"
+  },
+  {
+    "MapName": "surf_inferno",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Syko, iNooVa",
+    "Added to KSF": "Oct 17, 2020"
+  },
+  {
+    "MapName": "surf_bbb",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "Aux",
+    "Added to KSF": "Dec 20, 2012"
+  },
+  {
+    "MapName": "surf_prelude_fix",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "nappa",
+    "Added to KSF": "Sep 20, 2013"
+  },
+  {
+    "MapName": "surf_infrared",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 5,
+    "Mapper": "wind",
+    "Added to KSF": "Apr 24, 2022"
+  },
+  {
+    "MapName": "surf_injection_njv",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "Exither",
+    "Added to KSF": "Aug 11, 2012"
+  },
+  {
+    "MapName": "surf_prime_time_r3vamp",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 0,
+    "Mapper": "Zalos",
+    "Added to KSF": "Jan 2, 2013"
+  },
+  {
+    "MapName": "surf_be_gentle",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "Krealington",
+    "Added to KSF": "May 20, 2017"
+  },
+  {
+    "MapName": "surf_race_final",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 5,
+    "Mapper": "Sam",
+    "Added to KSF": "May 22, 2024"
+  },
+  {
+    "MapName": "surf_ben10",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 10,
+    "Mapper": "kingkurtis, Benowy",
+    "Added to KSF": "May 26, 2024"
+  },
+  {
+    "MapName": "surf_rebel_resistance_final3",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "ArchAngel",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_blackout",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "nappa",
+    "Added to KSF": "Jun 16, 2018"
+  },
+  {
+    "MapName": "surf_inrage2",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Ch1!!3r",
+    "Added to KSF": "Dec 24, 2012"
+  },
+  {
+    "MapName": "surf_insignia_b1",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Linus",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_bluewinter",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "iamsupaman",
+    "Added to KSF": "Dec 17, 2015"
+  },
+  {
+    "MapName": "surf_helloworld",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 3,
+    "Mapper": "fatfuk",
+    "Added to KSF": "Apr 16, 2020"
+  },
+  {
+    "MapName": "surf_rebel_scaz_ksf",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "scaz",
+    "Added to KSF": "Nov 17, 2022"
+  },
+  {
+    "MapName": "surf_intense_ksf",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "vay",
+    "Added to KSF": "Aug 3, 2015"
+  },
+  {
+    "MapName": "surf_bnw_njv",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "PireS",
+    "Added to KSF": "Apr 6, 2019"
+  },
+  {
+    "MapName": "surf_hero",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 5,
+    "Mapper": "biji",
+    "Added to KSF": "Aug 18, 2018"
+  },
+  {
+    "MapName": "surf_santorini_ksf",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 5,
+    "Mapper": "quethesurfer",
+    "Added to KSF": "Apr 19, 2024"
+  },
+  {
+    "MapName": "surf_bob",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 11,
+    "Bonuses": 1,
+    "Mapper": "ptad",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_highlands",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 4,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Dec 17, 2017"
+  },
+  {
+    "MapName": "surf_interceptor",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Razer",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_satellite_fix",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "iNooVa",
+    "Added to KSF": "Dec 19, 2021"
+  },
+  {
+    "MapName": "surf_bork_nbv",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "Kiiru, RambJoe",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_school_fix",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 1,
+    "Mapper": "sid",
+    "Added to KSF": "Jul 29, 2018"
+  },
+  {
+    "MapName": "surf_bumpybusride",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 1,
+    "Mapper": "Hardex",
+    "Added to KSF": "Mar 27, 2023"
+  },
+  {
+    "MapName": "surf_summit",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Juxtapo, Phurix",
+    "Added to KSF": "Jun 3, 2018"
+  },
+  {
+    "MapName": "surf_sundown",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Skittl35",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_ixtab",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "SacRed",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_calamity_njv",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "SacRed",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_tendies",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "granis",
+    "Added to KSF": "Dec 8, 2020"
+  },
+  {
+    "MapName": "surf_jagerbomb",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "ApeXe",
+    "Added to KSF": "Jul 16, 2023"
+  },
+  {
+    "MapName": "surf_hollow",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "vampiricx",
+    "Added to KSF": "Jun 3, 2018"
+  },
+  {
+    "MapName": "surf_jaqen",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Hardex",
+    "Added to KSF": "Jul 21, 2016"
+  },
+  {
+    "MapName": "surf_infamous_ksf",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "MarkC",
+    "Added to KSF": "Feb 27, 2014"
+  },
+  {
+    "MapName": "surf_jive",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "rathe",
+    "Added to KSF": "May 5, 2023"
+  },
+  {
+    "MapName": "surf_infected_h",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Hulda",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_canisius",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Billy",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_intra",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "maz",
+    "Added to KSF": "Jan 3, 2020"
+  },
+  {
+    "MapName": "surf_canisius2_fix",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Billy",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_izded",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 3,
+    "Mapper": "joker",
+    "Added to KSF": "Sep 30, 2017"
+  },
+  {
+    "MapName": "surf_cartoon",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "GorangeNinja",
+    "Added to KSF": "Dec 15, 2017"
+  },
+  {
+    "MapName": "surf_junglepics_ksf",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Juxtapo",
+    "Added to KSF": "Dec 25, 2012"
+  },
+  {
+    "MapName": "surf_kairo",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "pretzL, Roz",
+    "Added to KSF": "Oct 4, 2018"
+  },
+  {
+    "MapName": "surf_christmas",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 2,
+    "Mapper": "Panzer",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_kalium",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 1,
+    "Mapper": "Helix",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_legendary",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "shini",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_trance",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "UZY",
+    "Added to KSF": "May 3, 2023"
+  },
+  {
+    "MapName": "surf_kalium2",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Helix",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_koa",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "TeMP",
+    "Added to KSF": "Sep 8, 2015"
+  },
+  {
+    "MapName": "surf_lab",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Tech",
+    "Added to KSF": "Dec 22, 2016"
+  },
+  {
+    "MapName": "surf_christmas2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 1,
+    "Mapper": "Tioga060",
+    "Added to KSF": "Dec 25, 2016"
+  },
+  {
+    "MapName": "surf_loentra",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "ins",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_lax",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 3,
+    "Mapper": "Krealington",
+    "Added to KSF": "Feb 13, 2019"
+  },
+  {
+    "MapName": "surf_christmas3",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 1,
+    "Mapper": "Pyllytonttu",
+    "Added to KSF": "Dec 23, 2023"
+  },
+  {
+    "MapName": "surf_utopia_njv",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Panzer",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_lolrevlis",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 1,
+    "Mapper": "Silverlol",
+    "Added to KSF": "Aug 8, 2012"
+  },
+  {
+    "MapName": "surf_collection_njv",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 0,
+    "Mapper": "Pand3mic",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_void",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "juve",
+    "Added to KSF": "Aug 11, 2022"
+  },
+  {
+    "MapName": "surf_lowestbidder",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "tflo",
+    "Added to KSF": "Dec 5, 2021"
+  },
+  {
+    "MapName": "surf_water_run_ksf",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "booskibro",
+    "Added to KSF": "May 6, 2020"
+  },
+  {
+    "MapName": "surf_lepidus",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "Tilt",
+    "Added to KSF": "Aug 9, 2012"
+  },
+  {
+    "MapName": "surf_whiteout",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Phurix",
+    "Added to KSF": "May 19, 2019"
+  },
+  {
+    "MapName": "surf_year3000",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 0,
+    "Mapper": "ArchAngel",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_map_njv",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Pand3mic",
+    "Added to KSF": "Sep 16, 2012"
+  },
+  {
+    "MapName": "surf_zoomathon",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "sid",
+    "Added to KSF": "Aug 9, 2020"
+  },
+  {
+    "MapName": "surf_color_fix",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Planstik",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_limbo",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "murglegurgle",
+    "Added to KSF": "Jan 16, 2021"
+  },
+  {
+    "MapName": "surf_mdrn",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Syncronyze",
+    "Added to KSF": "Aug 14, 2017"
+  },
+  {
+    "MapName": "surf_004_fix",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "monkeywithagun",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_commune_again_beta5",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "FAJ",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_lithium2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "copy-mark",
+    "Added to KSF": "Aug 11, 2012"
+  },
+  {
+    "MapName": "surf_metallic",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "MrCow",
+    "Added to KSF": "Jul 8, 2013"
+  },
+  {
+    "MapName": "surf_compact",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Billy",
+    "Added to KSF": "Aug 8, 2012"
+  },
+  {
+    "MapName": "surf_loves_spliff",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "frank, EternalShade, ShiFt_",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_minecraft_fix",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "b0at",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_compulsive_njv",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Razer",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_loweffort",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "vay",
+    "Added to KSF": "Sep 4, 2020"
+  },
+  {
+    "MapName": "surf_misc",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "FreakOut!",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_2pacisalive",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "umg_",
+    "Added to KSF": "Jul 12, 2024"
+  },
+  {
+    "MapName": "surf_concept",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "Grueddi",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_lt_unicorn",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 4,
+    "Mapper": "nyro",
+    "Added to KSF": "Mar 1, 2015"
+  },
+  {
+    "MapName": "surf_4head",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "sjom7e",
+    "Added to KSF": "Oct 29, 2016"
+  },
+  {
+    "MapName": "surf_cookiejar",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Kiiru",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_masonry",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 0,
+    "Mapper": "MrCow",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_coralis_ksf",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Escencia",
+    "Added to KSF": "Sep 15, 2012"
+  },
+  {
+    "MapName": "surf_medley_fix",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 4,
+    "Mapper": "zasbu",
+    "Added to KSF": "Dec 1, 2023"
+  },
+  {
+    "MapName": "surf_monkeys2",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "quethesurfer",
+    "Added to KSF": "Aug 10, 2024"
+  },
+  {
+    "MapName": "surf_memories",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Chrissybear",
+    "Added to KSF": "Dec 8, 2018"
+  },
+  {
+    "MapName": "surf_6",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "vay",
+    "Added to KSF": "Feb 26, 2017"
+  },
+  {
+    "MapName": "surf_nesquik",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 6,
+    "Mapper": "Sam, Hesuka",
+    "Added to KSF": "Oct 2, 2019"
+  },
+  {
+    "MapName": "surf_81st_network",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "RyanS",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_nightmare",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Razer",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_8bit",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 1,
+    "Mapper": "TaiiKii",
+    "Added to KSF": "Dec 8, 2020"
+  },
+  {
+    "MapName": "surf_nostromo",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Horsefeathers",
+    "Added to KSF": "Jul 4, 2015"
+  },
+  {
+    "MapName": "surf_cosmo",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "rathe",
+    "Added to KSF": "Apr 17, 2022"
+  },
+  {
+    "MapName": "surf_mephobia_final",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "yeri",
+    "Added to KSF": "Nov 6, 2015"
+  },
+  {
+    "MapName": "surf_nyze",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Syncronyze",
+    "Added to KSF": "Feb 9, 2015"
+  },
+  {
+    "MapName": "surf_abandoned",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Jooce",
+    "Added to KSF": "May 18, 2023"
+  },
+  {
+    "MapName": "surf_creation",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "ins",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_activation",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 4,
+    "Mapper": "biji, iNooVa",
+    "Added to KSF": "Sep 4, 2022"
+  },
+  {
+    "MapName": "surf_crystal",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "copy-mark",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_aether",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "scaz",
+    "Added to KSF": "Mar 10, 2017"
+  },
+  {
+    "MapName": "surf_cubic_ksf",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 28,
+    "Bonuses": 0,
+    "Mapper": "scaz",
+    "Added to KSF": "Nov 14, 2020"
+  },
+  {
+    "MapName": "surf_metalwall",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Hulda",
+    "Added to KSF": "Aug 11, 2012"
+  },
+  {
+    "MapName": "surf_our",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "not_a_zombie",
+    "Added to KSF": "Mar 18, 2018"
+  },
+  {
+    "MapName": "surf_cyanide",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "felix",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_monotony_ksf",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Xbmann",
+    "Added to KSF": "May 15, 2021"
+  },
+  {
+    "MapName": "surf_polonia",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "masog",
+    "Added to KSF": "Oct 20, 2020"
+  },
+  {
+    "MapName": "surf_cyka_ksf",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "umg_",
+    "Added to KSF": "Nov 19, 2015"
+  },
+  {
+    "MapName": "surf_morbid2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "SacRed",
+    "Added to KSF": "Sep 15, 2023"
+  },
+  {
+    "MapName": "surf_polytron",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Develo",
+    "Added to KSF": "Jan 23, 2022"
+  },
+  {
+    "MapName": "surf_deceptive_final",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "Razer",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_agony",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Proxychains",
+    "Added to KSF": "Jul 4, 2022"
+  },
+  {
+    "MapName": "surf_mudkip",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "RNC1839",
+    "Added to KSF": "Aug 13, 2017"
+  },
+  {
+    "MapName": "surf_depressing",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 12,
+    "Bonuses": 0,
+    "Mapper": "serz",
+    "Added to KSF": "Jan 21, 2014"
+  },
+  {
+    "MapName": "surf_amplitude_encore",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "BuckNasty",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_nemesis",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "SacRed",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_primero_fix",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "ze",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_amplitude_light",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "BuckNasty",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_neoplasma_ksf",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "Kujoen",
+    "Added to KSF": "Mar 26, 2013"
+  },
+  {
+    "MapName": "surf_remeanian",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 10,
+    "Mapper": "FPSGod",
+    "Added to KSF": "Jan 1, 2022"
+  },
+  {
+    "MapName": "surf_and_destroy_fix",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Zalos",
+    "Added to KSF": "Jan 2, 2013"
+  },
+  {
+    "MapName": "surf_neoteric_retexture",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 4,
+    "Mapper": "Sam",
+    "Added to KSF": "Dec 7, 2017"
+  },
+  {
+    "MapName": "surf_revolution_fix",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 3,
+    "Mapper": "Kahvo",
+    "Added to KSF": "Oct 24, 2020"
+  },
+  {
+    "MapName": "surf_depths",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "streebree",
+    "Added to KSF": "Jul 24, 2014"
+  },
+  {
+    "MapName": "surf_rewind",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 4,
+    "Mapper": "edy, Exxe",
+    "Added to KSF": "Jan 8, 2023"
+  },
+  {
+    "MapName": "surf_destiny_fixed",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Godowner",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_salient",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "horsefeathers",
+    "Added to KSF": "Dec 1, 2015"
+  },
+  {
+    "MapName": "surf_salient2",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "horsefeathers",
+    "Added to KSF": "Mar 10, 2017"
+  },
+  {
+    "MapName": "surf_annoyance_njv",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 0,
+    "Mapper": "svbg869",
+    "Added to KSF": "Aug 10, 2012"
+  },
+  {
+    "MapName": "surf_nikolo",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "LuckyCharms",
+    "Added to KSF": "Aug 20, 2012"
+  },
+  {
+    "MapName": "surf_salvation",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Lucy",
+    "Added to KSF": "Sep 22, 2020"
+  },
+  {
+    "MapName": "surf_nocturn",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Cammy",
+    "Added to KSF": "Jun 21, 2022"
+  },
+  {
+    "MapName": "surf_anoobis",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 10,
+    "Mapper": "Sneakyy",
+    "Added to KSF": "Jul 17, 2022"
+  },
+  {
+    "MapName": "surf_deteriorate",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "nutwoomy",
+    "Added to KSF": "Jul 4, 2022"
+  },
+  {
+    "MapName": "surf_not_so_quick",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 6,
+    "Mapper": "Sam",
+    "Added to KSF": "Sep 19, 2018"
+  },
+  {
+    "MapName": "surf_anzchamps",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 1,
+    "Mapper": "Hardex",
+    "Added to KSF": "Sep 12, 2021"
+  },
+  {
+    "MapName": "surf_dhyana",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "smiley",
+    "Added to KSF": "Oct 13, 2018"
+  },
+  {
+    "MapName": "surf_aqua_fix",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Jooce",
+    "Added to KSF": "Dec 2, 2018"
+  },
+  {
+    "MapName": "surf_diminsion",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "monkeywithagun",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_selenka",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "Lucy",
+    "Added to KSF": "Feb 3, 2019"
+  },
+  {
+    "MapName": "surf_distraction_v2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "SacRed",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_oddworld",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "Exxe",
+    "Added to KSF": "Jan 23, 2022"
+  },
+  {
+    "MapName": "surf_diverge",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "Falc, Kiiru",
+    "Added to KSF": "Sep 11, 2014"
+  },
+  {
+    "MapName": "surf_aquaflow",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "NvC_DmN_CH",
+    "Added to KSF": "Dec 8, 2020"
+  },
+  {
+    "MapName": "surf_oompa2",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "lody",
+    "Added to KSF": "Sep 12, 2017"
+  },
+  {
+    "MapName": "surf_dusk",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "MrCow",
+    "Added to KSF": "Aug 11, 2012"
+  },
+  {
+    "MapName": "surf_arcade",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "maz",
+    "Added to KSF": "Dec 8, 2020"
+  },
+  {
+    "MapName": "surf_orbion",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Helix",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_selenka2",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 5,
+    "Mapper": "Lucy",
+    "Added to KSF": "Mar 24, 2024"
+  },
+  {
+    "MapName": "surf_ardon_fix",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "FPSGod",
+    "Added to KSF": "Jun 2, 2019"
+  },
+  {
+    "MapName": "surf_outra",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "maz",
+    "Added to KSF": "Feb 22, 2023"
+  },
+  {
+    "MapName": "surf_seraph",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Cyber",
+    "Added to KSF": "Dec 8, 2015"
+  },
+  {
+    "MapName": "surf_dynasty",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "scaz",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_autumn_fix",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Felid",
+    "Added to KSF": "May 31, 2023"
+  },
+  {
+    "MapName": "surf_overgrowth",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Fission",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_shoria",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "Razer",
+    "Added to KSF": "May 5, 2018"
+  },
+  {
+    "MapName": "surf_beginner2",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 4,
+    "Mapper": "Kiiru",
+    "Added to KSF": "Mar 26, 2020"
+  },
+  {
+    "MapName": "surf_ecosystem",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Silverlol",
+    "Added to KSF": "Jul 19, 2014"
+  },
+  {
+    "MapName": "surf_skill8_h",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "monkeywithagun",
+    "Added to KSF": "Nov 23, 2012"
+  },
+  {
+    "MapName": "surf_believe",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 3,
+    "Mapper": "oosii",
+    "Added to KSF": "Mar 23, 2018"
+  },
+  {
+    "MapName": "surf_elixor",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 0,
+    "Mapper": "Fox",
+    "Added to KSF": "Jun 21, 2013"
+  },
+  {
+    "MapName": "surf_smol",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 5,
+    "Mapper": "TheJazzAgenT",
+    "Added to KSF": "Oct 19, 2023"
+  },
+  {
+    "MapName": "surf_ember",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "SKAR",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_stonework3",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "MrCow",
+    "Added to KSF": "Jan 2, 2014"
+  },
+  {
+    "MapName": "surf_strike",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Spree",
+    "Added to KSF": "Aug 31, 2019"
+  },
+  {
+    "MapName": "surf_beverages_remix",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 3,
+    "Mapper": "sid",
+    "Added to KSF": "Jan 20, 2018"
+  },
+  {
+    "MapName": "surf_bluewall_v2",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 3,
+    "Mapper": "biji",
+    "Added to KSF": "Jun 20, 2019"
+  },
+  {
+    "MapName": "surf_entropy_finalv2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "GorgeousGentleman",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_technique",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 5,
+    "Mapper": "Dizzy",
+    "Added to KSF": "Aug 22, 2017"
+  },
+  {
+    "MapName": "surf_epic",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "Compact",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_the_distance",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "lody, SKAR",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_era",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "SKAR",
+    "Added to KSF": "Aug 4, 2024"
+  },
+  {
+    "MapName": "surf_eunoia",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Krealington",
+    "Added to KSF": "Aug 2, 2017"
+  },
+  {
+    "MapName": "surf_boogie_woogie",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 6,
+    "Mapper": "TheJazzAgenT",
+    "Added to KSF": "Feb 11, 2024"
+  },
+  {
+    "MapName": "surf_boring",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 16,
+    "Bonuses": 0,
+    "Mapper": "copy-mark",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_timewarp",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Tioga060",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_calzone",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "sh_bro",
+    "Added to KSF": "Jan 14, 2019"
+  },
+  {
+    "MapName": "surf_transient",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 1,
+    "Mapper": "Malt",
+    "Added to KSF": "Sep 21, 2016"
+  },
+  {
+    "MapName": "surf_cavemissile_fix",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "EICHHOERNCHEN",
+    "Added to KSF": "Nov 9, 2019"
+  },
+  {
+    "MapName": "surf_executioner",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "sid",
+    "Added to KSF": "Nov 1, 2023"
+  },
+  {
+    "MapName": "surf_trapped",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Dec 4, 2016"
+  },
+  {
+    "MapName": "surf_classics",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 0,
+    "Mapper": "Panzer",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_treefort",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 0,
+    "Mapper": "Tioga060",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_classics2",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 0,
+    "Mapper": "Panzer",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_tronic_njv",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "SangreNueva",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_commune_beta11",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 0,
+    "Mapper": "FAJ",
+    "Added to KSF": "Apr 6, 2013"
+  },
+  {
+    "MapName": "surf_tycho_fix",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 4,
+    "Mapper": "TaiiKii",
+    "Added to KSF": "Jul 10, 2021"
+  },
+  {
+    "MapName": "surf_exogenesis",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Pyaniy_ezhik",
+    "Added to KSF": "Aug 9, 2012"
+  },
+  {
+    "MapName": "surf_crzyfrog_reloaded",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 0,
+    "Mapper": "JackTheStripper",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_extremex",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 0,
+    "Mapper": "Kiiru, Tioga060",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_unreal2",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 0,
+    "Mapper": "Hulda",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_exurbia2",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Jul 9, 2016"
+  },
+  {
+    "MapName": "surf_z",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "Billy",
+    "Added to KSF": "Apr 2, 2015"
+  },
+  {
+    "MapName": "surf_exxak",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "SHERZ",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_666",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 6,
+    "Mapper": "Juxtapo",
+    "Added to KSF": "Apr 15, 2016"
+  },
+  {
+    "MapName": "surf_ezclap",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "sjom7e",
+    "Added to KSF": "Aug 18, 2019"
+  },
+  {
+    "MapName": "surf_amaro",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Flaudgin",
+    "Added to KSF": "Feb 19, 2017"
+  },
+  {
+    "MapName": "surf_fantasy",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "maz",
+    "Added to KSF": "Jan 23, 2022"
+  },
+  {
+    "MapName": "surf_atonement",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "SpyComplex",
+    "Added to KSF": "Oct 12, 2024"
+  },
+  {
+    "MapName": "surf_autonomy",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "illxjoey",
+    "Added to KSF": "May 22, 2021"
+  },
+  {
+    "MapName": "surf_bugs",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 6,
+    "Mapper": "Otter",
+    "Added to KSF": "Oct 12, 2022"
+  },
+  {
+    "MapName": "surf_fast",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Panzer, Tioga060",
+    "Added to KSF": "Dec 26, 2012"
+  },
+  {
+    "MapName": "surf_chungus_fungus",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 14,
+    "Bonuses": 6,
+    "Mapper": "TheJazzAgenT",
+    "Added to KSF": "Apr 12, 2023"
+  },
+  {
+    "MapName": "surf_fiellu_ksf",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Kahvo",
+    "Added to KSF": "Jan 30, 2021"
+  },
+  {
+    "MapName": "surf_flatliners",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Aux",
+    "Added to KSF": "Nov 30, 2017"
+  },
+  {
+    "MapName": "surf_fractal",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "kingkurtis",
+    "Added to KSF": "Jan 24, 2022"
+  },
+  {
+    "MapName": "surf_frequency_njv",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "NoPro",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_crimson",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Geoff",
+    "Added to KSF": "Oct 3, 2020"
+  },
+  {
+    "MapName": "surf_frey2_ksf",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "KappaEliitti",
+    "Added to KSF": "Mar 13, 2022"
+  },
+  {
+    "MapName": "surf_crush2",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Dizzy",
+    "Added to KSF": "Feb 13, 2021"
+  },
+  {
+    "MapName": "surf_friday",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "iamsupaman",
+    "Added to KSF": "Feb 7, 2016"
+  },
+  {
+    "MapName": "surf_diet_mountain_dew",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "pietu",
+    "Added to KSF": "Jan 8, 2024"
+  },
+  {
+    "MapName": "surf_froots_ksf",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 18,
+    "Bonuses": 8,
+    "Mapper": "WireleZz",
+    "Added to KSF": "Mar 4, 2018"
+  },
+  {
+    "MapName": "surf_disaster",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "joker",
+    "Added to KSF": "Feb 8, 2020"
+  },
+  {
+    "MapName": "surf_earthmover",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 6,
+    "Mapper": "dirtman, Lucy",
+    "Added to KSF": "May 3, 2024"
+  },
+  {
+    "MapName": "surf_edge",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "fr3shz",
+    "Added to KSF": "Nov 26, 2016"
+  },
+  {
+    "MapName": "surf_embrace",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "maz",
+    "Added to KSF": "Oct 30, 2021"
+  },
+  {
+    "MapName": "surf_fruits",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 1,
+    "Mapper": "SangreNueva",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_overgrowth2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Fission",
+    "Added to KSF": "Mar 9, 2014"
+  },
+  {
+    "MapName": "surf_epiphany",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 4,
+    "Mapper": "Krealington",
+    "Added to KSF": "Dec 28, 2019"
+  },
+  {
+    "MapName": "surf_pancake",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Hardex",
+    "Added to KSF": "Jul 1, 2016"
+  },
+  {
+    "MapName": "surf_fruits2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 16,
+    "Bonuses": 1,
+    "Mapper": "WireleZz",
+    "Added to KSF": "Feb 4, 2014"
+  },
+  {
+    "MapName": "surf_paradigm",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Pyllytonttu",
+    "Added to KSF": "May 8, 2021"
+  },
+  {
+    "MapName": "surf_furios",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Chefkochmaps",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_globalchaos",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 1,
+    "Mapper": "Linus",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_parrot_selector_h",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "ptad",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_exile",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Pyaniy_ezhik",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_golden_refix",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Koga73",
+    "Added to KSF": "Jan 26, 2020"
+  },
+  {
+    "MapName": "surf_feudal",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 3,
+    "Mapper": "mrdeadguy34",
+    "Added to KSF": "Jul 21, 2020"
+  },
+  {
+    "MapName": "surf_polygon",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 4,
+    "Mapper": "felix",
+    "Added to KSF": "Jan 25, 2014"
+  },
+  {
+    "MapName": "surf_happyhands2",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Kiiru",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_garden_h",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 3,
+    "Mapper": "sid",
+    "Added to KSF": "May 25, 2019"
+  },
+  {
+    "MapName": "surf_happyhands3",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Kiiru",
+    "Added to KSF": "Jan 30, 2013"
+  },
+  {
+    "MapName": "surf_gloomy",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 4,
+    "Mapper": "KrakenDaddy",
+    "Added to KSF": "Jun 19, 2021"
+  },
+  {
+    "MapName": "surf_happyhands4",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Kiiru",
+    "Added to KSF": "Oct 21, 2014"
+  },
+  {
+    "MapName": "surf_hades",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 2,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Aug 5, 2016"
+  },
+  {
+    "MapName": "surf_innokia",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 4,
+    "Mapper": "Hesuka",
+    "Added to KSF": "Jan 21, 2019"
+  },
+  {
+    "MapName": "surf_proliferation",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Krealington",
+    "Added to KSF": "Jun 4, 2017"
+  },
+  {
+    "MapName": "surf_jumble",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 4,
+    "Mapper": "Dizzy",
+    "Added to KSF": "May 26, 2019"
+  },
+  {
+    "MapName": "surf_prolix_fix",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "t3tra",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_happyhands5",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Kiiru",
+    "Added to KSF": "Apr 13, 2020"
+  },
+  {
+    "MapName": "surf_cyberwave",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 1,
+    "Mapper": "MrCow",
+    "Added to KSF": "Jan 25, 2019"
+  },
+  {
+    "MapName": "surf_healthy",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 1,
+    "Mapper": "WireleZz",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_deadline",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "house",
+    "Added to KSF": "Jul 24, 2021"
+  },
+  {
+    "MapName": "surf_jusched_beta1",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "notSmashed",
+    "Added to KSF": "Sep 6, 2012"
+  },
+  {
+    "MapName": "surf_helium_fix",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Waffleburger",
+    "Added to KSF": "Aug 10, 2012"
+  },
+  {
+    "MapName": "surf_delight",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "aqresiv3",
+    "Added to KSF": "Sep 8, 2018"
+  },
+  {
+    "MapName": "surf_prosperity_v2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "Shoop",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_kultur",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 6,
+    "Mapper": "Sonia",
+    "Added to KSF": "Jan 7, 2022"
+  },
+  {
+    "MapName": "surf_delusional",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 0,
+    "Mapper": "SKAR",
+    "Added to KSF": "Aug 11, 2012"
+  },
+  {
+    "MapName": "surf_pure",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "Fox",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_destruction",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Sonia",
+    "Added to KSF": "Jul 4, 2022"
+  },
+  {
+    "MapName": "surf_pyzire_retexture",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "TaiiKii",
+    "Added to KSF": "Mar 22, 2020"
+  },
+  {
+    "MapName": "surf_devs_ksf",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 3,
+    "Mapper": "Koga73",
+    "Added to KSF": "Oct 1, 2022"
+  },
+  {
+    "MapName": "surf_hellenic",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "elly",
+    "Added to KSF": "Jun 25, 2023"
+  },
+  {
+    "MapName": "surf_qlimax_q",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Helix",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_domain",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "sid",
+    "Added to KSF": "Mar 9, 2019"
+  },
+  {
+    "MapName": "surf_hob",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Syncronyze",
+    "Added to KSF": "Oct 13, 2018"
+  },
+  {
+    "MapName": "surf_quarantine",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 15,
+    "Bonuses": 2,
+    "Mapper": "Sam",
+    "Added to KSF": "Apr 26, 2020"
+  },
+  {
+    "MapName": "surf_honour",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 3,
+    "Mapper": "kingkurtis, TaiiKii",
+    "Added to KSF": "Apr 26, 2024"
+  },
+  {
+    "MapName": "surf_quartus_ksf",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Juxtapo",
+    "Added to KSF": "Dec 31, 2012"
+  },
+  {
+    "MapName": "surf_huh",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "joker",
+    "Added to KSF": "Jan 19, 2019"
+  },
+  {
+    "MapName": "surf_quattro",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "unknown",
+    "Added to KSF": "Aug 16, 2012"
+  },
+  {
+    "MapName": "surf_iceworld",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "ins",
+    "Added to KSF": "Apr 8, 2015"
+  },
+  {
+    "MapName": "surf_quickie_fix",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "Sam",
+    "Added to KSF": "Mar 13, 2018"
+  },
+  {
+    "MapName": "surf_doodles_njv",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 1,
+    "Mapper": "Doodles",
+    "Added to KSF": "Mar 7, 2017"
+  },
+  {
+    "MapName": "surf_dragon",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "yoghurt",
+    "Added to KSF": "Nov 12, 2017"
+  },
+  {
+    "MapName": "surf_driftless",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "murglegurgle",
+    "Added to KSF": "Jun 25, 2017"
+  },
+  {
+    "MapName": "surf_duggywuggy",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "DouglasRattman",
+    "Added to KSF": "Apr 29, 2016"
+  },
+  {
+    "MapName": "surf_ebony",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "sid",
+    "Added to KSF": "Nov 19, 2020"
+  },
+  {
+    "MapName": "surf_echo",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "kingkurtis",
+    "Added to KSF": "Jul 4, 2022"
+  },
+  {
+    "MapName": "surf_radiant",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "elly",
+    "Added to KSF": "May 17, 2024"
+  },
+  {
+    "MapName": "surf_eclipse",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 0,
+    "Mapper": "Paper-Cut",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_ragequit",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Kiiru",
+    "Added to KSF": "Aug 11, 2012"
+  },
+  {
+    "MapName": "surf_eggplant",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "HammY",
+    "Added to KSF": "Aug 11, 2019"
+  },
+  {
+    "MapName": "surf_rands",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 3,
+    "Mapper": "monkeywithagun",
+    "Added to KSF": "Feb 18, 2013"
+  },
+  {
+    "MapName": "surf_redemption_b1",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Electric, SangreNueva",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_refraxis",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 2,
+    "Mapper": "ChiChiN",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_elements_beta3",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "RyanS",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_resource",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 4,
+    "Mapper": "biji",
+    "Added to KSF": "Aug 28, 2017"
+  },
+  {
+    "MapName": "surf_elites_v2",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "svbg869",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_rez2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 4,
+    "Mapper": "Xbmann",
+    "Added to KSF": "Nov 11, 2018"
+  },
+  {
+    "MapName": "surf_epicube",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Rippey",
+    "Added to KSF": "Jul 6, 2018"
+  },
+  {
+    "MapName": "surf_rst",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "caaz",
+    "Added to KSF": "Aug 12, 2018"
+  },
+  {
+    "MapName": "surf_ethereal",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 2,
+    "Mapper": "Juxtapo, Phurix, Syncronyze",
+    "Added to KSF": "May 14, 2016"
+  },
+  {
+    "MapName": "surf_everdark",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "nutwoomy",
+    "Added to KSF": "Nov 1, 2023"
+  },
+  {
+    "MapName": "surf_rubiks_cube",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "juve",
+    "Added to KSF": "Aug 21, 2022"
+  },
+  {
+    "MapName": "surf_runewords",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 4,
+    "Mapper": "biji",
+    "Added to KSF": "Jul 1, 2017"
+  },
+  {
+    "MapName": "surf_exocube",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Pyaniy_ezhik",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_exurbia_v2",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Nov 26, 2015"
+  },
+  {
+    "MapName": "surf_runewords2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 6,
+    "Mapper": "biji",
+    "Added to KSF": "Jan 28, 2018"
+  },
+  {
+    "MapName": "surf_faint_fix",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Kippe",
+    "Added to KSF": "Apr 13, 2013"
+  },
+  {
+    "MapName": "surf_runewords2_lod",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "biji",
+    "Added to KSF": "Jul 30, 2020"
+  },
+  {
+    "MapName": "surf_rustic_v2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 1,
+    "Mapper": "Juxtapo",
+    "Added to KSF": "Nov 3, 2013"
+  },
+  {
+    "MapName": "surf_sacrifice",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 1,
+    "Mapper": "Spree",
+    "Added to KSF": "Sep 11, 2020"
+  },
+  {
+    "MapName": "surf_salmari",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "juve",
+    "Added to KSF": "Jul 30, 2024"
+  },
+  {
+    "MapName": "surf_flyin_fortress_fix",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "HellRaisedSurfer",
+    "Added to KSF": "Aug 8, 2012"
+  },
+  {
+    "MapName": "surf_sandman_v2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Sandman",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_forbidden_ways_ksf",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Krusty",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_fortum_fix",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Hardex, Juxtapo, Tioga060",
+    "Added to KSF": "Sep 9, 2018"
+  },
+  {
+    "MapName": "surf_frey_remake",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 2,
+    "Mapper": "KappaEliitti",
+    "Added to KSF": "Feb 13, 2023"
+  },
+  {
+    "MapName": "surf_santorini2",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "quethesurfer",
+    "Added to KSF": "Oct 9, 2023"
+  },
+  {
+    "MapName": "surf_funhouse2",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 7,
+    "Mapper": "KrakenDaddy",
+    "Added to KSF": "Feb 22, 2020"
+  },
+  {
+    "MapName": "surf_savant_njv",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "unknown",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_glass7_ksf",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Smileytopin",
+    "Added to KSF": "Aug 11, 2019"
+  },
+  {
+    "MapName": "surf_sc_colours",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 1,
+    "Mapper": "Hazza, Johnny, t3tra",
+    "Added to KSF": "Aug 10, 2012"
+  },
+  {
+    "MapName": "surf_glass9",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Smileytopin",
+    "Added to KSF": "Oct 3, 2020"
+  },
+  {
+    "MapName": "surf_sc_essence_v2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 1,
+    "Mapper": "t3tra",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_looksmodern",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Tioga060",
+    "Added to KSF": "Feb 15, 2013"
+  },
+  {
+    "MapName": "surf_lt_omnific",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 18,
+    "Bonuses": 3,
+    "Mapper": "nyro",
+    "Added to KSF": "Aug 8, 2012"
+  },
+  {
+    "MapName": "surf_map_h",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Pand3mic",
+    "Added to KSF": "Nov 22, 2012"
+  },
+  {
+    "MapName": "surf_gleam",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "TruMatrix",
+    "Added to KSF": "Nov 18, 2017"
+  },
+  {
+    "MapName": "surf_marah",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Flaudgin",
+    "Added to KSF": "Oct 2, 2015"
+  },
+  {
+    "MapName": "surf_secluded",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 4,
+    "Mapper": "PrisonNightmare",
+    "Added to KSF": "Oct 24, 2020"
+  },
+  {
+    "MapName": "surf_monkeys",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "quethesurfer",
+    "Added to KSF": "Jun 21, 2024"
+  },
+  {
+    "MapName": "surf_gleam2",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 4,
+    "Mapper": "TruMatrix",
+    "Added to KSF": "Nov 27, 2019"
+  },
+  {
+    "MapName": "surf_sempar_njv",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Seme, pArA_8D",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_north",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 4,
+    "Mapper": "TheJazzAgenT",
+    "Added to KSF": "Nov 20, 2022"
+  },
+  {
+    "MapName": "surf_graphia",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "TargetPractice",
+    "Added to KSF": "Aug 11, 2012"
+  },
+  {
+    "MapName": "surf_sensation_fix",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Billy, SangreNueva",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_grassland",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Panzer, XSharK",
+    "Added to KSF": "Aug 11, 2012"
+  },
+  {
+    "MapName": "surf_greek_ksf",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 3,
+    "Mapper": "quethesurfer",
+    "Added to KSF": "Mar 14, 2024"
+  },
+  {
+    "MapName": "surf_greensway",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "NvC_DmN_CH",
+    "Added to KSF": "May 26, 2020"
+  },
+  {
+    "MapName": "surf_perihelion",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "house",
+    "Added to KSF": "Jun 11, 2023"
+  },
+  {
+    "MapName": "surf_sentient",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "TeMP",
+    "Added to KSF": "Oct 8, 2015"
+  },
+  {
+    "MapName": "surf_guitar_hi",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "masog",
+    "Added to KSF": "Feb 14, 2017"
+  },
+  {
+    "MapName": "surf_replicant",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "SpyComplex",
+    "Added to KSF": "Sep 18, 2020"
+  },
+  {
+    "MapName": "surf_serenity2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 5,
+    "Mapper": "Hardex",
+    "Added to KSF": "Apr 1, 2021"
+  },
+  {
+    "MapName": "surf_imagine_fix",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "THAY-imagine-",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_royal_fix",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "synx",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_halloween_tf2",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Egan",
+    "Added to KSF": "Jul 1, 2014"
+  },
+  {
+    "MapName": "surf_sewers",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "monkeywithagun",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_impact",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "SangreNueva",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_santorini3",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 5,
+    "Mapper": "quethesurfer",
+    "Added to KSF": "Apr 19, 2024"
+  },
+  {
+    "MapName": "surf_sexplizooimed",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "enjooi",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_industries",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Razer",
+    "Added to KSF": "Aug 18, 2012"
+  },
+  {
+    "MapName": "surf_sexyartz_njv",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Razer",
+    "Added to KSF": "Aug 18, 2012"
+  },
+  {
+    "MapName": "surf_inner",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Klemix",
+    "Added to KSF": "Dec 8, 2020"
+  },
+  {
+    "MapName": "surf_sh",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Nano",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_sidelines",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "pietu",
+    "Added to KSF": "Jul 5, 2024"
+  },
+  {
+    "MapName": "surf_inrage",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Ch1!!3r",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_shady_h",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Sanguine",
+    "Added to KSF": "May 22, 2022"
+  },
+  {
+    "MapName": "surf_sinister_evil",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "RambJoe, Kiiru",
+    "Added to KSF": "Jun 28, 2013"
+  },
+  {
+    "MapName": "surf_sinister2",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Horsefeathers, Jambiie, Sense, vay",
+    "Added to KSF": "Mar 17, 2016"
+  },
+  {
+    "MapName": "surf_sinsane_ksf",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "b0at",
+    "Added to KSF": "Sep 17, 2013"
+  },
+  {
+    "MapName": "surf_insideout_final",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "enjooi",
+    "Added to KSF": "Dec 4, 2012"
+  },
+  {
+    "MapName": "surf_shambles",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "nmroxy",
+    "Added to KSF": "Sep 26, 2020"
+  },
+  {
+    "MapName": "surf_jaqen2",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Hardex",
+    "Added to KSF": "Oct 22, 2017"
+  },
+  {
+    "MapName": "surf_solace",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 5,
+    "Mapper": "Sam",
+    "Added to KSF": "Aug 21, 2020"
+  },
+  {
+    "MapName": "surf_stitched",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 2,
+    "Mapper": "masog",
+    "Added to KSF": "Aug 5, 2020"
+  },
+  {
+    "MapName": "surf_jenocide",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "Jon, Justin",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_stonework4",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "MrCow",
+    "Added to KSF": "Jun 18, 2017"
+  },
+  {
+    "MapName": "surf_sippysip",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Syncronyze",
+    "Added to KSF": "Mar 4, 2015"
+  },
+  {
+    "MapName": "surf_jizznipples",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "PAUL",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_syria_again",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 0,
+    "Mapper": "Razer",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_skill8",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "monkeywithagun",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_kaaba",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "ApeXe, rathe",
+    "Added to KSF": "Sep 24, 2023"
+  },
+  {
+    "MapName": "surf_thesteve",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 3,
+    "Mapper": "EICHHOERNCHEN",
+    "Added to KSF": "Apr 10, 2021"
+  },
+  {
+    "MapName": "surf_slate",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 4,
+    "Mapper": "ethics",
+    "Added to KSF": "Sep 14, 2024"
+  },
+  {
+    "MapName": "surf_kawaii",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Nikki, SangreNueva",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_treespam",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Pand3mic",
+    "Added to KSF": "Nov 21, 2014"
+  },
+  {
+    "MapName": "surf_sluice_final",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "Razer",
+    "Added to KSF": "Nov 15, 2013"
+  },
+  {
+    "MapName": "surf_kitsune2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 12,
+    "Bonuses": 4,
+    "Mapper": "Arblarg",
+    "Added to KSF": "Dec 28, 2015"
+  },
+  {
+    "MapName": "surf_sluice2",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Razer",
+    "Added to KSF": "Feb 27, 2021"
+  },
+  {
+    "MapName": "surf_krow10",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Exither",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_stonework",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "MrCow",
+    "Added to KSF": "Oct 2, 2012"
+  },
+  {
+    "MapName": "surf_leesriize_ksf",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 4,
+    "Mapper": "Leesriize",
+    "Added to KSF": "Nov 27, 2020"
+  },
+  {
+    "MapName": "surf_sunday",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 3,
+    "Mapper": "iamsupaman",
+    "Added to KSF": "Jun 29, 2020"
+  },
+  {
+    "MapName": "surf_valpect",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "CRASHFORT",
+    "Added to KSF": "Aug 9, 2015"
+  },
+  {
+    "MapName": "surf_liberation",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 1,
+    "Mapper": "MachINE",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_sunset",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Exither",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_whynot",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "juve",
+    "Added to KSF": "Apr 23, 2020"
+  },
+  {
+    "MapName": "surf_sunset2_fix",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Exither",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_zen",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 3,
+    "Mapper": "joker",
+    "Added to KSF": "Jul 17, 2017"
+  },
+  {
+    "MapName": "surf_antagonist",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "Luna",
+    "Added to KSF": "Jun 15, 2024"
+  },
+  {
+    "MapName": "surf_devil",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "iNooVa",
+    "Added to KSF": "Jan 24, 2019"
+  },
+  {
+    "MapName": "surf_liberation2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 2,
+    "Mapper": "MachINE",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_symbiosis",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Quensis",
+    "Added to KSF": "Nov 4, 2013"
+  },
+  {
+    "MapName": "surf_exonic",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Roz",
+    "Added to KSF": "Oct 24, 2021"
+  },
+  {
+    "MapName": "surf_synada",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Hesuka",
+    "Added to KSF": "Apr 21, 2018"
+  },
+  {
+    "MapName": "surf_life_of_cow",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Krealington",
+    "Added to KSF": "Jun 1, 2018"
+  },
+  {
+    "MapName": "surf_gigapede",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "disres",
+    "Added to KSF": "May 12, 2023"
+  },
+  {
+    "MapName": "surf_taq",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 0,
+    "Mapper": "monkeywithagun",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_lighthouse",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "ins",
+    "Added to KSF": "Feb 26, 2014"
+  },
+  {
+    "MapName": "surf_goliath",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 4,
+    "Mapper": "Hardex",
+    "Added to KSF": "Oct 3, 2017"
+  },
+  {
+    "MapName": "surf_techsune_css",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "The_Ancient_One",
+    "Added to KSF": "Nov 10, 2022"
+  },
+  {
+    "MapName": "surf_like_this",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Koga73",
+    "Added to KSF": "Mar 15, 2020"
+  },
+  {
+    "MapName": "surf_hades2",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 5,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Jun 30, 2019"
+  },
+  {
+    "MapName": "surf_tempest4",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 7,
+    "Mapper": "Hardex",
+    "Added to KSF": "Apr 1, 2024"
+  },
+  {
+    "MapName": "surf_lithium",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "copy-mark",
+    "Added to KSF": "Aug 10, 2012"
+  },
+  {
+    "MapName": "surf_tensor",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 0,
+    "Mapper": "superbike",
+    "Added to KSF": "Jan 14, 2022"
+  },
+  {
+    "MapName": "surf_lodypreview",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 13,
+    "Bonuses": 0,
+    "Mapper": "lody",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_tequila",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "ApeXe",
+    "Added to KSF": "Feb 24, 2022"
+  },
+  {
+    "MapName": "surf_lolrevlis2",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Silverlol",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_hardline",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 4,
+    "Mapper": "Exxe",
+    "Added to KSF": "Jun 18, 2023"
+  },
+  {
+    "MapName": "surf_lost",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 4,
+    "Mapper": "Flux",
+    "Added to KSF": "Jun 9, 2017"
+  },
+  {
+    "MapName": "surf_not_so_prosurf",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 7,
+    "Mapper": "TheJazzAgenT",
+    "Added to KSF": "Apr 19, 2023"
+  },
+  {
+    "MapName": "surf_theme",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 3,
+    "Mapper": "Phurix",
+    "Added to KSF": "May 2, 2020"
+  },
+  {
+    "MapName": "surf_nsz_fix",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "joker",
+    "Added to KSF": "feb 10, 2018"
+  },
+  {
+    "MapName": "surf_lost2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 4,
+    "Mapper": "Flux",
+    "Added to KSF": "Jun 9, 2019"
+  },
+  {
+    "MapName": "surf_this_njv",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Bravesurf",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_offskill",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "KappaEliitti",
+    "Added to KSF": "May 15, 2022"
+  },
+  {
+    "MapName": "surf_low_production",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 2,
+    "Mapper": "MrCow",
+    "Added to KSF": "May 5, 2018"
+  },
+  {
+    "MapName": "surf_trapped2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Jul 25, 2017"
+  },
+  {
+    "MapName": "surf_original",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "wayne3288",
+    "Added to KSF": "Apr 30, 2020"
+  },
+  {
+    "MapName": "surf_luminaris_refix",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 6,
+    "Mapper": "KappaEliitti",
+    "Added to KSF": "Jun 24, 2020"
+  },
+  {
+    "MapName": "surf_pls",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 10,
+    "Mapper": "biji",
+    "Added to KSF": "May 5, 2019"
+  },
+  {
+    "MapName": "surf_prosurf",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 5,
+    "Mapper": "Hardex",
+    "Added to KSF": "Jan 2, 2023"
+  },
+  {
+    "MapName": "surf_raphaello",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Krealington",
+    "Added to KSF": "Aug 31, 2019"
+  },
+  {
+    "MapName": "surf_triggered_fix",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "lody, Rio",
+    "Added to KSF": "Jan 6, 2018"
+  },
+  {
+    "MapName": "surf_marbleblast_intermediate",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "BlueRaven",
+    "Added to KSF": "Aug 4, 2019"
+  },
+  {
+    "MapName": "surf_trihard",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "sjom7e, Hardex",
+    "Added to KSF": "Jul 8, 2017"
+  },
+  {
+    "MapName": "surf_mash-up",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 20,
+    "Bonuses": 0,
+    "Mapper": "SangreNueva, Billy",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_tundra_v2",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 1,
+    "Mapper": "Malt",
+    "Added to KSF": "Feb 18, 2015"
+  },
+  {
+    "MapName": "surf_meme",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 2,
+    "Mapper": "Juxtapo, Phurix, Syncronyze",
+    "Added to KSF": "Apr 21, 2016"
+  },
+  {
+    "MapName": "surf_ultimate_fix",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "SpexiS",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_mesa_aether",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Arblarg",
+    "Added to KSF": "Oct 17, 2014"
+  },
+  {
+    "MapName": "surf_ruse",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 10,
+    "Mapper": "disres",
+    "Added to KSF": "Feb 20, 2024"
+  },
+  {
+    "MapName": "surf_methadone",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "ins",
+    "Added to KSF": "Apr 13, 2014"
+  },
+  {
+    "MapName": "surf_shade",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 7,
+    "Mapper": "Sneakyy",
+    "Added to KSF": "Aug 22, 2021"
+  },
+  {
+    "MapName": "surf_shibboleth",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 10,
+    "Mapper": "biji",
+    "Added to KSF": "Mar 15, 2023"
+  },
+  {
+    "MapName": "surf_underworld",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Billy",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_unreal_njv",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Hulda",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_vector_final",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "LuckyCharms",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_midsommar",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 4,
+    "Mapper": "granis",
+    "Added to KSF": "Nov 5, 2020"
+  },
+  {
+    "MapName": "surf_vienna",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "ApeXe",
+    "Added to KSF": "Oct 2, 2021"
+  },
+  {
+    "MapName": "surf_milkyway",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "MrCow",
+    "Added to KSF": "Sep 19, 2015"
+  },
+  {
+    "MapName": "surf_shodan",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 10,
+    "Mapper": "SpyComplex",
+    "Added to KSF": "Feb 24, 2019"
+  },
+  {
+    "MapName": "surf_volcanic",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "SpyComplex",
+    "Added to KSF": "May 10, 2018"
+  },
+  {
+    "MapName": "surf_minigolf_ksf",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 2,
+    "Mapper": "Xbmann",
+    "Added to KSF": "Mar 27, 2021"
+  },
+  {
+    "MapName": "surf_sidistic",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "sid",
+    "Added to KSF": "Feb 29, 2024"
+  },
+  {
+    "MapName": "surf_warped",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "EICHHOERNCHEN",
+    "Added to KSF": "Nov 27, 2019"
+  },
+  {
+    "MapName": "surf_minimumwage",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "serz, Tioga060",
+    "Added to KSF": "Mar 24, 2019"
+  },
+  {
+    "MapName": "surf_spectra",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "hork",
+    "Added to KSF": "Jan 26, 2019"
+  },
+  {
+    "MapName": "surf_missing_no",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "RyanS",
+    "Added to KSF": "Aug 22, 2012"
+  },
+  {
+    "MapName": "surf_topology",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 0,
+    "Mapper": "Spinti",
+    "Added to KSF": "Feb 5, 2024"
+  },
+  {
+    "MapName": "surf_twist",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "PLAYER1",
+    "Added to KSF": "Sep 6, 2024"
+  },
+  {
+    "MapName": "surf_wazor_ksf",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Krusty",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_whoknows2",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Malt",
+    "Added to KSF": "Jul 21, 2015"
+  },
+  {
+    "MapName": "surf_morbid",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "SacRed",
+    "Added to KSF": "Aug 13, 2012"
+  },
+  {
+    "MapName": "surf_vacant",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "elly",
+    "Added to KSF": "Apr 10, 2024"
+  },
+  {
+    "MapName": "surf_mushroom_ksf",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Chefkochmaps",
+    "Added to KSF": "Jul 11, 2014"
+  },
+  {
+    "MapName": "surf_vast",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "Krealington",
+    "Added to KSF": "Dec 5, 2017"
+  },
+  {
+    "MapName": "surf_whynot2",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "juve",
+    "Added to KSF": "Jun 1, 2022"
+  },
+  {
+    "MapName": "surf_whoknows3",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Malt",
+    "Added to KSF": "Sep 1, 2018"
+  },
+  {
+    "MapName": "surf_zen2",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 5,
+    "Mapper": "joker",
+    "Added to KSF": "Dec 30, 2018"
+  },
+  {
+    "MapName": "surf_mynah_final",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Nikki",
+    "Added to KSF": "Aug 12, 2012"
+  },
+  {
+    "MapName": "surf_x",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 0,
+    "Mapper": "Helix",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_anubis_ksf",
+    "Tier": 8,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 9,
+    "Mapper": "Sneakyy",
+    "Added to KSF": "Nov 14, 2021"
+  },
+  {
+    "MapName": "surf_nac",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "bigblue",
+    "Added to KSF": "Oct 25, 2015"
+  },
+  {
+    "MapName": "surf_y",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 24,
+    "Bonuses": 3,
+    "Mapper": "scaz",
+    "Added to KSF": "Jan 20, 2013"
+  },
+  {
+    "MapName": "surf_corruption",
+    "Tier": 8,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "OliNB",
+    "Added to KSF": "Mar 12, 2020"
+  },
+  {
+    "MapName": "surf_network_2013",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "RyanS",
+    "Added to KSF": "Aug 19, 2012"
+  },
+  {
+    "MapName": "surf_zeonine",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "masog",
+    "Added to KSF": "Sep 29, 2019"
+  },
+  {
+    "MapName": "surf_acerbus",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Razer",
+    "Added to KSF": "Jan 13, 2015"
+  },
+  {
+    "MapName": "surf_networked",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "RyanS",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_deity_ksf",
+    "Tier": 8,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Junior",
+    "Added to KSF": "Aug 14, 2021"
+  },
+  {
+    "MapName": "surf_again_njv",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Ch1!!3r",
+    "Added to KSF": "Sep 19, 2012"
+  },
+  {
+    "MapName": "surf_not_quite_goliath",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Hardex",
+    "Added to KSF": "May 25, 2023"
+  },
+  {
+    "MapName": "surf_sinsane2",
+    "Tier": 8,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "not_a_zombie",
+    "Added to KSF": "Jul 26, 2019"
+  },
+  {
+    "MapName": "surf_android_ksf",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 3,
+    "Mapper": "Dizzy",
+    "Added to KSF": "Apr 28, 2017"
+  },
+  {
+    "MapName": "surf_not_so_generated",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 3,
+    "Mapper": "house",
+    "Added to KSF": "Nov 5, 2022"
+  },
+  {
+    "MapName": "surf_antimatter2",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 5,
+    "Mapper": "Horsefeathers",
+    "Added to KSF": "Dec 5, 2021"
+  },
+  {
+    "MapName": "surf_ny_advance",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 0,
+    "Mapper": "FAJ",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_ny_momentum2_ksf",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "FAJ",
+    "Added to KSF": "Jan 5, 2013"
+  },
+  {
+    "MapName": "surf_tensor2",
+    "Tier": 8,
+    "MapType": "Staged",
+    "StageAmount": 8,
+    "Bonuses": 6,
+    "Mapper": "superbike",
+    "Added to KSF": "Feb 5, 2023"
+  },
+  {
+    "MapName": "surf_helljumper",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "Otter",
+    "Added to KSF": "Nov 25, 2024"
+  },
+  {
+    "MapName": "surf_aphelion",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "house",
+    "Added to KSF": "Mar 25, 2022"
+  },
+  {
+    "MapName": "surf_board_this_fix",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 8,
+    "Mapper": "lody",
+    "Added to KSF": "Dec 3, 2024"
+  },
+  {
+    "MapName": "surf_assail",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "disres",
+    "Added to KSF": "Oct 20, 2022"
+  },
+  {
+    "MapName": "surf_simpsons2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 4,
+    "Mapper": "Koga73",
+    "Added to KSF": "Dec 8, 2024"
+  },
+  {
+    "MapName": "surf_oasis",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 2,
+    "Mapper": "Phurix",
+    "Added to KSF": "Jul 28, 2015"
+  },
+  {
+    "MapName": "surf_brutalist",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "Hardex",
+    "Added to KSF": "Oct 9, 2016"
+  },
+  {
+    "MapName": "surf_ofrenda",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "kingkurtis",
+    "Added to KSF": "Nov 1, 2023"
+  },
+  {
+    "MapName": "surf_castlewalls",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "GorangeNinja",
+    "Added to KSF": "Oct 1, 2023"
+  },
+  {
+    "MapName": "surf_loweffort2",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 5,
+    "Mapper": "vay",
+    "Added to KSF": "Dec 14, 2024"
+  },
+  {
+    "MapName": "surf_celestial",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Bannedmyself",
+    "Added to KSF": "Sep 15, 2020"
+  },
+  {
+    "MapName": "surf_ofsfice",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Hardex",
+    "Added to KSF": "Oct 9, 2022"
+  },
+  {
+    "MapName": "surf_cavity",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "snc",
+    "Added to KSF": "Dec 23, 2024"
+  },
+  {
+    "MapName": "surf_cinnamon_fix",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "wayne3288, Krealington",
+    "Added to KSF": "Jun 22, 2018"
+  },
+  {
+    "MapName": "surf_olympics",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "THAY-imagine-",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_sleeper",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Hardex",
+    "Added to KSF": "Dec 23, 2024"
+  },
+  {
+    "MapName": "surf_clavius",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Horsefeathers",
+    "Added to KSF": "May 16, 2018"
+  },
+  {
+    "MapName": "surf_omnibus",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 11,
+    "Bonuses": 0,
+    "Mapper": "SKAR",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_conserve",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "tflo",
+    "Added to KSF": "Sep 15, 2018"
+  },
+  {
+    "MapName": "surf_oompa_loompa",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "CNCP",
+    "Added to KSF": "Aug 4, 2012"
+  },
+  {
+    "MapName": "surf_torrential",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "disres",
+    "Added to KSF": "Dec 23, 2024"
+  },
+  {
+    "MapName": "surf_ori_l",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Stats",
+    "Added to KSF": "Apr 9, 2016"
+  },
+  {
+    "MapName": "surf_outside",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 5,
+    "Mapper": "HI-TECH_USER",
+    "Added to KSF": "Dec 11, 2022"
+  },
+  {
+    "MapName": "surf_leidenfrost",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "kingkurtis",
+    "Added to KSF": "Dec 23, 2024"
+  },
+  {
+    "MapName": "surf_pagoda",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "pretzL",
+    "Added to KSF": "Apr 3, 2018"
+  },
+  {
+    "MapName": "surf_colony",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "dunk",
+    "Added to KSF": "Dec 23, 2024"
+  },
+  {
+    "MapName": "surf_breach",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Lucy",
+    "Added to KSF": "Dec 23, 2024"
+  },
+  {
+    "MapName": "surf_palette_fix",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 9,
+    "Bonuses": 0,
+    "Mapper": "Bravesurf",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_interstellar",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "nutwoomy",
+    "Added to KSF": "Dec 23, 2024"
+  },
+  {
+    "MapName": "surf_muerto",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 2,
+    "Bonuses": 1,
+    "Mapper": "quethesurfer",
+    "Added to KSF": "Dec 23, 2024"
+  },
+  {
+    "MapName": "surf_chromatic",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 12,
+    "Bonuses": 4,
+    "Mapper": "MrCow",
+    "Added to KSF": "Jan 5, 2025"
+  },
+  {
+    "MapName": "surf_pandemonium_njv",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "Razer",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_whatever",
+    "Tier": 2,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 2,
+    "Mapper": "Jade",
+    "Added to KSF": "Jan 12, 2025"
+  },
+  {
+    "MapName": "surf_pandora",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Sonia",
+    "Added to KSF": "Jan 23, 2022"
+  },
+  {
+    "MapName": "surf_paranoid_enigma",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Paragon",
+    "Added to KSF": "Aug 21, 2012"
+  },
+  {
+    "MapName": "surf_parc_colore",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 4,
+    "Mapper": "Exither",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_olivia",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "pietu",
+    "Added to KSF": "Jan 26, 2025"
+  },
+  {
+    "MapName": "surf_parrot_selector",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "ptad",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_citypop",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "house",
+    "Added to KSF": "Feb 2, 2025"
+  },
+  {
+    "MapName": "surf_pavilion",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "BlackSheep",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_bikini_bottom",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 7,
+    "Mapper": "Jooce, puffin",
+    "Added to KSF": "Feb 9, 2025"
+  },
+  {
+    "MapName": "surf_raqqit",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "angelina",
+    "Added to KSF": "Feb 16, 2025"
+  },
+  {
+    "MapName": "surf_perforated_restored",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "Tilt",
+    "Added to KSF": "Aug 6, 2012"
+  },
+  {
+    "MapName": "surf_pipeline",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "nutwoomy",
+    "Added to KSF": "Mar 2, 2025"
+  },
+  {
+    "MapName": "surf_starvald",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "disres",
+    "Added to KSF": "Mar 8, 2025"
+  },
+  {
+    "MapName": "surf_petrus",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "iNooVa",
+    "Added to KSF": "Feb 28, 2018"
+  },
+  {
+    "MapName": "surf_placid",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "enjooi",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_plaguelands_beta7a",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "RyanS",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_plethora_fix",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Tioga060",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_pogchamp",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Razer",
+    "Added to KSF": "Nov 25, 2018"
+  },
+  {
+    "MapName": "surf_porn_fix",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "monkeywithagun",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_portal_game4",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "InCognIto, Pyaniy_ezhik",
+    "Added to KSF": "Aug 1, 2012"
+  },
+  {
+    "MapName": "surf_prevail",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "IrynStyl",
+    "Added to KSF": "Oct 28, 2022"
+  },
+  {
+    "MapName": "surf_prismatic_ksf",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Koga73",
+    "Added to KSF": "Dec 4, 2022"
+  },
+  {
+    "MapName": "surf_prosaic",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "t3tra",
+    "Added to KSF": "Aug 11, 2012"
+  },
+  {
+    "MapName": "surf_proximity_final",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Pand3mic",
+    "Added to KSF": "Aug 15, 2012"
+  },
+  {
+    "MapName": "surf_psi_fixed",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 0,
+    "Mapper": "Waffleburger",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_psychedelia",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "sid",
+    "Added to KSF": "May 11, 2020"
+  },
+  {
+    "MapName": "surf_purgatory",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "THAY-imagine-",
+    "Added to KSF": "Aug 7, 2012"
+  },
+  {
+    "MapName": "surf_core_refix",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 2,
+    "Mapper": "SwAt",
+    "Added to KSF": "Aug 8, 2012"
+  },
+  {
+    "MapName": "surf_quantum_njv",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "SangreNueva",
+    "Added to KSF": "Aug 22, 2012"
+  },
+  {
+    "MapName": "surf_quasar_final",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "Rapsodia",
+    "Added to KSF": "Aug 5, 2012"
+  },
+  {
+    "MapName": "surf_queen_of_the_ween",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "Otter, snowy",
+    "Added to KSF": "Oct 27, 2019"
+  },
+  {
+    "MapName": "surf_quilavar",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Helix, Rapsodia",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_rapid",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "Ch1!!3r",
+    "Added to KSF": "Aug 11, 2012"
+  },
+  {
+    "MapName": "surf_razer_final",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 0,
+    "Mapper": "Compact, VZERo",
+    "Added to KSF": "Aug 3, 2012"
+  },
+  {
+    "MapName": "surf_reactor",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Kujoen, Skittl35",
+    "Added to KSF": "Jun 2, 2017"
+  },
+  {
+    "MapName": "surf_resort",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "WALL-E",
+    "Added to KSF": "May 8, 2016"
+  },
+  {
+    "MapName": "surf_retroartz",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 0,
+    "Mapper": "Razer",
+    "Added to KSF": "Aug 20, 2012"
+  },
+  {
+    "MapName": "surf_ripper",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "JackTheStripper",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_rise",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 8,
+    "Mapper": "kingkurtis",
+    "Added to KSF": "Jan 30, 2024"
+  },
+  {
+    "MapName": "surf_roman_v2",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "Horsefeathers",
+    "Added to KSF": "May 29, 2017"
+  },
+  {
+    "MapName": "surf_s_t_a_t_i_o_n",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 0,
+    "Mapper": "AmstaFF, Spider",
+    "Added to KSF": "Aug 11, 2012"
+  },
+  {
+    "MapName": "surf_sandbrick",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 0,
+    "Mapper": "hypestaR, vay",
+    "Added to KSF": "May 5, 2019"
+  },
+  {
+    "MapName": "surf_sanding_ksf",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 0,
+    "Mapper": "Compact",
+    "Added to KSF": "Aug 2, 2012"
+  },
+  {
+    "MapName": "surf_sandstorm2",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "ArcticPanda",
+    "Added to KSF": "Aug 18, 2019"
+  },
+  {
+    "MapName": "surf_smart",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "AJ",
+    "Added to KSF": "Nov 4, 2024"
+  },
+  {
+    "MapName": "surf_kira",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 1,
+    "Mapper": "Aux",
+    "Added to KSF": "Nov 9, 2024"
+  },
+  {
+    "MapName": "surf_1998",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "grizzlix",
+    "Added to KSF": "Mar 16, 2025"
+  },
+  {
+    "MapName": "surf_sodacity",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 6,
+    "Mapper": "kingkurtis",
+    "Added to KSF": "Mar 22, 2025"
+  },
+  {
+    "MapName": "surf_4am",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 6,
+    "Mapper": "pietu",
+    "Added to KSF": "Mar 29, 2025"
+  },
+  {
+    "MapName": "surf_kartune",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 6,
+    "Mapper": "puffin",
+    "Added to KSF": "Apr 6, 2025"
+  },
+  {
+    "MapName": "surf_technical",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "WazupSpencer",
+    "Added to KSF": "Apr 13, 2025"
+  },
+  {
+    "MapName": "surf_gradient",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 1,
+    "Mapper": "Hippy",
+    "Added to KSF": "Apr 20, 2025"
+  },
+  {
+    "MapName": "surf_doomsday",
+    "Tier": 8,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "pietu, WazupSpencer",
+    "Added to KSF": "Apr 26, 2025"
+  },
+  {
+    "MapName": "surf_shy",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "greyce",
+    "Added to KSF": "May 4, 2025"
+  },
+  {
+    "MapName": "surf_fuchnut",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "rvrb",
+    "Added to KSF": "May 11, 2025"
+  },
+  {
+    "MapName": "surf_weirdcore",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "grizzlix",
+    "Added to KSF": "May 18, 2025"
+  },
+  {
+    "MapName": "surf_expel",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 6,
+    "Mapper": "snc",
+    "Added to KSF": "May 25, 2025"
+  },
+  {
+    "MapName": "surf_metalpipes",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Pozy",
+    "Added to KSF": "June 1, 2025"
+  },
+  {
+    "MapName": "surf_emerald",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "vrpl",
+    "Added to KSF": "June 7, 2025"
+  },
+  {
+    "MapName": "surf_panta_rhei",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 2,
+    "Mapper": "boolamp",
+    "Added to KSF": "June 15, 2025"
+  },
+  {
+    "MapName": "surf_angelina",
+    "Tier": 6,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 9,
+    "Mapper": "angelina",
+    "Added to KSF": "June 22, 2025"
+  },
+  {
+    "MapName": "surf_vestige_fix",
+    "Tier": 4,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "disres, nutwoomy",
+    "Added to KSF": "June 29, 2025"
+  },
+  {
+    "MapName": "surf_dread",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 2,
+    "Mapper": "grizzlix, zk",
+    "Added to KSF": "July 6, 2025"
+  },
+  {
+    "MapName": "surf_crank",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "Nikki",
+    "Added to KSF": "July 12, 2025"
+  },
+  {
+    "MapName": "surf_autosave_fix",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 5,
+    "Mapper": "nao",
+    "Added to KSF": "July 19, 2025"
+  },
+  {
+    "MapName": "surf_firedancer",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 7,
+    "Mapper": "dirtman",
+    "Added to KSF": "July 27, 2025"
+  },
+  {
+    "MapName": "surf_joutsenlaulu",
+    "Tier": 8,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "pietu",
+    "Added to KSF": "Aug 3rd, 2025"
+  },
+  {
+    "MapName": "surf_ab",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 25,
+    "Bonuses": 6,
+    "Mapper": "kingkurtis",
+    "Added to KSF": "Aug 10, 2025"
+  },
+  {
+    "MapName": "surf_spacemonkeys",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 5,
+    "Mapper": "quethesurfer",
+    "Added to KSF": "Aug 17, 2025"
+  },
+  {
+    "MapName": "surf_affliction",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 10,
+    "Mapper": "Nikki",
+    "Added to KSF": "Aug 24, 2025"
+  },
+  {
+    "MapName": "surf_tormentor",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 10,
+    "Mapper": "ethics",
+    "Added to KSF": "Aug 31, 2025"
+  },
+  {
+    "MapName": "surf_sofia_fix",
+    "Tier": 1,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "pietu",
+    "Added to KSF": "Sep 14, 2025"
+  },
+  {
+    "MapName": "surf_techslop",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 4,
+    "Mapper": "disres",
+    "Added to KSF": "Sep 21, 2025"
+  },
+  {
+    "MapName": "surf_vantica",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 6,
+    "Mapper": "TaiiKii",
+    "Added to KSF": "Sep 27, 2025"
+  },
+  {
+    "MapName": "surf_excess",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 9,
+    "Mapper": "nutwoomy",
+    "Added to KSF": "Oct 5, 2025"
+  },
+  {
+    "MapName": "surf_insects",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 4,
+    "Mapper": "soerensen, WazupSpencer",
+    "Added to KSF": "Oct 11, 2025"
+  },
+  {
+    "MapName": "surf_frus_njv",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 2,
+    "Mapper": "Coronarena",
+    "Added to KSF": "Oct 19, 2025"
+  },
+  {
+    "MapName": "surf_dune",
+    "Tier": 7,
+    "MapType": "Staged",
+    "StageAmount": 3,
+    "Bonuses": 10,
+    "Mapper": "angelina",
+    "Added to KSF": "Oct 26, 2025"
+  },
+  {
+    "MapName": "surf_suburbia",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "greyce",
+    "Added to KSF": "Nov 2, 2025"
+  },
+  {
+    "MapName": "surf_jitterbug",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 7,
+    "Bonuses": 3,
+    "Mapper": "Otter",
+    "Added to KSF": "Nov 8, 2025"
+  },
+  {
+    "MapName": "surf_carbon",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "elly, Sagan",
+    "Added to KSF": "Nov 16, 2025"
+  },
+  {
+    "MapName": "surf_antagonist2",
+    "Tier": 8,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 7,
+    "Mapper": "Luna",
+    "Added to KSF": "Nov 23, 2025"
+  },
+  {
+    "MapName": "surf_vitamin_e",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 9,
+    "Mapper": "Lucy",
+    "Added to KSF": "Nov 30, 2025"
+  },
+  {
+    "MapName": "surf_silent",
+    "Tier": 7,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 1,
+    "Mapper": "kinz",
+    "Added to KSF": "Dec 7, 2025"
+  },
+  {
+    "MapName": "surf_monolith",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 10,
+    "Bonuses": 10,
+    "Mapper": "pietu",
+    "Added to KSF": "Dec 14, 2025"
+  },
+  {
+    "MapName": "surf_haze",
+    "Tier": 6,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 6,
+    "Mapper": "Luna",
+    "Added to KSF": "Dec 21, 2025"
+  },
+  {
+    "MapName": "surf_sedona",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 10,
+    "Mapper": "FriendlyChemist",
+    "Added to KSF": "Dec 28, 2025"
+  },
+  {
+    "MapName": "surf_disappointed_fix",
+    "Tier": 5,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 1,
+    "Mapper": "buh",
+    "Added to KSF": "Jan 4, 2026"
+  },
+  {
+    "MapName": "surf_centipedes",
+    "Tier": 3,
+    "MapType": "Staged",
+    "StageAmount": 5,
+    "Bonuses": 5,
+    "Mapper": "disres",
+    "Added to KSF": "Jan 10, 2026"
+  },
+  {
+    "MapName": "surf_zae",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 3,
+    "Mapper": "Luna",
+    "Added to KSF": "Jan 18, 2026"
+  },
+  {
+    "MapName": "surf_anomaly",
+    "Tier": 3,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 3,
+    "Mapper": "umbrella",
+    "Added to KSF": "Jan 25, 2025"
+  },
+  {
+    "MapName": "surf_1024",
+    "Tier": 2,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 9,
+    "Mapper": "lody",
+    "Added to KSF": "Feb 1, 2026"
+  },
+  {
+    "MapName": "surf_r-ne",
+    "Tier": 1,
+    "MapType": "Staged",
+    "StageAmount": 6,
+    "Bonuses": 3,
+    "Mapper": "Coronarena",
+    "Added to KSF": "Feb 8, 2025"
+  },
+  {
+    "MapName": "surf_despair",
+    "Tier": 4,
+    "MapType": "Staged",
+    "StageAmount": 4,
+    "Bonuses": 10,
+    "Mapper": "puffin",
+    "Added to KSF": "Feb 14, 2026"
+  },
+  {
+    "MapName": "surf_elysium5",
+    "Tier": 5,
+    "MapType": "Linear",
+    "StageAmount": 0,
+    "Bonuses": 4,
+    "Mapper": "SacRed",
+    "Added to KSF": "Feb 20, 2026"
+  }
+]
