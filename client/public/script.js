@@ -1537,9 +1537,6 @@ async function fetchMapInfo(map) {
         
         currentMapInfoData = data;
         
-        // Cache for mapper search in maps browser
-        if (typeof cacheMapInfoForSearch === 'function') cacheMapInfoForSearch(map, data);
-        
         // Update mapper display
         if (ui.mapMapperName) {
             ui.mapMapperName.innerText = data.mappersDisplay ? `by ${data.mappersDisplay}` : '';
@@ -2648,7 +2645,22 @@ async function populateMapDetail(mapName) {
     ui.mapDetailLeniency.innerText = '-';
     ui.mapDetailZones.innerHTML = '';
 
-    // Use cached mapinfo if available, otherwise fetch
+    // Immediately populate from maps.json cache (has tier, type, stages, bonuses, mapper)
+    const localMap = mapsListCache && mapsListCache.find(m => m.name === mapName);
+    if (localMap) {
+        const t = parseInt(localMap.tier);
+        if (t >= 1 && t <= 8) {
+            ui.mapDetailTier.innerText = `T${t}`;
+            ui.mapDetailTier.style.background = TIER_COLORS[t] || '';
+            ui.mapDetailTier.style.color = '#fff';
+        }
+        if (localMap.mapper) ui.mapDetailMapper.innerText = `by ${localMap.mapper}`;
+        ui.mapDetailType.innerText = localMap.type === 'linear' ? 'Linear' : 'Staged';
+        ui.mapDetailStages.innerText = localMap.stages || '0';
+        ui.mapDetailBonuses.innerText = localMap.bonuses || '0';
+    }
+
+    // Then fetch full mapinfo from API for WR time, finish %, leniency, etc.
     let info = currentMapInfoData;
     if (!info || info.map !== mapName) {
         try {
@@ -2658,14 +2670,14 @@ async function populateMapDetail(mapName) {
     }
 
     if (info) {
-        // Tier badge
+        // Tier badge (API may be more accurate than maps.json)
         const t = parseInt(info.tier);
         if (t >= 1 && t <= 8) {
             ui.mapDetailTier.innerText = `T${t}`;
             ui.mapDetailTier.style.background = TIER_COLORS[t] || '';
             ui.mapDetailTier.style.color = '#fff';
         }
-        ui.mapDetailMapper.innerText = info.mappersDisplay ? `by ${info.mappersDisplay}` : '';
+        if (info.mappersDisplay) ui.mapDetailMapper.innerText = `by ${info.mappersDisplay}`;
         ui.mapDetailType.innerText = info.mapType === 1 ? 'Linear' : 'Staged';
         ui.mapDetailStages.innerText = info.cpCount || '0';
         ui.mapDetailBonuses.innerText = info.bCount || '0';
@@ -2775,6 +2787,14 @@ function renderMapsList(maps) {
         card.appendChild(type);
         card.appendChild(meta);
 
+        // Show mapper if available
+        if (m.mapper) {
+            const mapper = document.createElement('span');
+            mapper.className = 'map-card-mapper';
+            mapper.innerText = m.mapper;
+            card.appendChild(mapper);
+        }
+
         card.addEventListener('click', () => {
             openMapDetail(m.name);
         });
@@ -2791,26 +2811,12 @@ function filterMapsList(query) {
         renderMapsList(mapsListCache);
         return;
     }
-    // Filter by map name or mapper name (fetch mapinfo per card is too expensive,
-    // so we filter by name only; mapper search triggers a lazy lookup)
     const filtered = mapsListCache.filter(m => {
         const nameMatch = m.name.toLowerCase().includes(q);
-        // Also check if mapper name is stored (from mapinfo cache)
-        const cached = mapInfoCache_client.get(m.name);
-        const mapperMatch = cached && cached.mappersDisplay && cached.mappersDisplay.toLowerCase().includes(q);
+        const mapperMatch = m.mapper && m.mapper.toLowerCase().includes(q);
         return nameMatch || mapperMatch;
     });
     renderMapsList(filtered);
-}
-
-// Simple client-side cache of mapinfo for mapper search
-const mapInfoCache_client = new Map();
-
-// When mapinfo is fetched, cache it for search purposes
-function cacheMapInfoForSearch(mapName, data) {
-    if (data && data.mappersDisplay) {
-        mapInfoCache_client.set(mapName, data);
-    }
 }
 
 // ── Event Handlers for Views ────────────────────────────────────────────────

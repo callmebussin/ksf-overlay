@@ -1544,6 +1544,16 @@ body {
     flex-shrink: 0;
     white-space: nowrap;
 }
+.maps-browser-card .map-card-mapper {
+    font-size: 9px;
+    color: var(--text-color);
+    opacity: 0.3;
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80px;
+}
 .maps-browser-loading {
     text-align: center;
     padding: 20px;
