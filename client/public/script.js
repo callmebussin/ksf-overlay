@@ -1952,6 +1952,9 @@ function populateProfile(d) {
     // Points breakdown card
     populatePointsBreakdown(d.points);
 
+    // Don't touch main view visibility when a sub-view is active
+    if (activeView !== 'main') return;
+
     // Respect visibility toggles
     const showRank = currentConfig.showRankCard !== false;
     const showComps = currentConfig.showProfileStats !== false;
@@ -2096,14 +2099,15 @@ async function fetchMapStats(map, baseData) {
         }
         console.log(`[MAPSTATS] Loaded ${loaded} zones for ${map} (total cached: ${zoneCache.size})`);
 
-        updateNavButtons();
-        updateMapCompletionStatus(baseData.mapInfo);
-        // Set tier from mapstats response
-        if (result.tier) setTierBadge(result.tier);
-        // Update map-specific playtime from zone 0 data
-        updateMapPlaytime();
+        // Only update main view DOM when it's active
+        if (activeView === 'main') {
+            updateNavButtons();
+            updateMapCompletionStatus(baseData.mapInfo);
+            if (result.tier) setTierBadge(result.tier);
+            updateMapPlaytime();
+            resizeOverlay();
+        }
         saveLocalCache();
-        resizeOverlay();
     } catch (e) {
         console.error(`[MAPSTATS] Error fetching ${map}:`, e);
     }
@@ -2254,6 +2258,9 @@ function showMainMapPanel(show, mainMapData) {
 
 // Re-render the full layout from cached data (used when config toggles change).
 function refreshLayoutFromCache() {
+    // Skip DOM updates when a sub-view is active
+    if (activeView !== 'main') return;
+
     const mainMapData = zoneCache.get(0) || null;
     const showMainMap = currentConfig.showMainMapStats && mainMapData;
     showMainMapPanel(showMainMap, mainMapData);
@@ -2797,41 +2804,59 @@ async function compareWithPlayer(input) {
     resizeOverlay();
 
     try {
-        // Fetch the other player's map stats
-        const resp = await fetch(`${getBaseUrl()}/api/mapstats/${encodeURIComponent(input)}/${encodeURIComponent(mapDetailMapName)}?${apiQuery()}`);
-        if (!resp.ok) {
+        const map = mapDetailMapName;
+        const q = apiQuery();
+
+        // Fetch BOTH players' full map stats in parallel so we have all zones
+        const [myResp, theirResp] = await Promise.all([
+            fetch(`${getBaseUrl()}/api/mapstats/${encodeURIComponent(currentConfig.steamId)}/${encodeURIComponent(map)}?${q}`),
+            fetch(`${getBaseUrl()}/api/mapstats/${encodeURIComponent(input)}/${encodeURIComponent(map)}?${q}`)
+        ]);
+
+        if (!theirResp.ok) {
             ui.compareRows.innerHTML = '<div class="maps-browser-loading">Player not found</div>';
             return;
         }
-        const result = await resp.json();
-        if (!result.zones) {
+
+        const myResult = myResp.ok ? await myResp.json() : null;
+        const theirResult = await theirResp.json();
+
+        if (!theirResult.zones) {
             ui.compareRows.innerHTML = '<div class="maps-browser-loading">No data for this map</div>';
             return;
         }
 
-        // Set left player name
+        const myZones = (myResult && myResult.zones) || {};
+        const theirZones = theirResult.zones || {};
+
+        // Set player names
         const playerName = lastFetchData && lastFetchData.playerName ? lastFetchData.playerName : 'You';
         ui.comparePlayerLeft.innerText = playerName;
 
         // Build compare rows
         ui.compareRows.innerHTML = '';
-        ui.mapDetailZones.style.display = 'none'; // hide regular zone rows
+        ui.mapDetailZones.style.display = 'none';
 
-        // Get all zones from both players
+        // Collect ALL zone IDs from both players
         const allZoneIds = new Set([
-            ...Array.from(zoneCache.keys()),
-            ...Object.keys(result.zones).map(Number)
+            ...Object.keys(myZones).map(Number),
+            ...Object.keys(theirZones).map(Number)
         ]);
-        const sortedIds = [...allZoneIds].sort((a, b) => a - b);
+        // Sort: zone 0 first, then stages (1-30), then bonuses (31+)
+        const sortedIds = [...allZoneIds].filter(id => !isNaN(id)).sort((a, b) => a - b);
 
+        // Get mapInfo for zone labels
         const anyZone = zoneCache.values().next().value;
         const mapInfo = anyZone && anyZone.mapInfo;
 
         for (const zoneId of sortedIds) {
-            const myZone = zoneCache.get(zoneId);
-            const theirZone = result.zones[zoneId];
+            const myZone = myZones[zoneId];
+            const theirZone = theirZones[zoneId];
             const myTime = myZone && myZone.time ? parseFloat(myZone.time) : null;
             const theirTime = theirZone && theirZone.time ? parseFloat(theirZone.time) : null;
+
+            // Skip zones where neither player has a time
+            if (myTime == null && theirTime == null) continue;
 
             const row = document.createElement('div');
             row.className = 'compare-row';
@@ -2879,6 +2904,10 @@ async function compareWithPlayer(input) {
             row.appendChild(zone);
             row.appendChild(right);
             ui.compareRows.appendChild(row);
+        }
+
+        if (sortedIds.length === 0) {
+            ui.compareRows.innerHTML = '<div class="maps-browser-loading">No zone data available</div>';
         }
     } catch (e) {
         console.error('[COMPARE] Error:', e);
