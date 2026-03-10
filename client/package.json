@@ -51,7 +51,7 @@
           ]
         }
       ],
-      "icon": null
+      "icon": "public/img/logo.png"
     },
     "nsis": {
       "oneClick": true,

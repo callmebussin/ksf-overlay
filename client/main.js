@@ -82,6 +82,7 @@ function createOverlayWindow() {
         transparent: true,
         resizable: true, 
         skipTaskbar: true,
+        icon: path.join(__dirname, 'public', 'img', 'logo.png'),
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
@@ -138,6 +139,7 @@ function createConfigWindow() {
         maxHeight: 700,
         title: "KSF Stats App - Configuration",
         autoHideMenuBar: true,
+        icon: path.join(__dirname, 'public', 'img', 'logo.png'),
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
